@@ -9,8 +9,11 @@ from torch.utils.data import Dataset, DataLoader
 from monai.transforms import Compose
 from monai.data.meta_tensor import MetaTensor
 
+from tqdm import tqdm
+
 from src.VocoLarge.third_party_voco_large.models.voco_head import VoCoHead
 from src.VocoLarge.third_party_voco_large.utils import voco_trans, data_trans
+from src.VocoLarge.voco_eval_one_volume import load_ckpt
 
 
 def build_args(roi_x, roi_y, roi_z, device):
@@ -31,7 +34,7 @@ def build_args(roi_x, roi_y, roi_z, device):
     a.space_z = 1.5
 
     a.local_rank = 0
-    a.sw_batch_size = 10
+    a.sw_batch_size = 1
     a.amp = True
     a.device = device
     return a
@@ -71,9 +74,9 @@ def unpack_voco_transform_output(out):
     if img_obj is None or crop_obj is None or lab_obj is None:
         raise RuntimeError("Transform did not return expected outputs.")
 
-    img = torch.stack([d["image"] for d in img_obj], dim=0)     # (sw_s, 1, D, H, W)
-    crops = torch.stack([d["image"] for d in lab_obj], dim=0)   # (9,   1, D, H, W)
-    labels = torch.as_tensor(crop_obj, dtype=torch.float32).unsqueeze(0)  # (1, sw_s, 9)
+    img = torch.stack([d["image"] for d in img_obj], dim=0).squeeze(1)    # (sw_s, 1, D, H, W)
+    crops = torch.stack([d["image"] for d in lab_obj], dim=0).squeeze(1)   # (9,   1, D, H, W)
+    labels = torch.as_tensor(crop_obj, dtype=torch.float32)  # (1, sw_s, 9)
     return img, crops, labels
 
 
@@ -82,12 +85,12 @@ def main():
     p.add_argument("--data_dir", required=True, help="folder with .nii or .nii.gz images")
     p.add_argument("--out_dir", default="runs_voco_tiny")
     p.add_argument("--device", default="cuda", choices=["cpu", "cuda"])
-    p.add_argument("--epochs", type=int, default=50)
+    p.add_argument("--ckpt", default=None, help="VoCo_*_SSL_head.pt (optional)")
+    p.add_argument("--epochs", type=int, default=20)
     p.add_argument("--lr", type=float, default=2e-4)
     p.add_argument("--roi_x", type=int, default=192)
     p.add_argument("--roi_y", type=int, default=192)
     p.add_argument("--roi_z", type=int, default=64)
-    p.add_argument("--use_chest_trans", action="store_true")
     p.add_argument("--no_aug", action="store_true", help="disable heavy aug (for debugging)")
     p.add_argument("--seed", type=int, default=0)
     args = p.parse_args()
@@ -101,8 +104,9 @@ def main():
     a = build_args(args.roi_x, args.roi_y, args.roi_z, args.device)
 
     # transforms
-    trans_list = data_trans.get_chest_trans(a) if args.use_chest_trans else data_trans.get_headneck_trans(a)
+    trans_list = data_trans.get_chest_trans(a)
     if args.no_aug:
+        print("No augmentation")
         for i, t in enumerate(trans_list):
             if t.__class__.__name__ == "VoCoAugmentation":
                 trans_list[i] = voco_trans.VoCoAugmentation(a, aug=False)
@@ -149,25 +153,32 @@ def main():
 
     # model
     model = VoCoHead(a).to(device).train()
+    if args.ckpt:
+        print("Using checkpoint")
+        load_ckpt(model, args.ckpt, args.device)
+    else:
+        print("Not using checkpoint")
 
     opt = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=1e-4)
     scaler = torch.cuda.amp.GradScaler(enabled=(device.type == "cuda"))
 
     # tiny training loop
-    global_step = 0
     for epoch in range(1, args.epochs + 1):
+        model.train()
         epoch_loss = 0.0
-        for batch in dl:
-            # batch is length-1 list-ish because batch_size=1 with weird object
-            out = batch[0] if isinstance(batch, (list, tuple)) else batch
+
+        pbar = tqdm(dl, desc=f"Epoch {epoch}/{args.epochs}", leave=True)
+
+        for batch in pbar:
+            out = batch
             img, crops, labels = unpack_voco_transform_output(out)
 
-            # MetaTensor like your eval
             img = MetaTensor(img).to(device)
             crops = MetaTensor(crops).to(device)
             labels = labels.to(device)
 
             opt.zero_grad(set_to_none=True)
+
             with torch.cuda.amp.autocast(enabled=(device.type == "cuda")):
                 loss = model(img, crops, labels)
 
@@ -176,10 +187,14 @@ def main():
             scaler.update()
 
             epoch_loss += float(loss.item())
-            global_step += 1
+
+            # 🔥 update progress bar live
+            pbar.set_postfix({
+                "loss": f"{loss.item():.4f}",
+            })
 
         epoch_loss /= max(1, len(dl))
-        print(f"epoch {epoch:03d}/{args.epochs}  loss={epoch_loss:.6f}")
+        print(f"Epoch {epoch:03d} | avg loss = {epoch_loss:.6f}")
 
         # checkpoint occasionally
         if epoch % 10 == 0 or epoch == args.epochs:

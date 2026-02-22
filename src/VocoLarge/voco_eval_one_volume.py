@@ -50,7 +50,7 @@ def load_ckpt(model, ckpt_path: str, device):
         sd = {k.replace("module.", ""): v for k, v in sd.items()}
 
     # If ckpt keys look like "swinViT.xxx" / "encoder1.xxx", they belong to Swin (backbone)
-    msd = model.backbone.state_dict()
+    msd = model.state_dict()
 
     matched = {}
     for k, v in sd.items():
@@ -58,21 +58,19 @@ def load_ckpt(model, ckpt_path: str, device):
             matched[k] = v
 
     msd.update(matched)
-    model.backbone.load_state_dict(msd, strict=True)
-    print(f"[ckpt] backbone matched: {len(matched)}/{len(msd)} ({100 * len(matched) / len(msd):.1f}%)")
+    model.load_state_dict(msd, strict=True)
+    print(f"[ckpt] matched: {len(matched)}/{len(msd)} ({100 * len(matched) / len(msd):.1f}%)")
 
 
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--image", required=True, help="path to image.nii.gz")
     p.add_argument("--ckpt", default=None, help="VoCo_*_SSL_head.pt (optional)")
-    p.add_argument("--device", default="cpu", choices=["cpu", "cuda"])
+    p.add_argument("--device", default="cuda", choices=["cpu", "cuda"])
     p.add_argument("--roi_x", type=int, default=192)
     p.add_argument("--roi_y", type=int, default=192)
     p.add_argument("--roi_z", type=int, default=64)
     p.add_argument("--seed", type=int, default=0)
-    p.add_argument("--use_chest_trans", action="store_true",
-                   help="use chest window/spacing; otherwise uses headneck-style window")
     p.add_argument("--no_aug", action="store_true",
                    help="turn off VoCoAugmentation's heavy aug (safer on CPU)")
     args = p.parse_args()
@@ -82,11 +80,7 @@ def main():
     # build args object expected by VoCoHead + transforms
     a = build_args(args.roi_x, args.roi_y, args.roi_z, args.device)
 
-    # choose a transform recipe from data_trans.py, but swap VoCoAugmentation args
-    if args.use_chest_trans:
-        trans_list = data_trans.get_chest_trans(a)
-    else:
-        trans_list = data_trans.get_headneck_trans(a)
+    trans_list = data_trans.get_chest_trans(a)
 
     # Replace the last transform (VoCoAugmentation(args, aug=True)) with aug=False if requested
     # This avoids ops.patch_rand_drop which is CUDA-coded in this repo.
@@ -134,11 +128,12 @@ def main():
     labels = torch.as_tensor(crop_obj, dtype=torch.float32).unsqueeze(0)  # (1, sw_s, 9)
 
     print("img", img.shape, "crops", crops.shape, "labels", labels.shape)
+    debug_vis_dir = "debug_vis_small_pretrain"
     save_voco_debug_vis(
         img=img,
         crops=crops,
         labels=labels,
-        out_dir="debug_vis",
+        out_dir=debug_vis_dir,
         prefix=Path(args.image).parent.name,  # e.g. case id folder
         max_queries=8,
         slices_per_vol=6,
@@ -165,9 +160,9 @@ def main():
         # --- NEW: logits vs targets visualizations ---
         logits, targets = get_voco_logits(model, img, crops, labels)
 
-        save_heatmap(targets.numpy(), "Targets (labels): query vs 9 crops", "debug_vis/targets_heatmap.png")
-        save_heatmap(logits.numpy(), "Predictions (logits): query vs 9 crops", "debug_vis/logits_heatmap.png")
-        save_heatmap((logits - targets).numpy(), "Pred - Target", "debug_vis/diff_heatmap.png")
+        save_heatmap(targets.numpy(), "Targets (labels): query vs 9 crops", debug_vis_dir + "/targets_heatmap.png")
+        save_heatmap(logits.numpy(), "Predictions (logits): query vs 9 crops", debug_vis_dir +"/logits_heatmap.png")
+        save_heatmap((logits - targets).numpy(), "Pred - Target", debug_vis_dir+ "/diff_heatmap.png")
 
         # simple top-1 match metric
         top1_pred = logits.argmax(dim=1)
