@@ -1,0 +1,3 @@
+best_lr_raw=1.643189e-04
+suggest_lr=1.643189e-05
+steps_ran=200

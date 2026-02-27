@@ -65,6 +65,7 @@ def load_ckpt(model, ckpt_path: str, device):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--image", required=True, help="path to image.nii.gz")
+    p.add_argument("--dir_out_res", required=True, help="path to directory where to save plots")
     p.add_argument("--ckpt", default=None, help="VoCo_*_SSL_head.pt (optional)")
     p.add_argument("--device", default="cuda", choices=["cpu", "cuda"])
     p.add_argument("--roi_x", type=int, default=192)
@@ -128,7 +129,7 @@ def main():
     labels = torch.as_tensor(crop_obj, dtype=torch.float32).unsqueeze(0)  # (1, sw_s, 9)
 
     print("img", img.shape, "crops", crops.shape, "labels", labels.shape)
-    debug_vis_dir = "debug_vis_small_pretrain"
+    debug_vis_dir = args.dir_out_res
     save_voco_debug_vis(
         img=img,
         crops=crops,

@@ -2,7 +2,7 @@ import os
 import glob
 import argparse
 from pathlib import Path
-
+import matplotlib.pyplot as plt
 import torch
 from torch.utils.data import Dataset, DataLoader
 
@@ -79,6 +79,40 @@ def unpack_voco_transform_output(out):
     labels = torch.as_tensor(crop_obj, dtype=torch.float32)  # (1, sw_s, 9)
     return img, crops, labels
 
+def save_loss_curve(losses, out_path, title="Training loss"):
+    """
+    losses: list[float], one value per epoch
+    Saves a PNG with the curve and annotates the final loss.
+    """
+    if len(losses) == 0:
+        return
+
+    plt.figure(figsize=(7, 4))
+    xs = list(range(1, len(losses) + 1))
+    plt.plot(xs, losses, marker="o")
+    plt.xlabel("Epoch")
+    plt.ylabel("Avg loss")
+    plt.title(title)
+    plt.grid(True, alpha=0.3)
+
+    final_epoch = xs[-1]
+    final_loss = losses[-1]
+    plt.scatter([final_epoch], [final_loss])
+    plt.annotate(
+        f"final: {final_loss:.6f}",
+        xy=(final_epoch, final_loss),
+        xytext=(final_epoch, final_loss),
+        textcoords="offset points",
+        xycoords="data",
+        ha="left",
+        va="bottom",
+        fontsize=10,
+        bbox=dict(boxstyle="round,pad=0.25", alpha=0.7),
+    )
+
+    plt.tight_layout()
+    plt.savefig(out_path, dpi=160, bbox_inches="tight")
+    plt.close()
 
 def main():
     p = argparse.ArgumentParser()
@@ -162,6 +196,7 @@ def main():
     opt = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=1e-4)
     scaler = torch.cuda.amp.GradScaler(enabled=(device.type == "cuda"))
 
+    loss_history = []
     # tiny training loop
     for epoch in range(1, args.epochs + 1):
         model.train()
@@ -195,6 +230,7 @@ def main():
 
         epoch_loss /= max(1, len(dl))
         print(f"Epoch {epoch:03d} | avg loss = {epoch_loss:.6f}")
+        loss_history.append(epoch_loss)
 
         # checkpoint occasionally
         if epoch % 10 == 0 or epoch == args.epochs:
@@ -202,6 +238,9 @@ def main():
             torch.save({"state_dict": model.state_dict(), "epoch": epoch}, ckpt_path)
             print(f"saved: {ckpt_path}")
 
+    curve_path = os.path.join(args.out_dir, "loss_curve.png")
+    save_loss_curve(loss_history, curve_path, title="VoCo SSL training loss")
+    print(f"saved loss curve: {curve_path}")
     print("done.")
 
 
