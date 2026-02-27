@@ -1,0 +1,260 @@
+[Audit] Found 20 images to audit.
+
+[1/20] /mnt/data/flaviu/example_pt/03A3A4098C6F79/image.nii.gz
+  shape: (512, 512, 192) | dtype: float32
+  spacing(x,y,z): (0.85546875, 0.85546875, 2.0)
+  orientation: LPS
+  min/max: -1000.000 / 3071.000
+  p0.5/p1/p50/p99/p99.5: -1000.000 / -1000.000 / -988.000 / 264.000 / 384.000
+
+[2/20] /mnt/data/flaviu/example_pt/9271CD928CFED7/image.nii.gz
+  shape: (512, 512, 106) | dtype: float32
+  spacing(x,y,z): (1.171875, 1.171875, 3.0)
+  orientation: LPS
+  min/max: -1000.000 / 2976.000
+  p0.5/p1/p50/p99/p99.5: -1000.000 / -1000.000 / -998.000 / 140.000 / 282.000
+
+[3/20] /mnt/data/flaviu/example_pt/60CFC37758CB65/image.nii.gz
+  shape: (512, 512, 132) | dtype: float32
+  spacing(x,y,z): (1.269531011581421, 1.269531011581421, 2.5)
+  orientation: LPS
+  min/max: -1000.000 / 3071.000
+  p0.5/p1/p50/p99/p99.5: -1000.000 / -1000.000 / -998.000 / 113.000 / 281.000
+
+[4/20] /mnt/data/flaviu/example_pt/F469F529EA6CC4/image.nii.gz
+  shape: (512, 512, 209) | dtype: float32
+  spacing(x,y,z): (1.3671875, 1.3671875, 2.0)
+  orientation: LPS
+  min/max: -1000.000 / 3071.000
+  p0.5/p1/p50/p99/p99.5: -1000.000 / -1000.000 / -997.000 / 83.000 / 283.000
+
+[5/20] /mnt/data/flaviu/example_pt/680E3AAD947409/image.nii.gz
+  shape: (512, 512, 135) | dtype: float32
+  spacing(x,y,z): (0.9765625, 0.9765625, 3.0)
+  orientation: LPS
+  min/max: -1024.000 / 29482.000
+  p0.5/p1/p50/p99/p99.5: -1024.000 / -1024.000 / -991.000 / 208.000 / 397.000
+
+[6/20] /mnt/data/flaviu/example_pt/7098260F390777/image.nii.gz
+  shape: (1024, 1024, 179) | dtype: float32
+  spacing(x,y,z): (0.5302734375, 0.5302734375, 2.0)
+  orientation: LPS
+  min/max: -1000.000 / 3071.000
+  p0.5/p1/p50/p99/p99.5: -1000.000 / -1000.000 / -992.000 / 237.000 / 408.000
+
+[7/20] /mnt/data/flaviu/example_pt/16AF1F03AD33FC/image.nii.gz
+  shape: (512, 512, 115) | dtype: float32
+  spacing(x,y,z): (1.171875, 1.171875, 3.0)
+  orientation: LPS
+  min/max: -1000.000 / 2976.000
+  p0.5/p1/p50/p99/p99.5: -1000.000 / -1000.000 / -994.000 / 160.000 / 314.000
+
+[8/20] /mnt/data/flaviu/example_pt/F8F78CB6732B1E/image.nii.gz
+  shape: (512, 512, 144) | dtype: float32
+  spacing(x,y,z): (1.269531011581421, 1.269531011581421, 2.5)
+  orientation: LPS
+  min/max: -1000.000 / 3071.000
+  p0.5/p1/p50/p99/p99.5: -1000.000 / -1000.000 / -999.000 / 119.000 / 362.000
+
+[9/20] /mnt/data/flaviu/example_pt/4106002AA4C2AE/image.nii.gz
+  shape: (512, 512, 140) | dtype: float32
+  spacing(x,y,z): (1.269531011581421, 1.269531011581421, 2.5)
+  orientation: LPS
+  min/max: -1000.000 / 3071.000
+  p0.5/p1/p50/p99/p99.5: -1000.000 / -1000.000 / -997.000 / 94.000 / 219.000
+
+[10/20] /mnt/data/flaviu/example_pt/4F4FA26E9F7898/image.nii.gz
+  shape: (512, 512, 162) | dtype: float32
+  spacing(x,y,z): (1.017578125, 1.017578125, 2.0)
+  orientation: LPS
+  min/max: -1000.000 / 3071.000
+  p0.5/p1/p50/p99/p99.5: -1000.000 / -1000.000 / -992.000 / 252.000 / 435.000
+
+[11/20] /mnt/data/flaviu/example_pt/14B3F27995DDD2/image.nii.gz
+  shape: (512, 512, 148) | dtype: float32
+  spacing(x,y,z): (1.171875, 1.171875, 3.0)
+  orientation: LPS
+  min/max: -1000.000 / 2976.000
+  p0.5/p1/p50/p99/p99.5: -1000.000 / -1000.000 / -994.000 / 165.000 / 303.000
+
+[12/20] /mnt/data/flaviu/example_pt/5C46E26228CB7F/image.nii.gz
+  shape: (512, 512, 64) | dtype: float32
+  spacing(x,y,z): (0.9765625, 0.9765625, 5.0)
+  orientation: LPS
+  min/max: -1000.000 / 3095.000
+  p0.5/p1/p50/p99/p99.5: -1000.000 / -1000.000 / -1000.000 / 184.000 / 290.000
+
+[13/20] /mnt/data/flaviu/example_pt/F6A192BDA938EB/image.nii.gz
+  shape: (512, 512, 181) | dtype: float32
+  spacing(x,y,z): (0.890625, 0.890625, 2.0)
+  orientation: LPS
+  min/max: -1000.000 / 2976.000
+  p0.5/p1/p50/p99/p99.5: -1000.000 / -1000.000 / -991.000 / 361.000 / 573.000
+
+[14/20] /mnt/data/flaviu/example_pt/779181FFBB84AC/image.nii.gz
+  shape: (512, 512, 207) | dtype: float32
+  spacing(x,y,z): (0.939453125, 0.939453125, 2.0)
+  orientation: LPS
+  min/max: -1000.000 / 2976.000
+  p0.5/p1/p50/p99/p99.5: -1000.000 / -1000.000 / -985.000 / 223.000 / 382.000
+
+[15/20] /mnt/data/flaviu/example_pt/7F6199D5C3DD07/image.nii.gz
+  shape: (512, 512, 60) | dtype: float32
+  spacing(x,y,z): (0.9296875, 0.9296875, 5.0)
+  orientation: LPS
+  min/max: -1000.000 / 3095.000
+  p0.5/p1/p50/p99/p99.5: -1000.000 / -1000.000 / -1000.000 / 208.000 / 343.000
+
+[16/20] /mnt/data/flaviu/example_pt/DE667E1FC70016/image.nii.gz
+  shape: (512, 512, 166) | dtype: float32
+  spacing(x,y,z): (0.82421875, 0.82421875, 2.0)
+  orientation: LPS
+  min/max: -1000.000 / 2976.000
+  p0.5/p1/p50/p99/p99.5: -1000.000 / -1000.000 / -992.000 / 345.000 / 559.000
+
+[17/20] /mnt/data/flaviu/example_pt/77BDD08F04AF0A/image.nii.gz
+  shape: (512, 512, 160) | dtype: float32
+  spacing(x,y,z): (1.0625, 1.0625, 2.0)
+  orientation: LPS
+  min/max: -1000.000 / 2976.000
+  p0.5/p1/p50/p99/p99.5: -1000.000 / -1000.000 / -991.000 / 294.000 / 546.000
+
+[18/20] /mnt/data/flaviu/example_pt/30692BF6DB8F95/image.nii.gz
+  shape: (512, 512, 209) | dtype: float32
+  spacing(x,y,z): (0.9765625, 0.9765625, 2.0)
+  orientation: LPS
+  min/max: -1000.000 / 3071.000
+  p0.5/p1/p50/p99/p99.5: -1000.000 / -1000.000 / -990.000 / 292.000 / 524.000
+
+[19/20] /mnt/data/flaviu/example_pt/5231EB5A3B7461/image.nii.gz
+  shape: (512, 512, 114) | dtype: float32
+  spacing(x,y,z): (1.171875, 1.171875, 3.0)
+  orientation: LPS
+  min/max: -1000.000 / 3071.000
+  p0.5/p1/p50/p99/p99.5: -1000.000 / -1000.000 / -988.000 / 122.000 / 294.000
+
+[20/20] /mnt/data/flaviu/example_pt/A267915E04AF86/image.nii.gz
+  shape: (512, 512, 104) | dtype: float32
+  spacing(x,y,z): (0.8671875, 0.8671875, 3.000000238418579)
+  orientation: LPS
+  min/max: -1000.000 / 2976.000
+  p0.5/p1/p50/p99/p99.5: -1000.000 / -1000.000 / -981.000 / 205.000 / 353.000
+
+[Audit Summary]
+  Orientation counts:
+    LPS: 20
+  Spacing summary (mm):
+    x: min=0.5303 max=1.3672 mean=1.0355 p50=0.9971
+    y: min=0.5303 max=1.3672 mean=1.0355 p50=0.9971
+    z: min=2.0000 max=5.0000 mean=2.6750 p50=2.5000
+
+
+ GPT Response:
+ Here’s what that audit output is telling you, in plain terms, and what it implies for your pipeline.
+
+What each block means
+[Audit] Found 20 images to audit.
+
+The script found 20 image files (your image.nii.gz volumes) and computed stats for each.
+
+shape: (512, 512, 192)
+
+This is the voxel grid size (X, Y, Z) in voxels.
+So case 1 has 512×512 pixels per slice and 192 slices.
+
+You have variability: e.g. some are 60 slices, some 209, one is 1024×1024×179 (much larger in-plane).
+
+Implication: patch-based training + sliding-window inference is the right choice.
+
+spacing(x,y,z): (0.855, 0.855, 2.0)
+
+This is voxel size in millimeters per voxel.
+
+X/Y spacing varies ~0.53–1.37 mm
+
+Z spacing varies 2.0–5.0 mm (slice thickness)
+
+Implication:
+
+Your dataset has non-uniform spacing, especially in Z.
+
+HD95 depends on physical spacing, so you should either:
+
+resample to a common spacing (recommended for cleaner comparisons), or
+
+keep native spacing and be careful interpreting HD95 across cases.
+
+orientation: LPS
+
+All 20 are LPS orientation (Left-Posterior-Superior). Good news: consistent.
+
+Implication: your Orientationd(axcodes="RAS") transform will reorient them all the same way (RAS), but you’re not dealing with mixed orientations. That reduces one major source of bugs.
+
+min/max: -1000.000 / 3071.000 (and sometimes 2976, 3095)
+
+This is the minimum and maximum intensity values in the image.
+
+-1000 is extremely characteristic of CT in Hounsfield Units (air is ~-1000 HU).
+
+3071 is a common upper cap used in CT storage (12-bit CT often saturates around ~3071).
+
+Implication: yes — these look like HU CT, not arbitrary normalized volumes.
+
+p0.5/p1/p50/p99/p99.5
+
+These are percentiles of intensity values:
+
+Example case 1:
+
+p1 = -1000, p0.5 = -1000 → at least 1% of voxels are at the minimum (air/background)
+
+p50 ≈ -988 → the median voxel is still very close to air
+(because a lot of the volume is background/air)
+
+p99 ≈ 264, p99.5 ≈ 384 → the top 1% is soft tissue / bone-ish range
+
+Implications:
+
+Your volumes include a lot of air/background, so the median being near -1000 is normal.
+
+The tissue distribution (p99 around 80–360 across cases) is reasonable for chest CT.
+
+This strongly supports using a HU clip window like [-1000, 1000] (or a narrower soft-tissue window later).
+
+Important anomaly: case 5 max = 29482
+[5/20] ... min/max: -1024.000 / 29482.000
+
+That max is not normal HU. It could be:
+
+a rescale issue (DICOM rescale slope/intercept not applied consistently before saving)
+
+a few outlier voxels / metal artifacts
+
+different scanner export
+
+But percentiles are still normal:
+
+p99=208, p99.5=397
+
+So it’s likely just a small set of extreme outliers.
+
+Implication: clipping is essential. Your current clip range will safely handle this.
+
+Summary block meaning
+Orientation counts: LPS: 20
+
+All volumes share the same orientation. Great.
+
+Spacing summary
+x: min=0.5303 max=1.3672 mean=1.0355 p50=0.9971
+z: min=2.0 max=5.0 mean=2.6750 p50=2.5
+
+Confirms varying slice thickness.
+
+Implication for your training config:
+
+If you don’t resample, your model sees anatomy stretched differently across cases (especially in Z).
+
+If you resample, training is more consistent but more compute/memory.
+
+Given you have 46GB GPUs, resampling to something like (1.0, 1.0, 2.5) or (1.0, 1.0, 2.0) is feasible later.
