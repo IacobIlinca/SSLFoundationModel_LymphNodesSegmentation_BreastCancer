@@ -22,7 +22,7 @@ class Config:
     mask_key_to_class_index = {"mask1": 1, "mask2": 2, "mask3": 3}
 
     # ---- Patch training / inference ----
-    roi_size: Tuple[int, int, int] = (192, 192, 48)  # must fit Z=~60
+    roi_size: Tuple[int, int, int] = (192, 192, 64)  # must fit Z=~60
     num_samples_per_volume: int = 1                  # patches per volume
     batch_size: int = 1                               # volumes per batch (patching happens inside transform)
     val_overlap: float = 0.5
@@ -45,25 +45,36 @@ class Config:
     # ---- Training ----
     seed: int = 0
     device: str = "cuda"
-    epochs: int = 200
+    epochs: int = 20
     lr: float = 1e-4
     weight_decay: float = 1e-5
     amp: bool = True
     num_workers: int = 8
     log_every: int = 10
 
+    # --- Label mode ---
+    # "multiclass": exclusive masks -> single integer label (0..K), softmax
+    # "multilabel": overlapping masks -> multi-channel label (K channels), sigmoid
+    label_mode: str = "multilabel"  # or "multilabel"
+
+    # --- Collision handling (only relevant for multiclass) ---
+    raise_on_overlap: bool = True  # True = error, False = resolve by priority (optional)
+
+    # --- Multilabel threshold for inference/metrics ---
+    pred_threshold: float = 0.5
+
     # ---- Linear probing specifics ----
     # We load VoCo into Swin encoder and freeze the encoder.
-    voco_ckpt_path: str = "/processing/flaviu/pretrained/VoCo_B_SSL_head.pt"
+    voco_ckpt_path: str = "D:\Master\Thesis\pretrained\VoCo_B_SSL_head.pt"
     feature_size: int = 48  # IMPORTANT: must match VoCo variant (48/96/192 etc). Change if load report says mismatch.
-    freeze_scope: str = "swin"  # "swin" or "swin_plus_conv" (stricter)
+    freeze_scope: str = "swin_plus_conv"  # "swin" or "swin_plus_conv" (stricter)
 
     # Weight loading safety gate
     strict_load: bool = True
     strict_load_threshold: float = 0.95  # require encoder tensors matched, else crash
 
     # ---- Debug / convenience ----
-    save_dir: str = "/processing/flaviu/runs_swinunetr_overfit_probe"
+    save_dir: str = "D:\Master\Thesis\\results\\runs_swinunetr_overfit_probe"
     overfit_case_id: Optional[str] = None  # set to one case_id to overfit; DEBUG ONLY
     save_visuals: bool = True              # OPTIONAL
     visuals_case_index: int = 0            # OPTIONAL
