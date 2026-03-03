@@ -3,7 +3,7 @@ from typing import Dict, List, Tuple
 from src.VocoLarge.segmentation.data.overfit_case import find_case_with_required_masks, REQUIRED_MASKS
 
 # Hardcode for now (or make it a CLI arg later)
-ROOT_DIR = "/mnt/data/flaviu/example_pt"
+ROOT_DIR = "D:\Master\Thesis\example_pt"
 
 
 def build_samples() -> Tuple[List[Dict], List[Dict]]:

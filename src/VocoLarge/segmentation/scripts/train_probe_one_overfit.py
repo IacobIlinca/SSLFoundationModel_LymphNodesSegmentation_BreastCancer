@@ -6,7 +6,7 @@ from src.VocoLarge.segmentation.config import Config
 from src.VocoLarge.segmentation.data.samples import build_samples
 from src.VocoLarge.segmentation.models.build import build_model
 from src.VocoLarge.segmentation.models.voco_loader import load_voco_encoder_weights
-from src.VocoLarge.segmentation.models.freeze import freeze_encoder
+from src.VocoLarge.segmentation.models.freeze import freeze_encoder, report_trainable_by_module
 from src.VocoLarge.segmentation.training.engine import run_training
 
 # OPTIONAL
@@ -63,6 +63,7 @@ def main():
 
     # Freeze encoder
     freeze_encoder(model, cfg)
+    report_trainable_by_module(model)
 
     # Optional visuals callback
     visuals_cb = make_visuals_callback(cfg) if cfg.save_visuals else None

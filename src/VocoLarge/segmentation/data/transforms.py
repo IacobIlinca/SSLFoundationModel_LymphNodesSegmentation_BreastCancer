@@ -14,11 +14,12 @@ from monai.transforms import (
     RandShiftIntensityd,
     RandCropByPosNegLabeld,
     EnsureTyped,
-    Identityd
+    Identityd, DeleteItemsd
 )
 
 from src.VocoLarge.segmentation.config import Config
-from src.VocoLarge.segmentation.data.combine_masks import CombineBinaryMasksToLabeld
+from src.VocoLarge.segmentation.data.combine_masks import CombineBinaryMasksd
+from src.VocoLarge.segmentation.data.fg_from_multilabel import ForegroundFromMultiLabeld
 
 
 def get_transforms(cfg: Config) -> Tuple[Compose, Compose]:
@@ -105,14 +106,22 @@ def get_transforms(cfg: Config) -> Tuple[Compose, Compose]:
         if cfg.mask_key_to_class_index is None:
             raise ValueError("mask_key_to_class_index must be provided when mask_keys are used.")
         base += [
-            CombineBinaryMasksToLabeld(
+            CombineBinaryMasksd(
                 mask_keys=mask_keys,
                 mask_key_to_class_index=cfg.mask_key_to_class_index,
                 label_key="label",
-                raise_on_overlap=True,  # collision rule
+                label_mode=cfg.label_mode,
+                raise_on_overlap=cfg.raise_on_overlap,
             )
         ]
+
+    # If multilabel, make fg map for cropping
+    if cfg.label_mode == "multilabel":
+        base += [ForegroundFromMultiLabeld(label_key="label", fg_key="fg")]
+
     keys = ["image", "label"]
+    if cfg.label_mode == "multilabel":
+        keys = ["image", "label", "fg"]
 
     # ---- OPTIONAL: light augmentations (keep light for linear probe) ----
     # Augmentations are helpful but keep them mild since you are probing representations.
@@ -131,7 +140,7 @@ def get_transforms(cfg: Config) -> Tuple[Compose, Compose]:
     crop = [
         RandCropByPosNegLabeld(
             keys=keys,
-            label_key="label",
+            label_key="label" if cfg.label_mode == "multiclass" else "fg",
             spatial_size=cfg.roi_size,
             pos=2,                       # 2 parts positive
             neg=1,                       # 1 part negative
@@ -140,6 +149,10 @@ def get_transforms(cfg: Config) -> Tuple[Compose, Compose]:
             image_threshold=0,           # label drives pos/neg; threshold rarely matters here
         )
     ]
+
+    if cfg.label_mode == "multilabel":
+        crop += [DeleteItemsd(keys=["fg"])]
+        keys = ["image", "label"]
 
     # ---- Required: convert to torch tensors ----
     # NOTE: EnsureTyped with float32 will cast label to float; we convert label->long in the training step.
