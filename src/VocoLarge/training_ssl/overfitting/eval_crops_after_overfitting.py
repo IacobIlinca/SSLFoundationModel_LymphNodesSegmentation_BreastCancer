@@ -4,32 +4,20 @@ from pathlib import Path
 
 import torch
 
-from src.VocoLarge.pipeline import (
-    build_voco_args, build_transforms, build_model,
+from src.VocoLarge.training_ssl.pipeline import (
+    build_transforms, build_model,
     load_ckpt,
     unpack_voco_output, to_device,
     compute_logits_targets,
     save_voco_debug_vis, save_diff_bundle, save_heatmap,
     best_crop_report,
 )
+from src.VocoLarge.training_ssl.pipeline.config import Config
 
 
 def main():
-    p = argparse.ArgumentParser()
-    p.add_argument("--image", required=True, help="path to image.nii.gz")
-    p.add_argument("--out_dir", required=True, help="directory to save plots")
-    p.add_argument("--ckpt", required=True, help="path to .pt checkpoint (overfit_final.pt etc)")
-    p.add_argument("--device", default="cuda", choices=["cpu", "cuda"])
-    p.add_argument("--roi_x", type=int, default=96)
-    p.add_argument("--roi_y", type=int, default=96)
-    p.add_argument("--roi_z", type=int, default=64)
-    p.add_argument("--feature_size", type=int, default=48)
-    p.add_argument("--no_aug", action="store_true")
-    p.add_argument("--seed", type=int, default=0)
 
-    # NEW: load only backbone or full model
-    p.add_argument("--load_mode", default="full", choices=["backbone", "full"])
-    args = p.parse_args()
+    args = Config()
 
     torch.manual_seed(args.seed)
     if args.device == "cuda":
@@ -38,13 +26,7 @@ def main():
     device = torch.device("cuda" if args.device == "cuda" else "cpu")
     os.makedirs(args.out_dir, exist_ok=True)
 
-    a = build_voco_args(
-        roi_x=args.roi_x, roi_y=args.roi_y, roi_z=args.roi_z,
-        device=args.device, feature_size=args.feature_size,
-        amp=False, sw_batch_size=10,  # keep 10 queries like your old eval
-    )
-
-    xform = build_transforms(a, no_aug=args.no_aug)
+    xform = build_transforms(args, no_aug=args.no_aug)
 
     out = xform({"image": args.image})
     img_cpu, crops_cpu, labels_cpu = unpack_voco_output(out)
@@ -60,7 +42,7 @@ def main():
         slices_per_vol=6,
     )
 
-    model = build_model(a, device).eval()
+    model = build_model(args, device).eval()
     stats = load_ckpt(model, args.ckpt, args.device, mode=args.load_mode)
     print(f"[ckpt] load_mode={args.load_mode} stats={stats}")
 

@@ -2,7 +2,6 @@
 import os
 import argparse
 from pathlib import Path
-import math
 
 import torch
 from torch.utils.data import Dataset, DataLoader
@@ -14,7 +13,7 @@ from tqdm import tqdm
 
 from src.VocoLarge.third_party_voco_large.models.voco_head import VoCoHead
 from src.VocoLarge.third_party_voco_large.utils import voco_trans, data_trans
-from src.VocoLarge.voco_eval_one_volume import load_ckpt
+from src.VocoLarge.initial_zero_shot_experiment.voco_eval_one_volume import load_ckpt
 
 
 def build_args(roi_x, roi_y, roi_z, device):

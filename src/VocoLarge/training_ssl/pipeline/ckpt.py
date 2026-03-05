@@ -20,25 +20,47 @@ def _clean_state_dict(sd: Dict[str, torch.Tensor]) -> Dict[str, torch.Tensor]:
 
 def _match_and_load(target_module, sd: Dict[str, torch.Tensor], name: str):
     """
-    Loads only matching keys into target_module.
+    Loads only matching keys into target_module and reports stats.
     """
     msd = target_module.state_dict()
+
     matched = {}
+    skipped_shape = []
+    missing = []
 
     for k, v in sd.items():
-        if k in msd and msd[k].shape == v.shape:
-            matched[k] = v
+        if k in msd:
+            if msd[k].shape == v.shape:
+                matched[k] = v
+            else:
+                skipped_shape.append(k)
+
+    for k in msd.keys():
+        if k not in sd:
+            missing.append(k)
 
     msd.update(matched)
     target_module.load_state_dict(msd, strict=True)
 
-    pct = 100.0 * len(matched) / max(1, len(msd))
-    print(f"[ckpt] {name} matched: {len(matched)}/{len(msd)} ({pct:.1f}%)")
+    matched_n = len(matched)
+    total_target = len(msd)
+    total_ckpt = len(sd)
+    pct = 100.0 * matched_n / max(1, total_target)
+
+    print(f"[INFO] Loading checkpoint into '{name}'")
+    print(f"[INFO]   tensors in checkpoint : {total_ckpt}")
+    print(f"[INFO]   tensors in model      : {total_target}")
+    print(f"[INFO]   matched tensors      : {matched_n}/{total_target} ({pct:.1f}%)")
+    print(f"[INFO]   shape mismatches     : {len(skipped_shape)}")
+    print(f"[INFO]   missing in ckpt      : {len(missing)}")
 
     return {
-        "matched": len(matched),
-        "total": len(msd),
+        "matched": matched_n,
+        "total_model": total_target,
+        "total_ckpt": total_ckpt,
         "pct": pct,
+        "shape_mismatch": len(skipped_shape),
+        "missing": len(missing),
     }
 
 
@@ -57,6 +79,8 @@ def load_ckpt(
     if not os.path.exists(ckpt_path):
         raise FileNotFoundError(f"Checkpoint not found: {ckpt_path}")
 
+    print(f"[INFO] Loading checkpoint: {ckpt_path}")
+
     sd = torch.load(ckpt_path, map_location=device)
     sd = _clean_state_dict(sd)
 
@@ -66,7 +90,6 @@ def load_ckpt(
         stats["backbone"] = _match_and_load(model.backbone, sd, "backbone")
 
     elif mode == "full":
-        # Full model state_dict (backbone + student + teacher)
         stats["full"] = _match_and_load(model, sd, "full model")
 
     else:

@@ -4,7 +4,7 @@ import torch
 from monai.transforms import Compose
 from monai.data.meta_tensor import MetaTensor
 from pathlib import Path
-from src.VocoLarge.voco_vis import save_voco_debug_vis, get_voco_logits, save_heatmap
+from src.VocoLarge.initial_zero_shot_experiment.voco_vis import save_voco_debug_vis, get_voco_logits, save_heatmap
 from src.VocoLarge.third_party_voco_large.utils import data_trans, voco_trans
 from src.VocoLarge.third_party_voco_large.models.voco_head import VoCoHead  # models package typically has no side effects
 

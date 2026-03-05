@@ -13,21 +13,25 @@ def unpack_voco_output(out):
       labels: (1, sw_s, 9) torch.Tensor OR (sw_s,9) depending on transform
     """
     if isinstance(out, (list, tuple)):
-        img_obj, crop_obj, lab_obj = out
+        img_obj, lab_obj, crops_obj = out
     elif isinstance(out, dict):
         img_obj = out.get("image", None)
-        crop_obj = out.get("crops", None)
+        crops_obj = out.get("crops", None)
         lab_obj = out.get("labels", None)
     else:
         raise RuntimeError(f"Unexpected output type: {type(out)}")
 
-    if img_obj is None or crop_obj is None or lab_obj is None:
+    if img_obj is None or crops_obj is None or lab_obj is None:
         raise RuntimeError("Transform did not return expected outputs (image/crops/labels).")
 
     img = torch.stack([d["image"] for d in img_obj], dim=0)
-    crops = torch.stack([d["image"] for d in lab_obj], dim=0)
+    crops = torch.stack([d["image"] for d in crops_obj], dim=0)
 
-    labels = torch.as_tensor(crop_obj, dtype=torch.float32)
+    if img.ndim == 6 and crops.ndim == 6:
+        img = img.squeeze(1)
+        crops = crops.squeeze(1)
+
+    labels = torch.as_tensor(lab_obj, dtype=torch.float32)
     if labels.ndim == 2:
         labels = labels.unsqueeze(0)
     if labels.ndim != 3:
