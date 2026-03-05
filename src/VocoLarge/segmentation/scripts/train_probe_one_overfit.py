@@ -34,7 +34,7 @@ def make_visuals_callback(cfg: Config):
         lab_np = label[0, 0].detach().cpu().numpy().astype(np.int32)
 
         # pred[0]: (H,W,D) integer after AsDiscrete(argmax=True)
-        pred_np = pred[0].detach().cpu().numpy().astype(np.int32)
+        pred_np = pred[0][0].detach().cpu().numpy().astype(np.int32)
 
         out_dir = os.path.join(cfg.save_dir, "visuals")
         for sidx in cfg.visuals_slices:

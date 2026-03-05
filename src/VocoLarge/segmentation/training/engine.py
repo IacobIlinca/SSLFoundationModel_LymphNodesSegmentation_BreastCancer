@@ -61,10 +61,9 @@ def train_one_epoch(model, loader, optim, loss_fn, scaler, device, cfg: Config, 
     for batch in pbar:
         img = batch["image"].to(device)
 
-        if cfg.label_mode == "multiclass":
-            lab = batch["label"].to(device).long()
-        else:
-            lab = batch["label"].to(device).float()
+        lab = batch["label"].to(device).long()
+        # print("[DEBUG] label unique:", torch.unique(lab))
+        # print("[DEBUG] label fg vox:", int((lab > 0).sum().item()))
 
         optim.zero_grad(set_to_none=True)
         with autocast(enabled=cfg.amp):
@@ -106,10 +105,7 @@ def validate(model, val_loader, device, loss_fn, epoch, cfg: Config, history, tr
     for vi, batch in enumerate(pbar_val):
 
         img = batch["image"].to(device)
-        if cfg.label_mode == "multilabel":
-            lab = batch["label"].to(device).float()
-        else:
-            lab = batch["label"].to(device).long()
+        lab = batch["label"].to(device).long()
 
         logits = infer_full_volume(model, img, cfg)
 
@@ -121,8 +117,7 @@ def validate(model, val_loader, device, loss_fn, epoch, cfg: Config, history, tr
         val_steps += 1
 
         # ----- metrics -----
-        logits_for_metrics = torch.sigmoid(logits) if cfg.label_mode == "multilabel" else logits
-        pred_list = [post_pred(x) for x in decollate_batch(logits_for_metrics)]
+        pred_list = [post_pred(x) for x in decollate_batch(logits)]
         lab_oh_list = [post_label(x) for x in decollate_batch(lab)]
 
         dice_metric(y_pred=pred_list, y=lab_oh_list)

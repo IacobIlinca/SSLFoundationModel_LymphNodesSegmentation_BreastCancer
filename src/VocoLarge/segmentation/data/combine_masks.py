@@ -1,22 +1,24 @@
-from typing import Dict, List
+from typing import Dict, List, Optional
 import numpy as np
 import torch
 from monai.transforms import MapTransform
 
 
-class CombineBinaryMasksd(MapTransform):
+class CombineBinaryMasksReportOverlapd(MapTransform):
     """
-    Combines multiple binary masks into either:
-      - multiclass: single integer label map (1,H,W,D) with values 0..K
-      - multilabel: multi-channel label (K,H,W,D) with {0,1}
+    Combine multiple binary masks into a single multiclass label map (1,H,W,D),
+    while reporting tiny overlaps.
 
-    mask_key_to_class_index:
-      keys: mask_key in sample dict (e.g., "mask1")
-      values: class index in 1..K
+    Reports:
+      - overlap_pixels: number of voxels where >=2 masks are positive
+      - union_pixels: number of voxels where >=1 mask is positive
+      - overlap_percent: overlap_pixels / union_pixels * 100
 
-    IMPORTANT:
-      - For multilabel, output channels correspond to class indices 1..K in order.
-        Channel 0 corresponds to class 1, channel K-1 corresponds to class K.
+    Overlap resolution (when writing multiclass labels):
+      - resolve="last": last mask in mask_keys wins (default; same behavior as your current code)
+      - resolve="first": first mask wins (overlapping voxels keep the first assigned label)
+      - resolve="priority": use class_priority dict (higher value wins by default)
+          * if tie, later mask in mask_keys wins
     """
 
     def __init__(
@@ -24,63 +26,98 @@ class CombineBinaryMasksd(MapTransform):
         mask_keys: List[str],
         mask_key_to_class_index: Dict[str, int],
         label_key: str = "label",
-        label_mode: str = "multiclass",
-        raise_on_overlap: bool = True,
+        log_prefix: str = "[CombineBinaryMasks]",
+        resolve: str = "last",  # "last" | "first" | "priority"
+        class_priority: Optional[Dict[int, int]] = None,  # class_index -> priority score
+        print_if_no_overlap: bool = False,
     ):
         super().__init__(keys=mask_keys)
         self.mask_keys = list(mask_keys)
         self.map = dict(mask_key_to_class_index)
         self.label_key = label_key
-        assert label_mode in ("multiclass", "multilabel")
-        self.label_mode = label_mode
-        self.raise_on_overlap = raise_on_overlap
-
-        # Determine K from mapping
-        self.K = max(self.map.values())
+        self.log_prefix = log_prefix
+        assert resolve in ("last", "first", "priority")
+        self.resolve = resolve
+        self.class_priority = class_priority or {}
+        self.print_if_no_overlap = print_if_no_overlap
 
     def __call__(self, data):
         d = dict(data)
         first = d[self.mask_keys[0]]  # (1,H,W,D)
-
         is_torch = isinstance(first, torch.Tensor)
 
-        if self.label_mode == "multiclass":
-            # (1,H,W,D) integer map
-            label = torch.zeros_like(first, dtype=torch.long) if is_torch else np.zeros_like(first, dtype=np.int64)
+        # --- Pass 1: compute union + overlap statistics (order-independent) ---
+        if is_torch:
+            masks = [(d[mk] > 0) for mk in self.mask_keys]  # list of (1,H,W,D) bool
+            # stack -> (K,1,H,W,D) -> sum over K
+            stacked = torch.stack(masks, dim=0).to(dtype=torch.int16)
+            count_map = stacked.sum(dim=0)  # (1,H,W,D)
+            union = count_map > 0
+            overlap = count_map > 1
 
+            union_pixels = int(union.sum().item())
+            overlap_pixels = int(overlap.sum().item())
+        else:
+            masks = [(d[mk] > 0) for mk in self.mask_keys]  # list of (1,H,W,D) bool
+            stacked = np.stack(masks, axis=0).astype(np.int16)  # (K,1,H,W,D)
+            count_map = stacked.sum(axis=0)  # (1,H,W,D)
+            union = count_map > 0
+            overlap = count_map > 1
+
+            union_pixels = int(union.sum())
+            overlap_pixels = int(overlap.sum())
+
+        overlap_percent = (100.0 * overlap_pixels / union_pixels) if union_pixels > 0 else 0.0
+
+        if overlap_pixels > 0 or self.print_if_no_overlap:
+            print(
+                f"{self.log_prefix} overlap={overlap_pixels} px "
+                f"of union={union_pixels} px ({overlap_percent:.4f}%)."
+            )
+
+        # --- Pass 2: create multiclass label map + resolve overlaps ---
+        if is_torch:
+            label = torch.zeros_like(first, dtype=torch.long)
+        else:
+            label = np.zeros_like(first, dtype=np.int64)
+
+        if self.resolve == "last":
+            # later masks overwrite earlier labels on overlap
             for mk in self.mask_keys:
                 cls = int(self.map[mk])
-                m = d[mk]
-                m_bin = (m > 0)
-
-                if self.raise_on_overlap:
-                    overlap = (label > 0) & m_bin
-                    if (torch.any(overlap) if is_torch else np.any(overlap)):
-                        raise ValueError(f"Mask overlap detected while adding {mk} as class {cls}")
-
+                m_bin = (d[mk] > 0)
                 label[m_bin] = cls
 
-            d[self.label_key] = label
-            return d
-
-        # multilabel
-        # Output: (K,H,W,D) float32 with {0,1}
-        if is_torch:
-            _, H, W, D_ = first.shape
-            label = torch.zeros((self.K, H, W, D_), dtype=torch.float32, device=first.device)
-            for mk in self.mask_keys:
-                cls = int(self.map[mk])          # 1..K
-                ch = cls - 1                     # 0..K-1
-                m = d[mk]
-                label[ch] = (m > 0).float().squeeze(0)  # (H,W,D)
-        else:
-            _, H, W, D_ = first.shape
-            label = np.zeros((self.K, H, W, D_), dtype=np.float32)
+        elif self.resolve == "first":
+            # keep first assigned label; only write into background
             for mk in self.mask_keys:
                 cls = int(self.map[mk])
-                ch = cls - 1
-                m = d[mk]
-                label[ch] = (m > 0).astype(np.float32).squeeze(0)
+                m_bin = (d[mk] > 0)
+                write = m_bin & (label == 0)
+                label[write] = cls
+
+        else:  # priority
+            # choose label with highest priority score at each voxel
+            # Implementation: maintain best_score map; update if new score > old score (or tie -> last wins)
+            if is_torch:
+                best_score = torch.full_like(first, fill_value=-10_000, dtype=torch.int32)
+            else:
+                best_score = np.full_like(first, fill_value=-10_000, dtype=np.int32)
+
+            for mk in self.mask_keys:
+                cls = int(self.map[mk])
+                score = int(self.class_priority.get(cls, 0))
+                m_bin = (d[mk] > 0)
+
+                if is_torch:
+                    score_map = torch.full_like(best_score, score, dtype=torch.int32)
+                    better = m_bin & (score_map >= best_score)  # ">=" so ties go to later masks (last wins tie)
+                else:
+                    score_map = np.full_like(best_score, score, dtype=np.int32)
+                    better = m_bin & (score_map >= best_score)
+
+                best_score[better] = score
+                label[better] = cls
 
         d[self.label_key] = label
         return d

@@ -1,5 +1,6 @@
 from typing import Tuple
 import torch
+import numpy as np
 
 from monai.transforms import (
     Compose,
@@ -14,11 +15,11 @@ from monai.transforms import (
     RandShiftIntensityd,
     RandCropByPosNegLabeld,
     EnsureTyped,
-    Identityd, DeleteItemsd
+    Identityd, DeleteItemsd, RandCropByLabelClassesd
 )
 
 from src.VocoLarge.segmentation.config import Config
-from src.VocoLarge.segmentation.data.combine_masks import CombineBinaryMasksd
+from src.VocoLarge.segmentation.data.combine_masks import CombineBinaryMasksReportOverlapd
 from src.VocoLarge.segmentation.data.fg_from_multilabel import ForegroundFromMultiLabeld
 
 
@@ -106,53 +107,54 @@ def get_transforms(cfg: Config) -> Tuple[Compose, Compose]:
         if cfg.mask_key_to_class_index is None:
             raise ValueError("mask_key_to_class_index must be provided when mask_keys are used.")
         base += [
-            CombineBinaryMasksd(
+            CombineBinaryMasksReportOverlapd(
                 mask_keys=mask_keys,
                 mask_key_to_class_index=cfg.mask_key_to_class_index,
                 label_key="label",
-                label_mode=cfg.label_mode,
-                raise_on_overlap=cfg.raise_on_overlap,
             )
         ]
 
-    # If multilabel, make fg map for cropping
-    if cfg.label_mode == "multilabel":
-        base += [ForegroundFromMultiLabeld(label_key="label", fg_key="fg")]
+    from monai.transforms import Lambdad
+
+    # DEBUG
+    base += [
+        Lambdad(keys="label", func=lambda x: (
+                    print("[DEBUG] LABEL unique pre-crop:", torch.unique(x) if torch.is_tensor(x) else np.unique(x)) or x))
+    ]
+
 
     keys = ["image", "label"]
-    if cfg.label_mode == "multilabel":
-        keys = ["image", "label", "fg"]
 
     # ---- OPTIONAL: light augmentations (keep light for linear probe) ----
     # Augmentations are helpful but keep them mild since you are probing representations.
     aug = Identityd
     if cfg.light_aug:
         aug = [
-            RandFlipd(keys=keys, prob=0.5, spatial_axis=0),
-            RandFlipd(keys=keys, prob=0.5, spatial_axis=1),
-            RandFlipd(keys=keys, prob=0.5, spatial_axis=2),
-            RandScaleIntensityd(keys=keys, factors=0.1, prob=0.5),
-            RandShiftIntensityd(keys=keys, offsets=0.1, prob=0.5),
+            RandFlipd(keys="image", prob=0.5, spatial_axis=0),
+            RandFlipd(keys="image", prob=0.5, spatial_axis=1),
+            RandFlipd(keys="image", prob=0.5, spatial_axis=2),
+            RandScaleIntensityd(keys="image", factors=0.1, prob=0.5),
+            RandShiftIntensityd(keys="image", offsets=0.1, prob=0.5),
         ]
 
     # ---- Required: patch sampling focused on foreground ----
     # This is critical for small/rare LN levels; otherwise many patches are empty background.
     crop = [
-        RandCropByPosNegLabeld(
-            keys=keys,
-            label_key="label" if cfg.label_mode == "multiclass" else "fg",
+        RandCropByLabelClassesd(
+            keys=["image", "label"],
+            label_key="label",
             spatial_size=cfg.roi_size,
-            pos=2,                       # 2 parts positive
-            neg=1,                       # 1 part negative
+            num_classes=cfg.num_classes + 1,  # include background (0)
+            ratios=[0.0, 1.0, 1.0, 1.0],  # NEVER sample background-only, prefer fg classes
             num_samples=cfg.num_samples_per_volume,
-            image_key="image",
-            image_threshold=0,           # label drives pos/neg; threshold rarely matters here
         )
     ]
 
-    if cfg.label_mode == "multilabel":
-        crop += [DeleteItemsd(keys=["fg"])]
-        keys = ["image", "label"]
+    # DEBUG
+    crop += [
+        Lambdad(keys="label", func=lambda x: (
+                    print("[DEBUG] LABEL unique post-crop:", torch.unique(x) if torch.is_tensor(x) else np.unique(x)) or x))
+    ]
 
     # ---- Required: convert to torch tensors ----
     # NOTE: EnsureTyped with float32 will cast label to float; we convert label->long in the training step.

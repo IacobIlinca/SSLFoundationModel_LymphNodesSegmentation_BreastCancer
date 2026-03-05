@@ -16,7 +16,7 @@ def build_model(cfg: Config) -> nn.Module:
     """
     model = SwinUNETR(
         in_channels=1,
-        out_channels = (cfg.num_classes + 1) if cfg.label_mode == "multiclass" else cfg.num_classes,
+        out_channels = (cfg.num_classes + 1),
         feature_size=cfg.feature_size,
         use_checkpoint=False,
     )

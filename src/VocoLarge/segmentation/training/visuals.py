@@ -17,9 +17,6 @@ def save_overlay_png(image_1ch: np.ndarray, label_int: np.ndarray, pred_int: np.
     img = image_1ch[:, :, slice_idx]
     gt = label_int[:, :, slice_idx]
     pr = pred_int[:, :, slice_idx]
-    if pr.ndim == 3:
-        # choose union overlay
-        pr = (pr.sum(axis=0) > 0).astype(np.float32)
 
     plt.figure(figsize=(10, 4))
     plt.subplot(1, 3, 1)
@@ -40,5 +37,7 @@ def save_overlay_png(image_1ch: np.ndarray, label_int: np.ndarray, pred_int: np.
     plt.axis("off")
 
     plt.tight_layout()
+    # print("[VIS] img slice shape:", img.shape, "min/max:", img.min(), img.max())
+    # print("[VIS] gt unique:", np.unique(gt), "pr unique:", np.unique(pr))
     plt.savefig(out_path, dpi=150)
     plt.close()
