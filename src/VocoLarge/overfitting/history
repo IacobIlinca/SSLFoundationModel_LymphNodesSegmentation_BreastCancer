@@ -1,0 +1,169 @@
+---
+
+# 🧪 OVERFIT RUN 1 — Initial Setup (Baseline)
+
+This is the one that produced the heatmaps you showed (1×9 shape).
+
+## 🔧 Configuration
+
+### Model
+
+* VoCoHead
+* Backbone: loaded from checkpoint
+* Student + Teacher: trainable
+* Dropout: **enabled (default, ~0.2)**
+* Weight decay: **1e-4** (default in AdamW)
+* Learning rate: **1e-4**
+* AMP: enabled
+
+### Data / Transforms
+
+* `--no_aug` enabled (augmentation disabled)
+* `roi_x=96`
+* `roi_y=96`
+* `roi_z=64`
+* `sw_batch_size=1`  ← important
+
+That’s why your heatmaps were:
+
+```
+1 x 9   (one query vs 9 crops)
+```
+
+### Optimizer
+
+```python
+AdamW(model.parameters(), lr=1e-4, weight_decay=1e-4)
+```
+
+### Training
+
+* Steps: 2000
+* Dropout active
+* Backbone trainable
+* Weight decay active
+
+---
+
+## 📊 Behavior of Run 1
+
+* Logits roughly matched dominant columns
+* Not perfectly sharp
+* Heatmap was 1×9
+* Some mismatch in secondary crops
+* Overfit not fully saturated
+
+This is expected because:
+
+* Dropout prevents perfect memorization
+* Weight decay discourages sharp fitting
+* Only 1 query gives weak constraint
+
+---
+
+# 🚀 OVERFIT RUN 2 — Improved Sanity Check
+
+This is your new configuration.
+
+## 🔧 Configuration Changes
+
+### Model
+
+* Dropout: **disabled**
+* Backbone: still trainable (you explicitly requested not freezing)
+* Weight decay: **0.0**
+* Learning rate: **unchanged (1e-4)**
+
+### Data
+
+* `--no_aug`
+* `roi_x=96`
+* `roi_y=96`
+* `roi_z=64`
+* `sw_batch_size=10`  ← major change
+
+Now heatmaps are:
+
+```
+10 x 9   (10 queries vs 9 crops)
+```
+
+This gives much stronger training signal.
+
+---
+
+### Optimizer (New)
+
+```python
+AdamW(model.parameters(), lr=1e-4, weight_decay=0.0)
+```
+
+---
+
+### New Monitoring
+
+You now log:
+
+* loss
+* top1_match
+* MAE
+* MSE
+
+Saved to:
+
+```
+metrics.csv
+```
+
+And save heatmaps every `save_every` steps.
+
+---
+
+# 📈 Why Run 2 Should Overfit Better
+
+Compared to Run 1:
+
+| Change             | Effect                            |
+| ------------------ | --------------------------------- |
+| Dropout disabled   | Removes stochastic noise          |
+| Weight decay = 0   | Allows sharper fitting            |
+| sw_batch_size = 10 | 10x more supervision per step     |
+| Metrics.csv        | Quantitative convergence tracking |
+
+This setup is much closer to a true “can this architecture memorize?” test.
+
+---
+
+# 🧠 Expected Differences in Results
+
+### Run 1
+
+* Slight mismatch remains
+* Some blur in logits
+* Top1 maybe ~60–80%
+* MAE plateaus early
+
+### Run 2
+
+* MAE steadily decreases
+* Top1 should approach 100%
+* Logits heatmap nearly matches targets
+* Diff heatmap approaches zero
+
+---
+
+# 📝 For Thesis Documentation
+
+You can describe them as:
+
+> **Overfit Sanity Check 1:**
+> Single-query overfit with dropout and weight decay enabled.
+> Result: partial convergence, but limited sharpening due to regularization.
+
+> **Overfit Sanity Check 2:**
+> Dropout disabled, weight decay removed, increased sliding-window batch size to 10.
+> Result: significantly improved convergence, validating correctness of loss and assignment mechanism.
+
+---
+
+If you'd like, I can also give you a small LaTeX table summarizing both configurations for your Methods section.
