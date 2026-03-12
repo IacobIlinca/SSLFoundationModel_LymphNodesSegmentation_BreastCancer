@@ -242,7 +242,8 @@ class VoCoHead(nn.Module):
         embeddings = self.backbone(inputs)
 
         # feature augmentation
-        aug_embeddings = nn.Dropout1d(0.2)(embeddings)
+        # aug_embeddings = nn.Dropout1d(0.2)(embeddings)
+        aug_embeddings = embeddings
         student = self.student(aug_embeddings)
 
         self._EMA_update_encoder_teacher()

@@ -17,7 +17,7 @@ class Config:
     # Data / I/O
     # --------------------
     # Single-image debug / overfit
-    overfit_experimnet: bool = True
+    overfit_experimnet: bool = False
     overfit_image_path: Optional[str] = "/mnt/data/flaviu/example_pt/30692BF6DB8F95/image.nii.gz"
 
     # Folder-of-cases SSL (used by find_case_images + NiftiListDataset)
@@ -37,15 +37,15 @@ class Config:
     # Dataloader (used by build_dataloader)
     # NOTE: for VoCoAugmentation outputs you typically keep batch_size=1 unless you custom-collate
     # --------------------
-    batch_size: int = 5
-    shuffle: bool = True
+    batch_size: int = 4
+    shuffle: bool = False
     num_workers: int = 0
 
     # --------------------
     # Transforms / augmentation
     # --------------------
     # If True, VoCoAugmentation(aug=False)
-    no_aug: bool = False
+    no_aug: bool = True
 
     # Chest transform geometry (used by data_trans.get_chest_trans(voco_args))
     # ROI for crops/queries
@@ -63,7 +63,7 @@ class Config:
     spatial_dims: int = 3
 
     # Critical for heatmaps / logits shape: number of queries (sw_s)
-    sw_batch_size: int = 10
+    sw_batch_size: int = 1
 
     # --------------------
     # Checkpoint loading (ckpt.py)
@@ -75,16 +75,17 @@ class Config:
     # --------------------
     # Training loop (overfit_one_image.py)
     # --------------------
-    steps: int = 200
+    steps: int = 28
     lr: float = 5e-3
     weight_decay: float = 1e-4
-    save_every: int = 25
+    momentum: float = 0.9
+    save_every: int = 4
 
     # --------------------
     # Visualization / debug output (viz.py usage)
     # --------------------
     save_visuals: bool = True
-    max_queries_vis: int = 4
+    max_queries_vis: int = 10
     slices_per_vol_vis: int = 3
 
     # --------------------

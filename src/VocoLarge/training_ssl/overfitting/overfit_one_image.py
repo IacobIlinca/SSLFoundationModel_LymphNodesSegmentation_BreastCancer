@@ -4,7 +4,7 @@ import argparse
 from pathlib import Path
 
 import torch
-from torch.optim import AdamW
+from torch.optim import AdamW, SGD
 
 from src.VocoLarge.training_ssl.pipeline import (
     build_transforms,
@@ -25,6 +25,7 @@ from src.VocoLarge.training_ssl.pipeline import (
 from src.VocoLarge.training_ssl.pipeline.config import Config
 from src.VocoLarge.training_ssl.pipeline.freeze import freeze_encoder, report_trainable_by_module
 from src.VocoLarge.training_ssl.pipeline.training import train_one_batch
+from src.VocoLarge.training_ssl.pipeline.viz import History, plot_loss_curves
 
 
 def main():
@@ -87,8 +88,11 @@ def main():
     report_trainable_by_module(model)
 
     # Optimizer: weight_decay = 0 (your request), LR unchanged
-    opt = AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+    # opt = AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+    opt = SGD([p for p in model.parameters() if p.requires_grad], lr=args.lr, momentum=args.momentum)
     scaler = torch.cuda.amp.GradScaler(enabled=(device.type == "cuda"))
+
+    history = History()
 
     # Metrics CSV
     csv_path = os.path.join(args.out_dir, "metrics.csv")
@@ -108,7 +112,8 @@ def main():
                 batches += 1
 
             loss_val /= batches
-            if step % 10 == 0 or step == 1:
+            history.add(step, loss_val)
+            if step % 1 == 0 or step == 1:
                 print(f"step {step:05d}/{args.steps} | loss={loss_val:.6f}")
 
             # Periodic eval + save heatmaps + write metrics row
@@ -131,6 +136,7 @@ def main():
 
                 save_diff_bundle(logits, targets, out_dir=args.out_dir, prefix=f"step{step:05d}")
 
+    plot_loss_curves(history, args.out_dir)
     # Save final checkpoint
     # save_path = os.path.join(args.out_dir, "overfit_final.pt")
     # save_ckpt_atomic(save_path, {"state_dict": model.state_dict(), "steps": args.steps})

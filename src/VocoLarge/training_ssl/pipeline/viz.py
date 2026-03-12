@@ -1,4 +1,7 @@
 import os
+from dataclasses import dataclass, asdict
+from typing import List, Dict
+
 import numpy as np
 import matplotlib.pyplot as plt
 import torch
@@ -48,7 +51,7 @@ def save_voco_debug_vis(
     img, crops, labels,
     out_dir="debug_vis",
     prefix="case",
-    max_queries=8,
+    max_queries=10,
     slices_per_vol=6,
 ):
     os.makedirs(out_dir, exist_ok=True)
@@ -145,3 +148,46 @@ def save_diff_bundle(logits, targets, out_dir, prefix):
     save_heatmap(logits.numpy(), "Predictions (logits): query vs 9 crops", os.path.join(out_dir, f"{prefix}_logits.png"))
     save_heatmap((logits - targets).numpy(), "Pred - Target", os.path.join(out_dir, f"{prefix}_diff.png"))
     save_heatmap((logits - targets).abs().numpy(), "|Pred - Target|", os.path.join(out_dir, f"{prefix}_absdiff.png"))
+
+
+@dataclass
+class History:
+    """
+    Stores epoch-wise scalars for plotting and later analysis.
+
+    """
+    epoch: List[int]
+    train_loss: List[float]
+    #val_loss: List[float]
+
+    def __init__(self):
+        self.epoch = []
+        self.train_loss = []
+        #self.val_loss = []
+
+    def add(self, epoch: int, train_loss: float):
+        self.epoch.append(int(epoch))
+        self.train_loss.append(float(train_loss))
+        #self.val_loss.append(float(val_loss))
+
+    def to_dict(self) -> Dict:
+        return asdict(self)
+
+
+def plot_loss_curves(history: History, save_path: str, title: str = "Loss Curves") -> None:
+    """
+    REQUIRED for your request.
+
+    Saves a single plot with train loss and val loss across epochs.
+    """
+    os.makedirs(os.path.dirname(save_path), exist_ok=True)
+    plt.figure()
+    plt.title(title)
+    plt.plot(history.epoch, history.train_loss, label="train_loss")
+    #plt.plot(history.epoch, history.val_loss, label="val_loss")
+    plt.xlabel("epoch")
+    plt.ylabel("loss")
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(save_path, dpi=150)
+    plt.close()

@@ -142,7 +142,7 @@ def get_chest_trans(args):
         transforms.RandShiftIntensityd(keys="image", offsets=0.1, prob=0),
 
         SpatialPadd(keys=["image"], spatial_size=(192, 192, 64), mode='constant'),
-        RandSpatialCropd(keys="image", roi_size=(192, 192, 64), max_roi_size=None, random_center=True, random_size=False, lazy=False),
+        RandSpatialCropd(keys="image", roi_size=(192, 192, 64), max_roi_size=None, random_center=False, random_size=False, lazy=False),
         VoCoAugmentation(args, aug=True)
     ]
 

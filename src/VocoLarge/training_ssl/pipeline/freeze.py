@@ -45,5 +45,5 @@ def report_trainable_by_module(model, top_k: int = 30):
         print(f"  {k:20s} {v:12,d}  ({v/total_trainable*100:5.1f}%)")
 
     # Also check swinViT specifically
-    swin_trainable = sum(p.numel() for p in model.swinViT.parameters() if p.requires_grad) if hasattr(model, "swinViT") else 0
+    swin_trainable = sum(p.numel() for p in model.backbone.swinViT.parameters() if p.requires_grad) if hasattr(model, "swinViT") else 0
     print(f"\n[Freeze Debug] swinViT trainable params: {swin_trainable:,}")

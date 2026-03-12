@@ -86,7 +86,8 @@ def compute_logits_targets(model, img, crops, labels):
     inputs = torch.cat([img_t, crops_t], dim=0)
     embeddings = model.backbone(inputs)
 
-    aug_embeddings = torch.nn.Dropout1d(0.2)(embeddings)
+    # aug_embeddings = torch.nn.Dropout1d(0.2)(embeddings)
+    aug_embeddings = embeddings
     student = model.student(aug_embeddings)
     teacher = model.teacher(embeddings)
 
