@@ -1,8 +1,11 @@
+import os
 from pathlib import Path
-from typing import List, Optional
+from typing import List, Optional, Dict
+
+from monai.data import PersistentDataset
 from torch.utils.data import Dataset, DataLoader
 
-
+# Used in overfit experiment
 def find_case_images(root_dir: str) -> List[str]:
     root = Path(root_dir)
     if not root.exists():
@@ -24,7 +27,7 @@ def find_case_images(root_dir: str) -> List[str]:
 
     return image_paths
 
-
+# Dataset used in overfit experiment
 class NiftiListDataset(Dataset):
     """
     Each item is a MONAI dict run through your transform pipeline.
@@ -55,4 +58,86 @@ def build_dataloader(
         shuffle=shuffle,
         num_workers=num_workers,
         pin_memory=(device_type == "cuda"),
+    )
+
+def read_ids_file(txt_path: str) -> List[str]:
+    """
+    Reads IDs from a txt file.
+    Supports either:
+      - comma-separated: id1,id2,id3
+    """
+    with open(txt_path, "r") as f:
+        content = f.read().strip()
+
+    if not content:
+        raise RuntimeError(f"No IDs found in {txt_path}")
+
+    if "," in content:
+        ids = [x.strip() for x in content.split(",") if x.strip()]
+    else:
+        raise RuntimeError(f"No comma separated file {txt_path}")
+
+    if len(ids) == 0:
+        raise RuntimeError(f"Error while reading ids from {txt_path}")
+
+    return ids
+
+
+def find_image_in_patient_folder(patient_dir: Path) -> str:
+    """
+    Finds the image file inside one patient folder.
+
+    Adjust the patterns here if your naming differs.
+    """
+    patterns = [
+        "image.nii.gz",
+        "image.nii",
+        "image.nii.tz",
+    ]
+
+    matches = []
+    for pattern in patterns:
+        matches.extend(patient_dir.glob(pattern))
+
+    if len(matches) == 0:
+        raise FileNotFoundError(f"No image file found in: {patient_dir}")
+
+    if len(matches) > 1:
+        raise RuntimeError(f"Multiple image files found in {patient_dir}")
+
+    return str(matches[0])
+
+
+def build_files_from_ids(root_dir: str, ids: List[str]) -> List[Dict[str, str]]:
+    """
+    Converts patient IDs to MONAI-style dicts:
+        [{"image": "/path/to/id1/image.nii.gz"}, ...]
+    """
+    root = Path(root_dir)
+    files = []
+
+    for pid in ids:
+        patient_dir = root / pid
+        if not patient_dir.exists():
+            raise RuntimeError (f"Missing patient folder: {patient_dir}")
+
+        image_path = find_image_in_patient_folder(patient_dir)
+        files.append({
+            "image": image_path,
+            "patient_id": pid,
+        })
+
+    return files
+
+
+def build_persistent_dataset(
+    files: List[Dict[str, str]],
+    transform,
+    cache_dir: str,
+):
+    os.makedirs(cache_dir, exist_ok=True)
+    return PersistentDataset(
+        data=files,
+        transform=transform,
+        cache_dir=cache_dir,
     )

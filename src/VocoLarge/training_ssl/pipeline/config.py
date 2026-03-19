@@ -20,11 +20,11 @@ class Config:
     overfit_experimnet: bool = False
     overfit_image_path: Optional[str] = "/mnt/data/flaviu/example_pt/30692BF6DB8F95/image.nii.gz"
 
-    # Folder-of-cases SSL (used by find_case_images + NiftiListDataset)
-    # (keep it even if you don't use it yet—this config is meant to scale to the full pipeline)
-    data_dir: Optional[str] = "/mnt/data/flaviu/example_pt/"
+    # Used for overfit experiment
+    # Used
+    data_dir: Optional[str] = "/mnt/data/flaviu/rtnation_02_02/"
 
-    out_dir: str = "/processing/flaviu/overfitting/runs_overfit_case6_freeze_encoder"
+    out_dir: str = "/processing/flaviu/ssl_training/10_epochs_lr_5e3"
 
     # --------------------
     # Reproducibility / runtime
@@ -35,22 +35,27 @@ class Config:
 
     # --------------------
     # Dataloader (used by build_dataloader)
-    # NOTE: for VoCoAugmentation outputs you typically keep batch_size=1 unless you custom-collate
     # --------------------
-    batch_size: int = 4
-    shuffle: bool = False
+    batch_size: int = 4 # used in overfit experiment
+    train_batch_size: int = 4 # used in actual training
+    val_batch_size: int = 4
+    test_batch_size: int = 4
+    shuffle: bool = True
     num_workers: int = 0
+    train_ids_path: str = "../training_data/train_ids.txt"
+    val_ids_path: str = "../training_data/val_ids.txt"
+    test_ids_path: str = "../training_data/test_ids.txt"
+    cache_dir: str = "/mnt/data/flaviu/ssl_training/cache_dir"
 
     # --------------------
     # Transforms / augmentation
     # --------------------
     # If True, VoCoAugmentation(aug=False)
-    no_aug: bool = True
+    no_aug: bool = False
 
     # Chest transform geometry (used by data_trans.get_chest_trans(voco_args))
-    # ROI for crops/queries
-    roi_x: int = 96
-    roi_y: int = 96
+    roi_x: int = 192
+    roi_y: int = 192
     roi_z: int = 64
 
     # --------------------
@@ -73,16 +78,19 @@ class Config:
     freeze_scope: FreezeScope = "swin_plus_conv"
 
     # --------------------
-    # Training loop (overfit_one_image.py)
+    # Training loop
     # --------------------
-    steps: int = 28
+    epochs: int = 10
     lr: float = 5e-3
+    optimizer: str = "sgd"
     weight_decay: float = 1e-4
     momentum: float = 0.9
-    save_every: int = 4
+    save_every: int = 5
+    eval_every: int = 2
 
     # --------------------
     # Visualization / debug output (viz.py usage)
+    # Mostly used for overfit experiment, but can be used elsewhere too
     # --------------------
     save_visuals: bool = True
     max_queries_vis: int = 10

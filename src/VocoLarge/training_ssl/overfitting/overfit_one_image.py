@@ -102,7 +102,7 @@ def main():
         )
         writer.writeheader()
 
-        for step in range(1, args.steps + 1):
+        for step in range(1, args.epochs + 1):
             loss_val = 0
             batches = 0
             for batch in loader:
@@ -114,10 +114,10 @@ def main():
             loss_val /= batches
             history.add(step, loss_val)
             if step % 1 == 0 or step == 1:
-                print(f"step {step:05d}/{args.steps} | loss={loss_val:.6f}")
+                print(f"step {step:05d}/{args.epochs} | loss={loss_val:.6f}")
 
             # Periodic eval + save heatmaps + write metrics row
-            if step % args.save_every == 0 or step == args.steps:
+            if step % args.save_every == 0 or step == args.epochs:
                 logits, targets = compute_logits_targets(model, img_vis, crops_vis, labels_vis)
                 acc = top1_match(logits, targets)
                 mae_v = mae(logits, targets)

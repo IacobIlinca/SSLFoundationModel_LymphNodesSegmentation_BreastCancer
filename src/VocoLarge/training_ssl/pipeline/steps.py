@@ -3,7 +3,8 @@ from monai.data.meta_tensor import MetaTensor
 
 from src.VocoLarge.third_party_voco_large.models.voco_head import online_assign
 
-
+# Deprecated, use from src.VocoLarge.third_party_voco_large.utils.ops import concat_image
+@DeprecationWarning
 def unpack_voco_output(out):
     """
     Accepts output from your MONAI/VoCo transform pipeline.
@@ -62,6 +63,7 @@ def forward_loss(model, img, crops, labels, use_amp: bool):
     return loss
 
 
+# Used in overfit experiment, for training see pipeline/training
 @torch.no_grad()
 def compute_logits_targets(model, img, crops, labels):
     """

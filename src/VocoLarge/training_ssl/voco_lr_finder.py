@@ -1,4 +1,6 @@
-# src/VocoLarge/lr_find_voco.py
+######################
+# Initial lonely experiment
+######################
 import os
 import argparse
 from pathlib import Path
