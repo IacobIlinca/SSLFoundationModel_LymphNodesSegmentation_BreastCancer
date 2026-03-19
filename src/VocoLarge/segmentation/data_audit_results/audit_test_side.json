@@ -1,0 +1,158 @@
+{
+  "num_images": 2,
+  "orientation_counts": {
+    "LPS": 2
+  },
+  "side_counts": {
+    "right": 2
+  },
+  "spacing_summary": {
+    "x": {
+      "min": 0.9765625,
+      "max": 1.3671875,
+      "mean": 1.171875,
+      "p50": 1.171875
+    },
+    "y": {
+      "min": 0.9765625,
+      "max": 1.3671875,
+      "mean": 1.171875,
+      "p50": 1.171875
+    },
+    "z": {
+      "min": 2.0,
+      "max": 2.0,
+      "mean": 2.0,
+      "p50": 2.0
+    }
+  },
+  "mask_presence_summary_sorted": [
+    {
+      "mask_name": "mask_body.nii.gz",
+      "fraction": "2/2"
+    },
+    {
+      "mask_name": "mask_ladca.nii.gz",
+      "fraction": "2/2"
+    },
+    {
+      "mask_name": "mask_periclavicularis.nii.gz",
+      "fraction": "2/2"
+    },
+    {
+      "mask_name": "mask_couchinterior.nii.gz",
+      "fraction": "2/2"
+    },
+    {
+      "mask_name": "mask_level-ii.nii.gz",
+      "fraction": "2/2"
+    },
+    {
+      "mask_name": "mask_level-iii.nii.gz",
+      "fraction": "2/2"
+    },
+    {
+      "mask_name": "mask_couchsurface.nii.gz",
+      "fraction": "2/2"
+    },
+    {
+      "mask_name": "mask_lunge-v.nii.gz",
+      "fraction": "2/2"
+    },
+    {
+      "mask_name": "mask_ctv-mamma-v.nii.gz",
+      "fraction": "2/2"
+    },
+    {
+      "mask_name": "mask_imn.nii.gz",
+      "fraction": "2/2"
+    },
+    {
+      "mask_name": "mask_interpectoralis.nii.gz",
+      "fraction": "2/2"
+    },
+    {
+      "mask_name": "mask_clips.nii.gz",
+      "fraction": "1/2"
+    }
+  ],
+  "images": [
+    {
+      "path": "/mnt/data/ilinca/structured_cases_14_16/A88EE820719CF6/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        183
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 3071.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -997.0,
+      "p99": 233.0,
+      "p99_5": 454.0,
+      "spacing_xyz": [
+        0.9765625,
+        0.9765625,
+        2.0
+      ],
+      "orientation": "LPS",
+      "folder_contents": [
+        "image.nii.gz",
+        "mask_BODY.nii.gz",
+        "mask_CouchInterior.nii.gz",
+        "mask_CouchSurface.nii.gz",
+        "mask_CTV-Mamma-V.nii.gz",
+        "mask_IMN.nii.gz",
+        "mask_Interpectoralis.nii.gz",
+        "mask_Ladca.nii.gz",
+        "mask_Level-II.nii.gz",
+        "mask_Level-III.nii.gz",
+        "mask_Lunge-V.nii.gz",
+        "mask_Periclavicularis.nii.gz"
+      ],
+      "side": "right",
+      "side_source_mask": "mask_Level-II.nii.gz"
+    },
+    {
+      "path": "/mnt/data/ilinca/structured_cases_14_16/40CE9D142A19F9/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        198
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 3070.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -997.0,
+      "p99": 82.0,
+      "p99_5": 276.0,
+      "spacing_xyz": [
+        1.3671875,
+        1.3671875,
+        2.0
+      ],
+      "orientation": "LPS",
+      "folder_contents": [
+        "image.nii.gz",
+        "mask_BODY.nii.gz",
+        "mask_Clips.nii.gz",
+        "mask_CouchInterior.nii.gz",
+        "mask_CouchSurface.nii.gz",
+        "mask_CTV-Mamma-V.nii.gz",
+        "mask_IMN.nii.gz",
+        "mask_Interpectoralis.nii.gz",
+        "mask_Ladca.nii.gz",
+        "mask_Level-II.nii.gz",
+        "mask_Level-III.nii.gz",
+        "mask_Lunge-V.nii.gz",
+        "mask_Periclavicularis.nii.gz"
+      ],
+      "side": "right",
+      "side_source_mask": "mask_Level-II.nii.gz"
+    }
+  ]
+}

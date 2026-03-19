@@ -1,0 +1,468 @@
+{
+  "num_images": 20,
+  "orientation_counts": {
+    "LPS": 20
+  },
+  "spacing_summary": {
+    "x": {
+      "min": 0.5302734375,
+      "max": 1.3671875,
+      "mean": 1.0354980111122132,
+      "p50": 0.9970703125
+    },
+    "y": {
+      "min": 0.5302734375,
+      "max": 1.3671875,
+      "mean": 1.0354980111122132,
+      "p50": 0.9970703125
+    },
+    "z": {
+      "min": 2.0,
+      "max": 5.0,
+      "mean": 2.675000011920929,
+      "p50": 2.5
+    }
+  },
+  "images": [
+    {
+      "path": "/mnt/data/flaviu/example_pt/03A3A4098C6F79/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        192
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 3071.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -988.0,
+      "p99": 264.0,
+      "p99_5": 384.0,
+      "spacing_xyz": [
+        0.85546875,
+        0.85546875,
+        2.0
+      ],
+      "orientation": "LPS"
+    },
+    {
+      "path": "/mnt/data/flaviu/example_pt/9271CD928CFED7/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        106
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 2976.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -998.0,
+      "p99": 140.0,
+      "p99_5": 282.0,
+      "spacing_xyz": [
+        1.171875,
+        1.171875,
+        3.0
+      ],
+      "orientation": "LPS"
+    },
+    {
+      "path": "/mnt/data/flaviu/example_pt/60CFC37758CB65/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        132
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 3071.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -998.0,
+      "p99": 113.0,
+      "p99_5": 281.0,
+      "spacing_xyz": [
+        1.269531011581421,
+        1.269531011581421,
+        2.5
+      ],
+      "orientation": "LPS"
+    },
+    {
+      "path": "/mnt/data/flaviu/example_pt/F469F529EA6CC4/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        209
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 3071.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -997.0,
+      "p99": 83.0,
+      "p99_5": 283.0,
+      "spacing_xyz": [
+        1.3671875,
+        1.3671875,
+        2.0
+      ],
+      "orientation": "LPS"
+    },
+    {
+      "path": "/mnt/data/flaviu/example_pt/680E3AAD947409/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        135
+      ],
+      "dtype": "float32",
+      "min": -1024.0,
+      "max": 29482.0,
+      "p0_5": -1024.0,
+      "p1": -1024.0,
+      "p50": -991.0,
+      "p99": 208.0,
+      "p99_5": 397.0,
+      "spacing_xyz": [
+        0.9765625,
+        0.9765625,
+        3.0
+      ],
+      "orientation": "LPS"
+    },
+    {
+      "path": "/mnt/data/flaviu/example_pt/7098260F390777/image.nii.gz",
+      "shape": [
+        1024,
+        1024,
+        179
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 3071.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -992.0,
+      "p99": 237.0,
+      "p99_5": 408.0,
+      "spacing_xyz": [
+        0.5302734375,
+        0.5302734375,
+        2.0
+      ],
+      "orientation": "LPS"
+    },
+    {
+      "path": "/mnt/data/flaviu/example_pt/16AF1F03AD33FC/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        115
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 2976.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -994.0,
+      "p99": 160.0,
+      "p99_5": 314.0,
+      "spacing_xyz": [
+        1.171875,
+        1.171875,
+        3.0
+      ],
+      "orientation": "LPS"
+    },
+    {
+      "path": "/mnt/data/flaviu/example_pt/F8F78CB6732B1E/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        144
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 3071.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -999.0,
+      "p99": 119.0,
+      "p99_5": 362.0,
+      "spacing_xyz": [
+        1.269531011581421,
+        1.269531011581421,
+        2.5
+      ],
+      "orientation": "LPS"
+    },
+    {
+      "path": "/mnt/data/flaviu/example_pt/4106002AA4C2AE/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        140
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 3071.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -997.0,
+      "p99": 94.0,
+      "p99_5": 219.0,
+      "spacing_xyz": [
+        1.269531011581421,
+        1.269531011581421,
+        2.5
+      ],
+      "orientation": "LPS"
+    },
+    {
+      "path": "/mnt/data/flaviu/example_pt/4F4FA26E9F7898/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        162
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 3071.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -992.0,
+      "p99": 252.0,
+      "p99_5": 435.0,
+      "spacing_xyz": [
+        1.017578125,
+        1.017578125,
+        2.0
+      ],
+      "orientation": "LPS"
+    },
+    {
+      "path": "/mnt/data/flaviu/example_pt/14B3F27995DDD2/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        148
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 2976.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -994.0,
+      "p99": 165.0,
+      "p99_5": 303.0,
+      "spacing_xyz": [
+        1.171875,
+        1.171875,
+        3.0
+      ],
+      "orientation": "LPS"
+    },
+    {
+      "path": "/mnt/data/flaviu/example_pt/5C46E26228CB7F/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        64
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 3095.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -1000.0,
+      "p99": 184.0,
+      "p99_5": 290.0,
+      "spacing_xyz": [
+        0.9765625,
+        0.9765625,
+        5.0
+      ],
+      "orientation": "LPS"
+    },
+    {
+      "path": "/mnt/data/flaviu/example_pt/F6A192BDA938EB/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        181
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 2976.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -991.0,
+      "p99": 361.0,
+      "p99_5": 573.0,
+      "spacing_xyz": [
+        0.890625,
+        0.890625,
+        2.0
+      ],
+      "orientation": "LPS"
+    },
+    {
+      "path": "/mnt/data/flaviu/example_pt/779181FFBB84AC/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        207
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 2976.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -985.0,
+      "p99": 223.0,
+      "p99_5": 382.0,
+      "spacing_xyz": [
+        0.939453125,
+        0.939453125,
+        2.0
+      ],
+      "orientation": "LPS"
+    },
+    {
+      "path": "/mnt/data/flaviu/example_pt/7F6199D5C3DD07/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        60
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 3095.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -1000.0,
+      "p99": 208.0,
+      "p99_5": 343.0,
+      "spacing_xyz": [
+        0.9296875,
+        0.9296875,
+        5.0
+      ],
+      "orientation": "LPS"
+    },
+    {
+      "path": "/mnt/data/flaviu/example_pt/DE667E1FC70016/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        166
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 2976.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -992.0,
+      "p99": 345.0,
+      "p99_5": 559.0,
+      "spacing_xyz": [
+        0.82421875,
+        0.82421875,
+        2.0
+      ],
+      "orientation": "LPS"
+    },
+    {
+      "path": "/mnt/data/flaviu/example_pt/77BDD08F04AF0A/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        160
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 2976.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -991.0,
+      "p99": 294.0,
+      "p99_5": 546.0,
+      "spacing_xyz": [
+        1.0625,
+        1.0625,
+        2.0
+      ],
+      "orientation": "LPS"
+    },
+    {
+      "path": "/mnt/data/flaviu/example_pt/30692BF6DB8F95/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        209
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 3071.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -990.0,
+      "p99": 292.0,
+      "p99_5": 524.0,
+      "spacing_xyz": [
+        0.9765625,
+        0.9765625,
+        2.0
+      ],
+      "orientation": "LPS"
+    },
+    {
+      "path": "/mnt/data/flaviu/example_pt/5231EB5A3B7461/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        114
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 3071.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -988.0,
+      "p99": 122.0,
+      "p99_5": 294.0,
+      "spacing_xyz": [
+        1.171875,
+        1.171875,
+        3.0
+      ],
+      "orientation": "LPS"
+    },
+    {
+      "path": "/mnt/data/flaviu/example_pt/A267915E04AF86/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        104
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 2976.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -981.0,
+      "p99": 205.0,
+      "p99_5": 353.0,
+      "spacing_xyz": [
+        0.8671875,
+        0.8671875,
+        3.000000238418579
+      ],
+      "orientation": "LPS"
+    }
+  ]
+}

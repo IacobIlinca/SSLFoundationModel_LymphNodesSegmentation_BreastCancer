@@ -1,0 +1,786 @@
+{
+  "group_name": "ctvn_l2",
+  "total_audited_patients": 288,
+  "num_missing_group": 45,
+  "missing_group_patients": [
+    {
+      "patient_id": "4522D041367DCA",
+      "path": "/mnt/data/ilinca/workshop_12_03/4522D041367DCA/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-level-1.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTV-thoraxvg.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_ladca.nii.gz",
+        "mask_ve-lunge.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "B18908419F5142",
+      "path": "/mnt/data/ilinca/workshop_12_03/B18908419F5142/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_clips.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-boost.nii.gz",
+        "mask_CTV-clips.nii.gz",
+        "mask_CTV-kavitet.nii.gz",
+        "mask_CTV-mamma.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_h-lunge.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_kavitet-synlig.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "FA8800B7438900",
+      "path": "/mnt/data/ilinca/workshop_12_03/FA8800B7438900/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTV-thoraxvg.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_h-lunge.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_thoraxvgDVH.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "1E8612E092EC0B",
+      "path": "/mnt/data/ilinca/workshop_12_03/1E8612E092EC0B/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-parasternal1.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTV-thoraxvg.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_DVH-CTV-thoraxv.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_ve-lunge.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "FD66BA322B2BF4",
+      "path": "/mnt/data/ilinca/workshop_12_03/FD66BA322B2BF4/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTV-thoraxvg.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_h-lunge.nii.gz",
+        "mask_hjerte.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "225593E465F7A9",
+      "path": "/mnt/data/ilinca/workshop_12_03/225593E465F7A9/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_clips.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-boost.nii.gz",
+        "mask_CTV-clips.nii.gz",
+        "mask_CTV-kavitet.nii.gz",
+        "mask_CTV-mamma.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_kavitet-synlig.nii.gz",
+        "mask_ladca.nii.gz",
+        "mask_ve-lunge.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "95ED7EF72A30D8",
+      "path": "/mnt/data/ilinca/workshop_12_03/95ED7EF72A30D8/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTV-thoraxvg.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_ladca.nii.gz",
+        "mask_ve-lunge.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "D4C98392FEE141",
+      "path": "/mnt/data/ilinca/workshop_12_03/D4C98392FEE141/image.nii.gz",
+      "available_masks": [
+        "mask_CTN-N-L2.nii.gz",
+        "mask_CTV-Mam-sin.nii.gz",
+        "mask_CTV-N-interpect.nii.gz",
+        "mask_CTV-N-L3.nii.gz",
+        "mask_CTV-N-L4.nii.gz",
+        "mask_CTV-N.nii.gz",
+        "mask_CTVn_IMN.nii.gz",
+        "mask_Ekstern.nii.gz",
+        "mask_External.nii.gz",
+        "mask_HV-IMN.nii.gz",
+        "mask_HV-N.nii.gz",
+        "mask_HV-tot.nii.gz",
+        "mask_HVmam.nii.gz",
+        "mask_OR-Cor.nii.gz",
+        "mask_OR-LADCA.nii.gz",
+        "mask_OR-Pulmo-sin.nii.gz",
+        "mask_PTV-Mam-sin.nii.gz",
+        "mask_PTV-N-IMN.nii.gz",
+        "mask_PTV-N.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "8AD0BC37B9F211",
+      "path": "/mnt/data/ilinca/workshop_12_03/8AD0BC37B9F211/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_clips.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-boost.nii.gz",
+        "mask_CTV-clips.nii.gz",
+        "mask_CTV-kavitet.nii.gz",
+        "mask_CTV-mamma.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_kavitet-synlig.nii.gz",
+        "mask_ladca.nii.gz",
+        "mask_ve-lunge.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "B378A5562CD372",
+      "path": "/mnt/data/ilinca/workshop_12_03/B378A5562CD372/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_clips.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-boost.nii.gz",
+        "mask_CTV-clips.nii.gz",
+        "mask_CTV-kavitet.nii.gz",
+        "mask_CTV-mamma.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_kavitet-synlig.nii.gz",
+        "mask_ve-lunge.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "F3BD7030DFF46E",
+      "path": "/mnt/data/ilinca/workshop_12_03/F3BD7030DFF46E/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTV-thoraxvg.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_h-lunge.nii.gz",
+        "mask_hjerte.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "4663040337F0F9",
+      "path": "/mnt/data/ilinca/workshop_12_03/4663040337F0F9/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_clips.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-boost.nii.gz",
+        "mask_CTV-clips.nii.gz",
+        "mask_CTV-kavitet.nii.gz",
+        "mask_CTV-mamma.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_kavitet-synlig.nii.gz",
+        "mask_ve-lunge.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "FD74DDE3168E32",
+      "path": "/mnt/data/ilinca/workshop_12_03/FD74DDE3168E32/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_clips.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-boost.nii.gz",
+        "mask_CTV-clips.nii.gz",
+        "mask_CTV-kavitet.nii.gz",
+        "mask_CTV-mamma.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_h-lunge.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_kavitet-synlig.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "BC78DADDDDF16B",
+      "path": "/mnt/data/ilinca/workshop_12_03/BC78DADDDDF16B/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTV-thoraxvg.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_ladca.nii.gz",
+        "mask_ve-lunge.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "517862DC807084",
+      "path": "/mnt/data/ilinca/workshop_12_03/517862DC807084/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_clips.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-boost.nii.gz",
+        "mask_CTV-clips.nii.gz",
+        "mask_CTV-kavitet.nii.gz",
+        "mask_CTV-mamma.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_kavitet-synlig.nii.gz",
+        "mask_ve-lunge.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "D98AD74AF46B8A",
+      "path": "/mnt/data/ilinca/workshop_12_03/D98AD74AF46B8A/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTV-thoraxvg.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_h-lunge.nii.gz",
+        "mask_hjerte.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "6C450042EB73F3",
+      "path": "/mnt/data/ilinca/workshop_12_03/6C450042EB73F3/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_CTV-axilpericl.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-retropec.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTV-thoraxvg.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_ladca.nii.gz",
+        "mask_ve-lunge.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "E3FD208753A02F",
+      "path": "/mnt/data/ilinca/workshop_12_03/E3FD208753A02F/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_clips.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-boost.nii.gz",
+        "mask_CTV-clips.nii.gz",
+        "mask_CTV-kavitet.nii.gz",
+        "mask_CTV-mamma.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_h-lunge.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_kavitet-synlig.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "7BC5F414F88333",
+      "path": "/mnt/data/ilinca/workshop_12_03/7BC5F414F88333/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_clips.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-boost.nii.gz",
+        "mask_CTV-clips.nii.gz",
+        "mask_CTV-kavitet.nii.gz",
+        "mask_CTV-mamma.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_h-lunge.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_kavitet-synlig.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "9AB1F6D3EBB758",
+      "path": "/mnt/data/ilinca/workshop_12_03/9AB1F6D3EBB758/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_clips.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-boost.nii.gz",
+        "mask_CTV-clips.nii.gz",
+        "mask_CTV-kavitet.nii.gz",
+        "mask_CTV-mamma.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_kavitet-synlig.nii.gz",
+        "mask_ve-lunge.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "90A19FCD290929",
+      "path": "/mnt/data/ilinca/workshop_12_03/90A19FCD290929/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTV-thoraxvg.nii.gz",
+        "mask_CTV-thoraxvgDVH.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_CTVtangentielDVH.nii.gz",
+        "mask_h-lunge.nii.gz",
+        "mask_hjerte.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "508CF7AFFB4FC7",
+      "path": "/mnt/data/ilinca/workshop_12_03/508CF7AFFB4FC7/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_clips.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-boost.nii.gz",
+        "mask_CTV-clips.nii.gz",
+        "mask_CTV-kavitet.nii.gz",
+        "mask_CTV-mamma.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_kavitet-synlig.nii.gz",
+        "mask_ve-lunge.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "0ADE2763B5ED4C",
+      "path": "/mnt/data/ilinca/workshop_12_03/0ADE2763B5ED4C/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_clips.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-boost.nii.gz",
+        "mask_CTV-clips.nii.gz",
+        "mask_CTV-kavitet.nii.gz",
+        "mask_CTV-level-1.nii.gz",
+        "mask_CTV-mamma.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_kavitet-synlig.nii.gz",
+        "mask_ladca.nii.gz",
+        "mask_ve-lunge.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "9014014EE1B1D2",
+      "path": "/mnt/data/ilinca/workshop_12_03/9014014EE1B1D2/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_clips.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-boost.nii.gz",
+        "mask_CTV-clips.nii.gz",
+        "mask_CTV-kavitet.nii.gz",
+        "mask_CTV-mamma.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_kavitet-synlig.nii.gz",
+        "mask_ladca.nii.gz",
+        "mask_level-1.nii.gz",
+        "mask_ve-lunge.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "8453C4B3CBC950",
+      "path": "/mnt/data/ilinca/workshop_12_03/8453C4B3CBC950/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_clips.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-boost.nii.gz",
+        "mask_CTV-clips.nii.gz",
+        "mask_CTV-kavitet.nii.gz",
+        "mask_CTV-mamma.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_kavitet-synlig.nii.gz",
+        "mask_ladca.nii.gz",
+        "mask_level-1.nii.gz",
+        "mask_ve-lunge.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "46634086F29123",
+      "path": "/mnt/data/ilinca/workshop_12_03/46634086F29123/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_clips.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-boost.nii.gz",
+        "mask_CTV-clips.nii.gz",
+        "mask_CTV-kavitet.nii.gz",
+        "mask_CTV-mamma.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_h-lunge.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_kavitet-synlig.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "367CD2554BD4A3",
+      "path": "/mnt/data/ilinca/workshop_12_03/367CD2554BD4A3/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTV-thoraxvg.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_ve-lunge.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "D81805ED332544",
+      "path": "/mnt/data/ilinca/workshop_12_03/D81805ED332544/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTV-thoraxvg.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_h-lunge.nii.gz",
+        "mask_hjerte.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "8EBDA7ED2F0E10",
+      "path": "/mnt/data/ilinca/workshop_12_03/8EBDA7ED2F0E10/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTV-thoraxvg.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_h-lunge.nii.gz",
+        "mask_hjerte.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "6D263E38542FE2",
+      "path": "/mnt/data/ilinca/workshop_12_03/6D263E38542FE2/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_clips.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-boost.nii.gz",
+        "mask_CTV-clips.nii.gz",
+        "mask_CTV-kavitet.nii.gz",
+        "mask_CTV-mamma.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_h-lunge.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_kavitet-synlig.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "153BCDF4AC873D",
+      "path": "/mnt/data/ilinca/workshop_12_03/153BCDF4AC873D/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_clips.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-boost.nii.gz",
+        "mask_CTV-clips.nii.gz",
+        "mask_CTV-kavitet.nii.gz",
+        "mask_CTV-mamma.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_h-lunge.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_kavitet-synlig.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "51552295758A48",
+      "path": "/mnt/data/ilinca/workshop_12_03/51552295758A48/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTV-thoraxvg.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_DVH-CTV-thoraxv.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_ve-lunge.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "5B708B5618A491",
+      "path": "/mnt/data/ilinca/workshop_12_03/5B708B5618A491/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTV-thoraxvg.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_h-lunge.nii.gz",
+        "mask_hjerte.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "32D4715A3462F7",
+      "path": "/mnt/data/ilinca/workshop_12_03/32D4715A3462F7/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_clips.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-boost.nii.gz",
+        "mask_CTV-clips.nii.gz",
+        "mask_CTV-kavitet.nii.gz",
+        "mask_CTV-mamma.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_kavitet-synlig.nii.gz",
+        "mask_ladca.nii.gz",
+        "mask_ve-lunge.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "D8CA73A78CD9CB",
+      "path": "/mnt/data/ilinca/workshop_12_03/D8CA73A78CD9CB/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTV-thoraxvg.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_h-lunge.nii.gz",
+        "mask_hjerte.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "C6E7DA15993A3A",
+      "path": "/mnt/data/ilinca/workshop_12_03/C6E7DA15993A3A/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_clips_ny.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-boost.nii.gz",
+        "mask_CTV-clips.nii.gz",
+        "mask_CTV-kavitet.nii.gz",
+        "mask_CTV-mamma.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_h-lunge.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_kavitet-synlig.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "3C1A83CA0216CD",
+      "path": "/mnt/data/ilinca/workshop_12_03/3C1A83CA0216CD/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_clips.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-boost.nii.gz",
+        "mask_CTV-clips.nii.gz",
+        "mask_CTV-kavitet.nii.gz",
+        "mask_CTV-mamma.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_h-lunge.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_kavitet-synlig.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "777B256BDBCB2D",
+      "path": "/mnt/data/ilinca/workshop_12_03/777B256BDBCB2D/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTV-thoraxvg.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_h-lunge.nii.gz",
+        "mask_hjerte.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "164D1FFAF543F6",
+      "path": "/mnt/data/ilinca/workshop_12_03/164D1FFAF543F6/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_clips.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-boost.nii.gz",
+        "mask_CTV-clips.nii.gz",
+        "mask_CTV-kavitet.nii.gz",
+        "mask_CTV-mamma.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_h-lunge.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_kavitet-synlig.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "FB4905CDBF5F5A",
+      "path": "/mnt/data/ilinca/workshop_12_03/FB4905CDBF5F5A/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTV-thoraxvg.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_ve-lunge.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "4411AE5196B8C7",
+      "path": "/mnt/data/ilinca/workshop_12_03/4411AE5196B8C7/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_clips.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-boost.nii.gz",
+        "mask_CTV-clips.nii.gz",
+        "mask_CTV-kavitet.nii.gz",
+        "mask_CTV-mamma.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_h-lunge.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_kavitet-synlig.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "4CB01C4632EA4B",
+      "path": "/mnt/data/ilinca/workshop_12_03/4CB01C4632EA4B/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTV-thoraxvg.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_DVH-CTVthoraxvg.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_ve-lunge.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "FA1C1FE8B77AB4",
+      "path": "/mnt/data/ilinca/workshop_12_03/FA1C1FE8B77AB4/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTV-thoraxvg.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_ladca.nii.gz",
+        "mask_ve-lunge.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "0CA629610AC245",
+      "path": "/mnt/data/ilinca/workshop_12_03/0CA629610AC245/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTV-thoraxvg.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_ladca.nii.gz",
+        "mask_ve-lunge.nii.gz"
+      ]
+    },
+    {
+      "patient_id": "B4E884C28BD820",
+      "path": "/mnt/data/ilinca/workshop_12_03/B4E884C28BD820/image.nii.gz",
+      "available_masks": [
+        "mask_BODY.nii.gz",
+        "mask_clips.nii.gz",
+        "mask_CTV-aksilperikl.nii.gz",
+        "mask_CTV-boost.nii.gz",
+        "mask_CTV-clips.nii.gz",
+        "mask_CTV-kavitet.nii.gz",
+        "mask_CTV-mamma.nii.gz",
+        "mask_CTV-parasternal.nii.gz",
+        "mask_CTV-tangentiel.nii.gz",
+        "mask_CTVretropectrum.nii.gz",
+        "mask_CTVtangentielDVH.nii.gz",
+        "mask_h-lunge.nii.gz",
+        "mask_hjerte.nii.gz",
+        "mask_kavitet-synlig.nii.gz"
+      ]
+    }
+  ]
+}

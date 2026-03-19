@@ -1,0 +1,16 @@
+{
+  "lymph_nodes": [
+    "ctvn_l1",
+    "ctvn_l2",
+    "ctvn_l3",
+    "ctvn_l4",
+    "ctvn_imn"
+  ],
+  "not_lymph_nodes": [
+    "heart",
+    "lung",
+    "breast",
+    "spinalcord"
+  ],
+  "unknown": []
+}

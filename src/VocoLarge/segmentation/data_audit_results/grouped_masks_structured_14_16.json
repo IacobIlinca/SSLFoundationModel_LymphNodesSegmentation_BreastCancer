@@ -1,0 +1,4786 @@
+{
+  "total_patients": 1756,
+  "num_original_mask_entries": 1072,
+  "num_grouped_categories": 10,
+  "num_unmatched_entries": 654,
+  "grouped_mask_summary": [
+    {
+      "group_name": "ctvn_imn",
+      "fraction": "2691/1756",
+      "count_sum": 2691,
+      "matched_masks": [
+        {
+          "mask_name": "mask_ctv-parasternal.nii.gz",
+          "fraction": "492/1756",
+          "count": 492
+        },
+        {
+          "mask_name": "mask_ctvn_imn.nii.gz",
+          "fraction": "396/1756",
+          "count": 396
+        },
+        {
+          "mask_name": "mask_imn.nii.gz",
+          "fraction": "241/1756",
+          "count": 241
+        },
+        {
+          "mask_name": "mask_periclavicularis.nii.gz",
+          "fraction": "236/1756",
+          "count": 236
+        },
+        {
+          "mask_name": "mask_paraster05-cm.nii.gz",
+          "fraction": "204/1756",
+          "count": 204
+        },
+        {
+          "mask_name": "mask_parasternal-ln.nii.gz",
+          "fraction": "204/1756",
+          "count": 204
+        },
+        {
+          "mask_name": "mask_parasternal.nii.gz",
+          "fraction": "82/1756",
+          "count": 82
+        },
+        {
+          "mask_name": "mask_ctv_parasternal.nii.gz",
+          "fraction": "74/1756",
+          "count": 74
+        },
+        {
+          "mask_name": "mask_ctv-imc.nii.gz",
+          "fraction": "58/1756",
+          "count": 58
+        },
+        {
+          "mask_name": "mask_ptv50_u_parasternal.nii.gz",
+          "fraction": "58/1756",
+          "count": 58
+        },
+        {
+          "mask_name": "mask_strf_ln_u_parasternal.nii.gz",
+          "fraction": "58/1756",
+          "count": 58
+        },
+        {
+          "mask_name": "mask_ptv-imc.nii.gz",
+          "fraction": "57/1756",
+          "count": 57
+        },
+        {
+          "mask_name": "mask_strf_mamma_u_parasternal.nii.gz",
+          "fraction": "57/1756",
+          "count": 57
+        },
+        {
+          "mask_name": "mask_ctv-n-imn.nii.gz",
+          "fraction": "46/1756",
+          "count": 46
+        },
+        {
+          "mask_name": "mask_ctv-n-imn-ic4.nii.gz",
+          "fraction": "35/1756",
+          "count": 35
+        },
+        {
+          "mask_name": "mask_ptv-n-imn.nii.gz",
+          "fraction": "35/1756",
+          "count": 35
+        },
+        {
+          "mask_name": "mask_hv-imn.nii.gz",
+          "fraction": "32/1756",
+          "count": 32
+        },
+        {
+          "mask_name": "mask_straalefeltsupraclavudenparasternal.nii.gz",
+          "fraction": "31/1756",
+          "count": 31
+        },
+        {
+          "mask_name": "mask_ptv-n-imn-ic4.nii.gz",
+          "fraction": "26/1756",
+          "count": 26
+        },
+        {
+          "mask_name": "mask_hv-imc.nii.gz",
+          "fraction": "17/1756",
+          "count": 17
+        },
+        {
+          "mask_name": "mask_ptv_u_imn.nii.gz",
+          "fraction": "17/1756",
+          "count": 17
+        },
+        {
+          "mask_name": "mask_ptv50udenparasternal.nii.gz",
+          "fraction": "16/1756",
+          "count": 16
+        },
+        {
+          "mask_name": "mask_strf_ln_u_imn.nii.gz",
+          "fraction": "16/1756",
+          "count": 16
+        },
+        {
+          "mask_name": "mask_strf_mamma_u_imn.nii.gz",
+          "fraction": "16/1756",
+          "count": 16
+        },
+        {
+          "mask_name": "mask_straalefeltmammaudenparasternal.nii.gz",
+          "fraction": "15/1756",
+          "count": 15
+        },
+        {
+          "mask_name": "mask_ptv-n-imn-ic1-3.nii.gz",
+          "fraction": "14/1756",
+          "count": 14
+        },
+        {
+          "mask_name": "mask_ctv-n-imn-ic1-3.nii.gz",
+          "fraction": "13/1756",
+          "count": 13
+        },
+        {
+          "mask_name": "mask_ptvn_imn.nii.gz",
+          "fraction": "11/1756",
+          "count": 11
+        },
+        {
+          "mask_name": "mask_hv-imn-ic4.nii.gz",
+          "fraction": "8/1756",
+          "count": 8
+        },
+        {
+          "mask_name": "mask_ptv-imn.nii.gz",
+          "fraction": "6/1756",
+          "count": 6
+        },
+        {
+          "mask_name": "mask_ctvn_imn_ic4.nii.gz",
+          "fraction": "4/1756",
+          "count": 4
+        },
+        {
+          "mask_name": "mask_hv-imn-ic1-3.nii.gz",
+          "fraction": "4/1756",
+          "count": 4
+        },
+        {
+          "mask_name": "mask_ctv-imn.nii.gz",
+          "fraction": "3/1756",
+          "count": 3
+        },
+        {
+          "mask_name": "mask_ctvn-imn.nii.gz",
+          "fraction": "3/1756",
+          "count": 3
+        },
+        {
+          "mask_name": "mask_hv-imn-imn-ic4.nii.gz",
+          "fraction": "3/1756",
+          "count": 3
+        },
+        {
+          "mask_name": "mask_hv-nimn.nii.gz",
+          "fraction": "3/1756",
+          "count": 3
+        },
+        {
+          "mask_name": "mask_implant.nii.gz",
+          "fraction": "3/1756",
+          "count": 3
+        },
+        {
+          "mask_name": "mask_ptv-n-imns.nii.gz",
+          "fraction": "3/1756",
+          "count": 3
+        },
+        {
+          "mask_name": "mask_chekpointmedim.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_ctv-parasternale.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_ctvn_imn_rev.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_hv-mam-dxt-level-ii-imc.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_hv-mamimn.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_hv-n-imn.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_hv_imn.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_imn-1-2-bsk.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_imn-1-3-bsk.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_imn-1-4-bsk.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_ptv-n-imn-ic1-4.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_ptv-n-imn-imn-ic4.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_ptv-n-imn-tot.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_ptv-parast.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_105-primr.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_chekpoimedpbim.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_chekpoint_im.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-imn-1-4-ap.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-klav-imn-ap.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-komb-imc.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-n-imc-1-3.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-n-imn-imn-ic-4.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-n-imn-tot.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-n-imn-total.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-nimn.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-nimntot.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-para-1-4-ap.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-para-i-iv.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-para.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-parastern-d.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-parastern-s.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv_parasternalsin.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_imn-sin.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_imn1-212.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_imnkam.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_imnmjl.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_imnmmn.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_exstrf_mamma_u_parasternal.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hv-ctv-n-imn-tot.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hv-imc4.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hv-imn-dxt.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hv-imn1-3.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hv-imn4.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hv-imnn.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hv-imns.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hv-mam-imc.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hv-mam-og-imc.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hv-n-imn-ic4.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hv-n_imn.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hv-nimn-ic4.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hv-ptv-imn-ic4.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hv-ptv-imn.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hv-reg-imn.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hvptv-imc.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_imn-1-3.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_imn-bo.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_imn-cg.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_imn-incl-3bsk.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_maskroi-prim.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_o-parasternale.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_par-gld-1-3-bsk.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_para.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_parafirkant.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_parastern.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_parasternale-lk.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ph_imn.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ptv-kombi-imc.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ptv-n-imn-1-3.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ptv-n-imn-og-imc.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ptv-n-imn-total.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ptv-nimn.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ptv50_u_parasternalsin.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ptvn-imn.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ptvnimn.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_straale-incl-para.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_strf_ln_u_parasternalsin.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_strf_mamma_u_parasternalsin.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_xstraalefeltmammaudenparasternal.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_xstrf_ln_u_imn.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_xstrf_mamma_u_imn.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "group_name": "ipsilat lung",
+      "fraction": "1915/1756",
+      "count_sum": 1915,
+      "matched_masks": [
+        {
+          "mask_name": "mask_ve-lunge.nii.gz",
+          "fraction": "278/1756",
+          "count": 278
+        },
+        {
+          "mask_name": "mask_lung-ipsilateral.nii.gz",
+          "fraction": "231/1756",
+          "count": 231
+        },
+        {
+          "mask_name": "mask_h-lunge.nii.gz",
+          "fraction": "224/1756",
+          "count": 224
+        },
+        {
+          "mask_name": "mask_ipsilat-lung.nii.gz",
+          "fraction": "196/1756",
+          "count": 196
+        },
+        {
+          "mask_name": "mask_lung_ipsilat.nii.gz",
+          "fraction": "154/1756",
+          "count": 154
+        },
+        {
+          "mask_name": "mask_lunge-v.nii.gz",
+          "fraction": "136/1756",
+          "count": 136
+        },
+        {
+          "mask_name": "mask_lunge-h.nii.gz",
+          "fraction": "118/1756",
+          "count": 118
+        },
+        {
+          "mask_name": "mask_pulm_sin.nii.gz",
+          "fraction": "91/1756",
+          "count": 91
+        },
+        {
+          "mask_name": "mask_pulm_dxt.nii.gz",
+          "fraction": "90/1756",
+          "count": 90
+        },
+        {
+          "mask_name": "mask_or-pulmo-dxt.nii.gz",
+          "fraction": "82/1756",
+          "count": 82
+        },
+        {
+          "mask_name": "mask_pulmonis-sin-11.nii.gz",
+          "fraction": "75/1756",
+          "count": 75
+        },
+        {
+          "mask_name": "mask_pulmonis-dxt-11.nii.gz",
+          "fraction": "72/1756",
+          "count": 72
+        },
+        {
+          "mask_name": "mask_or-pulmo-sin.nii.gz",
+          "fraction": "68/1756",
+          "count": 68
+        },
+        {
+          "mask_name": "mask_lung_contralat.nii.gz",
+          "fraction": "19/1756",
+          "count": 19
+        },
+        {
+          "mask_name": "mask_pulmonis-sin.nii.gz",
+          "fraction": "14/1756",
+          "count": 14
+        },
+        {
+          "mask_name": "mask_pulmonis-dxt.nii.gz",
+          "fraction": "10/1756",
+          "count": 10
+        },
+        {
+          "mask_name": "mask_lunge-ve.nii.gz",
+          "fraction": "7/1756",
+          "count": 7
+        },
+        {
+          "mask_name": "mask_v-lunge.nii.gz",
+          "fraction": "7/1756",
+          "count": 7
+        },
+        {
+          "mask_name": "mask_pulmones-dxt.nii.gz",
+          "fraction": "5/1756",
+          "count": 5
+        },
+        {
+          "mask_name": "mask_pulmones-sin.nii.gz",
+          "fraction": "5/1756",
+          "count": 5
+        },
+        {
+          "mask_name": "mask_lunge-v-ptv.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_lunge.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_lungs-total.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_pulmonis-dxt-12.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_e-lungedosis.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_lung-contra.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_lung-dxt.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_lung-l.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_lung-r-ptv.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_lung-sin.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_lung_l-ptv.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_lung_r.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_lunge-h-ptv.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_lunge-hv.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_lunge-ptv.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_lunger-hv-ptv.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_lunger-hv.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_o-lung-ipsi.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_periclavudenlung.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_pulmonis-dex-11.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_pulmonis-dxt-21.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_pulmonis-sin-1.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_pulmonissin.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_pulmtotal.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_rc-lung.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_re-lunge.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_tot-lunge.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_v-lunge-ptv.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_velunge.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "group_name": "ctvp_breast",
+      "fraction": "1700/1756",
+      "count_sum": 1700,
+      "matched_masks": [
+        {
+          "mask_name": "mask_ctv-mamma.nii.gz",
+          "fraction": "335/1756",
+          "count": 335
+        },
+        {
+          "mask_name": "mask_ctvp_breast.nii.gz",
+          "fraction": "205/1756",
+          "count": 205
+        },
+        {
+          "mask_name": "mask_ctv-11.nii.gz",
+          "fraction": "141/1756",
+          "count": 141
+        },
+        {
+          "mask_name": "mask_ctv-mamma-v.nii.gz",
+          "fraction": "127/1756",
+          "count": 127
+        },
+        {
+          "mask_name": "mask_ctv-mamma-h.nii.gz",
+          "fraction": "107/1756",
+          "count": 107
+        },
+        {
+          "mask_name": "mask_dosemamma.nii.gz",
+          "fraction": "107/1756",
+          "count": 107
+        },
+        {
+          "mask_name": "mask_ptvp_breast.nii.gz",
+          "fraction": "81/1756",
+          "count": 81
+        },
+        {
+          "mask_name": "mask_strf_mamma.nii.gz",
+          "fraction": "76/1756",
+          "count": 76
+        },
+        {
+          "mask_name": "mask_ctv-mam-dxt.nii.gz",
+          "fraction": "46/1756",
+          "count": 46
+        },
+        {
+          "mask_name": "mask_ctv_regmamma.nii.gz",
+          "fraction": "46/1756",
+          "count": 46
+        },
+        {
+          "mask_name": "mask_ctv_mamma.nii.gz",
+          "fraction": "45/1756",
+          "count": 45
+        },
+        {
+          "mask_name": "mask_ctv-mam-sin.nii.gz",
+          "fraction": "43/1756",
+          "count": 43
+        },
+        {
+          "mask_name": "mask_ptv-mam-dxt.nii.gz",
+          "fraction": "43/1756",
+          "count": 43
+        },
+        {
+          "mask_name": "mask_ptv-mam-sin.nii.gz",
+          "fraction": "43/1756",
+          "count": 43
+        },
+        {
+          "mask_name": "mask_straalefeltmamma.nii.gz",
+          "fraction": "32/1756",
+          "count": 32
+        },
+        {
+          "mask_name": "mask_ctv_breast-dxt.nii.gz",
+          "fraction": "25/1756",
+          "count": 25
+        },
+        {
+          "mask_name": "mask_hv-mam-dxt.nii.gz",
+          "fraction": "17/1756",
+          "count": 17
+        },
+        {
+          "mask_name": "mask_breast_contralat.nii.gz",
+          "fraction": "14/1756",
+          "count": 14
+        },
+        {
+          "mask_name": "mask_ctv_breast-sin.nii.gz",
+          "fraction": "13/1756",
+          "count": 13
+        },
+        {
+          "mask_name": "mask_boost-ctv-11.nii.gz",
+          "fraction": "10/1756",
+          "count": 10
+        },
+        {
+          "mask_name": "mask_mamma-v.nii.gz",
+          "fraction": "9/1756",
+          "count": 9
+        },
+        {
+          "mask_name": "mask_hv-mam.nii.gz",
+          "fraction": "8/1756",
+          "count": 8
+        },
+        {
+          "mask_name": "mask_ctv-fys.nii.gz",
+          "fraction": "7/1756",
+          "count": 7
+        },
+        {
+          "mask_name": "mask_hv-mam-sin.nii.gz",
+          "fraction": "7/1756",
+          "count": 7
+        },
+        {
+          "mask_name": "mask_mamma-ve.nii.gz",
+          "fraction": "7/1756",
+          "count": 7
+        },
+        {
+          "mask_name": "mask_mamma-h.nii.gz",
+          "fraction": "6/1756",
+          "count": 6
+        },
+        {
+          "mask_name": "mask_ctv-11-fys.nii.gz",
+          "fraction": "5/1756",
+          "count": 5
+        },
+        {
+          "mask_name": "mask_ptv-mamma.nii.gz",
+          "fraction": "5/1756",
+          "count": 5
+        },
+        {
+          "mask_name": "mask_ctv-helbryst-v.nii.gz",
+          "fraction": "4/1756",
+          "count": 4
+        },
+        {
+          "mask_name": "mask_ctv_fys.nii.gz",
+          "fraction": "4/1756",
+          "count": 4
+        },
+        {
+          "mask_name": "mask_hv-mamma.nii.gz",
+          "fraction": "4/1756",
+          "count": 4
+        },
+        {
+          "mask_name": "mask_contralat-mamma.nii.gz",
+          "fraction": "3/1756",
+          "count": 3
+        },
+        {
+          "mask_name": "mask_mamma.nii.gz",
+          "fraction": "3/1756",
+          "count": 3
+        },
+        {
+          "mask_name": "mask_breast_l1.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_ctv-12.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_ctv-mammadvh.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_ctvp-breast.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_dvh-ctv-mamma.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_hv-mam-og-periclav.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_hv-mamn.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_maskp2-3mamma.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_boost-ctv-12.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_boost-ctv-fys.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_breast_r1.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_chekpointmamma.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_cmammadvh.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-11-50gy25f.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-21.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-fys-1.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-fys-2.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-helbryst-h.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-mam-5mm-crop.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-mamdvh5mm.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-mamma-bo.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-mamma-d.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-mamma-de.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-mamma-dvh.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-mamma-s.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-mammav.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv_mamdvh.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv_mammadxt.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv_mammasin.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvmamdvh.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvp_breast-dxt.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_dosemammadxt.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_dosemammap1.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_dosemammasin.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_dvh-ctv-mam.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_feltmammadxt.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hjaelpemamma.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hv-mam-periclav.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hv-mam-tot.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hv-mamii_mod.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hv-mamma-sin.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hv-res-mam-dxt.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_iso2mamma.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_mam-210915.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_mam-dx.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_mam-h.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_mamma-5mm-crop.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_mamma-d-dvh.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_mamma-r.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_mamma_l.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_mammae-dxt.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_mammae-sin.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_maskp2-3-mammasin.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_nedre-mamma.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ptv-mam-sin-u-bolus.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ptvp_breast-dxt.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_regio-mammaria.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_residual-mammae.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_residualmamma.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_serom-mammae.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_straalemammaln.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_strf_mammadxt.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_strf_mammasin.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_union-hv-mam-levelii.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "group_name": "heart",
+      "fraction": "1694/1756",
+      "count_sum": 1694,
+      "matched_masks": [
+        {
+          "mask_name": "mask_hjerte.nii.gz",
+          "fraction": "526/1756",
+          "count": 526
+        },
+        {
+          "mask_name": "mask_heart.nii.gz",
+          "fraction": "500/1756",
+          "count": 500
+        },
+        {
+          "mask_name": "mask_a_ladcoronary.nii.gz",
+          "fraction": "149/1756",
+          "count": 149
+        },
+        {
+          "mask_name": "mask_or-cor.nii.gz",
+          "fraction": "149/1756",
+          "count": 149
+        },
+        {
+          "mask_name": "mask_cor-11.nii.gz",
+          "fraction": "148/1756",
+          "count": 148
+        },
+        {
+          "mask_name": "mask_cor.nii.gz",
+          "fraction": "148/1756",
+          "count": 148
+        },
+        {
+          "mask_name": "mask_spinalcord.nii.gz",
+          "fraction": "63/1756",
+          "count": 63
+        },
+        {
+          "mask_name": "mask_hjertet.nii.gz",
+          "fraction": "3/1756",
+          "count": 3
+        },
+        {
+          "mask_name": "mask_cor-12.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_a_ladcoronary1.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_cor-21.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_heart-bo.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hjerte-tidl.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_icru-44-bone-cortical.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_odplhjerte.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "group_name": "ctvn_l2",
+      "fraction": "1119/1756",
+      "count_sum": 1119,
+      "matched_masks": [
+        {
+          "mask_name": "mask_level-ii.nii.gz",
+          "fraction": "458/1756",
+          "count": 458
+        },
+        {
+          "mask_name": "mask_ctvn_l2.nii.gz",
+          "fraction": "395/1756",
+          "count": 395
+        },
+        {
+          "mask_name": "mask_level_2.nii.gz",
+          "fraction": "89/1756",
+          "count": 89
+        },
+        {
+          "mask_name": "mask_ctv-level-ii.nii.gz",
+          "fraction": "82/1756",
+          "count": 82
+        },
+        {
+          "mask_name": "mask_ctv-n-l2.nii.gz",
+          "fraction": "63/1756",
+          "count": 63
+        },
+        {
+          "mask_name": "mask_hv-level-ii.nii.gz",
+          "fraction": "18/1756",
+          "count": 18
+        },
+        {
+          "mask_name": "mask_ctvn-l2.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_ctv-axil-ii-iii.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-n_l2.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_-l2.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_l2-bo.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_l2-sin.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_l2kam.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_l2mjl.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_l2mmn.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_level-2-ap.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_level-2-bo.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_level-ll.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ph_level-ii.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "group_name": "ctvn_interpect",
+      "fraction": "804/1756",
+      "count_sum": 804,
+      "matched_masks": [
+        {
+          "mask_name": "mask_ctvn_interpect.nii.gz",
+          "fraction": "312/1756",
+          "count": 312
+        },
+        {
+          "mask_name": "mask_interpectoralis.nii.gz",
+          "fraction": "240/1756",
+          "count": 240
+        },
+        {
+          "mask_name": "mask_interpect.nii.gz",
+          "fraction": "154/1756",
+          "count": 154
+        },
+        {
+          "mask_name": "mask_ctv-n-interpect.nii.gz",
+          "fraction": "65/1756",
+          "count": 65
+        },
+        {
+          "mask_name": "mask_ptv-n-interpect.nii.gz",
+          "fraction": "8/1756",
+          "count": 8
+        },
+        {
+          "mask_name": "mask_ctv-interpekt-ap.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_ctvn-interpect.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_ctvn_intpect.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_interpectoral.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_ctv-interpect-ap.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-interpect.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-interpectoralis.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-interpekt.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-intpect.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvinterpectoral.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_-interpect.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_intepect.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_interp-sin.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_interpect-b.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_cvtn-interpect.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_interpect-ap.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_interpectkam.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_interpectmjl.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_interpectmmn.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ph_interpectoral.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ptv-interpect.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "group_name": "ctvn_l3",
+      "fraction": "778/1756",
+      "count_sum": 778,
+      "matched_masks": [
+        {
+          "mask_name": "mask_ctvn_l3.nii.gz",
+          "fraction": "380/1756",
+          "count": 380
+        },
+        {
+          "mask_name": "mask_level-iii.nii.gz",
+          "fraction": "229/1756",
+          "count": 229
+        },
+        {
+          "mask_name": "mask_level_3.nii.gz",
+          "fraction": "89/1756",
+          "count": 89
+        },
+        {
+          "mask_name": "mask_ctv-n-l3.nii.gz",
+          "fraction": "64/1756",
+          "count": 64
+        },
+        {
+          "mask_name": "mask_ctvn-l3.nii.gz",
+          "fraction": "4/1756",
+          "count": 4
+        },
+        {
+          "mask_name": "mask_ctv-level-iii.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_ctv-level-3.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv_l3.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_l3-bo.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_l3-sin.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_l3kam.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_l3mjl.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_l3mmn.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_level-3-bo.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_level-lll.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ph_level-iii.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "group_name": "ctvp_chestwall",
+      "fraction": "470/1756",
+      "count_sum": 470,
+      "matched_masks": [
+        {
+          "mask_name": "mask_ctv-thoraxvg.nii.gz",
+          "fraction": "169/1756",
+          "count": 169
+        },
+        {
+          "mask_name": "mask_ctvp_chestwall.nii.gz",
+          "fraction": "115/1756",
+          "count": 115
+        },
+        {
+          "mask_name": "mask_ctv-thorax-dxt.nii.gz",
+          "fraction": "36/1756",
+          "count": 36
+        },
+        {
+          "mask_name": "mask_ptv-thorax-sin.nii.gz",
+          "fraction": "26/1756",
+          "count": 26
+        },
+        {
+          "mask_name": "mask_ctv-thorax-sin.nii.gz",
+          "fraction": "25/1756",
+          "count": 25
+        },
+        {
+          "mask_name": "mask_dvh-ctv-thoraxv.nii.gz",
+          "fraction": "22/1756",
+          "count": 22
+        },
+        {
+          "mask_name": "mask_ctv_chestwall.nii.gz",
+          "fraction": "16/1756",
+          "count": 16
+        },
+        {
+          "mask_name": "mask_hv-thorax-dxt.nii.gz",
+          "fraction": "9/1756",
+          "count": 9
+        },
+        {
+          "mask_name": "mask_hv-thorax-sin.nii.gz",
+          "fraction": "8/1756",
+          "count": 8
+        },
+        {
+          "mask_name": "mask_ctv-thoraxvgdvh.nii.gz",
+          "fraction": "4/1756",
+          "count": 4
+        },
+        {
+          "mask_name": "mask_brystvg.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_ctv-thoraxvdvh.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_ctv_thoraxdvh.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_ctvp_thoraxvg.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_ctvthoraxvg-5mm.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_ctvthoraxvgdvh.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_ctv-thor-5mmcrop.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-thoracicwall.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-thorax-crop.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-thorax-sin_gammel.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-thoraxv-0mm.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-thoraxvg-d.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-thoraxvg-s.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-thoraxvg5mm.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv-thorvg5mm.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv_chestwallkam.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv_chestwallmjl.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv_chestwallmmn.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv_thoraxvg0mm.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctv_thoraxvgdvh.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvp_chestwa-sin.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvthorax5mm.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvthoraxvg.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_dvh-ctv-thorax.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_dvh-ctvthoraxvg.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_dvh_ctv-thorax.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_dvhctv-thoraxvg.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_dvhthoraxvg-3mm.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_dvhthoraxvg-5mm.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_dvhthoraxvg5mm.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hv-thorax-dxt_mod.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hvthorax-sin.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_thorax-s-dvh.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_thoraxvg-dx.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "group_name": "ctvn_l4",
+      "fraction": "457/1756",
+      "count_sum": 457,
+      "matched_masks": [
+        {
+          "mask_name": "mask_ctvn_l4.nii.gz",
+          "fraction": "381/1756",
+          "count": 381
+        },
+        {
+          "mask_name": "mask_ctv-n-l4.nii.gz",
+          "fraction": "64/1756",
+          "count": 64
+        },
+        {
+          "mask_name": "mask_ctvn-l4.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_ctv-level-iv.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn-l4-ap.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_-l4.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_l4-bo.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_l4-sin.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_l4_fys.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_l4kam.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_l4mjl.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_ctvn_l4mmn.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_leel-4-ap.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "group_name": "ctvn_l1",
+      "fraction": "442/1756",
+      "count_sum": 442,
+      "matched_masks": [
+        {
+          "mask_name": "mask_level-ii-05-cm.nii.gz",
+          "fraction": "228/1756",
+          "count": 228
+        },
+        {
+          "mask_name": "mask_ptv-level-ii.nii.gz",
+          "fraction": "80/1756",
+          "count": 80
+        },
+        {
+          "mask_name": "mask_ctvn_l1.nii.gz",
+          "fraction": "67/1756",
+          "count": 67
+        },
+        {
+          "mask_name": "mask_level-1.nii.gz",
+          "fraction": "16/1756",
+          "count": 16
+        },
+        {
+          "mask_name": "mask_ctv-level-1.nii.gz",
+          "fraction": "15/1756",
+          "count": 15
+        },
+        {
+          "mask_name": "mask_level_1.nii.gz",
+          "fraction": "7/1756",
+          "count": 7
+        },
+        {
+          "mask_name": "mask_ctv-n-l1.nii.gz",
+          "fraction": "5/1756",
+          "count": 5
+        },
+        {
+          "mask_name": "mask_ctv-level-i.nii.gz",
+          "fraction": "4/1756",
+          "count": 4
+        },
+        {
+          "mask_name": "mask_level-ii-iii-ap.nii.gz",
+          "fraction": "3/1756",
+          "count": 3
+        },
+        {
+          "mask_name": "mask_ln_axillarylv1_l.nii.gz",
+          "fraction": "3/1756",
+          "count": 3
+        },
+        {
+          "mask_name": "mask_hv-mam-dxt-level-ii.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_level-i.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_ln_axillarylv1_r.nii.gz",
+          "fraction": "2/1756",
+          "count": 2
+        },
+        {
+          "mask_name": "mask_ctv-lev-1.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hv-ptv-level-ii.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hv-thorax-sin-level-ii.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_hv-thorax-sinlevel-ii_mod.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_level-1-bo.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_level-i-iii-ap.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_level-iii-boost.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        },
+        {
+          "mask_name": "mask_level1.nii.gz",
+          "fraction": "1/1756",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "unmatched_masks": [
+    {
+      "mask_name": "mask_-2.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_06cm-bolus.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_105.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_106.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_1065.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_107.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_1071.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_107_2.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_107_3.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_110.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_2.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_20c1mamds50.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_30c11mamedb66.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_50-mam-beh.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_50_c1_mambs50.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_50c1-mambd50.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_50c1-mames50.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_50c11mamedb66.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_50c12mamedb66.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_50c1mamad50.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_50c1mamas50.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_50c1mambd50.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_50c1mambs50.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_50c1mamds50.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_50c1mamed50.nii.gz",
+      "fraction": "4/1756"
+    },
+    {
+      "mask_name": "mask_50c1mames50.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_50c1mames50dibh.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_50c1mamesb60.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_50c2mames50dibh.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_525.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_535.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_55-cm-under-hud.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_6-cm.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_90_c1_mambs50.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_90c11mamedb66.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_90c12mamedb66.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_90c1mamas50.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_90c1mambd50.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_90c1mambs50.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_90c1mamds50.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_90c1mamed50.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_90c1mamed90.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_90c1mames50.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_90c2mames50dibh.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_95-mam-beh.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_a-subclavia.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_a_carotid.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_arm.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_artefakt.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_arteria.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_arterie.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_arteries.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_artery.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_axil-clips.nii.gz",
+      "fraction": "22/1756"
+    },
+    {
+      "mask_name": "mask_axil-serom-108ml.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_axilclips.nii.gz",
+      "fraction": "7/1756"
+    },
+    {
+      "mask_name": "mask_body-010616.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_body-020616.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_body-11-gating.nii.gz",
+      "fraction": "6/1756"
+    },
+    {
+      "mask_name": "mask_body-11.nii.gz",
+      "fraction": "135/1756"
+    },
+    {
+      "mask_name": "mask_body-12.nii.gz",
+      "fraction": "9/1756"
+    },
+    {
+      "mask_name": "mask_body-21.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_body-u-bolus.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_body.nii.gz",
+      "fraction": "1342/1756"
+    },
+    {
+      "mask_name": "mask_body11.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_bolus-3-mm.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_bolus-3mm.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_bolus-5-mm.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_bolus-6-mm.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_bolus-6mm.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_bolus.nii.gz",
+      "fraction": "9/1756"
+    },
+    {
+      "mask_name": "mask_bolus3mm.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_bolus5mm.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_bone.nii.gz",
+      "fraction": "232/1756"
+    },
+    {
+      "mask_name": "mask_bones.nii.gz",
+      "fraction": "4/1756"
+    },
+    {
+      "mask_name": "mask_boost-d-dvh.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_boost-ptv.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_boost.nii.gz",
+      "fraction": "12/1756"
+    },
+    {
+      "mask_name": "mask_c-axillaris.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_c-spinalis-11.nii.gz",
+      "fraction": "146/1756"
+    },
+    {
+      "mask_name": "mask_c-spinalis-12.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_c-spinalis-21.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_c1_dose-10gy.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_c1_dose-5gy.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_cap-1-cm.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_cap_humeri_dxt.nii.gz",
+      "fraction": "39/1756"
+    },
+    {
+      "mask_name": "mask_cap_humeri_sin.nii.gz",
+      "fraction": "52/1756"
+    },
+    {
+      "mask_name": "mask_caput-hum_-prv.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_caput-humeri.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_caputhumeridxt.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_carina.nii.gz",
+      "fraction": "10/1756"
+    },
+    {
+      "mask_name": "mask_cavity.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_check-poi.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_check-point.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_check.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_checkpoint.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_chekpoint_sup.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_chekpointboost.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_cicatrice-11.nii.gz",
+      "fraction": "146/1756"
+    },
+    {
+      "mask_name": "mask_cicatrice-12.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_cicatrice-21.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_cicatrice.nii.gz",
+      "fraction": "61/1756"
+    },
+    {
+      "mask_name": "mask_cicatrise.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_cicatrix.nii.gz",
+      "fraction": "306/1756"
+    },
+    {
+      "mask_name": "mask_cikatrice.nii.gz",
+      "fraction": "118/1756"
+    },
+    {
+      "mask_name": "mask_cikatricedxt.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_cikatricesin.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_cikatrise.nii.gz",
+      "fraction": "13/1756"
+    },
+    {
+      "mask_name": "mask_clavicle-hel.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_clavicle.nii.gz",
+      "fraction": "308/1756"
+    },
+    {
+      "mask_name": "mask_clip.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_clips-axil.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_clips-axilla.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_clips-bsk.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_clips-d.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_clips-dxt.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_clips-og-kavitet.nii.gz",
+      "fraction": "7/1756"
+    },
+    {
+      "mask_name": "mask_clips-sin.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_clips.nii.gz",
+      "fraction": "836/1756"
+    },
+    {
+      "mask_name": "mask_clips5mm.nii.gz",
+      "fraction": "6/1756"
+    },
+    {
+      "mask_name": "mask_clips_axil.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_clips_axilla.nii.gz",
+      "fraction": "53/1756"
+    },
+    {
+      "mask_name": "mask_clips_markering.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_clips_tumourbed.nii.gz",
+      "fraction": "51/1756"
+    },
+    {
+      "mask_name": "mask_clipscavity.nii.gz",
+      "fraction": "4/1756"
+    },
+    {
+      "mask_name": "mask_clipsmark-mam.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_coils_jis.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_cold.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_cold2.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_costa-3.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_costa-5.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_costa.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_costa1-5.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_costae-1-5.nii.gz",
+      "fraction": "74/1756"
+    },
+    {
+      "mask_name": "mask_couchinterior.nii.gz",
+      "fraction": "627/1756"
+    },
+    {
+      "mask_name": "mask_couchsurface.nii.gz",
+      "fraction": "627/1756"
+    },
+    {
+      "mask_name": "mask_cricoidea.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_cspinalis-11.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-adc-ve.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-aksil-ap.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-aksilperi-d.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-aksilperikl.nii.gz",
+      "fraction": "485/1756"
+    },
+    {
+      "mask_name": "mask_ctv-axil-2-3-ap.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-axil.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_ctv-axilpercl.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-axilperi-s.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-axilperic.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-axilpericl.nii.gz",
+      "fraction": "8/1756"
+    },
+    {
+      "mask_name": "mask_ctv-boost-12.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-boost-5mm.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-boost-d.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-boost-dvh.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_ctv-boost-s.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-boost.nii.gz",
+      "fraction": "383/1756"
+    },
+    {
+      "mask_name": "mask_ctv-boost1cm.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-cikatrice.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_ctv-clips-d.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-clips.nii.gz",
+      "fraction": "318/1756"
+    },
+    {
+      "mask_name": "mask_ctv-clpis.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-combined.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_ctv-crop-2mm.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-cropped.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-dvh.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_ctv-gammeldags.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-glandler.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-il-ve.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-kavitet-d.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-kavitet.nii.gz",
+      "fraction": "291/1756"
+    },
+    {
+      "mask_name": "mask_ctv-klip.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-l2.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-l4.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-level-4.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-ln.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-n-periclav.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-n-pet-pos.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-n-union.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-n.nii.gz",
+      "fraction": "49/1756"
+    },
+    {
+      "mask_name": "mask_ctv-n1.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-n2.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-ns.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-ntot.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-periclav-dxt.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_ctv-periclav-union.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_ctv-periclav.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_ctv-periclavicul.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-periklav-ap.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_ctv-periklav.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-preiclav.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-retropec.nii.gz",
+      "fraction": "4/1756"
+    },
+    {
+      "mask_name": "mask_ctv-retropect.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_ctv-retropecto-s.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-supraklav-ap.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-tang.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-tang5mm.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-tangedvh.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-tangen5-mm.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-tangent-de.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-tangent-dvh.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-tangenti5mm.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-tangentidvh.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-tangentie5mm.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-tangentiedvh.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-tangentiel-d.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_ctv-tangentiel-s.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_ctv-tangentiel.nii.gz",
+      "fraction": "493/1756"
+    },
+    {
+      "mask_name": "mask_ctv-tgn.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-total.nii.gz",
+      "fraction": "30/1756"
+    },
+    {
+      "mask_name": "mask_ctv-total_fys.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-tumorlej.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv-tumorleje-ap.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_ctv-tumorleje.nii.gz",
+      "fraction": "22/1756"
+    },
+    {
+      "mask_name": "mask_ctv-xx.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv.nii.gz",
+      "fraction": "18/1756"
+    },
+    {
+      "mask_name": "mask_ctv05.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv_boost.nii.gz",
+      "fraction": "17/1756"
+    },
+    {
+      "mask_name": "mask_ctv_boostdvh.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv_cheastwa-sin.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv_chest_ms.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv_l2.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv_supraclav.nii.gz",
+      "fraction": "91/1756"
+    },
+    {
+      "mask_name": "mask_ctv_supraclavsin.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctv_total.nii.gz",
+      "fraction": "8/1756"
+    },
+    {
+      "mask_name": "mask_ctv_total_fys.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_ctvboost-aksil.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctvboost.nii.gz",
+      "fraction": "4/1756"
+    },
+    {
+      "mask_name": "mask_ctvboost5mm-crop.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctvfys.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_ctvn-ap.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctvn-level-4-ap.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctvn-periclav.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctvn-sin.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctvn.nii.gz",
+      "fraction": "115/1756"
+    },
+    {
+      "mask_name": "mask_ctvn_fys.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_ctvn_supraclav.nii.gz",
+      "fraction": "17/1756"
+    },
+    {
+      "mask_name": "mask_ctvn_total_fys.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctvnod_total_fys.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_ctvp_t.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctvp_tumorbed.nii.gz",
+      "fraction": "20/1756"
+    },
+    {
+      "mask_name": "mask_ctvp_tumorbed1.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctvp_tumourbed.nii.gz",
+      "fraction": "25/1756"
+    },
+    {
+      "mask_name": "mask_ctvpericlav.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctvrectopectoral.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctvretropectd.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctvretropectrum.nii.gz",
+      "fraction": "486/1756"
+    },
+    {
+      "mask_name": "mask_ctvsum.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctvtangentidvh.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctvtangentieldvh.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_ctvthretro.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctvtot.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_ctvtotal.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ctvtotal_fys.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_ctvunion.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dose-105-hypo.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dose-105.nii.gz",
+      "fraction": "11/1756"
+    },
+    {
+      "mask_name": "mask_dose-106.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_dose-107.nii.gz",
+      "fraction": "14/1756"
+    },
+    {
+      "mask_name": "mask_dose-108.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_dose-110.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dose-15gy.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dose-20gy.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dose-25gy.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_dose-30gy.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dose-45gy.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dose-475gy.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dose-50-c1-50.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dose-50-c1-60.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dose-50-c1.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dose-50-v.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dose-50.nii.gz",
+      "fraction": "5/1756"
+    },
+    {
+      "mask_name": "mask_dose-535gy.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dose-545gy.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_dose-54gy.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dose-55gy.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dose-5gy.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dose-75.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dose-90-c1-50.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dose-90-c1-60.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dose-90-c1.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dose-90.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dose-ln.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dose-p.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dose-point-boost.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_doseboost.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_doseln.nii.gz",
+      "fraction": "74/1756"
+    },
+    {
+      "mask_name": "mask_doselna.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_doselnp2.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dosep1.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dosesupraclav.nii.gz",
+      "fraction": "33/1756"
+    },
+    {
+      "mask_name": "mask_dpl-ctvboost.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dpl-ctvtang.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dvh-ctv-boost.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dvh_-ctv.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_dvh_ctv_tang.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ekspose.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ekstern.nii.gz",
+      "fraction": "102/1756"
+    },
+    {
+      "mask_name": "mask_eksternal.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_eksternt.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ektern.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_esof.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_esohagus.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_esopagus.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_esophagus.nii.gz",
+      "fraction": "61/1756"
+    },
+    {
+      "mask_name": "mask_expander.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_expose.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_extern.nii.gz",
+      "fraction": "44/1756"
+    },
+    {
+      "mask_name": "mask_external.nii.gz",
+      "fraction": "170/1756"
+    },
+    {
+      "mask_name": "mask_external_minus_3mm.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_external_minus_5mm.nii.gz",
+      "fraction": "17/1756"
+    },
+    {
+      "mask_name": "mask_extra.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_feltgrnse.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_firkant.nii.gz",
+      "fraction": "108/1756"
+    },
+    {
+      "mask_name": "mask_firkantdxt.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_firkantsin.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_fys-ctv.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_fys.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_fys2.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_gatingboks-11.nii.gz",
+      "fraction": "117/1756"
+    },
+    {
+      "mask_name": "mask_gatingboks-12.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_gatingboks-21.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_gatingboks.nii.gz",
+      "fraction": "43/1756"
+    },
+    {
+      "mask_name": "mask_gld-petct810-15.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_gtv-bo.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_gtv-boost.nii.gz",
+      "fraction": "27/1756"
+    },
+    {
+      "mask_name": "mask_gtv.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_help.nii.gz",
+      "fraction": "4/1756"
+    },
+    {
+      "mask_name": "mask_hj-struktur-hda.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hudclips_tumorbe.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_humeral-head.nii.gz",
+      "fraction": "144/1756"
+    },
+    {
+      "mask_name": "mask_humeralhead-sin.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_humeralhead.nii.gz",
+      "fraction": "149/1756"
+    },
+    {
+      "mask_name": "mask_humeralhead_prv.nii.gz",
+      "fraction": "183/1756"
+    },
+    {
+      "mask_name": "mask_humerus.nii.gz",
+      "fraction": "35/1756"
+    },
+    {
+      "mask_name": "mask_hv-all.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_hv-alle.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_hv-boost-dxt.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hv-boost-sin.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_hv-boost.nii.gz",
+      "fraction": "14/1756"
+    },
+    {
+      "mask_name": "mask_hv-ctv-n.nii.gz",
+      "fraction": "6/1756"
+    },
+    {
+      "mask_name": "mask_hv-dxt.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hv-full.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hv-ic-4.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hv-ic1-3.nii.gz",
+      "fraction": "4/1756"
+    },
+    {
+      "mask_name": "mask_hv-ic3.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_hv-ic4.nii.gz",
+      "fraction": "5/1756"
+    },
+    {
+      "mask_name": "mask_hv-levelii.nii.gz",
+      "fraction": "4/1756"
+    },
+    {
+      "mask_name": "mask_hv-lii.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_hv-m-bolus.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hv-meta.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hv-n-ic1-3.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hv-n-total.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hv-n.nii.gz",
+      "fraction": "20/1756"
+    },
+    {
+      "mask_name": "mask_hv-npericlav.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hv-ns.nii.gz",
+      "fraction": "4/1756"
+    },
+    {
+      "mask_name": "mask_hv-peri4mm.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hv-periclav-alle.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hv-periclav.nii.gz",
+      "fraction": "10/1756"
+    },
+    {
+      "mask_name": "mask_hv-periklav.nii.gz",
+      "fraction": "13/1756"
+    },
+    {
+      "mask_name": "mask_hv-ptv-n.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hv-ptvns.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hv-reg-n.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hv-reg.nii.gz",
+      "fraction": "4/1756"
+    },
+    {
+      "mask_name": "mask_hv-regn.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hv-res-sin.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hv-sin.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hv-sum.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hv-thorax.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_hv-tot.nii.gz",
+      "fraction": "22/1756"
+    },
+    {
+      "mask_name": "mask_hv-total.nii.gz",
+      "fraction": "20/1756"
+    },
+    {
+      "mask_name": "mask_hv-union.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hv-xx.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hv-xx_mod.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hv.nii.gz",
+      "fraction": "79/1756"
+    },
+    {
+      "mask_name": "mask_hv_all.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hv_n.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_hv_thorax.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hv_tot.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hvalle.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hvboost.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_hvboost2.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hvlevelii.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hvmamdxt.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hvmsin.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hvns.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_hvpericlav.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hvthorax-dxt.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hvthoraxdxt.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_hvthoraxsin.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_icru-44-soft-tissue.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_ii.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_iii.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_iiiii.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_iiiiiiv.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_iso-boost.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_iso-p1.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_iso.nii.gz",
+      "fraction": "8/1756"
+    },
+    {
+      "mask_name": "mask_iso1boost.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_isogl.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_isop1-2.nii.gz",
+      "fraction": "80/1756"
+    },
+    {
+      "mask_name": "mask_isop1-2first.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_isop1-2p1-2.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_isop1-p2.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_isop1-pb.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_isop1.nii.gz",
+      "fraction": "6/1756"
+    },
+    {
+      "mask_name": "mask_isop1a-2a.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_isop1a.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_isop1p1-2.nii.gz",
+      "fraction": "6/1756"
+    },
+    {
+      "mask_name": "mask_isop1p1p1-3.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_isop2-3.nii.gz",
+      "fraction": "4/1756"
+    },
+    {
+      "mask_name": "mask_isop3-4.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_isoroi1.nii.gz",
+      "fraction": "6/1756"
+    },
+    {
+      "mask_name": "mask_isoroi2.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_jj.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_jug.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_kapsel.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_kar.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_kath.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_kavitet-d.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_kavitet-synlig.nii.gz",
+      "fraction": "288/1756"
+    },
+    {
+      "mask_name": "mask_kavitet.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_klav.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_klip.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_klips-11.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_klips-fysiker.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_klips-og-cavitet.nii.gz",
+      "fraction": "11/1756"
+    },
+    {
+      "mask_name": "mask_klips.nii.gz",
+      "fraction": "46/1756"
+    },
+    {
+      "mask_name": "mask_klips5mm.nii.gz",
+      "fraction": "40/1756"
+    },
+    {
+      "mask_name": "mask_klips5mmdxt.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_klips5mmsin.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_klips_eller_forkalkning.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_klipsdxt.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_klipssin.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_knogle.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_knogler.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_kobber.nii.gz",
+      "fraction": "109/1756"
+    },
+    {
+      "mask_name": "mask_l4.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_lad-11.nii.gz",
+      "fraction": "145/1756"
+    },
+    {
+      "mask_name": "mask_lad-12.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_lad-21.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_lad-bo.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_lad-kmap.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_lad.nii.gz",
+      "fraction": "103/1756"
+    },
+    {
+      "mask_name": "mask_ladca-mjl.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ladca.nii.gz",
+      "fraction": "691/1756"
+    },
+    {
+      "mask_name": "mask_ladca1.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_larynx.nii.gz",
+      "fraction": "109/1756"
+    },
+    {
+      "mask_name": "mask_lateral-marker.nii.gz",
+      "fraction": "308/1756"
+    },
+    {
+      "mask_name": "mask_lateral-ny.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_level-4-bo.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_lever-ptv.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_lever.nii.gz",
+      "fraction": "14/1756"
+    },
+    {
+      "mask_name": "mask_liver.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ln.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_luft.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_luftrr.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_lymf.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_m-sterno.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_mandibel.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_maria.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_mask.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_maskp1-2.nii.gz",
+      "fraction": "27/1756"
+    },
+    {
+      "mask_name": "mask_maskp1-tumorlejesin.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_maskp1a-2a.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_maskp1tumorleje.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_maskp3-4.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_maskroi-boost.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_maskroi.nii.gz",
+      "fraction": "16/1756"
+    },
+    {
+      "mask_name": "mask_maskroi_boost.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_match-clips.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_match-points.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_mditlinie.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_medulla.nii.gz",
+      "fraction": "120/1756"
+    },
+    {
+      "mask_name": "mask_meta.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_midsternal.nii.gz",
+      "fraction": "297/1756"
+    },
+    {
+      "mask_name": "mask_midt-3-cm.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_midt.nii.gz",
+      "fraction": "11/1756"
+    },
+    {
+      "mask_name": "mask_midtline.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_midtlinie.nii.gz",
+      "fraction": "183/1756"
+    },
+    {
+      "mask_name": "mask_midtlinie30mm.nii.gz",
+      "fraction": "59/1756"
+    },
+    {
+      "mask_name": "mask_midtlinie30mm_dxt.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_midtlinie30mm_sin.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_midtlinie3cm.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_midtlinie60mm.nii.gz",
+      "fraction": "107/1756"
+    },
+    {
+      "mask_name": "mask_midtlinie60mm_sin.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_midtlinje.nii.gz",
+      "fraction": "7/1756"
+    },
+    {
+      "mask_name": "mask_midtsternal.nii.gz",
+      "fraction": "10/1756"
+    },
+    {
+      "mask_name": "mask_mrk-bsk.nii.gz",
+      "fraction": "28/1756"
+    },
+    {
+      "mask_name": "mask_mrk.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_nedremark.nii.gz",
+      "fraction": "22/1756"
+    },
+    {
+      "mask_name": "mask_ns_control.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ny-lateral-marke.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_o-ctv.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_o-ctv_n.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_o-dose-90.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_o-elektrondosis.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_o-ptvn.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_o-ptvp.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_oar-a-carotis-ap.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_obs_n.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_octv-tangentiel.nii.gz",
+      "fraction": "11/1756"
+    },
+    {
+      "mask_name": "mask_odpl-cikatrice.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_oesoph.nii.gz",
+      "fraction": "4/1756"
+    },
+    {
+      "mask_name": "mask_oesophagus.nii.gz",
+      "fraction": "6/1756"
+    },
+    {
+      "mask_name": "mask_op-kav.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_opstregning.nii.gz",
+      "fraction": "109/1756"
+    },
+    {
+      "mask_name": "mask_opt-ctvp_chestw.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_opt-dose-50.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_or-cap-hum-dex-10mm.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_or-cap-hum-dex.nii.gz",
+      "fraction": "16/1756"
+    },
+    {
+      "mask_name": "mask_or-cap-hum-dex10mm.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_or-cap-hum-sin.nii.gz",
+      "fraction": "8/1756"
+    },
+    {
+      "mask_name": "mask_or-caput-humeri-sin.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_or-ladca.nii.gz",
+      "fraction": "77/1756"
+    },
+    {
+      "mask_name": "mask_or.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_otangentiel.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_overflade-clips.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_pacemaker.nii.gz",
+      "fraction": "5/1756"
+    },
+    {
+      "mask_name": "mask_pect-min.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_pect-minor.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_peric-hot.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_periclac.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_periclav.nii.gz",
+      "fraction": "93/1756"
+    },
+    {
+      "mask_name": "mask_periclav_ph.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_periclavi_ff.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_periclavicula_2.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ph_periklav.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_poi_1.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_protese.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_prv-cap-hum-dex.nii.gz",
+      "fraction": "6/1756"
+    },
+    {
+      "mask_name": "mask_prv-cap-hum-dxt.nii.gz",
+      "fraction": "4/1756"
+    },
+    {
+      "mask_name": "mask_prv-cap-hum-sin.nii.gz",
+      "fraction": "6/1756"
+    },
+    {
+      "mask_name": "mask_prv-caput-hum-dxt.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_prv-humeral-head.nii.gz",
+      "fraction": "142/1756"
+    },
+    {
+      "mask_name": "mask_prv_humeral-head.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_prv_humeralhead.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_prv_humerus.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptv-boost.nii.gz",
+      "fraction": "47/1756"
+    },
+    {
+      "mask_name": "mask_ptv-cap-hum-dex.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptv-glandler.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptv-l2.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_ptv-lvl-iv.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptv-n-l1.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_ptv-n-l2.nii.gz",
+      "fraction": "8/1756"
+    },
+    {
+      "mask_name": "mask_ptv-n-l3.nii.gz",
+      "fraction": "8/1756"
+    },
+    {
+      "mask_name": "mask_ptv-n-l4.nii.gz",
+      "fraction": "8/1756"
+    },
+    {
+      "mask_name": "mask_ptv-n-periclav.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptv-n-pet-pos.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptv-n-union.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptv-n.nii.gz",
+      "fraction": "50/1756"
+    },
+    {
+      "mask_name": "mask_ptv-npericlav.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptv-ns.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptv-nsum.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_ptv-ntotal.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptv-peri-sum.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptv-periclav-union.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptv-periclav.nii.gz",
+      "fraction": "7/1756"
+    },
+    {
+      "mask_name": "mask_ptv-t-lvl-iii.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptv-thorax-dxt.nii.gz",
+      "fraction": "38/1756"
+    },
+    {
+      "mask_name": "mask_ptv-thoraxdvh.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptv-xx.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptv.nii.gz",
+      "fraction": "14/1756"
+    },
+    {
+      "mask_name": "mask_ptv40dxt.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptv50.nii.gz",
+      "fraction": "108/1756"
+    },
+    {
+      "mask_name": "mask_ptv50sin.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptv60-pb.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptv60.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptv60_tumorleje.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptv_60.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptv_boost.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptv_intermediate.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptv_l2.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptvboost.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptvn-l2.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_ptvn-sin.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptvn.nii.gz",
+      "fraction": "128/1756"
+    },
+    {
+      "mask_name": "mask_ptvn_l2.nii.gz",
+      "fraction": "7/1756"
+    },
+    {
+      "mask_name": "mask_ptvp.nii.gz",
+      "fraction": "17/1756"
+    },
+    {
+      "mask_name": "mask_ptvp_chestwa-sin.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptvp_chestwall.nii.gz",
+      "fraction": "42/1756"
+    },
+    {
+      "mask_name": "mask_ptvp_l2.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptvp_periclav.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptvp_tumourbed.nii.gz",
+      "fraction": "21/1756"
+    },
+    {
+      "mask_name": "mask_ptvsum.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptvtg_opt.nii.gz",
+      "fraction": "64/1756"
+    },
+    {
+      "mask_name": "mask_ptvtotal.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ptvunion.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_pulm-contra.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_pulm-contralat.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_raca-ap.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_raca.nii.gz",
+      "fraction": "12/1756"
+    },
+    {
+      "mask_name": "mask_rc-air.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_rc-bone.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_rc-surface.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_rca.nii.gz",
+      "fraction": "4/1756"
+    },
+    {
+      "mask_name": "mask_refpoi.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_refpoidxt.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_refpoisin.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_rib-3.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_rib-345.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_rib-4-5.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_rib-4.nii.gz",
+      "fraction": "19/1756"
+    },
+    {
+      "mask_name": "mask_rib-45.nii.gz",
+      "fraction": "12/1756"
+    },
+    {
+      "mask_name": "mask_rib-5.nii.gz",
+      "fraction": "230/1756"
+    },
+    {
+      "mask_name": "mask_rib_1-5.nii.gz",
+      "fraction": "17/1756"
+    },
+    {
+      "mask_name": "mask_ring.nii.gz",
+      "fraction": "11/1756"
+    },
+    {
+      "mask_name": "mask_roi_1.nii.gz",
+      "fraction": "26/1756"
+    },
+    {
+      "mask_name": "mask_roi_2.nii.gz",
+      "fraction": "8/1756"
+    },
+    {
+      "mask_name": "mask_roi_3.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_rotter-bo.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_scal.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_serom-124ml.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_serom-axil.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_serom.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_sof.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_sofag.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_spinalcanal.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_sternokl-marker.nii.gz",
+      "fraction": "53/1756"
+    },
+    {
+      "mask_name": "mask_sternokleid.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_sternomark.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_straale-boost.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_straale.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_straale_boost.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_straaleboost.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_straalefeltsupraclav.nii.gz",
+      "fraction": "32/1756"
+    },
+    {
+      "mask_name": "mask_straaleln.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_strf_ln.nii.gz",
+      "fraction": "76/1756"
+    },
+    {
+      "mask_name": "mask_strf_lnsin.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_supraklav-d50.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_synlig-kavitet.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_testnewmask.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_testnewmaskp1-2.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_testsup.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_tjek-point.nii.gz",
+      "fraction": "3/1756"
+    },
+    {
+      "mask_name": "mask_tjek-point2.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_tjek-point3.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_tracea.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_trachea.nii.gz",
+      "fraction": "76/1756"
+    },
+    {
+      "mask_name": "mask_tumorleje.nii.gz",
+      "fraction": "18/1756"
+    },
+    {
+      "mask_name": "mask_tumorlejemn.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_tumourbed.nii.gz",
+      "fraction": "7/1756"
+    },
+    {
+      "mask_name": "mask_tumourbedboost.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_udvidet-firkant.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_union-hv.nii.gz",
+      "fraction": "4/1756"
+    },
+    {
+      "mask_name": "mask_union.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_v105.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_vcava-sup.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_veins.nii.gz",
+      "fraction": "9/1756"
+    },
+    {
+      "mask_name": "mask_vena.nii.gz",
+      "fraction": "2/1756"
+    },
+    {
+      "mask_name": "mask_ventilprotes-cr.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_xhelp.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_xxxxxxctv.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ydre-2mm.nii.gz",
+      "fraction": "1/1756"
+    },
+    {
+      "mask_name": "mask_ydre.nii.gz",
+      "fraction": "87/1756"
+    },
+    {
+      "mask_name": "mask_ydre_minus_5mm.nii.gz",
+      "fraction": "89/1756"
+    }
+  ]
+}
