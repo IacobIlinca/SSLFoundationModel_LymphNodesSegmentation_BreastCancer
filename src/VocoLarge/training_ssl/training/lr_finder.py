@@ -215,7 +215,7 @@ def main():
     _, _, test_loader = build_all_datasets_and_loaders(args)
 
     # Optional: limit batches for speed if your loader is large
-    test_loader = maybe_limit_test_loader(test_loader, max_batches=20)
+    #test_loader = maybe_limit_test_loader(test_loader, max_batches=1)
 
     model, optimizer, scaler = setup_model_and_optimizer(args, device)
 
@@ -228,10 +228,10 @@ def main():
         scaler=scaler,
         loader=test_loader,
         device=device,
-        start_lr=1e-6,
-        end_lr=1.0 if args.optimizer.lower() == "sgd" else 1e-1,
-        num_iter=100,
-        beta=0.35,
+        start_lr=1e-4,
+        end_lr=1e-1,
+        num_iter=50,
+        beta=0.1,
         stop_mult=4.0,
         use_amp=args.amp,
     )

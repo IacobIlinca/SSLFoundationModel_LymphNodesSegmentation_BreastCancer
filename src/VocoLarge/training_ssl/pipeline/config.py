@@ -24,7 +24,7 @@ class Config:
     # Used
     data_dir: Optional[str] = "/mnt/data/flaviu/rtnation_02_02/"
 
-    out_dir: str = "/processing/flaviu/ssl_training/10_epochs_lr_5e3"
+    out_dir: str = "/processing/flaviu/ssl_training/10_epochs_lr_1e4"
 
     # --------------------
     # Reproducibility / runtime
@@ -81,7 +81,7 @@ class Config:
     # Training loop
     # --------------------
     epochs: int = 10
-    lr: float = 5e-3
+    lr: float = 1e-4
     optimizer: str = "sgd"
     weight_decay: float = 1e-4
     momentum: float = 0.9
