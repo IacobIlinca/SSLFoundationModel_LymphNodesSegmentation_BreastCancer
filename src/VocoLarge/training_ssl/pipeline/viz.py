@@ -1,4 +1,7 @@
 import os
+from dataclasses import dataclass, asdict
+from typing import List, Dict
+
 import numpy as np
 import matplotlib.pyplot as plt
 import torch
@@ -44,11 +47,12 @@ def _pick_slices(depth, n=6):
     return idxs.tolist()
 
 
+# Visualization mainly used in overfit experiment, but can be used elsewhere too
 def save_voco_debug_vis(
     img, crops, labels,
     out_dir="debug_vis",
     prefix="case",
-    max_queries=8,
+    max_queries=10,
     slices_per_vol=6,
 ):
     os.makedirs(out_dir, exist_ok=True)
@@ -145,3 +149,65 @@ def save_diff_bundle(logits, targets, out_dir, prefix):
     save_heatmap(logits.numpy(), "Predictions (logits): query vs 9 crops", os.path.join(out_dir, f"{prefix}_logits.png"))
     save_heatmap((logits - targets).numpy(), "Pred - Target", os.path.join(out_dir, f"{prefix}_diff.png"))
     save_heatmap((logits - targets).abs().numpy(), "|Pred - Target|", os.path.join(out_dir, f"{prefix}_absdiff.png"))
+
+
+@dataclass
+class History:
+    """
+    Stores epoch-wise scalars for plotting and later analysis.
+
+    """
+    train_epoch: List[int]
+    train_loss: List[float]
+    val_epoch: List[int]
+    val_loss: List[float]
+    top1: List[float]
+
+    def __init__(self):
+        self.train_epoch = []
+        self.val_epoch = []
+        self.train_loss = []
+        self.val_loss = []
+        self.top1 = []
+
+    def add_train_loss(self, epoch: int, train_loss: float):
+        self.train_epoch.append(int(epoch))
+        self.train_loss.append(float(train_loss))
+
+    def add_val_loss(self, epoch: int, val_loss: float):
+        self.val_epoch.append(int(epoch))
+        self.val_loss.append(float(val_loss))
+
+    def add_top1_metric(self, top1: float):
+        self.top1.append(float(top1))
+
+    def to_dict(self) -> Dict:
+        return asdict(self)
+
+
+def plot_loss_curves(history: History, save_path: str) -> None:
+    """
+    Saves a single plot with train loss, val loss and top1 across epochs.
+    """
+    os.makedirs(os.path.dirname(save_path), exist_ok=True)
+    plt.figure()
+    plt.title("Loss Curves")
+    if len(history.train_loss) > 0:
+        plt.plot(history.train_epoch, history.train_loss, label="train_loss")
+    if len(history.val_loss) > 0:
+        plt.plot(history.val_epoch, history.val_loss, label="val_loss")
+    plt.xlabel("epoch")
+    plt.ylabel("loss")
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(os.path.join(save_path, "loss_curves"), dpi=150)
+    plt.figure()
+    if len(history.top1) > 0:
+        plt.title("Top1 Curve")
+        plt.plot(history.val_epoch, history.top1, label="top1")
+        plt.xlabel("epoch")
+        plt.ylabel("Top1")
+        plt.legend()
+        plt.tight_layout()
+        plt.savefig(os.path.join(save_path, "top1"), dpi=150)
+    plt.close()

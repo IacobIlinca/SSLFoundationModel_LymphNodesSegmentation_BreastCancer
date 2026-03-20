@@ -6,6 +6,8 @@ def build_model(voco_args, device: torch.device) -> VoCoHead:
     model = VoCoHead(voco_args).to(device)
     return model
 
+
+# Used for overfit experiment
 def set_dropout_p(module: torch.nn.Module, p: float) -> int:
     """
     Set Dropout/Dropout1d/Dropout2d/Dropout3d probability for all submodules.
@@ -18,7 +20,7 @@ def set_dropout_p(module: torch.nn.Module, p: float) -> int:
             n += 1
     return n
 
-
+# Used for overfit experiment
 def disable_dropout(module: torch.nn.Module) -> int:
     """
     Convenience: set all dropout probabilities to 0.

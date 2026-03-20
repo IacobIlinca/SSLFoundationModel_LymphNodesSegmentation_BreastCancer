@@ -39,6 +39,8 @@ def _match_and_load(target_module, sd: Dict[str, torch.Tensor], name: str):
         if k not in sd:
             missing.append(k)
 
+    unexpected = [k for k in sd.keys() if k not in msd]
+
     msd.update(matched)
     target_module.load_state_dict(msd, strict=True)
 
@@ -50,9 +52,10 @@ def _match_and_load(target_module, sd: Dict[str, torch.Tensor], name: str):
     print(f"[INFO] Loading checkpoint into '{name}'")
     print(f"[INFO]   tensors in checkpoint : {total_ckpt}")
     print(f"[INFO]   tensors in model      : {total_target}")
-    print(f"[INFO]   matched tensors      : {matched_n}/{total_target} ({pct:.1f}%)")
-    print(f"[INFO]   shape mismatches     : {len(skipped_shape)}")
-    print(f"[INFO]   missing in ckpt      : {len(missing)}")
+    print(f"[INFO]   matched tensors       : {matched_n}/{total_target} ({pct:.1f}%)")
+    print(f"[INFO]   shape mismatches      : {len(skipped_shape)}")
+    print(f"[INFO]   missing in ckpt       : {len(missing)}")
+    print(f"[INFO]   unexpected in ckpt    : {len(unexpected)}")
 
     return {
         "matched": matched_n,

@@ -9,6 +9,11 @@ def top1_match(logits: torch.Tensor, targets: torch.Tensor) -> float:
     return float((top1_pred == top1_tgt).float().mean().item())
 
 
+##########################
+# Experiment metrics used in overfit experiment, not really relevant from this point downwards
+##########################
+
+
 def best_crop_indices_from_targets(targets: torch.Tensor) -> torch.Tensor:
     """
     targets: (sw_s, 9)
