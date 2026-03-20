@@ -6,7 +6,7 @@ from torch.optim import SGD, AdamW
 from src.VocoLarge.training_ssl.pipeline import build_model, load_ckpt, save_ckpt_atomic, save_diff_bundle
 from src.VocoLarge.training_ssl.pipeline.config import Config
 from src.VocoLarge.training_ssl.pipeline.freeze import report_trainable_by_module
-from src.VocoLarge.training_ssl.pipeline.training import train_one_epoch, validate_one_epoch, \
+from src.VocoLarge.training_ssl.pipeline.train_and_valid_steps import train_one_epoch, validate_one_epoch, \
     compute_logits_targets_for_one_image
 from src.VocoLarge.training_ssl.pipeline.viz import History, plot_loss_curves
 from src.VocoLarge.training_ssl.training.datasets_and_loaders import build_all_datasets_and_loaders

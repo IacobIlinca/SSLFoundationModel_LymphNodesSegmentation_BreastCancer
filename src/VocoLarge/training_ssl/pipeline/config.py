@@ -42,9 +42,9 @@ class Config:
     test_batch_size: int = 4
     shuffle: bool = True
     num_workers: int = 0
-    train_ids_path: str = "../training_data/train_ids.txt"
-    val_ids_path: str = "../training_data/val_ids.txt"
-    test_ids_path: str = "../training_data/test_ids.txt"
+    train_ids_path: str = "../train_valid_test_split/train_ids.txt"
+    val_ids_path: str = "../train_valid_test_split/val_ids.txt"
+    test_ids_path: str = "../train_valid_test_split/test_ids.txt"
     cache_dir: str = "/mnt/data/flaviu/ssl_training/cache_dir"
 
     # --------------------

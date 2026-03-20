@@ -4,7 +4,7 @@ from pathlib import Path
 
 # ====== CONFIG ======
 root_dir = "/mnt/data/flaviu/rtnation_02_02"   # contains id1/, id2/, ...
-output_dir = "../training_data/"
+output_dir = "../train_valid_test_split/"
 seed = 42
 train_ratio = 0.70
 val_ratio = 0.15
