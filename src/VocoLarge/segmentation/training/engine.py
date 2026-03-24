@@ -11,7 +11,7 @@ from src.VocoLarge.segmentation.config import Config
 from src.VocoLarge.segmentation.data.transforms import get_transforms
 from src.VocoLarge.segmentation.training.history import History
 from src.VocoLarge.segmentation.training.infer import infer_full_volume
-from src.VocoLarge.segmentation.training.losses_metrics import build_loss, build_metrics
+from src.VocoLarge.segmentation.training.losses_metrics import build_loss_multiclass, build_metrics
 from src.VocoLarge.segmentation.training.plots import plot_loss_curves, plot_metric_curves
 
 
@@ -192,7 +192,7 @@ def run_training(model, train_samples, val_samples, cfg: Config, visuals_cb=None
 
     train_loader, val_loader = make_loaders(train_samples, val_samples, cfg)
 
-    loss_fn = build_loss(cfg)
+    loss_fn = build_loss_multiclass(cfg)
     optim = torch.optim.AdamW(
         [p for p in model.parameters() if p.requires_grad],
         lr=cfg.lr,

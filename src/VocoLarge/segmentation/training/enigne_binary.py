@@ -2,16 +2,18 @@ import json
 import os
 
 import torch
+from torch.optim import SGD
 from tqdm import tqdm
 from torch.cuda.amp import autocast, GradScaler
 
 from monai.data import decollate_batch
 
+from src.VocoLarge.segmentation.config_binary import ConfigBinary
 from src.VocoLarge.segmentation.training.history import History
 from src.VocoLarge.segmentation.training.infer import infer_full_volume
 from src.VocoLarge.segmentation.training.losses_metrics import (
-    build_loss_binary,
-    build_metrics_binary,
+    build_loss_binary_softmax,
+    build_metrics_binary_softmax, build_loss_binary_sigmoid, build_metrics_binary_sigmoid,
 )
 from src.VocoLarge.segmentation.training.plots import plot_loss_curves, plot_metric_curves
 from src.VocoLarge.segmentation.data.loaders_binary import build_all_datasets_and_loaders
@@ -53,10 +55,10 @@ def train_one_epoch(model, loader, optim, loss_fn, scaler, device, cfg, epoch=No
 
 
 @torch.no_grad()
-def evaluate(model, loader, device, loss_fn, cfg, desc="Eval", visuals_cb=None, epoch=None):
+def evaluate(model, loader, device, loss_fn, cfg: ConfigBinary, desc="Eval", visuals_cb=None, epoch=None):
     model.eval()
 
-    dice_metric, hd95_metric, post_pred, post_label = build_metrics_binary(cfg)
+    dice_metric, hd95_metric, post_pred, post_label = build_metrics_binary_sigmoid(cfg)
     dice_metric.reset()
     hd95_metric.reset()
 
@@ -103,7 +105,7 @@ def evaluate(model, loader, device, loss_fn, cfg, desc="Eval", visuals_cb=None, 
     return mean_loss, mean_dice, mean_hd95
 
 
-def run_training(model, cfg, visuals_cb=None):
+def run_training(model, cfg: ConfigBinary, visuals_cb=None):
     """
     Binary training entry point.
 
@@ -118,12 +120,9 @@ def run_training(model, cfg, visuals_cb=None):
 
     train_loader, val_loader, test_loader = build_all_datasets_and_loaders(cfg)
 
-    loss_fn = build_loss_binary(cfg)
-    optim = torch.optim.AdamW(
-        [p for p in model.parameters() if p.requires_grad],
-        lr=cfg.lr,
-        weight_decay=cfg.weight_decay,
-    )
+    loss_fn = build_loss_binary_sigmoid(cfg)
+    params = [p for p in model.parameters() if p.requires_grad]
+    optim = SGD(params, lr=cfg.lr, momentum=cfg.momentum, weight_decay=cfg.weight_decay)
     scaler = GradScaler(enabled=cfg.amp)
 
     history = History()
@@ -143,18 +142,6 @@ def run_training(model, cfg, visuals_cb=None):
             epoch=epoch,
         )
         os.makedirs(cfg.save_dir, exist_ok=True)
-
-        torch.save(
-            {
-                "model": model.state_dict(),
-                "optimizer": optim.state_dict(),
-                "scaler": scaler.state_dict() if scaler is not None else None,
-                "epoch": epoch,
-                "train_loss": tr_loss,
-                "best_dice": best_dice,
-            },
-            os.path.join(cfg.save_dir, "pre_val_last.pt"),
-        )
 
         if epoch == 1 or epoch % cfg.log_every == 0:
             print(f"Epoch {epoch:04d} | train loss: {tr_loss:.4f}")

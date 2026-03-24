@@ -3,7 +3,8 @@ import os
 from monai.data import PersistentDataset, list_data_collate
 from torch.utils.data import DataLoader
 
-from src.VocoLarge.segmentation.data.transforms import get_transforms
+from src.VocoLarge.segmentation.config_binary import ConfigBinary
+from src.VocoLarge.segmentation.data.transforms import get_transforms_binary
 from src.VocoLarge.segmentation.data.data_utils_binary import (
     read_ids_file,
     build_segmentation_files_from_ids,
@@ -37,7 +38,7 @@ def build_dataloader(
     )
 
 
-def build_all_datasets_and_loaders(cfg):
+def build_all_datasets_and_loaders(cfg: ConfigBinary):
     """
     Builds train / val / test datasets and loaders from split txt files.
     Uses PersistentDataset, aligned as closely as possible with the SSL pipeline.
@@ -84,7 +85,7 @@ def build_all_datasets_and_loaders(cfg):
     if len(test_files) == 0:
         raise RuntimeError("Test set is empty.")
 
-    train_transform, val_transform = get_transforms(cfg)
+    train_transform, val_transform = get_transforms_binary(cfg)
     test_transform = val_transform
 
     train_ds = build_persistent_dataset(
@@ -112,14 +113,14 @@ def build_all_datasets_and_loaders(cfg):
     )
     val_loader = build_dataloader(
         dataset=val_ds,
-        batch_size=1,
+        batch_size=cfg.val_batch_size,
         shuffle=False,
         num_workers=cfg.num_workers,
         device_type=cfg.device,
     )
     test_loader = build_dataloader(
         dataset=test_ds,
-        batch_size=1,
+        batch_size=cfg.test_batch_size,
         shuffle=False,
         num_workers=cfg.num_workers,
         device_type=cfg.device,

@@ -33,7 +33,7 @@ def load_voco_encoder_weights(model: nn.Module, cfg: Config) -> None:
     if not hasattr(model, "swinViT"):
         raise AttributeError("Expected SwinUNETR to have attribute 'swinViT'")
 
-    ckpt = torch.load(cfg.voco_ckpt_path, map_location="cpu")
+    ckpt = torch.load(cfg.voco_ckpt_path, cfg.device)
     sd = _unwrap_state_dict(ckpt)
 
     # Common prefixes seen in VoCo/DP/DDP training
@@ -42,20 +42,26 @@ def load_voco_encoder_weights(model: nn.Module, cfg: Config) -> None:
         "module.backbone.swinViT.",
         "swinViT.",
         "module.swinViT.",
+        "encoder",
+        "model.encoder",
     ]
 
-    target_sd = model.swinViT.state_dict()
+    target_sd = model.state_dict()
     filtered = {}
 
     for k, v in sd.items():
+        found = False
         for pref in candidate_prefixes:
             if k.startswith(pref):
-                ks = k[len(pref):]
-                if ks in target_sd and target_sd[ks].shape == v.shape:
-                    filtered[ks] = v
+                found = True
+                if k in target_sd and target_sd[k].shape == v.shape:
+                    filtered[k] = v
                 break
+        if not found:
+            print(f"[WARN] Tensor not found to load {k}")
 
-    load_res = model.swinViT.load_state_dict(filtered, strict=False)
+
+    load_res = model.load_state_dict(filtered, strict=False)
 
     total_target = len(target_sd)
     matched = len(filtered)
@@ -63,14 +69,8 @@ def load_voco_encoder_weights(model: nn.Module, cfg: Config) -> None:
 
     print("\n[VoCo->Swin] Encoder weight loading report")
     print(f"  ckpt: {cfg.voco_ckpt_path}")
+    print(f"  loaded tensors:         {len(sd.keys())}")
     print(f"  target encoder tensors: {total_target}")
     print(f"  matched tensors:        {matched} ({ratio*100:.1f}%)")
     print(f"  missing (first 20):     {load_res.missing_keys[:20]}")
     print(f"  unexpected (first 20):  {load_res.unexpected_keys[:20]}")
-
-    if cfg.strict_load and ratio < cfg.strict_load_threshold:
-        raise RuntimeError(
-            f"Too few encoder tensors matched ({ratio*100:.1f}%). "
-            f"Likely feature_size mismatch or different Swin config vs VoCo checkpoint. "
-            f"Try cfg.feature_size=96 or 192 (depending on VoCo variant)."
-        )

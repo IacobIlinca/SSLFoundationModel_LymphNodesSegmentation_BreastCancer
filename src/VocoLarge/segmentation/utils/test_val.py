@@ -6,7 +6,7 @@ from src.VocoLarge.segmentation.models.voco_loader import load_voco_encoder_weig
 from src.VocoLarge.segmentation.models.freeze import freeze_encoder
 from src.VocoLarge.segmentation.data.loaders_binary import build_all_datasets_and_loaders
 from src.VocoLarge.segmentation.training.enigne_binary import evaluate
-from src.VocoLarge.segmentation.training.losses_metrics import build_loss_binary
+from src.VocoLarge.segmentation.training.losses_metrics import build_loss_binary_softmax
 
 
 def main():
@@ -18,7 +18,7 @@ def main():
     load_voco_encoder_weights(model, cfg)
     freeze_encoder(model, cfg)
 
-    loss_fn = build_loss_binary(cfg)
+    loss_fn = build_loss_binary_softmax(cfg)
 
     _, val_loader, _ = build_all_datasets_and_loaders(cfg)
 
