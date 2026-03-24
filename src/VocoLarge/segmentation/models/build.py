@@ -1,9 +1,8 @@
 import torch.nn as nn
 from monai.networks.nets import SwinUNETR
-from src.VocoLarge.segmentation.config import Config
 
 
-def build_model(cfg: Config) -> nn.Module:
+def build_model(cfg) -> nn.Module:
     """
     REQUIRED.
 

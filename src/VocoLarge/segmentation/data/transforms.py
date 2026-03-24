@@ -1,6 +1,5 @@
 from typing import Tuple
 import torch
-import numpy as np
 
 from monai.transforms import (
     Compose,
@@ -13,49 +12,55 @@ from monai.transforms import (
     RandFlipd,
     RandScaleIntensityd,
     RandShiftIntensityd,
-    RandCropByPosNegLabeld,
     EnsureTyped,
-    Identityd, DeleteItemsd, RandCropByLabelClassesd
+    RandCropByLabelClassesd,
+    RandCropByPosNegLabeld,
 )
 
 from src.VocoLarge.segmentation.config import Config
-from src.VocoLarge.segmentation.data.combine_masks import CombineBinaryMasksReportOverlapd
-from src.VocoLarge.segmentation.data.fg_from_multilabel import ForegroundFromMultiLabeld
+from src.VocoLarge.segmentation.data.combine_masks_multicass import CombineBinaryMasksReportOverlapd
+from src.VocoLarge.segmentation.data.build_binary_lymph_mask import BuildBinaryLymphMaskd
 
 
 def get_transforms(cfg: Config) -> Tuple[Compose, Compose]:
     """
-    REQUIRED.
+    Returns (train_transform, val_transform) for either:
+      - old multiclass overfit mode
+      - new binary training mode
 
-    Returns (train_transform, val_transform).
-
-    Key ideas:
-      - We standardize orientation (RAS).
-      - Optional resampling (Spacingd) is OFF by default. Turn it on later for consistent spacing.
-      - For CT, we (optionally) clip HU-ish values and normalize to [0,1].
-      - Training uses patch sampling with foreground bias to avoid "all background" patches.
-      - Validation uses full volume (no cropping), evaluated via sliding window inference.
-
-    Optional parts are explicitly labeled below.
+    Validation behavior:
+      - if cfg.fast_val == True: validation is patch-based (fast)
+      - if cfg.fast_val == False: validation is full-volume (slow, proper evaluation)
     """
-    mask_keys = cfg.mask_keys or []
-    keys = ["image"] + mask_keys
 
-    # ---- Required: load image+label + standardize shape ----
+    # --------------------------------------------------
+    # 1) Decide which keys are loaded at the start
+    # --------------------------------------------------
+    if cfg.task_mode == "overfit_multiclass":
+        mask_keys = cfg.mask_keys or []
+        keys = ["image"] + mask_keys
+
+    elif cfg.task_mode == "train_binary":
+        mask_keys = []
+        keys = ["image"]
+
+    else:
+        raise ValueError(
+            f"Unknown task_mode: {cfg.task_mode}. "
+            f"Expected 'overfit_multiclass' or 'train_binary'."
+        )
+
+    # --------------------------------------------------
+    # 2) Base transforms: load + orientation + intensity
+    # --------------------------------------------------
     base = [
-        # Load NIfTI files into arrays + keep metadata (affine/spacing).
         LoadImaged(keys=keys, image_only=False),
-        # Ensure channel-first: (C,H,W,D). For NIfTI, C becomes 1.
         EnsureChannelFirstd(keys=keys),
-        # Standardize orientation so all cases are comparable.
         Orientationd(keys=keys, axcodes=cfg.axcodes),
     ]
 
-    # ---- OPTIONAL but recommended later: resample to target spacing ----
-    # Why optional now? You said "don't mind spacing now".
-    # BUT: for best comparisons and stable training, consistent spacing helps.
     if cfg.do_resample:
-        if len(mask_keys) > 0:
+        if cfg.task_mode == "overfit_multiclass":
             base += [
                 Spacingd(
                     keys=keys,
@@ -63,29 +68,30 @@ def get_transforms(cfg: Config) -> Tuple[Compose, Compose]:
                     mode=("bilinear",) + ("nearest",) * len(mask_keys),
                 )
             ]
-        else:
-            base += [Spacingd(keys=["image"], pixdim=cfg.target_spacing, mode=("bilinear",))]
+        elif cfg.task_mode == "train_binary":
+            # Only image is loaded here. Label is built later.
+            base += [
+                Spacingd(
+                    keys=["image"],
+                    pixdim=cfg.target_spacing,
+                    mode=("bilinear",),
+                )
+            ]
 
-    # ---- Intensity handling ----
-    # CT audit indicates HU-like data with lots of air at -1000 and typical caps ~3071,
-    # so clipping then z-score is a strong default for transformer backbones.
     if cfg.norm_mode == "ct_clip_zscore":
         base += [
-            # Clip HU range first to remove outliers (metal/artifacts etc.)
             ScaleIntensityRanged(
                 keys=["image"],
                 a_min=cfg.ct_clip[0],
                 a_max=cfg.ct_clip[1],
-                b_min=cfg.ct_clip[0],  # keep in HU space after clipping
+                b_min=cfg.ct_clip[0],
                 b_max=cfg.ct_clip[1],
                 clip=True,
             ),
-            # Z-score normalize (mean=0, std=1) after clipping
             NormalizeIntensityd(keys=["image"], nonzero=False, channel_wise=True),
         ]
     elif cfg.norm_mode == "ct_clip_0_1":
         base += [
-            # Clip HU and map to [0,1]
             ScaleIntensityRanged(
                 keys=["image"],
                 a_min=cfg.ct_clip[0],
@@ -102,10 +108,19 @@ def get_transforms(cfg: Config) -> Tuple[Compose, Compose]:
     else:
         raise ValueError(f"Unknown norm_mode: {cfg.norm_mode}")
 
-    # ---- Combining binary masks into one label ----
-    if len(mask_keys) > 0:
+    # --------------------------------------------------
+    # 3) Build label
+    # --------------------------------------------------
+    if cfg.task_mode == "overfit_multiclass":
+        if len(mask_keys) == 0:
+            raise ValueError(
+                "cfg.mask_keys must be provided in overfit_multiclass mode."
+            )
         if cfg.mask_key_to_class_index is None:
-            raise ValueError("mask_key_to_class_index must be provided when mask_keys are used.")
+            raise ValueError(
+                "mask_key_to_class_index must be provided in overfit_multiclass mode."
+            )
+
         base += [
             CombineBinaryMasksReportOverlapd(
                 mask_keys=mask_keys,
@@ -114,53 +129,100 @@ def get_transforms(cfg: Config) -> Tuple[Compose, Compose]:
             )
         ]
 
-    from monai.transforms import Lambdad
+    elif cfg.task_mode == "train_binary":
+        if not getattr(cfg, "lymph_terms_json", None):
+            raise ValueError(
+                "cfg.lymph_terms_json must be provided in train_binary mode."
+            )
 
-    # DEBUG
-    base += [
-        Lambdad(keys="label", func=lambda x: (
-                    print("[DEBUG] LABEL unique pre-crop:", torch.unique(x) if torch.is_tensor(x) else np.unique(x)) or x))
-    ]
+        base += [
+            BuildBinaryLymphMaskd(
+                mask_paths_key="mask_paths",
+                output_key="label",
+                lymph_terms_json=cfg.lymph_terms_json,
+                no_lymph_patients_log_file=cfg.no_lymph_patients_log_file,
+            ),
+            EnsureChannelFirstd(keys=["label"], channel_dim="no_channel"),
+        ]
 
+        # Binary label is built after image loading, so resampling is not supported yet.
+        if cfg.do_resample:
+            raise ValueError(
+                "train_binary with do_resample=True is not supported yet because the "
+                "binary label is built after image loading/resampling. "
+                "Set do_resample=False for now."
+            )
 
+    # From this point onward, both modes should have image + label
     keys = ["image", "label"]
 
-    # ---- OPTIONAL: light augmentations (keep light for linear probe) ----
-    # Augmentations are helpful but keep them mild since you are probing representations.
-    aug = Identityd
+    # --------------------------------------------------
+    # 4) Optional augmentations (train only)
+    # --------------------------------------------------
+    aug = []
     if cfg.light_aug:
         aug = [
-            RandFlipd(keys="image", prob=0.5, spatial_axis=0),
-            RandFlipd(keys="image", prob=0.5, spatial_axis=1),
-            RandFlipd(keys="image", prob=0.5, spatial_axis=2),
+            RandFlipd(keys=["image", "label"], prob=0.5, spatial_axis=0),
+            RandFlipd(keys=["image", "label"], prob=0.5, spatial_axis=1),
+            RandFlipd(keys=["image", "label"], prob=0.5, spatial_axis=2),
             RandScaleIntensityd(keys="image", factors=0.1, prob=0.5),
             RandShiftIntensityd(keys="image", offsets=0.1, prob=0.5),
         ]
 
-    # ---- Required: patch sampling focused on foreground ----
-    # This is critical for small/rare LN levels; otherwise many patches are empty background.
-    crop = [
-        RandCropByLabelClassesd(
-            keys=["image", "label"],
-            label_key="label",
-            spatial_size=cfg.roi_size,
-            num_classes=cfg.num_classes + 1,  # include background (0)
-            ratios=[0.0, 1.0, 1.0, 1.0],  # NEVER sample background-only, prefer fg classes
-            num_samples=cfg.num_samples_per_volume,
-        )
-    ]
+    # --------------------------------------------------
+    # 5) Train crop sampling
+    # --------------------------------------------------
+    if cfg.task_mode == "overfit_multiclass":
+        train_crop = [
+            RandCropByLabelClassesd(
+                keys=["image", "label"],
+                label_key="label",
+                spatial_size=cfg.roi_size,
+                num_classes=cfg.num_classes + 1,
+                ratios=[0.0, 1.0, 1.0, 1.0],
+                num_samples=cfg.num_samples_per_volume,
+            )
+        ]
 
-    # DEBUG
-    crop += [
-        Lambdad(keys="label", func=lambda x: (
-                    print("[DEBUG] LABEL unique post-crop:", torch.unique(x) if torch.is_tensor(x) else np.unique(x)) or x))
-    ]
+        val_crop = []
 
-    # ---- Required: convert to torch tensors ----
-    # NOTE: EnsureTyped with float32 will cast label to float; we convert label->long in the training step.
-    # (We do this because MONAI often expects float tensors in pipelines; it's OK as long as we cast later.)
+    elif cfg.task_mode == "train_binary":
+        train_crop = [
+            RandCropByPosNegLabeld(
+                keys=["image", "label"],
+                label_key="label",
+                spatial_size=cfg.roi_size,
+                pos=1.0,
+                neg=1.0,
+                num_samples=cfg.num_samples_per_volume,
+                image_key="image",
+                image_threshold=0,
+            )
+        ]
+
+        # Fast validation: patch-based val instead of full-volume val
+        if getattr(cfg, "fast_val", False):
+            val_crop = [
+                RandCropByPosNegLabeld(
+                    keys=["image", "label"],
+                    label_key="label",
+                    spatial_size=cfg.roi_size,
+                    pos=1.0,
+                    neg=1.0,
+                    num_samples=cfg.fast_val_num_samples_per_volume,
+                    image_key="image",
+                    image_threshold=0,
+                )
+            ]
+        else:
+            val_crop = []
+
+    # --------------------------------------------------
+    # 6) Convert to tensors
+    # --------------------------------------------------
     typed = [EnsureTyped(keys=keys, dtype=torch.float32)]
 
-    train_transform = Compose(base + crop + typed)
-    val_transform = Compose(base + typed)
+    train_transform = Compose(base + aug + train_crop + typed)
+    val_transform = Compose(base + val_crop + typed)
+
     return train_transform, val_transform
