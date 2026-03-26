@@ -34,7 +34,7 @@ def build_all_datasets_and_loaders(args: Config):
     if len(test_files) == 0:
         raise RuntimeError("Test set is empty.")
 
-    train_transform = build_transforms(args, False)
+    train_transform = build_transforms(args, True)
     val_transform = build_transforms(args, True)
     test_transform = build_transforms(args, True)
 

@@ -24,7 +24,7 @@ class Config:
     # Used
     data_dir: Optional[str] = "/mnt/data/flaviu/rtnation_02_02/"
 
-    out_dir: str = "/processing/flaviu/ssl_training/10_epochs_lr_1e4"
+    out_dir: str = "/processing/flaviu/ssl_training/10_epochs_lr_5e3_no_aug"
 
     # --------------------
     # Reproducibility / runtime
@@ -51,7 +51,8 @@ class Config:
     # Transforms / augmentation
     # --------------------
     # If True, VoCoAugmentation(aug=False)
-    no_aug: bool = False
+    # UNUSED IN ACTUAL TRAINING. CHECK training/datasets_and_loaders.py
+    no_aug: bool = True
 
     # Chest transform geometry (used by data_trans.get_chest_trans(voco_args))
     roi_x: int = 192
@@ -81,7 +82,7 @@ class Config:
     # Training loop
     # --------------------
     epochs: int = 10
-    lr: float = 1e-4
+    lr: float = 5e-3
     optimizer: str = "sgd"
     weight_decay: float = 1e-4
     momentum: float = 0.9
