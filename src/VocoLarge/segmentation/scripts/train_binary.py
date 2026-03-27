@@ -32,8 +32,8 @@ def make_visuals_callback(cfg: ConfigBinary):
         # label: (1,1,H,W,D)
         lab_np = label[0, 0].detach().cpu().numpy().astype(np.int32)
 
-        # pred[0]: (H,W,D)
-        pred_np = pred[0][1].detach().cpu().numpy().astype(np.int32)
+        # pred[0]: (1,H,W,D)
+        pred_np = pred[0][0].detach().cpu().numpy().astype(np.int32)
 
         out_dir = os.path.join(cfg.save_dir, "visuals")
         os.makedirs(out_dir, exist_ok=True)

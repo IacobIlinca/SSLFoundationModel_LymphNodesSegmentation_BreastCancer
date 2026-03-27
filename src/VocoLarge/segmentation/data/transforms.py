@@ -229,30 +229,26 @@ def get_transforms_binary(cfg: ConfigBinary) -> Tuple[Compose, Compose]:
     # 4) Train, val crop sampling
     # --------------------------------------------------
     train_crop = [
-        RandCropByPosNegLabeld(
+        RandCropByLabelClassesd(
             keys=["image", "label"],
             label_key="label",
             spatial_size=cfg.roi_size,
-            pos=1.0,
-            neg=1.0,
+            num_classes=2,
+            ratios=[0.0, 1.0],
             num_samples=cfg.num_samples_per_volume,
-            image_key="image",
-            image_threshold=0,
         )
     ]
 
     # Fast validation: patch-based val instead of full-volume val
     if cfg.fast_val:
         val_crop = [
-            RandCropByPosNegLabeld(
+            RandCropByLabelClassesd(
                 keys=["image", "label"],
                 label_key="label",
                 spatial_size=cfg.roi_size,
-                pos=1.0,
-                neg=1.0,
-                num_samples=cfg.fast_val_num_samples_per_volume,
-                image_key="image",
-                image_threshold=0,
+                num_classes=2,
+                ratios=[0.0, 1.0],
+                num_samples=cfg.num_samples_per_volume,
             )
         ]
     else:

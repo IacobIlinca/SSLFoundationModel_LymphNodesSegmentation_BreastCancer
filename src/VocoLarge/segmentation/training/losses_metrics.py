@@ -69,8 +69,8 @@ def build_loss_binary_sigmoid(cfg: ConfigBinary):
     """
     return DiceBCEBinaryLoss(
         pos_weight=cfg.class_weight_for_loss,
-        dice_weight=1.0,
-        bce_weight=1.0,
+        dice_weight=cfg.dice_weight,
+        bce_weight=cfg.bce_weight,
     ).to(cfg.device)
 
 

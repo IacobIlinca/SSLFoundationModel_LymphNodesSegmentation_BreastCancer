@@ -49,7 +49,7 @@ class ConfigBinary:
     # ---- Training ----
     seed: int = 0
     device: str = "cuda"
-    epochs: int = 10
+    epochs: int = 100
     lr: float = 1e-3
     momentum: float = 0.9
     weight_decay: float = 1e-5
@@ -57,8 +57,10 @@ class ConfigBinary:
     num_workers: int = 8
     log_every: int = 2
 
-    # For softmax-style binary setup with background + foreground
+    # For loss function
     class_weight_for_loss: List[float] = field(default_factory=lambda: [5.0])
+    bce_weight = 1.15
+    dice_weight: float = 0.85
 
     # ---- Linear probing specifics ----
     voco_ckpt_path: str = "/processing/flaviu/pretrained/VoCo_B_SSL_head.pt"
