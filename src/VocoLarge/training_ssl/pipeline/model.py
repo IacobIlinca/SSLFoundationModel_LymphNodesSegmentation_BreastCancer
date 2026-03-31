@@ -1,10 +1,58 @@
 import torch
+from torch.optim import SGD, AdamW
+
 from src.VocoLarge.third_party_voco_large.models.voco_head import VoCoHead
+from src.VocoLarge.training_ssl.pipeline.ckpt import load_ckpt, save_ckpt_atomic
+from src.VocoLarge.training_ssl.pipeline.config import Config
+from src.VocoLarge.training_ssl.pipeline.freeze import report_trainable_by_module
 
 
 def build_model(voco_args, device: torch.device) -> VoCoHead:
     model = VoCoHead(voco_args).to(device)
     return model
+
+def build_optimizer(args: Config, model):
+    params = [p for p in model.parameters() if p.requires_grad]
+
+    if args.optimizer.lower() == "sgd":
+        return SGD(params, lr=args.lr, momentum=args.momentum, weight_decay=args.weight_decay)
+
+    if args.optimizer.lower() == "adamw":
+        return AdamW(params, lr=args.lr, weight_decay=args.weight_decay)
+
+    raise ValueError(f"Unsupported optimizer: {args.optimizer}")
+
+
+def setup_model_and_optimizer(args: Config, device):
+    model = build_model(args, device).train()
+
+    if args.voco_ckpt_path:
+        stats = load_ckpt(model, args.voco_ckpt_path, args.device, mode=args.load_mode)
+        print(f"[ckpt] load_mode={args.load_mode} stats={stats}")
+    else:
+        print("[ckpt] no checkpoint provided; training from scratch")
+
+    report_trainable_by_module(model)
+
+    optimizer = build_optimizer(args, model)
+    scaler = torch.cuda.amp.GradScaler(enabled=(device.type == "cuda"))
+
+    return model, optimizer, scaler
+
+def save_checkpoint(
+    save_path: str,
+    model,
+    optimizer,
+    scaler,
+    epoch: int,
+):
+    payload = {
+        "state_dict": model.state_dict(),
+        "optimizer": optimizer.state_dict(),
+        "scaler": scaler.state_dict() if scaler is not None else None,
+        "epoch": epoch,
+    }
+    save_ckpt_atomic(save_path, payload)
 
 
 # Used for overfit experiment

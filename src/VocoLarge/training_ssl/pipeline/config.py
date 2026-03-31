@@ -1,3 +1,5 @@
+import json
+import os
 from dataclasses import dataclass, asdict
 from typing import Optional, Tuple, Literal
 
@@ -24,7 +26,7 @@ class Config:
     # Used
     data_dir: Optional[str] = "/mnt/data/flaviu/rtnation_02_02/"
 
-    out_dir: str = "/processing/flaviu/ssl_training/10_epochs_lr_5e3_no_aug"
+    out_dir: str = "/processing/flaviu/ssl_training/test_04_lr_1e6"
 
     # --------------------
     # Reproducibility / runtime
@@ -69,7 +71,7 @@ class Config:
     spatial_dims: int = 3
 
     # Critical for heatmaps / logits shape: number of queries (sw_s)
-    sw_batch_size: int = 1
+    sw_batch_size: int = 4
 
     # --------------------
     # Checkpoint loading (ckpt.py)
@@ -81,10 +83,10 @@ class Config:
     # --------------------
     # Training loop
     # --------------------
-    epochs: int = 10
-    lr: float = 5e-3
-    optimizer: str = "sgd"
-    weight_decay: float = 1e-4
+    epochs: int = 50
+    lr: float = 1e-6
+    optimizer: str = "adamw"
+    weight_decay: float = 0.0
     momentum: float = 0.9
     save_every: int = 5
     eval_every: int = 2
@@ -106,3 +108,8 @@ class Config:
 
     def to_dict(self):
         return asdict(self)
+
+def save_config(cfg: Config):
+    os.makedirs(cfg.out_dir, exist_ok=True)
+    with open(os.path.join(cfg.out_dir, "config.json"), "w") as f:
+        json.dump(cfg.to_dict(), f, indent=2)
