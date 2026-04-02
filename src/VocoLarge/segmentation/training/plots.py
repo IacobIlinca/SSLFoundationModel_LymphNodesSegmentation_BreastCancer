@@ -14,13 +14,16 @@ def plot_loss_curves(history: History, save_path: str, title: str = "Loss Curves
     os.makedirs(os.path.dirname(save_path), exist_ok=True)
     plt.figure()
     plt.title(title)
-    plt.plot(history.epoch, history.train_loss, label="train_loss")
-    plt.plot(history.epoch, history.val_loss, label="val_loss")
+    if len(history.train_loss) > 0:
+        plt.plot(history.train_epoch, history.train_loss, label="train_loss")
+    if len(history.val_loss) > 0:
+        plt.plot(history.val_epoch, history.val_loss, label="val_loss")
     plt.xlabel("epoch")
     plt.ylabel("loss")
     plt.legend()
     plt.tight_layout()
     plt.savefig(save_path, dpi=150)
+    plt.figure()
     plt.close()
 
 
@@ -43,14 +46,14 @@ def plot_metric_curves(history: History, save_path: str, title: str = "Validatio
     ax1.set_title(title)
     ax1.set_xlabel("epoch")
     ax1.set_ylabel("Dice", color="tab:blue")
-    ax1.plot(history.epoch, history.val_dice, color="tab:blue", label="val_dice")
+    ax1.plot(history.val_epoch, history.val_dice, color="tab:blue", label="val_dice")
     ax1.tick_params(axis="y", labelcolor="tab:blue")
     ax1.set_ylim(0.0, 1.0)  # Dice range
 
     # ----- Right axis: HD95 -----
     ax2 = ax1.twinx()
     ax2.set_ylabel("HD95", color="tab:red")
-    ax2.plot(history.epoch, history.val_hd95, color="tab:red", label="val_hd95")
+    ax2.plot(history.val_epoch, history.val_hd95, color="tab:red", label="val_hd95")
     ax2.tick_params(axis="y", labelcolor="tab:red")
 
     # Optional: auto-scale HD95 nicely

@@ -150,27 +150,24 @@ def get_transforms_binary(cfg: ConfigBinary) -> Tuple[Compose, Compose]:
         )
 
     base = [
+        LoadImaged(keys=["image"], image_only=False),
+        EnsureChannelFirstd(keys=["image"]),
+
         BuildBinaryLymphMaskd(
+            image_key="image",
             mask_paths_key="mask_paths",
             output_key="label",
             lymph_terms_json=cfg.lymph_terms_json,
             no_lymph_patients_log_file=cfg.no_lymph_patients_log_file,
         ),
         EnsureChannelFirstd(keys=["label"], channel_dim="no_channel"),
+
         DeleteItemsd(keys=["mask_paths", "matched_mask_paths"]),
+        Orientationd(keys=["image", "label"], axcodes=cfg.axcodes),
     ]
 
     # From this point onward, both modes should have image + label
     keys = ["image", "label"]
-
-    # --------------------------------------------------
-    # 2) Base transforms: load + orientation + intensity
-    # --------------------------------------------------
-    base += [
-        LoadImaged(keys=["image"], image_only=False),
-        EnsureChannelFirstd(keys=["image"]),
-        Orientationd(keys=keys, axcodes=cfg.axcodes),
-    ]
 
     if cfg.do_resample:
         base += [

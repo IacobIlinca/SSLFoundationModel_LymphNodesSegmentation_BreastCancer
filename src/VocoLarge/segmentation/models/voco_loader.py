@@ -13,7 +13,7 @@ def _unwrap_state_dict(ckpt: Dict) -> Dict[str, torch.Tensor]:
     return ckpt
 
 
-def load_voco_encoder_weights(model: nn.Module, cfg: Config) -> None:
+def load_voco_encoder_weights(model: nn.Module, cfg) -> None:
     """
     REQUIRED.
 

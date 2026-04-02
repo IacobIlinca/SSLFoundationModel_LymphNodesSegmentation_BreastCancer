@@ -3,7 +3,7 @@ import torch.nn as nn
 from src.VocoLarge.segmentation.config import Config
 
 
-def freeze_encoder(model: nn.Module, cfg: Config) -> None:
+def freeze_encoder(model: nn.Module, cfg) -> None:
     """
     REQUIRED for linear probing.
 

@@ -127,3 +127,25 @@ def build_all_datasets_and_loaders(cfg: ConfigBinary):
     )
 
     return train_loader, val_loader, test_loader
+
+
+
+def maybe_limit_loader(loader, max_batches=None):
+    if max_batches is None:
+        return loader
+
+    class LimitedLoader:
+        def __init__(self, loader, max_batches):
+            self.loader = loader
+            self.max_batches = max_batches
+
+        def __iter__(self):
+            for i, batch in enumerate(self.loader):
+                if i >= self.max_batches:
+                    break
+                yield batch
+
+        def __len__(self):
+            return min(len(self.loader), self.max_batches)
+
+    return LimitedLoader(loader, max_batches)
