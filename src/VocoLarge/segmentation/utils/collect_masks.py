@@ -13,7 +13,7 @@ output_review_csv = "src/VocoLarge/segmentation/masks/mask_name_review.csv"
 output_review_json = "src/VocoLarge/segmentation/masks/mask_name_review.json"
 
 LYMPH_TERMS_JSON = "src/VocoLarge/segmentation/masks/lymph_terms.json"
-NOT_LYMPH_TERMS_JSON = "src/VocoLarge/segmentation/masks/not_lymph_terms.json"
+NOT_LYMPH_TERMS_JSON = "src/VocoLarge/segmentation/masks/all_not_lymph_terms.json"
 
 allowed_exts = {".nii", ".nii.gz", ".nrrd", ".mha", ".mhd"}
 

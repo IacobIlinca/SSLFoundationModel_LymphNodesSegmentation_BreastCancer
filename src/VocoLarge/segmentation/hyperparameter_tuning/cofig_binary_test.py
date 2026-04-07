@@ -20,6 +20,7 @@ class ConfigBinaryTest:
     root_dir: str = "/mnt/data/ilinca/structured_cases_14_16/"
     val_fraction: float = 0.2
     lymph_terms_json: str = "src/VocoLarge/segmentation/masks/lymph_terms.json"
+    not_lymph_terms_json: str = "src/VocoLarge/segmentation/masks/not_lymph_terms.json"
 
     # 1 class for background will be added when the model is computed
     # 1 output channel with sigmoid activation
@@ -69,16 +70,16 @@ class ConfigBinaryTest:
     freeze_scope: str = "swin_plus_conv"
 
     # ---- Debug / convenience ----
-    save_dir: str = "/processing/flaviu/binary_segmentation_runs/hyperparameter_tuning/run_10_sgd"
+    save_dir: str = "/processing/flaviu/binary_segmentation_runs/hyperparameter_tuning/run_14"
     save_visuals: bool = True
-    visuals_case_index: int = 0
+    visuals_case_indices: tuple[int, int, int] = (0, 1, 2)
     visuals_slices: Tuple[int, int, int] = (10, 20, 30, 40, 50, 60)
 
     # ---- Split data -----
     train_ids_path: str = "src/VocoLarge/segmentation/training_data_ids/train_ids.txt"
     val_ids_path: str = "src/VocoLarge/segmentation/training_data_ids/val_ids.txt"
     test_ids_path: str = "src/VocoLarge/segmentation/training_data_ids/test_ids.txt"
-    cache_dir: str = "/processing/flaviu/binary_segmentation_cache"
+    cache_dir: str = "/processing/flaviu/binary_segmentation_runs/hyperparameter_tuning/remove_excess_margins_cache"
     shuffle: bool = True
 
     # log file for patient with no lymph masks available

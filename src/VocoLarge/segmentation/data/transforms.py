@@ -158,6 +158,7 @@ def get_transforms_binary(cfg: ConfigBinary) -> Tuple[Compose, Compose]:
             mask_paths_key="mask_paths",
             output_key="label",
             lymph_terms_json=cfg.lymph_terms_json,
+            not_lymph_terms_json=cfg.not_lymph_terms_json,
             no_lymph_patients_log_file=cfg.no_lymph_patients_log_file,
         ),
         EnsureChannelFirstd(keys=["label"], channel_dim="no_channel"),

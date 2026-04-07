@@ -2,7 +2,7 @@ import json
 import os
 import torch
 from torch import GradScaler
-from torch.optim import Adam
+from torch.optim import Adam, AdamW
 from torch.optim.lr_scheduler import CosineAnnealingLR
 from tqdm import tqdm
 
@@ -88,7 +88,7 @@ def run_test_only(model, cfg, visuals_cb=None):
     loss_fn = build_loss_binary_sigmoid(cfg)
 
     params = [p for p in model.parameters() if p.requires_grad]
-    optim = Adam(
+    optim = AdamW(
         params,
         lr=cfg.lr,
         weight_decay=cfg.weight_decay

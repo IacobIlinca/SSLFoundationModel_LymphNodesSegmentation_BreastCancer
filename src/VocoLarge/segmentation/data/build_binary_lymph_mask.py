@@ -1,4 +1,5 @@
 import json
+import re
 from pathlib import Path
 from typing import Sequence, Dict, Any
 
@@ -19,6 +20,11 @@ class BuildBinaryLymphMaskd(MapTransform):
 
     Output:
         d["label"] = MetaTensor with values {0,1}, carrying image metadata
+
+    Matching rule:
+        include mask if:
+          - it matches at least one lymph/include term
+          - and matches none of the exclude/not_lymph terms
     """
 
     def __init__(
@@ -27,6 +33,7 @@ class BuildBinaryLymphMaskd(MapTransform):
         image_key: str = "image",
         output_key: str = "label",
         lymph_terms_json: str = "",
+        not_lymph_terms_json: str = "",
         save_matched_paths_key: str | None = "matched_mask_paths",
         allow_missing_keys: bool = False,
         no_lymph_patients_log_file: str | None = None,
@@ -38,8 +45,22 @@ class BuildBinaryLymphMaskd(MapTransform):
         self.output_key = output_key
         self.save_matched_paths_key = save_matched_paths_key
         self.no_lymph_patients_log_file = no_lymph_patients_log_file
+        self.size_pattern = re.compile(r"[0-9]+.*(mm|cm)")
 
-        with open(lymph_terms_json, "r") as f:
+        self.lymph_terms = self._load_terms(
+            lymph_terms_json,
+            expected_name="lymph_terms_json",
+        )
+
+        self.not_lymph_terms = []
+        if not_lymph_terms_json:
+            self.not_lymph_terms = self._load_terms(
+                not_lymph_terms_json,
+                expected_name="not_lymph_terms_json",
+            )
+
+    def _load_terms(self, json_path: str, expected_name: str) -> list[str]:
+        with open(json_path, "r") as f:
             data = json.load(f)
 
         if isinstance(data, list):
@@ -48,17 +69,31 @@ class BuildBinaryLymphMaskd(MapTransform):
             terms = data["terms"]
         else:
             raise ValueError(
-                "Invalid lymph terms JSON format. "
-                "Expected either a list or a dict with key 'terms'."
+                f"Invalid JSON format in {expected_name}: {json_path}. "
+                f"Expected either a list or a dict with key 'terms'."
             )
 
-        self.lymph_terms = [str(t).lower().strip() for t in terms if str(t).strip()]
-        if not self.lymph_terms:
-            raise ValueError("No lymph terms found in JSON.")
+        terms = [str(t).lower().strip() for t in terms if str(t).strip()]
+        if not terms:
+            raise ValueError(f"No terms found in {expected_name}: {json_path}")
+
+        return terms
 
     def _is_lymph_mask(self, path: str) -> bool:
         name = Path(path).name.lower()
-        return any(term in name for term in self.lymph_terms)
+
+        has_include = any(term in name for term in self.lymph_terms)
+        if not has_include:
+            return False
+
+        has_exclude = any(term in name for term in self.not_lymph_terms)
+        if has_exclude:
+            return False
+
+        if self.size_pattern.search(name):
+            return False
+
+        return True
 
     def __call__(self, data: Dict[str, Any]) -> Dict[str, Any]:
         d = dict(data)
