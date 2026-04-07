@@ -1,5 +1,6 @@
 import torch
 from torch.optim import SGD, AdamW
+from torch.optim.lr_scheduler import StepLR, CosineAnnealingLR
 
 from src.VocoLarge.third_party_voco_large.models.voco_head import VoCoHead
 from src.VocoLarge.training_ssl.pipeline.ckpt import load_ckpt, save_ckpt_atomic
@@ -10,6 +11,22 @@ from src.VocoLarge.training_ssl.pipeline.freeze import report_trainable_by_modul
 def build_model(voco_args, device: torch.device) -> VoCoHead:
     model = VoCoHead(voco_args).to(device)
     return model
+
+
+def build_scheduler(args: Config, optimizer):
+    if args.scheduler is None or args.scheduler.lower() == "none":
+        return None
+
+    name = args.scheduler.lower()
+
+    if name == "cosine":
+        return CosineAnnealingLR(
+            optimizer,
+            T_max=args.epochs,
+            eta_min=args.lr_min,
+        )
+
+    raise ValueError(f"Unsupported scheduler: {args.scheduler}")
 
 def build_optimizer(args: Config, model):
     params = [p for p in model.parameters() if p.requires_grad]
@@ -35,21 +52,24 @@ def setup_model_and_optimizer(args: Config, device):
     report_trainable_by_module(model)
 
     optimizer = build_optimizer(args, model)
+    scheduler = build_scheduler(args, optimizer)
     scaler = torch.cuda.amp.GradScaler(enabled=(device.type == "cuda"))
 
-    return model, optimizer, scaler
+    return model, optimizer, scaler, scheduler
 
 def save_checkpoint(
     save_path: str,
     model,
     optimizer,
     scaler,
+    scheduler,
     epoch: int,
 ):
     payload = {
         "state_dict": model.state_dict(),
         "optimizer": optimizer.state_dict(),
         "scaler": scaler.state_dict() if scaler is not None else None,
+        "scheduler": scheduler.state_dict() if scheduler is not None else None,
         "epoch": epoch,
     }
     save_ckpt_atomic(save_path, payload)

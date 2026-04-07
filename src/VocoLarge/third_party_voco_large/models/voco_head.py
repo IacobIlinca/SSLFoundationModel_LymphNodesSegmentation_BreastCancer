@@ -21,6 +21,14 @@ import torch.nn.functional as F
 from dynamic_network_architectures.architectures.unet import ResidualEncoderUNet, PlainConvUNet
 from dynamic_network_architectures.building_blocks.helper import get_matching_instancenorm, convert_dim_to_conv_op
 
+def top1_match(logits: torch.Tensor, targets: torch.Tensor) -> float:
+    """
+    logits/targets: (sw_s, 9)
+    """
+    top1_pred = logits.argmax(dim=1)
+    top1_tgt = targets.argmax(dim=1)
+    return float((top1_pred == top1_tgt).float().mean().item())
+
 
 class projection_head(nn.Module):
     def __init__(self, in_dim=768, hidden_dim=2048, out_dim=2048):
@@ -227,7 +235,7 @@ class VoCoHead(nn.Module):
         for param, param_t in zip(self.student.parameters(), self.teacher.parameters()):
             param_t.data = momentum * param_t.data + (1. - momentum) * param.data
 
-    def forward(self, img, crops, labels):
+    def forward(self, img, crops, labels, update_teacher: bool = True, monitor: bool = True):
         batch_size = labels.size()[0]
         total_size = img.size()[0]
         sw_size = total_size // batch_size
@@ -242,15 +250,23 @@ class VoCoHead(nn.Module):
         embeddings = self.backbone(inputs)
 
         # feature augmentation
-        aug_embeddings = nn.Dropout1d(0.2)(embeddings)
+        #aug_embeddings = nn.Dropout1d(0.2)(embeddings)
+        aug_embeddings = embeddings
         student = self.student(aug_embeddings)
 
-        self._EMA_update_encoder_teacher()
+        if update_teacher:
+            self._EMA_update_encoder_teacher()
         with torch.no_grad():
             teacher = self.teacher(embeddings)
 
         x_student, bases_student = student[:total_size], student[total_size:]
         x_teacher, bases_teacher = teacher[:total_size], teacher[total_size:]
+
+        # MONITORING
+        all_logits = []
+        all_labels = []
+        all_base_cos = []
+        top1 = 0.0
 
         for i in range(batch_size):
             label = labels[i]
@@ -259,6 +275,10 @@ class VoCoHead(nn.Module):
             x_stu, bases_stu = x_student[i * sw_size:(i + 1) * sw_size], bases_student[i * bases_num:(i + 1) * bases_num]
             x_tea, bases_tea = x_teacher[i * sw_size:(i + 1) * sw_size], bases_teacher[i * bases_num:(i + 1) * bases_num]
             logits = online_assign(x_stu, bases_tea)
+
+            # MONITORING
+            top1_metric = top1_match(logits.detach().cpu(), label.detach().cpu())
+            top1 += top1_metric
 
             # if i == 0:
             #     print('labels and logits:', label[0].data, logits[0].data)
@@ -278,12 +298,38 @@ class VoCoHead(nn.Module):
             b_loss = regularization_loss(bases_stu)
             total_b_loss += b_loss
 
+            # MONITORING
+            all_logits.append(logits.detach())
+            all_labels.append(label.detach())
+
+            base_cos = F.cosine_similarity(
+                bases_stu.unsqueeze(1), bases_stu.unsqueeze(0), dim=-1
+            )
+            all_base_cos.append(base_cos.detach())
+
         intra = intra / batch_size
         inter = inter / batch_size
         total_b_loss = total_b_loss / batch_size
+        top1 = top1 / batch_size
 
         loss = intra + inter + total_b_loss
-        return loss
+        details = {
+            "loss_total": loss.detach(),
+            "loss_intra": intra.detach(),
+            "loss_inter": inter.detach(),
+            "loss_reg": total_b_loss.detach(),
+            "top1": top1,
+            "emb_mean": embeddings.detach().mean(),
+            "emb_std": embeddings.detach().std(),
+            "student_mean": student.detach().mean(),
+            "student_std": student.detach().std(),
+            "teacher_mean": teacher.detach().mean(),
+            "teacher_std": teacher.detach().std(),
+            "logits": torch.cat(all_logits, dim=0).cpu() if all_logits else None,
+            "labels": torch.cat(all_labels, dim=0).cpu() if all_labels else None,
+            "base_cos": torch.stack(all_base_cos).cpu() if all_base_cos else None,
+        }
+        return loss, details
 
     def inter_volume(self, x_stu, x_tea, inter_bases_stu, inter_bases_tea):
         pred1 = online_assign(x_tea, inter_bases_tea)

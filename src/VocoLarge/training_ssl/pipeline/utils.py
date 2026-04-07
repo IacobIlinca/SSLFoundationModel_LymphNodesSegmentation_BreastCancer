@@ -51,16 +51,16 @@ def to_device(img, crops, labels, device: torch.device):
     return img, crops, labels
 
 
-def forward_loss(model, img, crops, labels, use_amp: bool):
+def forward_loss(model, img, crops, labels, use_amp: bool, update_teacher: bool):
     """
     One forward that returns scalar loss.
     """
     if use_amp and next(model.parameters()).is_cuda:
         with torch.cuda.amp.autocast(True):
-            loss = model(img, crops, labels)
+            loss, details = model(img, crops, labels, update_teacher)
     else:
-        loss = model(img, crops, labels)
-    return loss
+        loss, details = model(img, crops, labels, update_teacher)
+    return loss, details
 
 
 # Used in overfit experiment, for training see pipeline/training

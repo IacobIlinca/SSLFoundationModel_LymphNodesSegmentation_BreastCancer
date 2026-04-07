@@ -137,12 +137,14 @@ def get_chest_trans(args):
         CropForegroundd(keys=["image"], source_key="image"),
         SpatialPadd(keys=["image"], spatial_size=(args.roi_x, args.roi_y, args.roi_z),
                     mode='constant'),
+        DeleteItemsd(keys=["foreground_start_coord", "foreground_end_coord"]),
 
         # random
         transforms.RandShiftIntensityd(keys="image", offsets=0.1, prob=0),
 
         SpatialPadd(keys=["image"], spatial_size=(192, 192, 64), mode='constant'),
         RandSpatialCropd(keys="image", roi_size=(192, 192, 64), max_roi_size=None, random_center=True, random_size=False, lazy=False),
+        EnsureTyped(keys=["image"]),
         VoCoAugmentation(args, aug=True)
     ]
 

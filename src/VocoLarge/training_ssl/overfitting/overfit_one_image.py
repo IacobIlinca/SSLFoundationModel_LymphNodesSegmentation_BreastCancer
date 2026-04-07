@@ -25,7 +25,7 @@ from src.VocoLarge.training_ssl.pipeline import (
 from src.VocoLarge.training_ssl.pipeline.config import Config
 from src.VocoLarge.training_ssl.pipeline.freeze import freeze_encoder, report_trainable_by_module
 from src.VocoLarge.training_ssl.pipeline.train_and_valid_steps import train_one_batch
-from src.VocoLarge.training_ssl.pipeline.viz import History, plot_loss_curves
+from src.VocoLarge.training_ssl.pipeline.viz import History, plot_metric
 
 
 def main():
@@ -136,7 +136,7 @@ def main():
 
                 save_diff_bundle(logits, targets, out_dir=args.out_dir, prefix=f"step{step:05d}")
 
-    plot_loss_curves(history, args.out_dir)
+    plot_metric(history, args.out_dir)
     # Save final checkpoint
     # save_path = os.path.join(args.out_dir, "overfit_final.pt")
     # save_ckpt_atomic(save_path, {"state_dict": model.state_dict(), "steps": args.steps})

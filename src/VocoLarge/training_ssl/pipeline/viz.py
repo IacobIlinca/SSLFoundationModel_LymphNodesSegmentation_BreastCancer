@@ -1,6 +1,9 @@
+import json
+import math
 import os
+from collections import defaultdict
 from dataclasses import dataclass, asdict
-from typing import List, Dict
+from typing import List, Dict, Optional, Tuple
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -151,63 +154,415 @@ def save_diff_bundle(logits, targets, out_dir, prefix):
     save_heatmap((logits - targets).abs().numpy(), "|Pred - Target|", os.path.join(out_dir, f"{prefix}_absdiff.png"))
 
 
-@dataclass
 class History:
     """
-    Stores epoch-wise scalars for plotting and later analysis.
+    Generic metric history.
+    Stores metric_name -> list of epochs and values.
 
+    Example keys:
+        train/loss_total
+        train/loss_intra
+        train/grad_backbone
+        val/loss_total
+        val/top1
     """
-    train_epoch: List[int]
-    train_loss: List[float]
-    val_epoch: List[int]
-    val_loss: List[float]
-    top1: List[float]
-
     def __init__(self):
-        self.train_epoch = []
-        self.val_epoch = []
-        self.train_loss = []
-        self.val_loss = []
-        self.top1 = []
+        self.data = defaultdict(lambda: {"epoch": [], "value": []})
 
-    def add_train_loss(self, epoch: int, train_loss: float):
-        self.train_epoch.append(int(epoch))
-        self.train_loss.append(float(train_loss))
+    def add(self, metric_name: str, epoch: int, value: float):
+        self.data[metric_name]["epoch"].append(int(epoch))
+        self.data[metric_name]["value"].append(float(value))
 
-    def add_val_loss(self, epoch: int, val_loss: float):
-        self.val_epoch.append(int(epoch))
-        self.val_loss.append(float(val_loss))
+    def add_many(self, epoch: int, metrics: Dict[str, float]):
+        for name, value in metrics.items():
+            if value is None:
+                continue
+            self.add(name, epoch, value)
 
-    def add_top1_metric(self, top1: float):
-        self.top1.append(float(top1))
+    def get(self, metric_name: str):
+        return self.data.get(metric_name, {"epoch": [], "value": []})
 
     def to_dict(self) -> Dict:
-        return asdict(self)
+        return dict(self.data)
+
+    def save_json(self, save_dir: str, filename: str = "history.json"):
+        os.makedirs(save_dir, exist_ok=True)
+        with open(os.path.join(save_dir, filename), "w") as f:
+            json.dump(self.to_dict(), f, indent=2)
 
 
-def plot_loss_curves(history: History, save_path: str) -> None:
-    """
-    Saves a single plot with train loss, val loss and top1 across epochs.
-    """
-    os.makedirs(os.path.dirname(save_path), exist_ok=True)
+def plot_metric(history: History, metric_name: str, save_dir: str, title: str = None, ylabel: str = None):
+    series = history.get(metric_name)
+    epochs = series["epoch"]
+    values = series["value"]
+
+    if len(values) == 0:
+        return
+
+    os.makedirs(save_dir, exist_ok=True)
+
     plt.figure()
-    plt.title("Loss Curves")
-    if len(history.train_loss) > 0:
-        plt.plot(history.train_epoch, history.train_loss, label="train_loss")
-    if len(history.val_loss) > 0:
-        plt.plot(history.val_epoch, history.val_loss, label="val_loss")
+    plt.plot(epochs, values, label=metric_name)
+    plt.title(title or metric_name)
     plt.xlabel("epoch")
-    plt.ylabel("loss")
+    plt.ylabel(ylabel or metric_name)
     plt.legend()
     plt.tight_layout()
-    plt.savefig(os.path.join(save_path, "loss_curves"), dpi=150)
-    plt.figure()
-    if len(history.top1) > 0:
-        plt.title("Top1 Curve")
-        plt.plot(history.val_epoch, history.top1, label="top1")
-        plt.xlabel("epoch")
-        plt.ylabel("Top1")
-        plt.legend()
-        plt.tight_layout()
-        plt.savefig(os.path.join(save_path, "top1"), dpi=150)
+
+    safe_name = metric_name.replace("/", "_")
+    plt.savefig(os.path.join(save_dir, f"{safe_name}.png"), dpi=150)
     plt.close()
+
+def plot_metric_group(history: History, metric_names: List[str], save_dir: str, filename: str, title: str, ylabel: str):
+    os.makedirs(save_dir, exist_ok=True)
+
+    plotted_any = False
+    plt.figure()
+
+    for metric_name in metric_names:
+        series = history.get(metric_name)
+        epochs = series["epoch"]
+        values = series["value"]
+
+        if len(values) == 0:
+            continue
+
+        plt.plot(epochs, values, label=metric_name)
+        plotted_any = True
+
+    if not plotted_any:
+        plt.close()
+        return
+
+    plt.title(title)
+    plt.xlabel("epoch")
+    plt.ylabel(ylabel)
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(os.path.join(save_dir, f"{filename}.png"), dpi=150)
+    plt.close()
+
+def plot_all_curves(history: History, save_dir: str):
+    os.makedirs(save_dir, exist_ok=True)
+
+    # losses
+    plot_metric_group(
+        history,
+        metric_names=[
+            "train/loss_total",
+            "val/loss_total",
+        ],
+        save_dir=save_dir,
+        filename="loss_total",
+        title="Total Loss",
+        ylabel="loss",
+    )
+
+    plot_metric_group(
+        history,
+        metric_names=[
+            "train/loss_intra",
+            "train/loss_inter",
+            "train/loss_reg",
+        ],
+        save_dir=save_dir,
+        filename="train_loss_components",
+        title="Train Loss Components",
+        ylabel="loss",
+    )
+
+    # validation quality
+    plot_metric_group(
+        history,
+        metric_names=[
+            "val/top1",
+        ],
+        save_dir=save_dir,
+        filename="val_top1",
+        title="Validation Top1",
+        ylabel="top1",
+    )
+
+    # gradients
+    plot_metric_group(
+        history,
+        metric_names=[
+            "train/grad_backbone",
+            "train/grad_student",
+            "train/grad_teacher",
+        ],
+        save_dir=save_dir,
+        filename="grad_norms",
+        title="Gradient Norms",
+        ylabel="grad norm",
+    )
+
+    # collapsed gradients
+    plot_metric_group(
+        history,
+        metric_names=[
+            "train/grad_backbone_nan_tensors",
+            "train/grad_student_nan_tensors",
+            "train/grad_teacher_nan_tensors",
+            "train/grad_backbone_inf_tensors",
+            "train/grad_student_inf_tensors",
+            "train/grad_teacher_nan_tensors",
+        ],
+        save_dir=save_dir,
+        filename="grad_collapse",
+        title="Gradient Collapse",
+        ylabel="no. gradients",
+    )
+
+    # embedding statistics
+    plot_metric_group(
+        history,
+        metric_names=[
+            "train/emb_std",
+            "train/student_std",
+            "train/teacher_std",
+        ],
+        save_dir=save_dir,
+        filename="embedding_std",
+        title="Embedding Std",
+        ylabel="std",
+    )
+
+    plot_metric_group(
+        history,
+        metric_names=[
+            "train/emb_mean",
+            "train/student_mean",
+            "train/teacher_mean",
+        ],
+        save_dir=save_dir,
+        filename="embedding_mean",
+        title="Embedding Mean",
+        ylabel="mean",
+    )
+
+    # logits / label density
+    plot_metric_group(
+        history,
+        metric_names=[
+            "train/label_positive_fraction",
+            "train/logit_mean",
+            "train/logit_max",
+            "train/top1_top2_margin",
+        ],
+        save_dir=save_dir,
+        filename="assignment_stats",
+        title="Assignment / Similarity Stats",
+        ylabel="value",
+    )
+
+    # prototype diversity
+    plot_metric_group(
+        history,
+        metric_names=[
+            "train/base_cos_offdiag_mean",
+            "train/base_cos_offdiag_std",
+        ],
+        save_dir=save_dir,
+        filename="prototype_similarity",
+        title="Prototype Cosine Similarity",
+        ylabel="cosine similarity",
+    )
+
+
+def plot_gradient_histograms(
+    grad_hist_data: Dict[str, np.ndarray],
+    epoch: int,
+    out_dir: str,
+    bins: int = 80,
+    log_y: bool = True,
+    fixed_x_range: Optional[Tuple[float, float]] = None,
+    fallback_clip_percentile: float = 99.5,
+):
+    """
+    Plot one histogram per monitored parameter tensor.
+
+    If fixed_x_range is provided, ALL histograms use exactly that x-range.
+    This makes plots directly comparable across layers and across epochs.
+
+    Args:
+        grad_hist_data: name -> 1D numpy array of sampled gradients
+        fixed_x_range: (x_min, x_max) shared by all subplots and all epochs
+        fallback_clip_percentile: only used if fixed_x_range is None
+    """
+    if not grad_hist_data:
+        return
+
+    # determine shared x-range
+    x_min, x_max = fixed_x_range
+    # if fixed_x_range is not None:
+    #     x_min, x_max = fixed_x_range
+    # else:
+    #     all_vals = []
+    #     for arr in grad_hist_data.values():
+    #         if arr.size == 0:
+    #             continue
+    #         finite = arr[np.isfinite(arr)]
+    #         if finite.size > 0:
+    #             all_vals.append(finite)
+    #
+    #     if len(all_vals) == 0:
+    #         return
+    #
+    #     all_vals = np.concatenate(all_vals, axis=0)
+    #     abs_bound = np.percentile(np.abs(all_vals), fallback_clip_percentile)
+    #     if abs_bound <= 0:
+    #         abs_bound = max(np.max(np.abs(all_vals)), 1e-8)
+    #     x_min, x_max = -abs_bound, abs_bound
+
+    n = len(grad_hist_data)
+    ncols = 4
+    nrows = math.ceil(n / ncols)
+
+    fig, axes = plt.subplots(nrows, ncols, figsize=(12, 4 * nrows), sharex=True)
+    axes = np.array(axes).reshape(-1)
+
+    for ax, (name, arr) in zip(axes, grad_hist_data.items()):
+        if arr.size == 0:
+            ax.set_title(f"{name}\n(no finite grads)")
+            ax.axis("off")
+            continue
+
+        finite_arr = arr[np.isfinite(arr)]
+        if finite_arr.size == 0:
+            ax.set_title(f"{name}\n(no finite grads)")
+            ax.axis("off")
+            continue
+
+        clipped = finite_arr[(finite_arr >= x_min) & (finite_arr <= x_max)]
+        if clipped.size == 0:
+            clipped = finite_arr
+
+        ax.hist(clipped, bins=bins, range=(x_min, x_max))
+        ax.set_title(name)
+        ax.set_xlabel("gradient value")
+        ax.set_ylabel("count")
+        ax.set_xlim(x_min, x_max)
+
+        if log_y:
+            ax.set_yscale("log")
+
+    for j in range(len(grad_hist_data), len(axes)):
+        axes[j].axis("off")
+
+    fig.suptitle(
+        f"Gradient Histograms - Epoch {epoch} | fixed x-range [{x_min:.2e}, {x_max:.2e}]",
+        fontsize=16
+    )
+    fig.tight_layout()
+
+    os.makedirs(out_dir, exist_ok=True)
+    path = os.path.join(out_dir, f"grad_hist_epoch_{epoch:03d}.png")
+    fig.savefig(path, dpi=150, bbox_inches="tight")
+    plt.close(fig)
+
+
+def plot_gradient_histograms_paginated(
+    grad_hist_data: Dict[str, np.ndarray],
+    epoch: int,
+    out_dir: str,
+    bins: int = 80,
+    log_y: bool = True,
+    fixed_x_range: Optional[Tuple[float, float]] = None,
+    fallback_clip_percentile: float = 99.5,
+    plots_per_page: int = 12,
+    ncols: int = 3,
+):
+    """
+    Plot gradient histograms across multiple pages so many layers stay readable.
+    All pages use the same x-range.
+    """
+    if not grad_hist_data:
+        return
+
+    items = list(grad_hist_data.items())
+
+    # determine shared x-range
+    if fixed_x_range is not None:
+        x_min, x_max = fixed_x_range
+    else:
+        all_vals = []
+        for _, arr in items:
+            if arr.size == 0:
+                continue
+            finite = arr[np.isfinite(arr)]
+            if finite.size > 0:
+                all_vals.append(finite)
+
+        if len(all_vals) == 0:
+            return
+
+        all_vals = np.concatenate(all_vals, axis=0)
+        abs_bound = np.percentile(np.abs(all_vals), fallback_clip_percentile)
+        if abs_bound <= 0:
+            abs_bound = max(np.max(np.abs(all_vals)), 1e-8)
+        x_min, x_max = -abs_bound, abs_bound
+
+    os.makedirs(out_dir, exist_ok=True)
+
+    num_pages = math.ceil(len(items) / plots_per_page)
+
+    for page_idx in range(num_pages):
+        start = page_idx * plots_per_page
+        end = min((page_idx + 1) * plots_per_page, len(items))
+        page_items = items[start:end]
+
+        n_this = len(page_items)
+        nrows = math.ceil(n_this / ncols)
+
+        fig, axes = plt.subplots(
+            nrows, ncols,
+            figsize=(18, 4.5 * nrows),
+        )
+        axes = np.array(axes).reshape(-1)
+
+        for ax, (name, arr) in zip(axes, page_items):
+            if arr.size == 0:
+                ax.set_title(f"{name}\n(no finite grads)")
+                ax.axis("off")
+                continue
+
+            finite_arr = arr[np.isfinite(arr)]
+            if finite_arr.size == 0:
+                ax.set_title(f"{name}\n(no finite grads)")
+                ax.axis("off")
+                continue
+
+            clipped = finite_arr[(finite_arr >= x_min) & (finite_arr <= x_max)]
+            if clipped.size == 0:
+                clipped = finite_arr
+
+            ax.hist(clipped, bins=bins, range=(x_min, x_max))
+            ax.set_title(name, fontsize=10)
+            ax.set_xlabel("gradient value", fontsize=10)
+            ax.set_ylabel("count", fontsize=10)
+            ax.set_xlim(x_min, x_max)
+
+            ax.tick_params(axis="x", labelsize=9, rotation=45)
+            ax.tick_params(axis="y", labelsize=9)
+
+            if log_y:
+                ax.set_yscale("log")
+
+        for j in range(len(page_items), len(axes)):
+            axes[j].axis("off")
+
+        fig.suptitle(
+            f"Gradient Histograms - Epoch {epoch} - Page {page_idx + 1}/{num_pages} | "
+            f"fixed x-range [{x_min:.2e}, {x_max:.2e}]",
+            fontsize=16
+        )
+        fig.tight_layout(rect=[0, 0.03, 1, 0.97])
+        fig.subplots_adjust(hspace=0.5, wspace=0.25)
+
+        path = os.path.join(
+            out_dir,
+            f"grad_hist_epoch_{epoch:03d}_page_{page_idx + 1:02d}.png"
+        )
+        fig.savefig(path, dpi=150, bbox_inches="tight")
+        plt.close(fig)

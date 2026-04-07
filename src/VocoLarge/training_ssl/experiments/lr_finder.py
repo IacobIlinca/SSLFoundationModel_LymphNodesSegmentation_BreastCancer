@@ -88,7 +88,7 @@ def lr_range_test(
 
         optimizer.zero_grad(set_to_none=True)
 
-        loss = forward_loss(model, img, crops, labels, use_amp=(use_amp and device.type == "cuda"))
+        loss, _ = forward_loss(model, img, crops, labels, use_amp=(use_amp and device.type == "cuda"))
 
         scaler.scale(loss).backward()
         scaler.step(optimizer)
@@ -183,9 +183,9 @@ def save_lr_finder_results(out_dir, lrs, losses):
     return csv_path, fig_path
 
 
-def maybe_limit_test_loader(test_loader, max_batches=None):
+def maybe_limit_loader(loader, max_batches=None):
     if max_batches is None:
-        return test_loader
+        return loader
 
     class LimitedLoader:
         def __init__(self, loader, max_batches):
@@ -201,7 +201,7 @@ def maybe_limit_test_loader(test_loader, max_batches=None):
         def __len__(self):
             return min(len(self.loader), self.max_batches)
 
-    return LimitedLoader(test_loader, max_batches)
+    return LimitedLoader(loader, max_batches)
 
 
 def main():
@@ -211,11 +211,11 @@ def main():
 
     device = torch.device("cuda" if args.device == "cuda" and torch.cuda.is_available() else "cpu")
 
-    # Build your normal test loader
-    _, _, test_loader = build_all_datasets_and_loaders(args)
+    # Build your normal loader
+    train_loader, _, _ = build_all_datasets_and_loaders(args)
 
     # Optional: limit batches for speed if your loader is large
-    #test_loader = maybe_limit_test_loader(test_loader, max_batches=1)
+    #train_loader = maybe_limit_loader(train_loader, max_batches=1)
 
     model, optimizer, scaler = setup_model_and_optimizer(args, device)
 
@@ -226,12 +226,12 @@ def main():
         model=model,
         optimizer=optimizer,
         scaler=scaler,
-        loader=test_loader,
+        loader=train_loader,
         device=device,
         start_lr=1e-8,
         end_lr=1e-2,
         num_iter=50,
-        beta=0.1,
+        beta=0.3,
         stop_mult=4.0,
         use_amp=args.amp,
     )

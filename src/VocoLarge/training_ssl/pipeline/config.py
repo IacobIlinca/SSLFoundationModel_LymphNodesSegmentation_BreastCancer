@@ -26,7 +26,7 @@ class Config:
     # Used
     data_dir: Optional[str] = "/mnt/data/flaviu/rtnation_02_02/"
 
-    out_dir: str = "/processing/flaviu/ssl_training/test_04_lr_1e6"
+    out_dir: str = "/processing/flaviu/ssl_training/test_11_long_run_with_scheduler"
 
     # --------------------
     # Reproducibility / runtime
@@ -43,11 +43,13 @@ class Config:
     val_batch_size: int = 4
     test_batch_size: int = 4
     shuffle: bool = True
-    num_workers: int = 0
-    train_ids_path: str = "../train_valid_test_split/train_ids.txt"
-    val_ids_path: str = "../train_valid_test_split/val_ids.txt"
-    test_ids_path: str = "../train_valid_test_split/test_ids.txt"
+    num_workers: int = 4
+    train_ids_path: str = "../train_valid_test_split/train_split_ids.txt"
+    val_ids_path: str = "../train_valid_test_split/val_split_ids.txt"
+    test_ids_path: str = "../train_valid_test_split/test_split_ids.txt"
     cache_dir: str = "/mnt/data/flaviu/ssl_training/cache_dir"
+
+    train_max_batches: int = 300
 
     # --------------------
     # Transforms / augmentation
@@ -83,11 +85,13 @@ class Config:
     # --------------------
     # Training loop
     # --------------------
-    epochs: int = 50
-    lr: float = 1e-6
+    epochs: int = 100
+    lr: float = 1e-4
     optimizer: str = "adamw"
     weight_decay: float = 0.0
     momentum: float = 0.9
+    scheduler: str = "cosine"
+    lr_min: float = 1e-6
     save_every: int = 5
     eval_every: int = 2
 

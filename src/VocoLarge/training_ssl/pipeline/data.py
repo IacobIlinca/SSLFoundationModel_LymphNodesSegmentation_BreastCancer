@@ -2,8 +2,11 @@ import os
 from pathlib import Path
 from typing import List, Optional, Dict
 
+import numpy as np
+import torch
 from monai.data import PersistentDataset
-from torch.utils.data import Dataset, DataLoader
+from torch.utils.data import Dataset, DataLoader, default_collate
+
 
 # Used in overfit experiment
 def find_case_images(root_dir: str) -> List[str]:
@@ -44,6 +47,32 @@ class NiftiListDataset(Dataset):
     def __getitem__(self, idx):
         return self.xform({"image": self.image_paths[idx]})
 
+def inspect_obj(name, obj, indent=0):
+    prefix = " " * indent
+
+    if torch.is_tensor(obj):
+        print(f"{prefix}{name}: TENSOR shape={tuple(obj.shape)} dtype={obj.dtype}")
+    elif isinstance(obj, np.ndarray):
+        print(f"{prefix}{name}: NUMPY shape={obj.shape} dtype={obj.dtype}")
+    elif isinstance(obj, dict):
+        print(f"{prefix}{name}: DICT")
+        for k, v in obj.items():
+            inspect_obj(f"{k}", v, indent + 2)
+    elif isinstance(obj, (list, tuple)):
+        print(f"{prefix}{name}: {type(obj).__name__.upper()} len={len(obj)}")
+        for i, v in enumerate(obj):
+            inspect_obj(f"[{i}]", v, indent + 2)
+    else:
+        print(f"{prefix}{name}: {type(obj)} value={obj}")
+
+def debug_collate(batch):
+    print("\n========== NEW BATCH ==========")
+
+    for bi, sample in enumerate(batch):
+        print(f"\n--- sample {bi} ---")
+        inspect_obj("sample", sample)
+
+    return default_collate(batch)
 
 def build_dataloader(
     dataset: Dataset,
@@ -58,6 +87,7 @@ def build_dataloader(
         shuffle=shuffle,
         num_workers=num_workers,
         pin_memory=(device_type == "cuda"),
+        #collate_fn=debug_collate,
     )
 
 def read_ids_file(txt_path: str) -> List[str]:

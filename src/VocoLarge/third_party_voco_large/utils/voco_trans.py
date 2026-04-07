@@ -1,4 +1,6 @@
 from collections.abc import Callable, Sequence
+
+import torch
 from torch.utils.data import Dataset as _TorchDataset
 from torch.utils.data import Subset
 import collections
@@ -41,6 +43,7 @@ class VoCoAugmentation():
             crop = trans(x_in)
             crops.append(crop)
 
+        labels = torch.as_tensor(labels)
         return imgs, labels, crops
 
 
@@ -61,12 +64,14 @@ def get_vanilla_transform(num=2, num_crops=4, roi=64, max_roi=256, aug=False):
                 RandFlipd(keys=["image"], prob=0.2, spatial_axis=2),
                 RandRotate90d(keys=["image"], prob=0.2, max_k=3),
                 RandShiftIntensityd(keys="image", offsets=0.1, prob=0.5),
+                EnsureTyped(keys=["image"]),
                 ])
         else:
             trans = Compose([
                 SpatialCropd(keys=['image'],
                              roi_center=[center_x, center_y, roi // 2],
                              roi_size=[roi, roi, roi]),
+                EnsureTyped(keys=["image"]),
                 ])
 
         vanilla_trans.append(trans)
@@ -96,6 +101,7 @@ def get_crop_transform(num_crops=4, roi=64, aug=True):
                     RandFlipd(keys=["image"], prob=0.2, spatial_axis=2),
                     RandRotate90d(keys=["image"], prob=0.2, max_k=3),
                     RandShiftIntensityd(keys="image", offsets=0.1, prob=0.5),
+                    EnsureTyped(keys=["image"]),
                     ]
                 )
             else:
@@ -103,6 +109,7 @@ def get_crop_transform(num_crops=4, roi=64, aug=True):
                     SpatialCropd(keys=['image'],
                                  roi_center=[center_x, center_y, center_z],
                                  roi_size=[roi, roi, roi]),
+                    EnsureTyped(keys=["image"]),
                     ],
                 )
 

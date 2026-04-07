@@ -7,7 +7,7 @@ from src.VocoLarge.training_ssl.pipeline.model import setup_model_and_optimizer,
 from src.VocoLarge.training_ssl.pipeline.config import Config, save_config
 from src.VocoLarge.training_ssl.pipeline.train_and_valid_steps import train_one_epoch, validate_one_epoch, \
     compute_logits_targets_for_one_image
-from src.VocoLarge.training_ssl.pipeline.viz import History, plot_loss_curves
+from src.VocoLarge.training_ssl.pipeline.viz import History, plot_metric
 from src.VocoLarge.training_ssl.training.datasets_and_loaders import build_all_datasets_and_loaders
 
 
@@ -34,7 +34,7 @@ def run_training(args: Config):
 
         should_eval = (epoch % args.eval_every == 0) or (epoch == args.epochs)
         if should_eval:
-            val_loss, top1 = validate_one_epoch(model, val_loader, device, epoch)# evaluate on val loader
+            val_loss, top1 = validate_one_epoch(model, val_loader, device, epoch, args)# evaluate on val loader
 
             print(
                 f"[eval] epoch {epoch:04d} "
@@ -51,14 +51,14 @@ def run_training(args: Config):
             save_diff_bundle(logits, targets, args.out_dir, prefix=f"epoch{epoch:05d}")
 
             ckpt_path = os.path.join(args.out_dir, f"epoch_{epoch:04d}.pt")
-            save_checkpoint(ckpt_path, model, optimizer, scaler, epoch)
+            save_checkpoint(ckpt_path, model, optimizer, scaler, scheduler, epoch)
             print(f"[ckpt] saved: {ckpt_path}")
 
 
-        plot_loss_curves(history, args.out_dir)
+        plot_metric(history, args.out_dir)
 
     final_path = os.path.join(args.out_dir, "final.pt")
-    save_checkpoint(final_path, model, optimizer, scaler, args.epochs)
+    save_checkpoint(final_path, model, optimizer, scaler, scheduler, args.epochs)
     print(f"[ckpt] saved final: {final_path}")
 
     return model
