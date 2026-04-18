@@ -13,7 +13,7 @@ def _unwrap_state_dict(ckpt: Dict) -> Dict[str, torch.Tensor]:
     return ckpt
 
 
-def load_voco_encoder_weights(model: nn.Module, cfg) -> None:
+def load_voco_encoder_weights(model: nn.Module, cfg: Config) -> None:
     """
     REQUIRED.
 
@@ -44,7 +44,12 @@ def load_voco_encoder_weights(model: nn.Module, cfg) -> None:
         "module.swinViT.",
         "encoder",
         "model.encoder",
+        "backbone.encoder",
     ]
+
+    for k, v in sd.items():
+        if k.startswith("backbone."):
+            k.replace("backbone.", "")
 
     target_sd = model.state_dict()
     filtered = {}
