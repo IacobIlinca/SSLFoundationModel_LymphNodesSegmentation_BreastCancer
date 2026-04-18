@@ -26,7 +26,7 @@ class Config:
     # Used
     data_dir: Optional[str] = "/mnt/data/flaviu/rtnation_02_02/"
 
-    out_dir: str = "/processing/flaviu/ssl_training/test_11_long_run_with_scheduler"
+    out_dir: str = "/processing/flaviu/ssl_training/train_02_test"
 
     # --------------------
     # Reproducibility / runtime
@@ -39,7 +39,7 @@ class Config:
     # Dataloader (used by build_dataloader)
     # --------------------
     batch_size: int = 4 # used in overfit experiment
-    train_batch_size: int = 4 # used in actual training
+    train_batch_size: int = 8 # used in actual training
     val_batch_size: int = 4
     test_batch_size: int = 4
     shuffle: bool = True
@@ -49,7 +49,7 @@ class Config:
     test_ids_path: str = "../train_valid_test_split/test_split_ids.txt"
     cache_dir: str = "/mnt/data/flaviu/ssl_training/cache_dir"
 
-    train_max_batches: int = 300
+    train_max_batches: int = 0
 
     # --------------------
     # Transforms / augmentation
@@ -78,20 +78,20 @@ class Config:
     # --------------------
     # Checkpoint loading (ckpt.py)
     # --------------------
-    voco_ckpt_path: Optional[str] = "/processing/flaviu/pretrained/VoCo_B_SSL_head.pt"
-    load_mode: LoadMode = "backbone"   # "backbone" or "full"
+    voco_ckpt_path: Optional[str] = "/processing/flaviu/pretrained/VoCo_B_SSL_head_domain_pretrained.pt"
+    load_mode: LoadMode = "full"   # "backbone" or "full"
     freeze_scope: FreezeScope = "swin_plus_conv"
 
     # --------------------
     # Training loop
     # --------------------
-    epochs: int = 100
-    lr: float = 1e-4
+    epochs: int = 40
+    lr: float = 1e-6
     optimizer: str = "adamw"
     weight_decay: float = 0.0
     momentum: float = 0.9
     scheduler: str = "cosine"
-    lr_min: float = 1e-6
+    lr_min: float = 1e-7
     save_every: int = 5
     eval_every: int = 2
 

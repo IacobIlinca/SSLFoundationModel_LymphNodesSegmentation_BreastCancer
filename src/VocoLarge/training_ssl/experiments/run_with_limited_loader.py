@@ -19,7 +19,8 @@ def run_test():
     os.makedirs(args.cache_dir, exist_ok=True)
 
     train_loader, val_loader, _ = build_all_datasets_and_loaders(args)
-    train_loader = maybe_limit_loader(train_loader, max_batches=args.train_max_batches)
+    if args.train_max_batches != 0:
+        train_loader = maybe_limit_loader(train_loader, max_batches=args.train_max_batches)
     #val_loader = maybe_limit_loader(val_loader, max_batches=10)
 
     batch_to_viz = next(iter(train_loader))

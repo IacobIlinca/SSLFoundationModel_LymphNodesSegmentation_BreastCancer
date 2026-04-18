@@ -30,6 +30,23 @@ def top1_match(logits: torch.Tensor, targets: torch.Tensor) -> float:
     return float((top1_pred == top1_tgt).float().mean().item())
 
 
+def top2_set_match(logits: torch.Tensor, targets: torch.Tensor) -> float:
+    """
+    logits/targets: (N, C)
+
+    Returns the fraction of samples where the unordered set of the model's
+    top-2 classes matches the unordered set of the target's top-2 classes.
+    """
+    pred_top2 = logits.topk(k=2, dim=1).indices      # (N, 2)
+    tgt_top2 = targets.topk(k=2, dim=1).indices      # (N, 2)
+
+    pred_top2_sorted, _ = pred_top2.sort(dim=1)
+    tgt_top2_sorted, _ = tgt_top2.sort(dim=1)
+
+    match = (pred_top2_sorted == tgt_top2_sorted).all(dim=1)
+    return float(match.float().mean().item())
+
+
 class projection_head(nn.Module):
     def __init__(self, in_dim=768, hidden_dim=2048, out_dim=2048):
         super().__init__()
