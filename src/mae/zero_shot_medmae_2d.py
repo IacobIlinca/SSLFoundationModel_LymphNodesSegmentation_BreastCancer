@@ -4,7 +4,7 @@ import math
 import argparse
 import numpy as np
 import torch
-from tqdm import tqdm
+from tqdm.auto import tqdm
 import matplotlib.pyplot as plt
 from PIL import Image
 

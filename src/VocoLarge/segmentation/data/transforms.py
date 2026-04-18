@@ -15,6 +15,7 @@ from monai.transforms import (
     EnsureTyped,
     RandCropByLabelClassesd,
     RandCropByPosNegLabeld, DeleteItemsd,
+    SpatialPadd
 )
 
 from src.VocoLarge.segmentation.config import Config
@@ -227,6 +228,7 @@ def get_transforms_binary(cfg: ConfigBinary) -> Tuple[Compose, Compose]:
     # 4) Train, val crop sampling
     # --------------------------------------------------
     train_crop = [
+        SpatialPadd(keys=["image", "label"], spatial_size=cfg.roi_size),
         RandCropByLabelClassesd(
             keys=["image", "label"],
             label_key="label",
@@ -240,6 +242,7 @@ def get_transforms_binary(cfg: ConfigBinary) -> Tuple[Compose, Compose]:
     # Fast validation: patch-based val instead of full-volume val
     if cfg.fast_val:
         val_crop = [
+            SpatialPadd(keys=["image", "label"], spatial_size=cfg.roi_size),
             RandCropByLabelClassesd(
                 keys=["image", "label"],
                 label_key="label",
@@ -255,7 +258,7 @@ def get_transforms_binary(cfg: ConfigBinary) -> Tuple[Compose, Compose]:
     # --------------------------------------------------
     # 5) Convert to tensors
     # --------------------------------------------------
-    typed = [EnsureTyped(keys=keys, dtype=torch.float32)]
+    typed = [DeleteItemsd(keys=["image_meta_dict"]), EnsureTyped(keys=keys, dtype=torch.float32)]
 
     train_transform = Compose(base + aug + train_crop + typed)
     val_transform = Compose(base + val_crop + typed)

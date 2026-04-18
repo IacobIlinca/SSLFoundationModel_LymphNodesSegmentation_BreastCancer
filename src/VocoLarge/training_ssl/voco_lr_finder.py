@@ -9,7 +9,7 @@ from monai.transforms import Compose
 from monai.data.meta_tensor import MetaTensor
 
 import matplotlib.pyplot as plt
-from tqdm import tqdm
+from tqdm.auto import tqdm
 
 from src.VocoLarge.third_party_voco_large.models.voco_head import VoCoHead
 from src.VocoLarge.third_party_voco_large.utils import voco_trans, data_trans

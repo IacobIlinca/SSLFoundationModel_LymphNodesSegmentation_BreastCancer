@@ -19,18 +19,18 @@ class ConfigBinaryTest:
     task_mode: str = "train_binary"
     root_dir: str = "/mnt/data/ilinca/structured_cases_14_16/"
     val_fraction: float = 0.2
-    lymph_terms_json: str = "src/VocoLarge/segmentation/masks/lymph_terms.json"
-    not_lymph_terms_json: str = "src/VocoLarge/segmentation/masks/not_lymph_terms.json"
+    lymph_terms_json: str = "../masks/lymph_terms.json"
+    not_lymph_terms_json: str = "../masks/all_not_lymph_terms.json"
 
     # 1 class for background will be added when the model is computed
     # 1 output channel with sigmoid activation
     num_classes: int = 0
 
     # ---- Patch training / inference ----
-    roi_size: Tuple[int, int, int] = (192, 192, 64)
+    roi_size: Tuple[int, int, int] = (192, 192, 96)
     num_samples_per_volume: int = 1
-    batch_size: int = 1
-    val_batch_size: int = 1
+    batch_size: int = 4
+    val_batch_size: int = 4
     test_batch_size: int = 1
 
     # ---- Preprocessing ----
@@ -50,13 +50,13 @@ class ConfigBinaryTest:
     # ---- Training ----
     seed: int = 0
     device: str = "cuda"
-    epochs: int = 10
-    lr: float = 1e-4
+    epochs: int = 9
+    lr: float = 1e-3
     momentum: float = 0.9
     weight_decay: float = 1e-5
     amp: bool = True
     num_workers: int = 8
-    log_every: int = 2
+    log_every: int = 3
 
     # For loss function
     class_weight_for_loss: List[float] = field(default_factory=lambda: [2.0])
@@ -70,20 +70,20 @@ class ConfigBinaryTest:
     freeze_scope: str = "swin_plus_conv"
 
     # ---- Debug / convenience ----
-    save_dir: str = "/processing/flaviu/binary_segmentation_runs/hyperparameter_tuning/run_14"
+    save_dir: str = "/processing/flaviu/binary_segmentation_runs/hyperparameter_tuning/run_19_z=96"
     save_visuals: bool = True
-    visuals_case_indices: tuple[int, int, int] = (0, 1, 2)
+    visuals_case_indices: tuple[int, int, int] = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
     visuals_slices: Tuple[int, int, int] = (10, 20, 30, 40, 50, 60)
 
     # ---- Split data -----
-    train_ids_path: str = "src/VocoLarge/segmentation/training_data_ids/train_ids.txt"
-    val_ids_path: str = "src/VocoLarge/segmentation/training_data_ids/val_ids.txt"
-    test_ids_path: str = "src/VocoLarge/segmentation/training_data_ids/test_ids.txt"
-    cache_dir: str = "/processing/flaviu/binary_segmentation_runs/hyperparameter_tuning/remove_excess_margins_cache"
+    train_ids_path: str = "../training_data_ids/train_ids.txt"
+    val_ids_path: str = "../training_data_ids/val_ids.txt"
+    test_ids_path: str = "../training_data_ids/test_ids.txt"
+    cache_dir: str = "/processing/flaviu/binary_segmentation_runs/hyperparameter_tuning/spacing_check_cache"
     shuffle: bool = True
 
     # log file for patient with no lymph masks available
-    no_lymph_patients_log_file: str = "src/VocoLarge/segmentation/training_data_ids/binary_missing_lymph_cases.txt"
+    no_lymph_patients_log_file: str = "../training_data_ids/binary_missing_lymph_cases.txt"
 
     # ---- Validation mode ----
     fast_val: bool = True

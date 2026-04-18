@@ -1,7 +1,7 @@
 import os
 import json
 import torch
-from tqdm import tqdm
+from tqdm.auto import tqdm
 from torch.cuda.amp import autocast, GradScaler
 from torch.utils.data import DataLoader
 

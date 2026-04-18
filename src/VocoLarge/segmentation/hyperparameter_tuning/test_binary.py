@@ -12,11 +12,12 @@ from src.VocoLarge.segmentation.training.visuals import save_overlay_png
 
 
 def make_visuals_callback(cfg: ConfigBinaryTest):
-    def cb(epoch, batch_index, image, label, pred):
+    def cb(epoch, batch_index, image, label, pred, case_ids):
         if batch_index not in cfg.visuals_case_indices:
             return
 
         img_np = image[0, 0].detach().cpu().numpy()
+        case_id = case_ids[0]
         lab_np = label[0, 0].detach().cpu().numpy().astype(np.int32)
 
         # adapt this if your sigmoid metric output shape differs
@@ -29,7 +30,7 @@ def make_visuals_callback(cfg: ConfigBinaryTest):
             if 0 <= sidx < img_np.shape[-1]:
                 out_path = os.path.join(
                     out_dir,
-                    f"epoch_{epoch:04d}_case_{batch_index:03d}_slice_{sidx:03d}.png"
+                    f"epoch_{epoch:04d}_case_{case_id}_slice_{sidx:03d}.png"
                 )
                 save_overlay_png(img_np, lab_np, pred_np, out_path, sidx)
 

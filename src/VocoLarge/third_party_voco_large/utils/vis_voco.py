@@ -6,7 +6,7 @@ import scipy.ndimage as ndimage
 import torch
 import os
 import SimpleITK as sitk
-from tqdm import tqdm
+from tqdm.auto import tqdm
 from monai import data, transforms
 from monai.transforms import *
 

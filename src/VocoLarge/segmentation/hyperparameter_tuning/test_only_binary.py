@@ -4,12 +4,12 @@ import torch
 from torch import GradScaler
 from torch.optim import Adam, AdamW
 from torch.optim.lr_scheduler import CosineAnnealingLR
-from tqdm import tqdm
+from tqdm.auto import tqdm
 
 from monai.data import decollate_batch
 
 from src.VocoLarge.segmentation.data.loaders_binary import build_all_datasets_and_loaders, maybe_limit_loader
-from src.VocoLarge.segmentation.training.enigne_binary import train_one_epoch
+from src.VocoLarge.segmentation.training.enigne_binary import train_one_epoch, evaluate
 from src.VocoLarge.segmentation.training.history import History
 from src.VocoLarge.segmentation.training.infer import infer_full_volume
 from src.VocoLarge.segmentation.training.losses_metrics import (
@@ -23,57 +23,6 @@ def save_config(cfg):
     os.makedirs(cfg.save_dir, exist_ok=True)
     with open(os.path.join(cfg.save_dir, "config.json"), "w") as f:
         json.dump(cfg.to_dict(), f, indent=2)
-
-
-@torch.no_grad()
-def evaluate(model, loader, device, loss_fn, cfg, desc="Eval", visuals_cb=None, epoch=None):
-    model.eval()
-
-    dice_metric, hd95_metric, post_pred, post_label = build_metrics_binary_sigmoid(cfg)
-    dice_metric.reset()
-    hd95_metric.reset()
-
-    loss_running = 0.0
-    steps = 0
-
-    pbar = tqdm(loader, desc=desc, leave=False)
-
-    for bi, batch in enumerate(pbar):
-        img = batch["image"].to(device)
-        lab = batch["label"].to(device).long()
-
-        if cfg.fast_val:
-            logits = model(img)
-        else:
-            logits = infer_full_volume(model, img, cfg)
-
-        loss = loss_fn(logits, lab)
-        loss_running += float(loss.item())
-        steps += 1
-
-        pred_list = [post_pred(x) for x in decollate_batch(logits)]
-        lab_oh_list = [post_label(x) for x in decollate_batch(lab)]
-
-        dice_metric(y_pred=pred_list, y=lab_oh_list)
-        hd95_metric(y_pred=pred_list, y=lab_oh_list)
-
-        if visuals_cb is not None and cfg.save_visuals:
-            visuals_cb(
-                epoch=epoch,
-                batch_index=bi,
-                image=img,
-                label=lab,
-                pred=pred_list,
-            )
-
-        current_dice = dice_metric.aggregate().mean().item()
-        pbar.set_postfix(dice=f"{current_dice:.4f}")
-
-    mean_loss = loss_running / max(steps, 1)
-    mean_dice = dice_metric.aggregate().mean().item()
-    mean_hd95 = hd95_metric.aggregate().mean().item()
-
-    return mean_loss, mean_dice, mean_hd95
 
 
 def run_test_only(model, cfg, visuals_cb=None):

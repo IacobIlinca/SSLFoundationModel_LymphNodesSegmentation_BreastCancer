@@ -3,7 +3,7 @@ import os
 
 import torch
 from torch.optim import Adam
-from tqdm import tqdm
+from tqdm.auto import tqdm
 from torch.cuda.amp import autocast, GradScaler
 
 from monai.data import decollate_batch
@@ -31,11 +31,12 @@ def train_one_epoch(model, loader, optim, loss_fn, scaler, device, cfg, epoch=No
     running = 0.0
     steps = 0
 
-    pbar = tqdm(loader, desc=f"Train {epoch:04d}" if epoch is not None else "Train", leave=False)
+    pbar = tqdm(loader, desc=f"Train {epoch:04d}", leave=False, dynamic_ncols=True)
 
     for batch in pbar:
         img = batch["image"].to(device)
         lab = batch["label"].to(device).long()
+        case_ids = batch["case_id"]
 
         optim.zero_grad(set_to_none=True)
 
@@ -50,7 +51,7 @@ def train_one_epoch(model, loader, optim, loss_fn, scaler, device, cfg, epoch=No
         running += float(loss.item())
         steps += 1
 
-        pbar.set_postfix(loss=f"{running / max(steps, 1):.4f}")
+        pbar.set_postfix(loss=f"{running / max(steps, 1):.4f}", case_ids=str(case_ids))
 
     return running / max(steps, 1)
 
@@ -71,6 +72,7 @@ def evaluate(model, loader, device, loss_fn, cfg: ConfigBinary, desc="Eval", vis
     for bi, batch in enumerate(pbar):
         img = batch["image"].to(device)
         lab = batch["label"].to(device).long()
+        case_ids = batch["case_id"]
 
         if cfg.fast_val:
             logits = model(img)
@@ -94,10 +96,11 @@ def evaluate(model, loader, device, loss_fn, cfg: ConfigBinary, desc="Eval", vis
                 image=img,
                 label=lab,
                 pred=pred_list,
+                case_ids=case_ids
             )
 
         current_dice = dice_metric.aggregate().mean().item()
-        pbar.set_postfix(dice=f"{current_dice:.4f}")
+        pbar.set_postfix(dice=f"{current_dice:.4f}", case_ids=str(case_ids))
 
     mean_loss = loss_running / max(steps, 1)
     mean_dice = dice_metric.aggregate().mean().item()
