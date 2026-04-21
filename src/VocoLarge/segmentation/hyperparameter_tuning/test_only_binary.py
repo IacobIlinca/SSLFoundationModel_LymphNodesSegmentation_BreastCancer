@@ -32,7 +32,7 @@ def run_test_only(model, cfg, visuals_cb=None):
     model.to(device)
 
     train_loader, val_loader, _ = build_all_datasets_and_loaders(cfg)
-    limit_train_loader = maybe_limit_loader(train_loader, 100)
+    # limit_train_loader = maybe_limit_loader(train_loader, 100)
 
     loss_fn = build_loss_binary_sigmoid(cfg)
 
@@ -62,7 +62,7 @@ def run_test_only(model, cfg, visuals_cb=None):
     for epoch in epoch_bar:
         tr_loss = train_one_epoch(
             model=model,
-            loader=limit_train_loader,
+            loader=train_loader,
             optim=optim,
             loss_fn=loss_fn,
             scaler=scaler,

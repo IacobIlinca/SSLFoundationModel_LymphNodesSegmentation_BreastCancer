@@ -50,12 +50,12 @@ class ConfigBinaryTest:
     # ---- Training ----
     seed: int = 0
     device: str = "cuda"
-    epochs: int = 9
+    epochs: int = 100
     lr: float = 1e-3
     momentum: float = 0.9
     weight_decay: float = 1e-5
     amp: bool = True
-    num_workers: int = 8
+    num_workers: int = 2
     log_every: int = 3
 
     # For loss function
@@ -70,7 +70,7 @@ class ConfigBinaryTest:
     freeze_scope: str = "swin_plus_conv"
 
     # ---- Debug / convenience ----
-    save_dir: str = "/processing/flaviu/binary_segmentation_runs/hyperparameter_tuning/run_19_z=96"
+    save_dir: str = "/processing/flaviu/binary_segmentation_runs/hyperparameter_tuning/run_20_full_train_z=96_100epochs_1024xremoved"
     save_visuals: bool = True
     visuals_case_indices: tuple[int, int, int] = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
     visuals_slices: Tuple[int, int, int] = (10, 20, 30, 40, 50, 60)
