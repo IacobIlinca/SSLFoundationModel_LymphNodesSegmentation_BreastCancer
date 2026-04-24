@@ -115,7 +115,7 @@ def build_all_datasets_and_loaders(cfg: ConfigBinary):
         dataset=val_ds,
         batch_size=cfg.val_batch_size,
         shuffle=False,
-        num_workers=cfg.num_workers,
+        num_workers=0,
         device_type=cfg.device,
     )
     test_loader = build_dataloader(

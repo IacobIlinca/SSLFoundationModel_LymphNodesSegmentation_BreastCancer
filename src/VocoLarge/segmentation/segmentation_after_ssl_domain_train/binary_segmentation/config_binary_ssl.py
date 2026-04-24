@@ -1,4 +1,4 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, asdict
 from typing import Tuple, List
 
 
@@ -12,8 +12,8 @@ class ConfigBinarySSL:
     task_mode: str = "train_binary" #DEPRECATED
     root_dir: str = "/mnt/data/ilinca/structured_cases_14_16/"
     val_fraction: float = 0.2
-    lymph_terms_json: str = "../masks/lymph_terms.json"
-    not_lymph_terms_json: str = "../masks/all_not_lymph_terms.json"
+    lymph_terms_json: str = "../../masks/lymph_terms.json"
+    not_lymph_terms_json: str = "../../masks/all_not_lymph_terms.json"
 
     # 1 class for background will be added when the model is computed
     # 1 output channel with sigmoid activation
@@ -22,7 +22,7 @@ class ConfigBinarySSL:
     # ---- Patch training / inference ----
     roi_size: Tuple[int, int, int] = (192, 192, 96)
     num_samples_per_volume: int = 1
-    batch_size: int = 8 # Train
+    batch_size: int = 4 # Train
     val_batch_size: int = 4
     test_batch_size: int = 1
 
@@ -43,13 +43,13 @@ class ConfigBinarySSL:
     # ---- Training ----
     seed: int = 0
     device: str = "cuda"
-    epochs: int = 9
+    epochs: int = 100
     lr: float = 1e-3
     momentum: float = 0.9
     weight_decay: float = 1e-5
     amp: bool = True
-    num_workers: int = 8
-    log_every: int = 3
+    num_workers: int = 2
+    log_every: int = 5
 
     # For loss function
     class_weight_for_loss: List[float] = field(default_factory=lambda: [2.0])
@@ -69,14 +69,14 @@ class ConfigBinarySSL:
     visuals_slices: Tuple[int, int, int] = (10, 20, 30, 40, 50, 60)
 
     # ---- Split data -----
-    train_ids_path: str = "../training_data_ids/train_ids.txt"
-    val_ids_path: str = "../training_data_ids/val_ids.txt"
-    test_ids_path: str = "../training_data_ids/test_ids.txt"
-    cache_dir: str = "/processing/flaviu/binary_segmentation_runs/hyperparameter_tuning/spacing_check_cache"
+    train_ids_path: str = "../../training_data_ids/train_ids.txt"
+    val_ids_path: str = "../../training_data_ids/val_ids.txt"
+    test_ids_path: str = "../../training_data_ids/test_ids.txt"
+    cache_dir: str = "/processing/flaviu/segmentation_after_ssl_domain_train/binary_segmentation/data_cache"
     shuffle: bool = True
 
     # log file for patient with no lymph masks available
-    no_lymph_patients_log_file: str = "../training_data_ids/binary_missing_lymph_cases.txt"
+    no_lymph_patients_log_file: str = "../../training_data_ids/binary_missing_lymph_cases.txt"
 
     # ---- Validation mode ----
     fast_val: bool = True

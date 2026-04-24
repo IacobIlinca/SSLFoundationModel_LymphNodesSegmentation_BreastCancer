@@ -47,9 +47,15 @@ def load_voco_encoder_weights(model: nn.Module, cfg: Config) -> None:
         "backbone.encoder",
     ]
 
+    to_be_changed = []
     for k, v in sd.items():
         if k.startswith("backbone."):
-            k.replace("backbone.", "")
+            to_be_changed.append((k, k.replace("backbone.", "")))
+
+    for k, new_k in to_be_changed:
+        sd[new_k] = sd[k]
+        sd.pop(k)
+
 
     target_sd = model.state_dict()
     filtered = {}
