@@ -60,9 +60,9 @@ class ConfigBinaryTest:
 
     # For loss function
     class_weight_for_loss: List[float] = field(default_factory=lambda: [2.0])
-    bce_weight = 1.0
+    bce_weight = 3.0
     dice_weight: float = 1.0
-    surface_weight: float = 0.1
+    surface_weight: float = 0.5
 
     # ---- Linear probing specifics ----
     voco_ckpt_path: str = "/processing/flaviu/pretrained/VoCo_B_SSL_head.pt"
@@ -70,7 +70,7 @@ class ConfigBinaryTest:
     freeze_scope: str = "swin_plus_conv"
 
     # ---- Debug / convenience ----
-    save_dir: str = "/processing/flaviu/binary_segmentation_runs/hyperparameter_tuning/run_20_full_train_z=96_100epochs_1024xremoved"
+    save_dir: str = "/processing/flaviu/binary_segmentation_runs/hyperparameter_tuning/run_22_loss_comp_viz"
     save_visuals: bool = True
     visuals_case_indices: tuple[int, int, int] = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
     visuals_slices: Tuple[int, int, int] = (10, 20, 30, 40, 50, 60)

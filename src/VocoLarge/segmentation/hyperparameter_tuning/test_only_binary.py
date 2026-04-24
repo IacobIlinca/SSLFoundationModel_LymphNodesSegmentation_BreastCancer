@@ -16,7 +16,7 @@ from src.VocoLarge.segmentation.training.losses_metrics import (
     build_loss_binary_sigmoid,
     build_metrics_binary_sigmoid,
 )
-from src.VocoLarge.segmentation.training.plots import plot_loss_curves, plot_metric_curves
+from src.VocoLarge.segmentation.training.plots import plot_loss_curves, plot_metric_curves, plot_train_loss_components
 
 
 def save_config(cfg):
@@ -32,7 +32,8 @@ def run_test_only(model, cfg, visuals_cb=None):
     model.to(device)
 
     train_loader, val_loader, _ = build_all_datasets_and_loaders(cfg)
-    # limit_train_loader = maybe_limit_loader(train_loader, 100)
+    train_loader = maybe_limit_loader(train_loader, 20)
+    val_loader = maybe_limit_loader(val_loader, 5)
 
     loss_fn = build_loss_binary_sigmoid(cfg)
 
@@ -60,7 +61,7 @@ def run_test_only(model, cfg, visuals_cb=None):
     epoch_bar = tqdm(range(1, cfg.epochs + 1), desc="Epochs")
 
     for epoch in epoch_bar:
-        tr_loss = train_one_epoch(
+        tr_loss, dice_loss, bce_loss = train_one_epoch(
             model=model,
             loader=train_loader,
             optim=optim,
@@ -73,9 +74,8 @@ def run_test_only(model, cfg, visuals_cb=None):
     #     tr_loss = 1.0
         os.makedirs(cfg.save_dir, exist_ok=True)
 
+        current_lr = optim.param_groups[0]["lr"]
         if epoch == 1 or epoch % cfg.log_every == 0:
-            print(f"Epoch {epoch:04d} | train loss: {tr_loss:.4f}")
-
             val_loss, val_dice, val_hd95 = evaluate(
                 model=model,
                 loader=val_loader,
@@ -87,19 +87,18 @@ def run_test_only(model, cfg, visuals_cb=None):
                 epoch=epoch,
             )
 
-            print(
-                f"Epoch {epoch:04d} | "
-                f"val loss: {val_loss:.4f} | "
-                f"val Dice: {val_dice:.4f} | "
-                f"val HD95: {val_hd95:.4f}"
+            history.add_train(
+                epoch=epoch,
+                loss=tr_loss,
+                dice_loss=dice_loss,
+                bce_loss=bce_loss,
             )
 
-            history.add(
+            history.add_val(
                 epoch=epoch,
-                train_loss=tr_loss,
-                val_loss=val_loss,
-                val_dice=val_dice,
-                val_hd95=val_hd95,
+                loss=val_loss,
+                dice=val_dice,
+                hd95=val_hd95,
             )
 
             hist_path = os.path.join(cfg.save_dir, "history.json")
@@ -108,6 +107,7 @@ def run_test_only(model, cfg, visuals_cb=None):
 
             plot_loss_curves(history, os.path.join(cfg.save_dir, "plots", "loss_curves.png"))
             plot_metric_curves(history, os.path.join(cfg.save_dir, "plots", "metric_curves.png"))
+            plot_train_loss_components(history, os.path.join(cfg.save_dir, "plots", "loss_components.png"))
 
             os.makedirs(cfg.save_dir, exist_ok=True)
             if val_dice > best_dice:
@@ -116,18 +116,22 @@ def run_test_only(model, cfg, visuals_cb=None):
             epoch_bar.set_postfix(
                 train_loss=f"{tr_loss:.4f}",
                 val_dice=f"{val_dice:.4f}",
+                current_lr=f"{current_lr:.4f}",
             )
         else:
-            history.add_train_loss(epoch, tr_loss)
-            epoch_bar.set_postfix(train_loss=f"{tr_loss:.4f}")
+            history.add_train(
+                epoch=epoch,
+                loss=tr_loss,
+                dice_loss=dice_loss,
+                bce_loss=bce_loss,
+            )
+            epoch_bar.set_postfix(train_loss=f"{tr_loss:.4f}",current_lr=f"{current_lr:.4f}",)
 
         if scheduler is not None:
             scheduler.step()
 
-        current_lr = optim.param_groups[0]["lr"]
-        print(f"[LR] epoch {epoch}: {current_lr:.2e}")
-
     plot_loss_curves(history, os.path.join(cfg.save_dir, "plots", "loss_curves.png"))
     plot_metric_curves(history, os.path.join(cfg.save_dir, "plots", "metric_curves.png"))
+    plot_train_loss_components(history, os.path.join(cfg.save_dir, "plots", "loss_components.png"))
 
     print(f"Training done. Best val Dice: {best_dice:.4f}")

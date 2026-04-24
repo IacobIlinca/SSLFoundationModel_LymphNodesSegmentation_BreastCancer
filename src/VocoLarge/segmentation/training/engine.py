@@ -139,7 +139,17 @@ def validate(model, val_loader, device, loss_fn, epoch, cfg: Config, history, tr
         print(f"Epoch {epoch:04d} | val Dice: {val_dice:.4f} | val HD95: {val_hd95:.4f}")
 
     # Store curves
-    history.add(epoch=epoch, train_loss=tr_loss, val_loss=val_loss, val_dice=val_dice, val_hd95=val_hd95)
+    history.add_train(
+        epoch=epoch,
+        loss=tr_loss,
+    )
+
+    history.add_val(
+        epoch=epoch,
+        loss=val_loss,
+        dice=val_dice,
+        hd95=val_hd95,
+    )
 
     # Optionally write history to disk each log interval
     if epoch == 1 or epoch % cfg.log_every == 0:

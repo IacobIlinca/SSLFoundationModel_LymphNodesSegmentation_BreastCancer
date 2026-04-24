@@ -227,10 +227,9 @@ class DiceBCESurfaceBinaryLoss(nn.Module):
         bce_loss = self.bce(logits, labels)
 
         probs = torch.sigmoid(logits)
-        surface_loss = self.surface(probs, labels)
+        #surface_loss = self.surface(probs, labels)
 
-        return (
-            self.dice_weight * dice_loss
-            + self.bce_weight * bce_loss
-            # + self.surface_weight * surface_loss
-        )
+        return ((self.dice_weight * dice_loss + self.bce_weight * bce_loss #+ self.surface_weight * surface_loss),
+                 ),
+                self.dice_weight * dice_loss,
+                self.bce_weight * bce_loss)
