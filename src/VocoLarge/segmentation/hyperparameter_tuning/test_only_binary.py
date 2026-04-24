@@ -110,8 +110,18 @@ def run_test_only(model, cfg, visuals_cb=None):
             plot_train_loss_components(history, os.path.join(cfg.save_dir, "plots", "loss_components.png"))
 
             os.makedirs(cfg.save_dir, exist_ok=True)
+
             if val_dice > best_dice:
                 best_dice = val_dice
+                torch.save(
+                    {"model": model.state_dict(), "epoch": epoch, "best_dice": best_dice},
+                    os.path.join(cfg.save_dir, "best.pt"),
+                )
+
+            torch.save(
+                {"model": model.state_dict(), "epoch": epoch, "best_dice": best_dice},
+                os.path.join(cfg.save_dir, "last.pt"),
+            )
 
             epoch_bar.set_postfix(
                 train_loss=f"{tr_loss:.4f}",
