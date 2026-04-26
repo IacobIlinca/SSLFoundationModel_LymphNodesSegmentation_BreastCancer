@@ -31,9 +31,9 @@ def load_ids(path: Path) -> list[str]:
 
 def save_ids(path: Path, ids: list[str]):
     """
-    Saves one ID per line.
+    Saves IDs as one comma-separated line.
     """
-    path.write_text("\n".join(ids) + ("\n" if ids else ""))
+    path.write_text(",".join(ids))
 
 
 # -------- CONFIG --------
