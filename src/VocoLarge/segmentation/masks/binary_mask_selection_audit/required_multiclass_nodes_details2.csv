@@ -516,7 +516,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 041605802B57B3,mask_PTV50udenParasternal.nii.gz,mask-ptv50udenparasternal,,no_required_class_match,
 041605802B57B3,mask_PTV_boost.nii.gz,mask-ptv-boost,,excluded_term,ptv|boost
 041605802B57B3,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-041605802B57B3,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+041605802B57B3,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 041605802B57B3,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 041605802B57B3,mask_Straale-boost.nii.gz,mask-straale-boost,,excluded_term,boost
 041605802B57B3,mask_StraalefeltMamma.nii.gz,mask-straalefeltmamma,,no_required_class_match,
@@ -679,7 +679,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 051350E5E2A4E9,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 051350E5E2A4E9,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 051350E5E2A4E9,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-051350E5E2A4E9,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+051350E5E2A4E9,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 051350E5E2A4E9,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 051350E5E2A4E9,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 051350E5E2A4E9,mask_ROI_1.nii.gz,mask-roi-1,,excluded_term,roi
@@ -806,7 +806,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 06CB97D35FAB22,mask_Medulla.nii.gz,mask-medulla,,excluded_term,medulla
 06CB97D35FAB22,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 06CB97D35FAB22,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
-06CB97D35FAB22,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+06CB97D35FAB22,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 06CB97D35FAB22,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 06CB97D35FAB22,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 06CB97D35FAB22,mask_StraaleMammaLN.nii.gz,mask-straalemammaln,,no_required_class_match,
@@ -1798,7 +1798,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 0E66C2EFE4CAF0,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 0E66C2EFE4CAF0,mask_PTV50udenParasternal.nii.gz,mask-ptv50udenparasternal,,no_required_class_match,
 0E66C2EFE4CAF0,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-0E66C2EFE4CAF0,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+0E66C2EFE4CAF0,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 0E66C2EFE4CAF0,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 0E66C2EFE4CAF0,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 0E66C2EFE4CAF0,mask_ROI_1.nii.gz,mask-roi-1,,excluded_term,roi
@@ -1881,7 +1881,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 0EFA9A5A37AD0D,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 0EFA9A5A37AD0D,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 0EFA9A5A37AD0D,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-0EFA9A5A37AD0D,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+0EFA9A5A37AD0D,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 0EFA9A5A37AD0D,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 0EFA9A5A37AD0D,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 0EFA9A5A37AD0D,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -1985,8 +1985,8 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 0FA2F06607C359,mask_CTV-Level-II.nii.gz,mask-ctv-level-ii,level2,selected,level2:level-ii|ctv-level-ii
 0FA2F06607C359,mask_CTV-Level-III.nii.gz,mask-ctv-level-iii,level3,selected,level3:level-iii|ctv-level-iii
 0FA2F06607C359,mask_CTV-Mam-dxt.nii.gz,mask-ctv-mam-dxt,,excluded_term,ctv-mam-dxt|mam-dxt
-0FA2F06607C359,mask_CTV-Periclav-union.nii.gz,mask-ctv-periclav-union,,no_required_class_match,
-0FA2F06607C359,mask_CTV-Periclav.nii.gz,mask-ctv-periclav,,no_required_class_match,
+0FA2F06607C359,mask_CTV-Periclav-union.nii.gz,mask-ctv-periclav-union,imn,selected,imn:periclav
+0FA2F06607C359,mask_CTV-Periclav.nii.gz,mask-ctv-periclav,imn,selected,imn:periclav
 0FA2F06607C359,mask_CTV-Tumorleje.nii.gz,mask-ctv-tumorleje,,excluded_term,tumorleje
 0FA2F06607C359,mask_CTV-interpectoralis.nii.gz,mask-ctv-interpectoralis,interpectoral,selected,interpectoral:interpectoralis|ctv-interpectoralis
 0FA2F06607C359,mask_Cicatrice.nii.gz,mask-cicatrice,,excluded_term,cicatrice
@@ -2138,7 +2138,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 11625AED533757,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 11625AED533757,mask_PTV50udenParasternal.nii.gz,mask-ptv50udenparasternal,,no_required_class_match,
 11625AED533757,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-11625AED533757,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+11625AED533757,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 11625AED533757,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 11625AED533757,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 11625AED533757,mask_StraalefeltMamma.nii.gz,mask-straalefeltmamma,,no_required_class_match,
@@ -2512,7 +2512,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 143D31E0534F82,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 143D31E0534F82,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 143D31E0534F82,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-143D31E0534F82,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+143D31E0534F82,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 143D31E0534F82,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 143D31E0534F82,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 143D31E0534F82,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -3251,7 +3251,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 1CC7A62D6B66BD,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 1CC7A62D6B66BD,mask_PTV50udenParasternal.nii.gz,mask-ptv50udenparasternal,,no_required_class_match,
 1CC7A62D6B66BD,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-1CC7A62D6B66BD,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+1CC7A62D6B66BD,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 1CC7A62D6B66BD,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 1CC7A62D6B66BD,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 1CC7A62D6B66BD,mask_ROI_1.nii.gz,mask-roi-1,,excluded_term,roi
@@ -3386,7 +3386,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 1D85E097BD354D,mask_PTV50Sin.nii.gz,mask-ptv50sin,,no_required_class_match,
 1D85E097BD354D,mask_PTV50_u_ParasternalSin.nii.gz,mask-ptv50-u-parasternalsin,,no_required_class_match,
 1D85E097BD354D,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-1D85E097BD354D,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+1D85E097BD354D,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 1D85E097BD354D,mask_PulmTotal.nii.gz,mask-pulmtotal,,excluded_term,pulmtotal
 1D85E097BD354D,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 1D85E097BD354D,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
@@ -4170,7 +4170,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 21F1BB34AC8993,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 21F1BB34AC8993,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 21F1BB34AC8993,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-21F1BB34AC8993,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+21F1BB34AC8993,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 21F1BB34AC8993,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 21F1BB34AC8993,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 21F1BB34AC8993,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -4271,7 +4271,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 22710722047BD2,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 22710722047BD2,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 22710722047BD2,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-22710722047BD2,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+22710722047BD2,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 22710722047BD2,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 22710722047BD2,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 22710722047BD2,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -4342,7 +4342,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 22EA46728BAE41,mask_Medulla.nii.gz,mask-medulla,,excluded_term,medulla
 22EA46728BAE41,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 22EA46728BAE41,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
-22EA46728BAE41,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+22EA46728BAE41,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 22EA46728BAE41,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 22EA46728BAE41,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 22EA46728BAE41,mask_StraalefeltMamma.nii.gz,mask-straalefeltmamma,,no_required_class_match,
@@ -4418,7 +4418,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 231298F6D81362,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 231298F6D81362,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 231298F6D81362,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-231298F6D81362,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+231298F6D81362,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 231298F6D81362,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 231298F6D81362,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 231298F6D81362,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -4455,7 +4455,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 235F8C4076A6F5,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 235F8C4076A6F5,mask_PTV50udenParasternal.nii.gz,mask-ptv50udenparasternal,,no_required_class_match,
 235F8C4076A6F5,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-235F8C4076A6F5,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+235F8C4076A6F5,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 235F8C4076A6F5,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 235F8C4076A6F5,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 235F8C4076A6F5,mask_ROI_1.nii.gz,mask-roi-1,,excluded_term,roi
@@ -4480,7 +4480,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 23759DB54ECBAF,mask_III.nii.gz,mask-iii,,no_required_class_match,
 23759DB54ECBAF,mask_IMN.nii.gz,mask-imn,imn,selected,imn:imn
 23759DB54ECBAF,mask_Interpect.nii.gz,mask-interpect,interpectoral,selected,interpectoral:interpect
-23759DB54ECBAF,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+23759DB54ECBAF,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 23759DB54ECBAF,mask_V-lunge.nii.gz,mask-v-lunge,,excluded_term,v-lunge|lunge
 23759DB54ECBAF,mask_clips.nii.gz,mask-clips,,excluded_term,clips
 23759DB54ECBAF,mask_hjerte.nii.gz,mask-hjerte,,excluded_term,hjerte
@@ -4669,7 +4669,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 2508DFFE7DA5FC,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 2508DFFE7DA5FC,mask_PTV50udenParasternal.nii.gz,mask-ptv50udenparasternal,,no_required_class_match,
 2508DFFE7DA5FC,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-2508DFFE7DA5FC,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+2508DFFE7DA5FC,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 2508DFFE7DA5FC,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 2508DFFE7DA5FC,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 2508DFFE7DA5FC,mask_StraalefeltMamma.nii.gz,mask-straalefeltmamma,,no_required_class_match,
@@ -4855,7 +4855,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 26AB538CDA33DE,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 26AB538CDA33DE,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 26AB538CDA33DE,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-26AB538CDA33DE,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+26AB538CDA33DE,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 26AB538CDA33DE,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 26AB538CDA33DE,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 26AB538CDA33DE,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -5212,7 +5212,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 28887A7EB80350,mask_CTV-N-L3.nii.gz,mask-ctv-n-l3,level3,selected,level3:ctv-n-l3
 28887A7EB80350,mask_CTV-N-L4.nii.gz,mask-ctv-n-l4,level4,selected,level4:ctv-n-l4
 28887A7EB80350,mask_CTV-N-interpect.nii.gz,mask-ctv-n-interpect,interpectoral,selected,interpectoral:interpect|ctv-n-interpect
-28887A7EB80350,mask_CTV-Periclav-union.nii.gz,mask-ctv-periclav-union,,no_required_class_match,
+28887A7EB80350,mask_CTV-Periclav-union.nii.gz,mask-ctv-periclav-union,imn,selected,imn:periclav
 28887A7EB80350,mask_External.nii.gz,mask-external,,excluded_term,external
 28887A7EB80350,mask_HV-PTV-IMN-IC4.nii.gz,mask-hv-ptv-imn-ic4,,excluded_term,ptv|hv
 28887A7EB80350,mask_HV-PTV-IMN.nii.gz,mask-hv-ptv-imn,,excluded_term,ptv|hv
@@ -5233,7 +5233,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 28AB5EC1C37813,mask_CTV-N-L2.nii.gz,mask-ctv-n-l2,level2,selected,level2:ctv-n-l2
 28AB5EC1C37813,mask_CTV-N-L3.nii.gz,mask-ctv-n-l3,level3,selected,level3:ctv-n-l3
 28AB5EC1C37813,mask_CTV-N-L4.nii.gz,mask-ctv-n-l4,level4,selected,level4:ctv-n-l4
-28AB5EC1C37813,mask_CTV-N-Periclav.nii.gz,mask-ctv-n-periclav,,no_required_class_match,
+28AB5EC1C37813,mask_CTV-N-Periclav.nii.gz,mask-ctv-n-periclav,imn,selected,imn:periclav
 28AB5EC1C37813,mask_CTV-N-interpect.nii.gz,mask-ctv-n-interpect,interpectoral,selected,interpectoral:interpect|ctv-n-interpect
 28AB5EC1C37813,mask_CTV-NIMN.nii.gz,mask-ctv-nimn,imn,selected,imn:ctv-nimn
 28AB5EC1C37813,mask_External.nii.gz,mask-external,,excluded_term,external
@@ -5710,7 +5710,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 2C8A5896944AE2,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 2C8A5896944AE2,mask_PTV50udenParasternal.nii.gz,mask-ptv50udenparasternal,,no_required_class_match,
 2C8A5896944AE2,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-2C8A5896944AE2,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+2C8A5896944AE2,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 2C8A5896944AE2,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 2C8A5896944AE2,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 2C8A5896944AE2,mask_StraalefeltMamma.nii.gz,mask-straalefeltmamma,,no_required_class_match,
@@ -5999,7 +5999,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 2F797EB42C649D,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 2F797EB42C649D,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 2F797EB42C649D,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-2F797EB42C649D,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+2F797EB42C649D,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 2F797EB42C649D,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 2F797EB42C649D,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 2F797EB42C649D,mask_ROI_1.nii.gz,mask-roi-1,,excluded_term,roi
@@ -6126,7 +6126,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 3065C75EFDF32E,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 3065C75EFDF32E,mask_PTV50udenParasternal.nii.gz,mask-ptv50udenparasternal,,no_required_class_match,
 3065C75EFDF32E,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-3065C75EFDF32E,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+3065C75EFDF32E,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 3065C75EFDF32E,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 3065C75EFDF32E,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 3065C75EFDF32E,mask_StraalefeltMamma.nii.gz,mask-straalefeltmamma,,no_required_class_match,
@@ -6293,7 +6293,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 311ABA2E532B4B,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 311ABA2E532B4B,mask_PTV50udenParasternal.nii.gz,mask-ptv50udenparasternal,,no_required_class_match,
 311ABA2E532B4B,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-311ABA2E532B4B,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+311ABA2E532B4B,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 311ABA2E532B4B,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 311ABA2E532B4B,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 311ABA2E532B4B,mask_StraalefeltMamma.nii.gz,mask-straalefeltmamma,,no_required_class_match,
@@ -6384,7 +6384,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 32113821A1F6DA,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 32113821A1F6DA,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 32113821A1F6DA,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-32113821A1F6DA,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+32113821A1F6DA,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 32113821A1F6DA,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 32113821A1F6DA,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 32113821A1F6DA,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -6797,7 +6797,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 361B9F0224E5EA,mask_Level-II.nii.gz,mask-level-ii,level2,selected,level2:level-ii
 361B9F0224E5EA,mask_Level-III.nii.gz,mask-level-iii,level3,selected,level3:level-iii
 361B9F0224E5EA,mask_Lunge-V.nii.gz,mask-lunge-v,,excluded_term,lunge-v|lunge
-361B9F0224E5EA,mask_Periclav_ph.nii.gz,mask-periclav-ph,,no_required_class_match,
+361B9F0224E5EA,mask_Periclav_ph.nii.gz,mask-periclav-ph,imn,selected,imn:periclav
 361B9F0224E5EA,mask_Periclavi_ff.nii.gz,mask-periclavi-ff,,no_required_class_match,
 361B9F0224E5EA,mask_clips.nii.gz,mask-clips,,excluded_term,clips
 3676659DDC4AB1,image.nii.gz,image,,excluded_term,image
@@ -6872,7 +6872,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 373B1E39FA65BE,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 373B1E39FA65BE,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 373B1E39FA65BE,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-373B1E39FA65BE,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+373B1E39FA65BE,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 373B1E39FA65BE,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 373B1E39FA65BE,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 373B1E39FA65BE,mask_ROI_1.nii.gz,mask-roi-1,,excluded_term,roi
@@ -7335,7 +7335,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 3C0F767B6D923C,mask_Medulla.nii.gz,mask-medulla,,excluded_term,medulla
 3C0F767B6D923C,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 3C0F767B6D923C,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
-3C0F767B6D923C,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+3C0F767B6D923C,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 3C0F767B6D923C,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 3C0F767B6D923C,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 3C0F767B6D923C,mask_StraalefeltMamma.nii.gz,mask-straalefeltmamma,,no_required_class_match,
@@ -7623,7 +7623,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 3E553DD003F238,mask_Lateral-marker.nii.gz,mask-lateral-marker,,no_required_class_match,
 3E553DD003F238,mask_Midsternal.nii.gz,mask-midsternal,,excluded_term,midsternal
 3E553DD003F238,mask_PRV_Humerus.nii.gz,mask-prv-humerus,,excluded_term,humerus
-3E553DD003F238,mask_PTVp_Periclav.nii.gz,mask-ptvp-periclav,,no_required_class_match,
+3E553DD003F238,mask_PTVp_Periclav.nii.gz,mask-ptvp-periclav,imn,selected,imn:periclav
 3E553DD003F238,mask_PTVp_chestwall.nii.gz,mask-ptvp-chestwall,,excluded_term,chestwall
 3E553DD003F238,mask_PTVtg_opt.nii.gz,mask-ptvtg-opt,,no_required_class_match,
 3E553DD003F238,mask_Rib-4.nii.gz,mask-rib-4,,excluded_term,rib
@@ -7722,7 +7722,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 3F0021CF20F8C4,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 3F0021CF20F8C4,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 3F0021CF20F8C4,mask_PTV60-pb.nii.gz,mask-ptv60-pb,,no_required_class_match,
-3F0021CF20F8C4,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+3F0021CF20F8C4,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 3F0021CF20F8C4,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 3F0021CF20F8C4,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 3F0021CF20F8C4,mask_StraaleBoost.nii.gz,mask-straaleboost,,no_required_class_match,
@@ -7760,7 +7760,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 3F516BFE949671,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 3F516BFE949671,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 3F516BFE949671,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-3F516BFE949671,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+3F516BFE949671,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 3F516BFE949671,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 3F516BFE949671,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 3F516BFE949671,mask_ROI_1.nii.gz,mask-roi-1,,excluded_term,roi
@@ -7929,7 +7929,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 40762D107C13AF,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 40762D107C13AF,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 40762D107C13AF,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-40762D107C13AF,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+40762D107C13AF,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 40762D107C13AF,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 40762D107C13AF,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 40762D107C13AF,mask_ROI_1.nii.gz,mask-roi-1,,excluded_term,roi
@@ -8162,7 +8162,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 426542A6F0AB82,mask_CTV-N-L3.nii.gz,mask-ctv-n-l3,level3,selected,level3:ctv-n-l3
 426542A6F0AB82,mask_CTV-N-L4.nii.gz,mask-ctv-n-l4,level4,selected,level4:ctv-n-l4
 426542A6F0AB82,mask_CTV-N-interpect.nii.gz,mask-ctv-n-interpect,interpectoral,selected,interpectoral:interpect|ctv-n-interpect
-426542A6F0AB82,mask_CTV-Periclav.nii.gz,mask-ctv-periclav,,no_required_class_match,
+426542A6F0AB82,mask_CTV-Periclav.nii.gz,mask-ctv-periclav,imn,selected,imn:periclav
 426542A6F0AB82,mask_Extern.nii.gz,mask-extern,,excluded_term,extern
 426542A6F0AB82,mask_External.nii.gz,mask-external,,excluded_term,external
 426542A6F0AB82,mask_HV-IMN.nii.gz,mask-hv-imn,,excluded_term,hv
@@ -8344,7 +8344,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 4409DA06B196D0,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 4409DA06B196D0,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 4409DA06B196D0,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-4409DA06B196D0,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+4409DA06B196D0,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 4409DA06B196D0,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 4409DA06B196D0,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 4409DA06B196D0,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -8746,7 +8746,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 474FCBA090452A,mask_Medulla.nii.gz,mask-medulla,,excluded_term,medulla
 474FCBA090452A,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 474FCBA090452A,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
-474FCBA090452A,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+474FCBA090452A,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 474FCBA090452A,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 474FCBA090452A,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 474FCBA090452A,mask_StraalefeltMamma.nii.gz,mask-straalefeltmamma,,no_required_class_match,
@@ -9255,7 +9255,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 4B1B6D7110F4E1,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 4B1B6D7110F4E1,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 4B1B6D7110F4E1,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-4B1B6D7110F4E1,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+4B1B6D7110F4E1,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 4B1B6D7110F4E1,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 4B1B6D7110F4E1,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 4B1B6D7110F4E1,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -9290,7 +9290,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 4B60E335E8ECE8,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 4B60E335E8ECE8,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 4B60E335E8ECE8,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-4B60E335E8ECE8,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+4B60E335E8ECE8,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 4B60E335E8ECE8,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 4B60E335E8ECE8,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 4B60E335E8ECE8,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -9745,7 +9745,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 4EEFA137C3F3AE,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 4EEFA137C3F3AE,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 4EEFA137C3F3AE,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-4EEFA137C3F3AE,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+4EEFA137C3F3AE,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 4EEFA137C3F3AE,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 4EEFA137C3F3AE,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 4EEFA137C3F3AE,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -10034,7 +10034,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 513B55A062D11D,mask_CTVn-IMN.nii.gz,mask-ctvn-imn,imn,selected,imn:ctvn-imn|imn
 513B55A062D11D,mask_CTVn-L2.nii.gz,mask-ctvn-l2,level2,selected,level2:ctvn-l2
 513B55A062D11D,mask_CTVn-interpect.nii.gz,mask-ctvn-interpect,interpectoral,selected,interpectoral:ctvn-interpect|interpect
-513B55A062D11D,mask_CTVn-periclav.nii.gz,mask-ctvn-periclav,,no_required_class_match,
+513B55A062D11D,mask_CTVn-periclav.nii.gz,mask-ctvn-periclav,imn,selected,imn:periclav
 513B55A062D11D,mask_CTVp-breast.nii.gz,mask-ctvp-breast,,excluded_term,ctvp-breast|breast
 513B55A062D11D,mask_Cicatrice-11.nii.gz,mask-cicatrice-11,,excluded_term,cicatrice
 513B55A062D11D,mask_Cor-11.nii.gz,mask-cor-11,,excluded_term,cor|cor-11
@@ -10095,7 +10095,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 514878675B5E84,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 514878675B5E84,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 514878675B5E84,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-514878675B5E84,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+514878675B5E84,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 514878675B5E84,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 514878675B5E84,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 514878675B5E84,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -10149,7 +10149,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 5177A9922C441F,mask_CTV-N-L3.nii.gz,mask-ctv-n-l3,level3,selected,level3:ctv-n-l3
 5177A9922C441F,mask_CTV-N-L4.nii.gz,mask-ctv-n-l4,level4,selected,level4:ctv-n-l4
 5177A9922C441F,mask_CTV-N-interpect.nii.gz,mask-ctv-n-interpect,interpectoral,selected,interpectoral:interpect|ctv-n-interpect
-5177A9922C441F,mask_CTV-periclav-dxt.nii.gz,mask-ctv-periclav-dxt,,no_required_class_match,
+5177A9922C441F,mask_CTV-periclav-dxt.nii.gz,mask-ctv-periclav-dxt,imn,selected,imn:periclav
 5177A9922C441F,mask_External.nii.gz,mask-external,,excluded_term,external
 5177A9922C441F,mask_HV-IMN-dxt.nii.gz,mask-hv-imn-dxt,,excluded_term,hv
 5177A9922C441F,mask_HV-periclav.nii.gz,mask-hv-periclav,,excluded_term,hv
@@ -11106,7 +11106,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 59B2F6E9FF320F,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 59B2F6E9FF320F,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 59B2F6E9FF320F,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-59B2F6E9FF320F,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+59B2F6E9FF320F,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 59B2F6E9FF320F,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 59B2F6E9FF320F,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 59B2F6E9FF320F,mask_ROI_1.nii.gz,mask-roi-1,,excluded_term,roi
@@ -11429,7 +11429,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 5D039187FF77EF,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 5D039187FF77EF,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 5D039187FF77EF,mask_ParaFirkant.nii.gz,mask-parafirkant,,no_required_class_match,
-5D039187FF77EF,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+5D039187FF77EF,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 5D039187FF77EF,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 5D039187FF77EF,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 5D039187FF77EF,mask_StraalefeltMamma.nii.gz,mask-straalefeltmamma,,no_required_class_match,
@@ -11466,7 +11466,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 5D155E0C30C8D1,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 5D155E0C30C8D1,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 5D155E0C30C8D1,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-5D155E0C30C8D1,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+5D155E0C30C8D1,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 5D155E0C30C8D1,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 5D155E0C30C8D1,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 5D155E0C30C8D1,mask_ROI_1.nii.gz,mask-roi-1,,excluded_term,roi
@@ -11797,7 +11797,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 6005064A021F8A,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 6005064A021F8A,mask_PTV50udenParasternal.nii.gz,mask-ptv50udenparasternal,,no_required_class_match,
 6005064A021F8A,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-6005064A021F8A,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+6005064A021F8A,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 6005064A021F8A,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 6005064A021F8A,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 6005064A021F8A,mask_StraalefeltMamma.nii.gz,mask-straalefeltmamma,,no_required_class_match,
@@ -11918,7 +11918,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 6100C3D39311CC,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 6100C3D39311CC,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 6100C3D39311CC,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-6100C3D39311CC,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+6100C3D39311CC,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 6100C3D39311CC,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 6100C3D39311CC,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 6100C3D39311CC,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -12281,7 +12281,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 647F5538D4050A,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 647F5538D4050A,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 647F5538D4050A,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-647F5538D4050A,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+647F5538D4050A,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 647F5538D4050A,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 647F5538D4050A,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 647F5538D4050A,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -12651,7 +12651,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 66ECC031E116CD,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 66ECC031E116CD,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 66ECC031E116CD,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-66ECC031E116CD,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+66ECC031E116CD,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 66ECC031E116CD,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 66ECC031E116CD,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 66ECC031E116CD,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -12884,7 +12884,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 688CC73134642A,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 688CC73134642A,mask_Pacemaker.nii.gz,mask-pacemaker,,excluded_term,pacemaker
 688CC73134642A,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-688CC73134642A,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+688CC73134642A,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 688CC73134642A,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 688CC73134642A,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 688CC73134642A,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -13439,7 +13439,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 6E410A365F553D,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 6E410A365F553D,mask_PTV50udenParasternal.nii.gz,mask-ptv50udenparasternal,,no_required_class_match,
 6E410A365F553D,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-6E410A365F553D,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+6E410A365F553D,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 6E410A365F553D,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 6E410A365F553D,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 6E410A365F553D,mask_StraalefeltMamma.nii.gz,mask-straalefeltmamma,,no_required_class_match,
@@ -13475,7 +13475,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 6E53887942F309,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 6E53887942F309,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 6E53887942F309,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-6E53887942F309,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+6E53887942F309,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 6E53887942F309,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 6E53887942F309,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 6E53887942F309,mask_ROI_1.nii.gz,mask-roi-1,,excluded_term,roi
@@ -13775,7 +13775,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 719E181866AA07,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 719E181866AA07,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 719E181866AA07,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-719E181866AA07,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+719E181866AA07,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 719E181866AA07,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 719E181866AA07,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 719E181866AA07,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -13999,7 +13999,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 73B1F56A36EBEB,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 73B1F56A36EBEB,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 73B1F56A36EBEB,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-73B1F56A36EBEB,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+73B1F56A36EBEB,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 73B1F56A36EBEB,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 73B1F56A36EBEB,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 73B1F56A36EBEB,mask_ROI_1.nii.gz,mask-roi-1,,excluded_term,roi
@@ -14090,7 +14090,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 7446C833608FD1,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 7446C833608FD1,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 7446C833608FD1,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-7446C833608FD1,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+7446C833608FD1,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 7446C833608FD1,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 7446C833608FD1,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 7446C833608FD1,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -14268,7 +14268,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 76113AD3EAA9E7,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 76113AD3EAA9E7,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 76113AD3EAA9E7,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-76113AD3EAA9E7,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+76113AD3EAA9E7,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 76113AD3EAA9E7,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 76113AD3EAA9E7,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 76113AD3EAA9E7,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -15091,7 +15091,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 7E390B96E14927,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 7E390B96E14927,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 7E390B96E14927,mask_PTV60.nii.gz,mask-ptv60,,no_required_class_match,
-7E390B96E14927,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+7E390B96E14927,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 7E390B96E14927,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 7E390B96E14927,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 7E390B96E14927,mask_StraaleBoost.nii.gz,mask-straaleboost,,no_required_class_match,
@@ -15132,7 +15132,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 7E6DD83A8F3F7D,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 7E6DD83A8F3F7D,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 7E6DD83A8F3F7D,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-7E6DD83A8F3F7D,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+7E6DD83A8F3F7D,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 7E6DD83A8F3F7D,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 7E6DD83A8F3F7D,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 7E6DD83A8F3F7D,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -15167,7 +15167,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 7E79249442913D,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 7E79249442913D,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 7E79249442913D,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-7E79249442913D,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+7E79249442913D,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 7E79249442913D,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 7E79249442913D,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 7E79249442913D,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -15614,7 +15614,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 81F5E316526FC6,mask_Medulla.nii.gz,mask-medulla,,excluded_term,medulla
 81F5E316526FC6,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 81F5E316526FC6,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
-81F5E316526FC6,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+81F5E316526FC6,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 81F5E316526FC6,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 81F5E316526FC6,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 81F5E316526FC6,mask_StraalefeltMamma.nii.gz,mask-straalefeltmamma,,no_required_class_match,
@@ -16447,7 +16447,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 8AE3944818D67D,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 8AE3944818D67D,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 8AE3944818D67D,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-8AE3944818D67D,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+8AE3944818D67D,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 8AE3944818D67D,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 8AE3944818D67D,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 8AE3944818D67D,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -16564,7 +16564,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 8BB8E0FE9B832F,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 8BB8E0FE9B832F,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 8BB8E0FE9B832F,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-8BB8E0FE9B832F,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+8BB8E0FE9B832F,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 8BB8E0FE9B832F,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 8BB8E0FE9B832F,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 8BB8E0FE9B832F,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -16617,7 +16617,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 8BCFBD46493BE0,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 8BCFBD46493BE0,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 8BCFBD46493BE0,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-8BCFBD46493BE0,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+8BCFBD46493BE0,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 8BCFBD46493BE0,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 8BCFBD46493BE0,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 8BCFBD46493BE0,mask_ROI_1.nii.gz,mask-roi-1,,excluded_term,roi
@@ -17244,7 +17244,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 92F8A72DDBC065,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 92F8A72DDBC065,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 92F8A72DDBC065,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-92F8A72DDBC065,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+92F8A72DDBC065,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 92F8A72DDBC065,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 92F8A72DDBC065,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 92F8A72DDBC065,mask_StraaleLN.nii.gz,mask-straaleln,,no_required_class_match,
@@ -17490,7 +17490,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 9500A9C51FE868,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 9500A9C51FE868,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 9500A9C51FE868,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-9500A9C51FE868,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+9500A9C51FE868,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 9500A9C51FE868,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 9500A9C51FE868,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 9500A9C51FE868,mask_ROI_1.nii.gz,mask-roi-1,,excluded_term,roi
@@ -17684,7 +17684,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 9717CA387379C5,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 9717CA387379C5,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 9717CA387379C5,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-9717CA387379C5,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+9717CA387379C5,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 9717CA387379C5,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 9717CA387379C5,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 9717CA387379C5,mask_ROI_1.nii.gz,mask-roi-1,,excluded_term,roi
@@ -17739,7 +17739,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 973C3DD8EA0240,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 973C3DD8EA0240,mask_PTV50udenParasternal.nii.gz,mask-ptv50udenparasternal,,no_required_class_match,
 973C3DD8EA0240,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-973C3DD8EA0240,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+973C3DD8EA0240,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 973C3DD8EA0240,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 973C3DD8EA0240,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 973C3DD8EA0240,mask_StraalefeltMamma.nii.gz,mask-straalefeltmamma,,no_required_class_match,
@@ -17776,7 +17776,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 975A01E347AB42,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 975A01E347AB42,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 975A01E347AB42,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-975A01E347AB42,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+975A01E347AB42,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 975A01E347AB42,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 975A01E347AB42,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 975A01E347AB42,mask_ROI_1.nii.gz,mask-roi-1,,excluded_term,roi
@@ -17823,7 +17823,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 97E22121BDA854,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 97E22121BDA854,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 97E22121BDA854,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-97E22121BDA854,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+97E22121BDA854,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 97E22121BDA854,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 97E22121BDA854,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 97E22121BDA854,mask_Straale-incl-para.nii.gz,mask-straale-incl-para,imn,selected,imn:para
@@ -17935,7 +17935,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 98769DFF385033,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 98769DFF385033,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 98769DFF385033,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-98769DFF385033,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+98769DFF385033,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 98769DFF385033,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 98769DFF385033,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 98769DFF385033,mask_ROI_1.nii.gz,mask-roi-1,,excluded_term,roi
@@ -18070,7 +18070,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 991849C2A9D1E6,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 991849C2A9D1E6,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 991849C2A9D1E6,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-991849C2A9D1E6,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+991849C2A9D1E6,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 991849C2A9D1E6,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 991849C2A9D1E6,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 991849C2A9D1E6,mask_ROI_1.nii.gz,mask-roi-1,,excluded_term,roi
@@ -18228,7 +18228,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 9A31641FAE0500,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 9A31641FAE0500,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 9A31641FAE0500,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-9A31641FAE0500,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+9A31641FAE0500,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 9A31641FAE0500,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 9A31641FAE0500,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 9A31641FAE0500,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -18504,7 +18504,7 @@ case_id,mask_name,normalized_mask_name,selected_class,reason,matched_terms
 9D670828D330E5,mask_CTV-N-L3.nii.gz,mask-ctv-n-l3,level3,selected,level3:ctv-n-l3
 9D670828D330E5,mask_CTV-N-L4.nii.gz,mask-ctv-n-l4,level4,selected,level4:ctv-n-l4
 9D670828D330E5,mask_CTV-N-interpect.nii.gz,mask-ctv-n-interpect,interpectoral,selected,interpectoral:interpect|ctv-n-interpect
-9D670828D330E5,mask_CTV-Periclav-dxt.nii.gz,mask-ctv-periclav-dxt,,no_required_class_match,
+9D670828D330E5,mask_CTV-Periclav-dxt.nii.gz,mask-ctv-periclav-dxt,imn,selected,imn:periclav
 9D670828D330E5,mask_CTV-Thorax-dxt.nii.gz,mask-ctv-thorax-dxt,,excluded_term,ctv-thorax-dxt|ctv-thorax|thorax
 9D670828D330E5,mask_External.nii.gz,mask-external,,excluded_term,external
 9D670828D330E5,mask_HV-IMN.nii.gz,mask-hv-imn,,excluded_term,hv
@@ -18832,7 +18832,7 @@ A213F38331A47D,mask_NedreMark.nii.gz,mask-nedremark,,no_required_class_match,
 A213F38331A47D,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 A213F38331A47D,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 A213F38331A47D,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-A213F38331A47D,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+A213F38331A47D,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 A213F38331A47D,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 A213F38331A47D,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 A213F38331A47D,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -19671,7 +19671,7 @@ A8A2FE4B306DF6,mask_Level_3.nii.gz,mask-level-3,level3,selected,level3:level-3
 A8A2FE4B306DF6,mask_Medulla.nii.gz,mask-medulla,,excluded_term,medulla
 A8A2FE4B306DF6,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 A8A2FE4B306DF6,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
-A8A2FE4B306DF6,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+A8A2FE4B306DF6,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 A8A2FE4B306DF6,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 A8A2FE4B306DF6,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 A8A2FE4B306DF6,mask_StraalefeltMamma.nii.gz,mask-straalefeltmamma,,no_required_class_match,
@@ -19709,7 +19709,7 @@ A8EC928EF044E9,mask_NedreMark.nii.gz,mask-nedremark,,no_required_class_match,
 A8EC928EF044E9,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 A8EC928EF044E9,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 A8EC928EF044E9,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-A8EC928EF044E9,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+A8EC928EF044E9,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 A8EC928EF044E9,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 A8EC928EF044E9,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 A8EC928EF044E9,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -20202,7 +20202,7 @@ ADA61EC049FB92,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 ADA61EC049FB92,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 ADA61EC049FB92,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 ADA61EC049FB92,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-ADA61EC049FB92,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+ADA61EC049FB92,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 ADA61EC049FB92,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 ADA61EC049FB92,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 ADA61EC049FB92,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -20338,7 +20338,7 @@ AECB7BC2C02D70,mask_Medulla.nii.gz,mask-medulla,,excluded_term,medulla
 AECB7BC2C02D70,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 AECB7BC2C02D70,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 AECB7BC2C02D70,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
-AECB7BC2C02D70,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+AECB7BC2C02D70,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 AECB7BC2C02D70,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 AECB7BC2C02D70,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 AECB7BC2C02D70,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -22001,7 +22001,7 @@ BD9F83780542BC,mask_Medulla.nii.gz,mask-medulla,,excluded_term,medulla
 BD9F83780542BC,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 BD9F83780542BC,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 BD9F83780542BC,mask_PTV60_Tumorleje.nii.gz,mask-ptv60-tumorleje,,excluded_term,tumorleje
-BD9F83780542BC,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+BD9F83780542BC,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 BD9F83780542BC,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 BD9F83780542BC,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 BD9F83780542BC,mask_StraaleBoost.nii.gz,mask-straaleboost,,no_required_class_match,
@@ -22040,7 +22040,7 @@ BDC44BEB45651A,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 BDC44BEB45651A,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 BDC44BEB45651A,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 BDC44BEB45651A,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-BDC44BEB45651A,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+BDC44BEB45651A,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 BDC44BEB45651A,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 BDC44BEB45651A,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 BDC44BEB45651A,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -22301,7 +22301,7 @@ BFD8C44AD53682,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 BFD8C44AD53682,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 BFD8C44AD53682,mask_PTV50udenParasternal.nii.gz,mask-ptv50udenparasternal,,no_required_class_match,
 BFD8C44AD53682,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-BFD8C44AD53682,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+BFD8C44AD53682,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 BFD8C44AD53682,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 BFD8C44AD53682,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 BFD8C44AD53682,mask_StraalefeltMamma.nii.gz,mask-straalefeltmamma,,no_required_class_match,
@@ -22512,7 +22512,7 @@ C22B2E39DBC5BD,mask_CTV-N-L3.nii.gz,mask-ctv-n-l3,level3,selected,level3:ctv-n-l
 C22B2E39DBC5BD,mask_CTV-N-L4.nii.gz,mask-ctv-n-l4,level4,selected,level4:ctv-n-l4
 C22B2E39DBC5BD,mask_CTV-N-interpect.nii.gz,mask-ctv-n-interpect,interpectoral,selected,interpectoral:interpect|ctv-n-interpect
 C22B2E39DBC5BD,mask_CTV-N_L2.nii.gz,mask-ctv-n-l2,level2,selected,level2:ctv-n-l2
-C22B2E39DBC5BD,mask_CTV-Periclav.nii.gz,mask-ctv-periclav,,no_required_class_match,
+C22B2E39DBC5BD,mask_CTV-Periclav.nii.gz,mask-ctv-periclav,imn,selected,imn:periclav
 C22B2E39DBC5BD,mask_CTV-Tumorleje.nii.gz,mask-ctv-tumorleje,,excluded_term,tumorleje
 C22B2E39DBC5BD,mask_CTVn_IMN.nii.gz,mask-ctvn-imn,imn,selected,imn:ctvn-imn|imn
 C22B2E39DBC5BD,mask_Cicatrice.nii.gz,mask-cicatrice,,excluded_term,cicatrice
@@ -22668,7 +22668,7 @@ C2FE131C2AABBB,mask_Level_3.nii.gz,mask-level-3,level3,selected,level3:level-3
 C2FE131C2AABBB,mask_Medulla.nii.gz,mask-medulla,,excluded_term,medulla
 C2FE131C2AABBB,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 C2FE131C2AABBB,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
-C2FE131C2AABBB,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+C2FE131C2AABBB,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 C2FE131C2AABBB,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 C2FE131C2AABBB,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 C2FE131C2AABBB,mask_StraalefeltMamma.nii.gz,mask-straalefeltmamma,,no_required_class_match,
@@ -23313,7 +23313,7 @@ CA3725D54D3814,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 CA3725D54D3814,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 CA3725D54D3814,mask_PTV50udenParasternal.nii.gz,mask-ptv50udenparasternal,,no_required_class_match,
 CA3725D54D3814,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-CA3725D54D3814,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+CA3725D54D3814,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 CA3725D54D3814,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 CA3725D54D3814,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 CA3725D54D3814,mask_StraalefeltMamma.nii.gz,mask-straalefeltmamma,,no_required_class_match,
@@ -23473,7 +23473,7 @@ CBFC6125A5A919,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 CBFC6125A5A919,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 CBFC6125A5A919,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 CBFC6125A5A919,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-CBFC6125A5A919,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+CBFC6125A5A919,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 CBFC6125A5A919,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 CBFC6125A5A919,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 CBFC6125A5A919,mask_ROI_1.nii.gz,mask-roi-1,,excluded_term,roi
@@ -23684,7 +23684,7 @@ CE1D4F3FBFB67C,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 CE1D4F3FBFB67C,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 CE1D4F3FBFB67C,mask_PTV50udenParasternal.nii.gz,mask-ptv50udenparasternal,,no_required_class_match,
 CE1D4F3FBFB67C,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-CE1D4F3FBFB67C,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+CE1D4F3FBFB67C,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 CE1D4F3FBFB67C,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 CE1D4F3FBFB67C,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 CE1D4F3FBFB67C,mask_StraalefeltMamma.nii.gz,mask-straalefeltmamma,,no_required_class_match,
@@ -23735,7 +23735,7 @@ CE6B503A4BD449,mask_NedreMark.nii.gz,mask-nedremark,,no_required_class_match,
 CE6B503A4BD449,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 CE6B503A4BD449,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 CE6B503A4BD449,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-CE6B503A4BD449,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+CE6B503A4BD449,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 CE6B503A4BD449,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 CE6B503A4BD449,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 CE6B503A4BD449,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -24205,7 +24205,7 @@ D2EA7CB4505BF8,mask_MaskP1-2.nii.gz,mask-maskp1-2,,no_required_class_match,
 D2EA7CB4505BF8,mask_Medulla.nii.gz,mask-medulla,,excluded_term,medulla
 D2EA7CB4505BF8,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 D2EA7CB4505BF8,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
-D2EA7CB4505BF8,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+D2EA7CB4505BF8,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 D2EA7CB4505BF8,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 D2EA7CB4505BF8,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 D2EA7CB4505BF8,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -24433,7 +24433,7 @@ D5B643F8215980,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 D5B643F8215980,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 D5B643F8215980,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 D5B643F8215980,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-D5B643F8215980,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+D5B643F8215980,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 D5B643F8215980,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 D5B643F8215980,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 D5B643F8215980,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -25137,7 +25137,7 @@ DBC68BD8B8E12A,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 DBC68BD8B8E12A,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 DBC68BD8B8E12A,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 DBC68BD8B8E12A,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-DBC68BD8B8E12A,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+DBC68BD8B8E12A,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 DBC68BD8B8E12A,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 DBC68BD8B8E12A,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 DBC68BD8B8E12A,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -25277,7 +25277,7 @@ DCFCD1394EDA01,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 DCFCD1394EDA01,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 DCFCD1394EDA01,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 DCFCD1394EDA01,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-DCFCD1394EDA01,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+DCFCD1394EDA01,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 DCFCD1394EDA01,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 DCFCD1394EDA01,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 DCFCD1394EDA01,mask_ROI_1.nii.gz,mask-roi-1,,excluded_term,roi
@@ -25584,7 +25584,7 @@ DF377FEDD09ADB,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 DF377FEDD09ADB,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 DF377FEDD09ADB,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 DF377FEDD09ADB,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-DF377FEDD09ADB,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+DF377FEDD09ADB,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 DF377FEDD09ADB,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 DF377FEDD09ADB,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 DF377FEDD09ADB,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -25978,7 +25978,7 @@ E354B8E9E01E57,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 E354B8E9E01E57,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 E354B8E9E01E57,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 E354B8E9E01E57,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-E354B8E9E01E57,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+E354B8E9E01E57,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 E354B8E9E01E57,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 E354B8E9E01E57,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 E354B8E9E01E57,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -26183,7 +26183,7 @@ E5268B3399CC51,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 E5268B3399CC51,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 E5268B3399CC51,mask_PTV50udenParasternal.nii.gz,mask-ptv50udenparasternal,,no_required_class_match,
 E5268B3399CC51,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-E5268B3399CC51,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+E5268B3399CC51,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 E5268B3399CC51,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 E5268B3399CC51,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 E5268B3399CC51,mask_StraalefeltMamma.nii.gz,mask-straalefeltmamma,,no_required_class_match,
@@ -26376,7 +26376,7 @@ E6CCC63A22D381,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 E6CCC63A22D381,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 E6CCC63A22D381,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
 E6CCC63A22D381,mask_Pect-minor.nii.gz,mask-pect-minor,,no_required_class_match,
-E6CCC63A22D381,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+E6CCC63A22D381,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 E6CCC63A22D381,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 E6CCC63A22D381,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 E6CCC63A22D381,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -26459,7 +26459,7 @@ E786D1776E161B,mask_Medulla.nii.gz,mask-medulla,,excluded_term,medulla
 E786D1776E161B,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 E786D1776E161B,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 E786D1776E161B,mask_PTV_60.nii.gz,mask-ptv-60,,excluded_term,ptv
-E786D1776E161B,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+E786D1776E161B,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 E786D1776E161B,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 E786D1776E161B,mask_Straale_Boost.nii.gz,mask-straale-boost,,excluded_term,boost
 E786D1776E161B,mask_StraalefeltMamma.nii.gz,mask-straalefeltmamma,,no_required_class_match,
@@ -26685,7 +26685,7 @@ EA434663BAEA7D,mask_NedreMark.nii.gz,mask-nedremark,,no_required_class_match,
 EA434663BAEA7D,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 EA434663BAEA7D,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 EA434663BAEA7D,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-EA434663BAEA7D,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+EA434663BAEA7D,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 EA434663BAEA7D,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 EA434663BAEA7D,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 EA434663BAEA7D,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -27103,7 +27103,7 @@ EE85411010B40F,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 EE85411010B40F,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 EE85411010B40F,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 EE85411010B40F,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-EE85411010B40F,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+EE85411010B40F,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 EE85411010B40F,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 EE85411010B40F,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 EE85411010B40F,mask_ROI_1.nii.gz,mask-roi-1,,excluded_term,roi
@@ -27208,7 +27208,7 @@ EF6DF91C2D45FC,mask_NedreMark.nii.gz,mask-nedremark,,no_required_class_match,
 EF6DF91C2D45FC,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 EF6DF91C2D45FC,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 EF6DF91C2D45FC,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-EF6DF91C2D45FC,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+EF6DF91C2D45FC,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 EF6DF91C2D45FC,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 EF6DF91C2D45FC,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 EF6DF91C2D45FC,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -27497,7 +27497,7 @@ F2A74711ECFCA2,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 F2A74711ECFCA2,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 F2A74711ECFCA2,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 F2A74711ECFCA2,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-F2A74711ECFCA2,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+F2A74711ECFCA2,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 F2A74711ECFCA2,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 F2A74711ECFCA2,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 F2A74711ECFCA2,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -27652,7 +27652,7 @@ F3E31E2ED014BE,mask_Level_3.nii.gz,mask-level-3,level3,selected,level3:level-3
 F3E31E2ED014BE,mask_Medulla.nii.gz,mask-medulla,,excluded_term,medulla
 F3E31E2ED014BE,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 F3E31E2ED014BE,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
-F3E31E2ED014BE,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+F3E31E2ED014BE,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 F3E31E2ED014BE,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 F3E31E2ED014BE,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 F3E31E2ED014BE,mask_StraalefeltMamma.nii.gz,mask-straalefeltmamma,,no_required_class_match,
@@ -28210,7 +28210,7 @@ F94E014E7C0151,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 F94E014E7C0151,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 F94E014E7C0151,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 F94E014E7C0151,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-F94E014E7C0151,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+F94E014E7C0151,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 F94E014E7C0151,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 F94E014E7C0151,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 F94E014E7C0151,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,
@@ -28522,7 +28522,7 @@ FCB7BCFACD7989,mask_Level_3.nii.gz,mask-level-3,level3,selected,level3:level-3
 FCB7BCFACD7989,mask_Medulla.nii.gz,mask-medulla,,excluded_term,medulla
 FCB7BCFACD7989,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 FCB7BCFACD7989,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
-FCB7BCFACD7989,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+FCB7BCFACD7989,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 FCB7BCFACD7989,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 FCB7BCFACD7989,mask_StraalefeltMamma.nii.gz,mask-straalefeltmamma,,no_required_class_match,
 FCB7BCFACD7989,mask_StraalefeltSupraclav.nii.gz,mask-straalefeltsupraclav,,no_required_class_match,
@@ -28640,7 +28640,7 @@ FDE0D02D3C4C7E,mask_Midtlinie.nii.gz,mask-midtlinie,,excluded_term,midtlinie
 FDE0D02D3C4C7E,mask_PTV50.nii.gz,mask-ptv50,,no_required_class_match,
 FDE0D02D3C4C7E,mask_PTV50_u_Parasternal.nii.gz,mask-ptv50-u-parasternal,imn,selected,imn:parasternal
 FDE0D02D3C4C7E,mask_Parasternal.nii.gz,mask-parasternal,imn,selected,imn:parasternal
-FDE0D02D3C4C7E,mask_Periclav.nii.gz,mask-periclav,,no_required_class_match,
+FDE0D02D3C4C7E,mask_Periclav.nii.gz,mask-periclav,imn,selected,imn:periclav
 FDE0D02D3C4C7E,mask_Pulm_Dxt.nii.gz,mask-pulm-dxt,,excluded_term,pulm-dxt
 FDE0D02D3C4C7E,mask_Pulm_Sin.nii.gz,mask-pulm-sin,,excluded_term,pulm-sin
 FDE0D02D3C4C7E,mask_StrF_LN.nii.gz,mask-strf-ln,,no_required_class_match,

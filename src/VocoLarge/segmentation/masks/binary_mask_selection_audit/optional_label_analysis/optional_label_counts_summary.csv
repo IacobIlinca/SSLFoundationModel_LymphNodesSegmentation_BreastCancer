@@ -1,0 +1,11 @@
+scenario,n_cases,required_labels,optional_labels
+only_level2_and_imn_required,1050,level2|imn,level1|level3|level4|interpectoral
+only_level2_and_level3_required,772,level2|level3,level1|level4|interpectoral|imn
+level1_and_level4_optional,770,level2|level3|interpectoral|imn,level1|level4
+level1_optional,448,level2|level3|level4|interpectoral|imn,level1
+level4_optional,81,level1|level2|level3|interpectoral|imn,level4
+all_6_required,72,level1|level2|level3|level4|interpectoral|imn,
+interpectoral_optional,72,level1|level2|level3|level4|imn,interpectoral
+level3_optional,72,level1|level2|level4|interpectoral|imn,level3
+level2_optional,72,level1|level3|level4|interpectoral|imn,level2
+imn_optional,72,level1|level2|level3|level4|interpectoral,imn
