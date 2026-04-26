@@ -29,6 +29,8 @@ def save_config(cfg):
 def train_one_epoch(model, loader, optim, loss_fn, scaler, device, cfg, epoch=None):
     model.train()
     running = 0.0
+    dice_loss_total = 0.0
+    bce_loss_total = 0.0
     steps = 0
 
     pbar = tqdm(loader, desc=f"Train {epoch:04d}", leave=False, dynamic_ncols=True)
@@ -42,18 +44,25 @@ def train_one_epoch(model, loader, optim, loss_fn, scaler, device, cfg, epoch=No
 
         with autocast(enabled=cfg.amp):
             logits = model(img)
-            loss = loss_fn(logits, lab)
+            loss, dice_loss, bce_loss = loss_fn(logits, lab)
 
         scaler.scale(loss).backward()
         scaler.step(optim)
         scaler.update()
 
         running += float(loss.item())
+        dice_loss_total += float(dice_loss.item())
+        bce_loss_total += float(bce_loss.item())
         steps += 1
 
-        pbar.set_postfix(loss=f"{running / max(steps, 1):.4f}", case_ids=str(case_ids))
+        pbar.set_postfix(
+            loss=f"{running / max(steps, 1):.4f}",
+            dice_loss=f"{dice_loss_total / max(steps, 1):.4f}",
+            bce_loss=f"{bce_loss_total / max(steps, 1):.4f}",
+            case_ids=str(case_ids),
+        )
 
-    return running / max(steps, 1)
+    return running / max(steps, 1), dice_loss_total / max(steps, 1), bce_loss_total / max(steps, 1),
 
 
 @torch.no_grad()
@@ -79,7 +88,7 @@ def evaluate(model, loader, device, loss_fn, cfg: ConfigBinary, desc="Eval", vis
         else:
             logits = infer_full_volume(model, img, cfg)
 
-        loss = loss_fn(logits, lab)
+        loss, _, _, = loss_fn(logits, lab)
         loss_running += float(loss.item())
         steps += 1
 
