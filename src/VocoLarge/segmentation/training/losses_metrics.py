@@ -11,6 +11,7 @@ from monai.transforms import AsDiscrete, Activations, Compose
 
 from src.VocoLarge.segmentation.config import Config
 from src.VocoLarge.segmentation.config_binary import ConfigBinary
+from src.VocoLarge.segmentation.multiclass_segmentation.config_multiclass import ConfigMulticlass
 
 
 # =========================================================
@@ -25,6 +26,15 @@ def build_loss_multiclass(cfg: Config):
         to_onehot_y=True,
         softmax=True,
         weight=torch.FloatTensor(cfg.class_weight_for_loss).to(cfg.device),
+    )
+
+def build_loss_multiclass_with_components(cfg: ConfigMulticlass):
+    return DiceCELossMulticlass(
+        dice_weight=cfg.dice_weight,
+        ce_weight=cfg.ce_weight,
+        class_weights=cfg.class_weight_for_loss,
+        include_background=False,
+        device=cfg.device
     )
 
 
@@ -126,6 +136,46 @@ def build_metrics_binary_sigmoid(cfg):
         AsDiscrete(threshold=0.5),
     ])
     post_label = AsDiscrete(threshold=0.5)
+
+    return dice, hd95, post_pred, post_label
+
+
+def build_metrics_multiclass_softmax(cfg):
+    """
+    Multiclass metrics for softmax output.
+
+    Expects:
+      logits: (B, C, H, W, D)
+      label:  (B, 1, H, W, D) or (B, H, W, D), integer labels
+
+    where:
+      C = cfg.num_classes + 1
+        = background + foreground classes
+    """
+
+    n_classes = cfg.num_classes + 1
+
+    dice = DiceMetric(
+        include_background=False,
+        reduction="mean_batch",
+        get_not_nans=True,
+    )
+
+    hd95 = HausdorffDistanceMetric(
+        include_background=False,
+        percentile=95.0,
+        reduction="mean_batch",
+        get_not_nans=True,
+    )
+
+    post_pred = Compose([
+        Activations(softmax=True),
+        AsDiscrete(argmax=True, to_onehot=n_classes),
+    ])
+
+    post_label = Compose([
+        AsDiscrete(to_onehot=n_classes),
+    ])
 
     return dice, hd95, post_pred, post_label
 
@@ -233,3 +283,92 @@ class DiceBCESurfaceBinaryLoss(nn.Module):
                  ),
                 self.dice_weight * dice_loss,
                 self.bce_weight * bce_loss)
+
+class DiceCELossMulticlass(nn.Module):
+    """
+    Multiclass segmentation loss.
+
+    Expects:
+      logits: (B, C, H, W, D)
+      labels: (B, 1, H, W, D) or (B, H, W, D)
+
+    labels must contain integer class indices:
+      0 = background
+      1 = level1
+      2 = level2
+      3 = level3
+      4 = level4
+      5 = imn
+      6 = interpectoral
+
+    total loss =
+        dice_weight * DiceLoss
+      + ce_weight   * CrossEntropyLoss
+    """
+
+    def __init__(
+        self,
+        dice_weight=1.0,
+        ce_weight=1.0,
+        class_weights=None,
+        include_background=False,
+        device="cuda"
+    ):
+        super().__init__()
+
+        self.dice_weight = dice_weight
+        self.ce_weight = ce_weight
+
+        self.dice = DiceLoss(
+            softmax=True,
+            to_onehot_y=True,
+            include_background=include_background,
+        )
+
+        if class_weights is not None:
+            class_weights = torch.as_tensor(class_weights, dtype=torch.float32).to(device)
+
+        self.register_buffer("class_weights", class_weights)
+
+        self.ce = nn.CrossEntropyLoss(
+            weight=self.class_weights,
+        )
+
+    def forward(self, logits, labels):
+        """
+        logits: (B, C, H, W, D)
+        labels: (B, 1, H, W, D) or (B, H, W, D)
+        """
+
+        # DiceLoss with to_onehot_y=True expects labels with channel dim:
+        # (B, 1, H, W, D)
+        if labels.ndim == logits.ndim - 1:
+            labels_dice = labels.unsqueeze(1)
+        else:
+            labels_dice = labels
+
+        labels_dice = labels_dice.long()
+
+        # CrossEntropyLoss expects:
+        # logits: (B, C, H, W, D)
+        # target: (B, H, W, D)
+        if labels.ndim == logits.ndim:
+            labels_ce = labels.squeeze(1)
+        else:
+            labels_ce = labels
+
+        labels_ce = labels_ce.long()
+
+        dice_loss = self.dice(logits, labels_dice)
+        ce_loss = self.ce(logits, labels_ce)
+
+        total = (
+            self.dice_weight * dice_loss
+            + self.ce_weight * ce_loss
+        )
+
+        return (
+            total,
+            self.dice_weight * dice_loss,
+            self.ce_weight * ce_loss,
+        )

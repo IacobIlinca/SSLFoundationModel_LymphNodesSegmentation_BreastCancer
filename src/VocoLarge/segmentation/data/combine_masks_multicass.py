@@ -1,6 +1,8 @@
 from typing import Dict, List, Optional
 import numpy as np
 import torch
+from monai.data import MetaTensor
+from monai.data.utils import nib
 from monai.transforms import MapTransform
 
 
@@ -120,4 +122,98 @@ class CombineBinaryMasksReportOverlapd(MapTransform):
                 label[better] = cls
 
         d[self.label_key] = label
+        return d
+
+# ============================================================
+# Custom transform: multiple masks per class -> one label
+# ============================================================
+
+class BuildMulticlassLabelFromMaskFilesd(MapTransform):
+    """
+    Builds one integer multiclass label map from multiple binary masks per class.
+
+    Input:
+        image: loaded image MetaTensor, channel-first [C, H, W, D]
+        class_masks: dict[class_name] -> list[path]
+
+    Output:
+        label: MetaTensor [1, H, W, D]
+
+    Overlap rule:
+        last class wins.
+        Classes are applied in ascending class index order, so higher class_index
+        overwrites lower class_index.
+    """
+
+    def __init__(
+        self,
+        keys,
+        class_to_index: Dict[str, int],
+        class_masks_key: str = "class_masks",
+        label_key: str = "label",
+    ):
+        super().__init__(keys)
+        self.class_to_index = class_to_index
+        self.class_masks_key = class_masks_key
+        self.label_key = label_key
+
+    def __call__(self, data):
+        d = dict(data)
+
+        image = d["image"]
+
+        if not hasattr(image, "shape"):
+            raise TypeError("Expected 'image' to be loaded before building label.")
+
+        # image is channel-first: [C, H, W, D]
+        spatial_shape = tuple(image.shape[1:])
+
+        label = np.zeros(spatial_shape, dtype=np.int16)
+
+        class_masks = d.get(self.class_masks_key, {})
+        case_id = d.get("case_id", "unknown_case")
+
+        # Deterministic order:
+        # level1 -> level2 -> level3 -> level4 -> imn -> interpectoral
+        # if using the default class_to_index.
+        for class_name, class_index in sorted(
+            self.class_to_index.items(),
+            key=lambda x: x[1],
+        ):
+            mask_paths = class_masks.get(class_name, [])
+
+            # if len(mask_paths) == 0:
+            #     print(f"[WARN] No mask paths found for class {class_name}, case {case_id}.")
+
+            for mask_path in mask_paths:
+                mask_img = nib.load(mask_path)
+                mask_arr = np.asanyarray(mask_img.dataobj)
+
+                if mask_arr.shape != spatial_shape:
+                    raise ValueError(
+                        f"Shape mismatch for case {case_id}, class {class_name}: "
+                        f"mask {mask_path} has shape {mask_arr.shape}, "
+                        f"but image spatial shape is {spatial_shape}."
+                    )
+
+                # Last class wins.
+                # If multiple masks exist for the same class, they simply union
+                # into the same class index.
+                label[mask_arr > 0] = class_index
+
+        affine = getattr(image, "affine", None)
+        meta = dict(getattr(image, "meta", {}))
+
+        d[self.label_key] = MetaTensor(
+            label[None, ...],
+            affine=affine,
+            meta=meta,
+        )
+        #unique_labels = np.unique(label)
+
+        # print(
+        #     f"[DEBUG] case {case_id} unique labels after label build: "
+        #     f"{unique_labels.tolist()}"
+        # )
+
         return d

@@ -7,7 +7,7 @@ from src.VocoLarge.segmentation.data.samples import build_samples
 from src.VocoLarge.segmentation.models.build import build_model
 from src.VocoLarge.segmentation.models.voco_loader import load_voco_encoder_weights
 from src.VocoLarge.segmentation.models.freeze import freeze_encoder, report_trainable_by_module
-from src.VocoLarge.segmentation.training.engine import run_training
+from src.VocoLarge.segmentation.training.engine_overfit import run_training
 
 # OPTIONAL
 from src.VocoLarge.segmentation.training.visuals import save_overlay_png

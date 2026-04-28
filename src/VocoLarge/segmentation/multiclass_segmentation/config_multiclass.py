@@ -3,7 +3,7 @@ from typing import List, Optional, Tuple
 
 
 @dataclass
-class ConfigBinaryTest:
+class ConfigMulticlass:
     """
     Config for binary lymph-node segmentation training.
 
@@ -16,20 +16,43 @@ class ConfigBinaryTest:
     """
 
     # ---- Task / data ----
-    task_mode: str = "train_binary"
     root_dir: str = "/mnt/data/ilinca/structured_cases_14_16/"
     val_fraction: float = 0.2
-    lymph_terms_json: str = "../masks/lymph_terms.json"
-    not_lymph_terms_json: str = "../masks/all_not_lymph_terms.json"
+    multiclass_masks_csv_path: str = "../masks/binary_mask_selection_audit/required_multiclass_nodes_summary2.csv"
+    multiclass_label = [
+        #"level1",
+        "level2",
+        #"level3",
+        #"level4",
+        #"imn",
+        #"interpectoral",
+    ]
+    class_to_index = {
+        #"level1": 1,
+        "level2": 1,
+        #"level3": 3,
+        #"level4": 4,
+        #"imn": 5,
+        #"interpectoral": 6,
+    }
+    class_to_csv_column = {
+        #"level1": "level1_masks",
+        "level2": "level2_masks",
+        #"level3": "level3_masks",
+        #"level4": "level4_masks",
+        #"imn": "imn_masks",
+        #"interpectoral": "interpectoral_masks",
+    }
+    class_crop_ratios = [0.0, 1.0] # background + 6 classes
 
     # 1 class for background will be added when the model is computed
     # 1 output channel with sigmoid activation
-    num_classes: int = 0
+    num_classes: int = 1
 
     # ---- Patch training / inference ----
     roi_size: Tuple[int, int, int] = (192, 192, 96)
     num_samples_per_volume: int = 1
-    batch_size: int = 4
+    batch_size: int = 4 #train
     val_batch_size: int = 4
     test_batch_size: int = 1
 
@@ -51,7 +74,7 @@ class ConfigBinaryTest:
     seed: int = 0
     device: str = "cuda"
     epochs: int = 100
-    lr: float = 1e-3
+    lr: float = 1e-4
     momentum: float = 0.9
     weight_decay: float = 1e-5
     amp: bool = True
@@ -59,31 +82,27 @@ class ConfigBinaryTest:
     log_every: int = 3
 
     # For loss function
-    class_weight_for_loss: List[float] = field(default_factory=lambda: [2.0])
-    bce_weight = 3.0
+    class_weight_for_loss = [1.0, 1.0]
+    ce_weight: float = 1.0
     dice_weight: float = 1.0
-    surface_weight: float = 0.5
 
     # ---- Linear probing specifics ----
-    voco_ckpt_path: str = "/processing/flaviu/pretrained/VoCo_B_SSL_head.pt"
+    voco_ckpt_path: str = "/processing/flaviu/pretrained/SwinUnet_from_VoCo_B.pt"
     feature_size: int = 48
-    freeze_scope: str = "swin_plus_conv"
+    freeze_scope: str = "all_beside_last_decoder"
 
     # ---- Debug / convenience ----
-    save_dir: str = "/processing/flaviu/binary_segmentation_runs/hyperparameter_tuning/run_23_unfreeze_encoder"
+    save_dir: str = "/processing/flaviu/multiclass_segmentation_runs/run_04_segment_only_l2"
     save_visuals: bool = True
     visuals_case_indices: tuple[int, int, int] = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
     visuals_slices: Tuple[int, int, int] = (10, 25, 40, 55, 70, 95)
 
     # ---- Split data -----
-    train_ids_path: str = "../training_data_ids/train_ids.txt"
-    val_ids_path: str = "../training_data_ids/val_ids.txt"
-    test_ids_path: str = "../training_data_ids/test_ids.txt"
-    cache_dir: str = "/processing/flaviu/binary_segmentation_runs/hyperparameter_tuning/spacing_check_cache"
+    train_ids_path: str = "../training_data_ids/train_ids_level1_optional.txt"
+    val_ids_path: str = "../training_data_ids/val_ids_level1_optional.txt"
+    test_ids_path: str = "../training_data_ids/test_ids_level1_optional.txt"
+    cache_dir: str = "/processing/flaviu/multiclass_segmentation_runs/cache"
     shuffle: bool = True
-
-    # log file for patient with no lymph masks available
-    no_lymph_patients_log_file: str = None
 
     # ---- Validation mode ----
     fast_val: bool = True

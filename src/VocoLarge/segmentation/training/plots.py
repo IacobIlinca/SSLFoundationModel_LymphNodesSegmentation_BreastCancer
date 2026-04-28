@@ -1,6 +1,7 @@
 import os
 import matplotlib.pyplot as plt
 
+from src.VocoLarge.segmentation.multiclass_segmentation.config_multiclass import ConfigMulticlass
 from src.VocoLarge.segmentation.training.history import History
 
 
@@ -104,12 +105,14 @@ def plot_train_loss_components(
       - total train loss
       - Dice loss
       - BCE loss
+      - Surface loss
 
     Expected keys:
         history.epochs["train"]
         history.metrics["train_loss"]
         history.metrics["train_dice_loss"]
         history.metrics["train_bce_loss"]
+        history.metrics["train_surface_loss"]
     """
 
     os.makedirs(os.path.dirname(save_path), exist_ok=True)
@@ -157,3 +160,174 @@ def plot_train_loss_components(
     plt.tight_layout()
     plt.savefig(save_path, dpi=150)
     plt.close()
+
+def plot_train_loss_components_multiclass(
+    history: History,
+    save_path: str,
+    title: str = "Training Loss Components",
+) -> None:
+    """
+    Saves a plot with:
+      - total train loss
+      - Dice loss
+      - CE loss
+
+    Expected keys:
+        history.epochs["train"]
+        history.metrics["train_loss"]
+        history.metrics["train_dice_loss"]
+        history.metrics["train_ce_loss"]
+    """
+
+    os.makedirs(os.path.dirname(save_path), exist_ok=True)
+
+    train_epochs = history.epochs.get("train", [])
+
+    train_loss = history.metrics.get("train_loss", [])
+    dice_loss = history.metrics.get("train_dice_loss", [])
+    ce_loss = history.metrics.get("train_ce_loss", [])
+
+    plt.figure()
+    plt.title(title)
+
+    if len(train_loss) > 0:
+        plt.plot(
+            train_epochs[:len(train_loss)],
+            train_loss,
+            label="train_loss",
+        )
+
+    if len(dice_loss) > 0:
+        plt.plot(
+            train_epochs[:len(dice_loss)],
+            dice_loss,
+            label="train_dice_loss",
+        )
+
+    if len(ce_loss) > 0:
+        plt.plot(
+            train_epochs[:len(ce_loss)],
+            ce_loss,
+            label="train_ce_loss",
+        )
+
+    plt.xlabel("epoch")
+    plt.ylabel("loss")
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(save_path, dpi=150)
+    plt.close()
+
+def plot_multiclass_metric_components(
+    history: History,
+    cfg: ConfigMulticlass,
+    save_path: str,
+    title: str = "Validation Metrics Per Class",
+) -> None:
+    """
+    Saves one figure with:
+      - Dice per class
+      - HD95 per class
+
+    Expected history keys:
+        val_dice
+        val_hd95
+
+        val_dice_level1
+        val_dice_level2
+        ...
+        val_hd95_level1
+        val_hd95_level2
+        ...
+
+    Uses:
+        cfg.multiclass_label
+    """
+
+    os.makedirs(os.path.dirname(save_path), exist_ok=True)
+
+    val_epochs = history.epochs.get("val", [])
+    class_names = cfg.multiclass_label
+
+    fig, axes = plt.subplots(2, 1, figsize=(10, 8), sharex=True)
+    fig.suptitle(title)
+
+    # --------------------------------------------------
+    # Dice panel
+    # --------------------------------------------------
+    ax_dice = axes[0]
+
+    mean_dice = history.metrics.get("val_dice", [])
+
+    if len(mean_dice) > 0:
+        ax_dice.plot(
+            val_epochs[:len(mean_dice)],
+            mean_dice,
+            linewidth=2.5,
+            label="mean_dice",
+        )
+
+    for class_name in class_names:
+        key = f"val_dice_{class_name}"
+        values = history.metrics.get(key, [])
+
+        if len(values) == 0:
+            continue
+
+        ax_dice.plot(
+            val_epochs[:len(values)],
+            values,
+            linestyle="--",
+            label=key,
+        )
+
+    ax_dice.set_ylabel("Dice")
+    ax_dice.set_ylim(0.0, 1.0)
+    ax_dice.grid(True, alpha=0.3)
+    ax_dice.legend(loc="best", fontsize=8)
+
+    # --------------------------------------------------
+    # HD95 panel
+    # --------------------------------------------------
+    ax_hd95 = axes[1]
+
+    mean_hd95 = history.metrics.get("val_hd95", [])
+
+    if len(mean_hd95) > 0:
+        ax_hd95.plot(
+            val_epochs[:len(mean_hd95)],
+            mean_hd95,
+            linewidth=2.5,
+            label="mean_hd95",
+        )
+
+    all_hd_values = []
+
+    for class_name in class_names:
+        key = f"val_hd95_{class_name}"
+        values = history.metrics.get(key, [])
+
+        if len(values) == 0:
+            continue
+
+        all_hd_values.extend(values)
+
+        ax_hd95.plot(
+            val_epochs[:len(values)],
+            values,
+            linestyle="--",
+            label=key,
+        )
+
+    ax_hd95.set_xlabel("epoch")
+    ax_hd95.set_ylabel("HD95")
+    ax_hd95.grid(True, alpha=0.3)
+    ax_hd95.legend(loc="best", fontsize=8)
+
+    if len(all_hd_values) > 0:
+        max_hd = max(all_hd_values)
+        ax_hd95.set_ylim(0.0, max(1.0, max_hd * 1.1))
+
+    fig.tight_layout()
+    plt.savefig(save_path, dpi=150)
+    plt.close(fig)

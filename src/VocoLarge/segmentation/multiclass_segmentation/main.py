@@ -1,17 +1,17 @@
 import os
-import numpy as np
 
+import numpy as np
 from monai.utils import set_determinism
 
-from src.VocoLarge.segmentation.hyperparameter_tuning.cofig_binary_test import ConfigBinaryTest
 from src.VocoLarge.segmentation.models.build import build_model
-from src.VocoLarge.segmentation.models.voco_loader import load_voco_encoder_weights
 from src.VocoLarge.segmentation.models.freeze import freeze_encoder, report_trainable_by_module
-from src.VocoLarge.segmentation.hyperparameter_tuning.test_only_binary import run_test_only
+from src.VocoLarge.segmentation.models.voco_loader import load_voco_encoder_weights
+from src.VocoLarge.segmentation.multiclass_segmentation.config_multiclass import ConfigMulticlass
+from src.VocoLarge.segmentation.multiclass_segmentation.train_loop import run_training
 from src.VocoLarge.segmentation.training.visuals import save_overlay_png
 
 
-def make_visuals_callback(cfg: ConfigBinaryTest):
+def make_visuals_callback(cfg: ConfigMulticlass):
     def cb(epoch, batch_index, image, label, pred, case_ids):
         if batch_index not in cfg.visuals_case_indices:
             return
@@ -38,27 +38,18 @@ def make_visuals_callback(cfg: ConfigBinaryTest):
 
 
 def main():
-    cfg = ConfigBinaryTest()
-
-    cfg.fast_val = True
-    cfg.save_visuals = True
-
-    # tweak loss weights here
-    # cfg.class_weight_for_loss = [0.05, 1.0]
-    # or try:
-    # cfg.class_weight_for_loss = [0.01, 1.0]
-    # cfg.class_weight_for_loss = [0.1, 2.0]
+    cfg = ConfigMulticlass()
 
     set_determinism(seed=cfg.seed)
 
     model = build_model(cfg)
     load_voco_encoder_weights(model, cfg)
-    #freeze_encoder(model, cfg)
+    freeze_encoder(model, cfg)
     report_trainable_by_module(model)
 
     visuals_cb = make_visuals_callback(cfg) if cfg.save_visuals else None
 
-    run_test_only(model, cfg, visuals_cb=visuals_cb)
+    run_training(model, cfg, visuals_cb=visuals_cb)
 
 
 if __name__ == "__main__":
