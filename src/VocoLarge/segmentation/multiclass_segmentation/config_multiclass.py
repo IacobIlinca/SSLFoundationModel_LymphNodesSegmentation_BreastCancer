@@ -50,7 +50,7 @@ class ConfigMulticlass:
     num_classes: int = 1
 
     # ---- Patch training / inference ----
-    roi_size: Tuple[int, int, int] = (192, 192, 96)
+    roi_size: Tuple[int, int, int] = (192, 192, 32)
     num_samples_per_volume: int = 1
     batch_size: int = 4 #train
     val_batch_size: int = 4
@@ -74,7 +74,7 @@ class ConfigMulticlass:
     seed: int = 0
     device: str = "cuda"
     epochs: int = 100
-    lr: float = 1e-4
+    lr: float = 1e-3
     momentum: float = 0.9
     weight_decay: float = 1e-5
     amp: bool = True
@@ -92,7 +92,7 @@ class ConfigMulticlass:
     freeze_scope: str = "all_beside_last_decoder"
 
     # ---- Debug / convenience ----
-    save_dir: str = "/processing/flaviu/multiclass_segmentation_runs/run_04_segment_only_l2"
+    save_dir: str = "/processing/flaviu/multiclass_segmentation_runs/run_11_segment_only_l2_full_run"
     save_visuals: bool = True
     visuals_case_indices: tuple[int, int, int] = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
     visuals_slices: Tuple[int, int, int] = (10, 25, 40, 55, 70, 95)

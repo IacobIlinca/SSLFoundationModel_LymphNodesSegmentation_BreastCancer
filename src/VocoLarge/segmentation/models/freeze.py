@@ -31,7 +31,7 @@ def freeze_encoder(model: nn.Module, cfg) -> None:
         # Heuristic: freeze parameters with "encoder"/"enc" in name but not decoder/out
         for name, p in model.named_parameters():
             n = name.lower()
-            if ("enc" in n or "encoder" in n or "decoder" in n) and ("out" not in n) and ("decoder5" not in n):
+            if ("enc" in n or "encoder" in n or "decoder" in n) and ("out" not in n) and ("decoder1" not in n):
                 p.requires_grad = False
     else:
         raise ValueError(f"Unknown freeze_scope: {cfg.freeze_scope}")

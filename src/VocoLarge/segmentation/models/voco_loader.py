@@ -76,3 +76,87 @@ def load_voco_encoder_weights(model: nn.Module, cfg) -> None:
     print(f"  matched tensors:        {matched} ({ratio*100:.1f}%)")
     print(f"  missing (first 20):     {load_res.missing_keys[:20]}")
     print(f"  unexpected (first 20):  {load_res.unexpected_keys[:20]}")
+
+
+
+
+def reinitialize_module(module: nn.Module, module_name: str = "module", verbose: bool = True):
+    """
+    Reinitialize common trainable layers inside a module and print what was reset.
+    """
+
+    reset_count = 0
+    skipped_count = 0
+
+    if verbose:
+        print(f"\n[REINIT] Starting reinitialization of: {module_name}")
+
+    for child_name, m in module.named_modules():
+        full_name = f"{module_name}.{child_name}" if child_name != "" else module_name
+
+        if isinstance(m, (nn.Conv1d, nn.Conv2d, nn.Conv3d,
+                          nn.ConvTranspose1d, nn.ConvTranspose2d, nn.ConvTranspose3d)):
+            nn.init.kaiming_normal_(m.weight, mode="fan_out", nonlinearity="relu")
+
+            if m.bias is not None:
+                nn.init.zeros_(m.bias)
+
+            reset_count += 1
+
+            if verbose:
+                print(
+                    f"[REINIT] {full_name}: "
+                    f"{m.__class__.__name__}, "
+                    f"weight={tuple(m.weight.shape)}, "
+                    f"bias={m.bias is not None}"
+                )
+
+        elif isinstance(m, nn.Linear):
+            nn.init.trunc_normal_(m.weight, std=0.02)
+
+            if m.bias is not None:
+                nn.init.zeros_(m.bias)
+
+            reset_count += 1
+
+            if verbose:
+                print(
+                    f"[REINIT] {full_name}: "
+                    f"{m.__class__.__name__}, "
+                    f"weight={tuple(m.weight.shape)}, "
+                    f"bias={m.bias is not None}"
+                )
+
+        elif isinstance(m, (nn.BatchNorm1d, nn.BatchNorm2d, nn.BatchNorm3d,
+                            nn.InstanceNorm1d, nn.InstanceNorm2d, nn.InstanceNorm3d,
+                            nn.LayerNorm, nn.GroupNorm)):
+            did_reset = False
+
+            if getattr(m, "weight", None) is not None:
+                nn.init.ones_(m.weight)
+                did_reset = True
+
+            if getattr(m, "bias", None) is not None:
+                nn.init.zeros_(m.bias)
+                did_reset = True
+
+            if did_reset:
+                reset_count += 1
+
+                if verbose:
+                    print(
+                        f"[REINIT] {full_name}: "
+                        f"{m.__class__.__name__}, "
+                        f"weight={None if getattr(m, 'weight', None) is None else tuple(m.weight.shape)}, "
+                        f"bias={getattr(m, 'bias', None) is not None}"
+                    )
+            else:
+                skipped_count += 1
+
+        else:
+            skipped_count += 1
+
+    if verbose:
+        print(f"[REINIT] Finished reinitializing: {module_name}")
+        print(f"[REINIT] Reset layers: {reset_count}")
+        print(f"[REINIT] Skipped modules: {skipped_count}\n")
