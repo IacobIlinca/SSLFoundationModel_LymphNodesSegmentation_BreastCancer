@@ -18,7 +18,6 @@ def load_ids(path: Path) -> list[str]:
         if x:
             ids.append(x)
 
-    # remove duplicates while preserving order
     seen = set()
     unique = []
     for x in ids:
@@ -38,9 +37,11 @@ def save_ids(path: Path, ids: list[str]):
 
 # -------- CONFIG --------
 
-level1_optional_file = Path(
-    "src/VocoLarge/segmentation/masks/binary_mask_selection_audit/optional_label_analysis/level1_optional_case_ids.txt"
+allowed_ids_file = Path(
+    "src/VocoLarge/segmentation/training_data_ids/training_level_2_ids/level_2_training.txt"
 )
+
+suffix = "level2_training"
 
 input_files = [
     Path("src/VocoLarge/segmentation/training_data_ids/train_ids.txt"),
@@ -50,7 +51,7 @@ input_files = [
 
 # -------- RUN --------
 
-allowed_ids = set(load_ids(level1_optional_file))
+allowed_ids = set(load_ids(allowed_ids_file))
 
 for file_path in input_files:
     ids = load_ids(file_path)
@@ -58,8 +59,8 @@ for file_path in input_files:
     filtered_ids = [case_id for case_id in ids if case_id in allowed_ids]
     removed_ids = [case_id for case_id in ids if case_id not in allowed_ids]
 
-    output_file = file_path.with_name(file_path.stem + "_level1_optional.txt")
-    removed_file = file_path.with_name(file_path.stem + "_removed_not_level1_optional.txt")
+    output_file = file_path.with_name(file_path.stem + f"_{suffix}.txt")
+    removed_file = file_path.with_name(file_path.stem + f"_removed_not_{suffix}.txt")
 
     save_ids(output_file, filtered_ids)
     save_ids(removed_file, removed_ids)
