@@ -331,3 +331,32 @@ def plot_multiclass_metric_components(
     fig.tight_layout()
     plt.savefig(save_path, dpi=150)
     plt.close(fig)
+
+
+def plot_learning_rate(history: History, save_path: str, title: str = "Learning rate") -> None:
+    """
+    Saves a single plot with learnin rate across epochs.
+
+    Expected keys:
+        history.epochs["train"]
+        history.metrics["lr"]
+    """
+
+    os.makedirs(os.path.dirname(save_path), exist_ok=True)
+
+    train_epochs = history.epochs.get("train", [])
+    learning_rate = history.metrics.get("train_lr", [])
+
+    plt.figure()
+    plt.title(title)
+
+    if len(learning_rate) > 0:
+        plt.plot(train_epochs[:len(learning_rate)], learning_rate, label="learning rate")
+
+
+    plt.xlabel("epoch")
+    plt.ylabel("train_lr")
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(save_path, dpi=150)
+    plt.close()

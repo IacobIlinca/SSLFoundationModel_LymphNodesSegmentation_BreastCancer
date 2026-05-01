@@ -74,7 +74,7 @@ class ConfigMulticlass:
     seed: int = 0
     device: str = "cuda"
     epochs: int = 100
-    lr: float = 1e-3
+    lr: float = 1e-4
     momentum: float = 0.9
     weight_decay: float = 1e-5
     amp: bool = True
@@ -92,16 +92,16 @@ class ConfigMulticlass:
     freeze_scope: str = "all_beside_last_decoder"
 
     # ---- Debug / convenience ----
-    save_dir: str = "/processing/flaviu/multiclass_segmentation_runs/run_11_segment_only_l2_full_run"
+    save_dir: str = "/processing/flaviu/multiclass_segmentation_runs/run_13_segment_only_l2_full_run_second_try"
     save_visuals: bool = True
     visuals_case_indices: tuple[int, int, int] = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-    visuals_slices: Tuple[int, int, int] = (10, 25, 40, 55, 70, 95)
+    visuals_slices: Tuple[int, int, int] = (5, 10, 15, 20, 25, 30)
 
     # ---- Split data -----
-    train_ids_path: str = "../training_data_ids/train_ids_level1_optional.txt"
-    val_ids_path: str = "../training_data_ids/val_ids_level1_optional.txt"
-    test_ids_path: str = "../training_data_ids/test_ids_level1_optional.txt"
-    cache_dir: str = "/processing/flaviu/multiclass_segmentation_runs/cache"
+    train_ids_path: str = "../training_data_ids/training_level_2_ids/train_ids_level2_training.txt"
+    val_ids_path: str = "../training_data_ids/training_level_2_ids/val_ids_level2_training.txt"
+    test_ids_path: str = "../training_data_ids/training_level_2_ids/test_ids_level2_training.txt"
+    cache_dir: str = "/mnt/data/flaviu/multiclass_segmentation_runs/cache/level2"
     shuffle: bool = True
 
     # ---- Validation mode ----

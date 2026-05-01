@@ -13,7 +13,7 @@ from src.VocoLarge.segmentation.training.engine_multiclass import train_one_epoc
 from src.VocoLarge.segmentation.training.history import History
 from src.VocoLarge.segmentation.training.losses_metrics import build_loss_multiclass_with_components, build_loss_multiclass
 from src.VocoLarge.segmentation.training.plots import plot_loss_curves, plot_metric_curves, plot_train_loss_components, \
-    plot_train_loss_components_multiclass, plot_multiclass_metric_components
+    plot_train_loss_components_multiclass, plot_multiclass_metric_components, plot_learning_rate
 
 
 def save_config(cfg):
@@ -29,8 +29,8 @@ def run_training(model, cfg: ConfigMulticlass, visuals_cb=None):
     model.to(device)
 
     train_loader, val_loader, _ = build_all_datasets_and_loaders_multiclass(cfg)
-    #train_loader = maybe_limit_loader(train_loader, 5)
-    #val_loader = maybe_limit_loader(val_loader, 2)
+    train_loader = maybe_limit_loader(train_loader, 5)
+    val_loader = maybe_limit_loader(val_loader, 2)
 
     loss_fn = build_loss_multiclass(cfg)
 
@@ -91,6 +91,7 @@ def run_training(model, cfg: ConfigMulticlass, visuals_cb=None):
                 loss=tr_loss,
                 dice_loss=dice_loss,
                 ce_loss=ce_loss,
+                lr=current_lr,
             )
 
             history.add_val(
@@ -106,6 +107,7 @@ def run_training(model, cfg: ConfigMulticlass, visuals_cb=None):
             plot_metric_curves(history, os.path.join(cfg.save_dir, "plots", "metric_curves.png"))
             plot_train_loss_components_multiclass(history, os.path.join(cfg.save_dir, "plots", "loss_components.png"))
             plot_multiclass_metric_components(history, cfg, os.path.join(cfg.save_dir, "plots", "multiclass_metric_components.png"))
+            plot_learning_rate(history, os.path.join(cfg.save_dir, "plots", "learning_rate.png"))
 
             os.makedirs(cfg.save_dir, exist_ok=True)
 
@@ -132,10 +134,12 @@ def run_training(model, cfg: ConfigMulticlass, visuals_cb=None):
                 loss=tr_loss,
                 dice_loss=dice_loss,
                 ce_loss=ce_loss,
+                lr=current_lr,
             )
             epoch_bar.set_postfix(train_loss=f"{tr_loss:.4f}",current_lr=f"{current_lr:.4f}",)
             plot_loss_curves(history, os.path.join(cfg.save_dir, "plots", "loss_curves.png"))
             plot_train_loss_components_multiclass(history, os.path.join(cfg.save_dir, "plots", "loss_components.png"))
+            plot_learning_rate(history, os.path.join(cfg.save_dir, "plots", "learning_rate.png"))
 
         if scheduler is not None:
             scheduler.step()
@@ -144,5 +148,6 @@ def run_training(model, cfg: ConfigMulticlass, visuals_cb=None):
     plot_metric_curves(history, os.path.join(cfg.save_dir, "plots", "metric_curves.png"))
     plot_train_loss_components_multiclass(history, os.path.join(cfg.save_dir, "plots", "loss_components.png"))
     plot_multiclass_metric_components(history, cfg, os.path.join(cfg.save_dir, "plots", "multiclass_metric_components.png"))
+    plot_learning_rate(history, os.path.join(cfg.save_dir, "plots", "learning_rate.png"))
 
     print(f"Training done. Best val Dice: {best_dice:.4f}")
