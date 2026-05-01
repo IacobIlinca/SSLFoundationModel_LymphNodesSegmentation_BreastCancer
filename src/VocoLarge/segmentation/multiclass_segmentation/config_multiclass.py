@@ -18,7 +18,7 @@ class ConfigMulticlass:
     # ---- Task / data ----
     root_dir: str = "/mnt/data/ilinca/structured_cases_14_16/"
     val_fraction: float = 0.2
-    multiclass_masks_csv_path: str = "../masks/binary_mask_selection_audit/required_multiclass_nodes_summary2.csv"
+    multiclass_masks_csv_path: str = "../../masks/binary_mask_selection_audit/required_multiclass_nodes_summary2.csv" #!!!!!
     multiclass_label = [
         #"level1",
         "level2",
@@ -74,7 +74,7 @@ class ConfigMulticlass:
     seed: int = 0
     device: str = "cuda"
     epochs: int = 100
-    lr: float = 1e-4
+    lr: float = 1e-3 #!!!!!!
     momentum: float = 0.9
     weight_decay: float = 1e-5
     amp: bool = True
@@ -87,21 +87,21 @@ class ConfigMulticlass:
     dice_weight: float = 1.0
 
     # ---- Linear probing specifics ----
-    voco_ckpt_path: str = "/processing/flaviu/pretrained/SwinUnet_from_VoCo_B.pt"
+    voco_ckpt_path: str = "/processing/flaviu/pretrained/VoCo_B_SSL_head_domain_pretrained.pt" #!!!!!!
     feature_size: int = 48
-    freeze_scope: str = "all_beside_last_decoder"
+    freeze_scope: str = "swin_plus_conv" #!!!!!!
 
     # ---- Debug / convenience ----
-    save_dir: str = "/processing/flaviu/multiclass_segmentation_runs/run_13_segment_only_l2_full_run_second_try"
+    save_dir: str = "/processing/flaviu/multiclass_segmentation_runs/run_17_segment_only_l2" #!!!!!!
     save_visuals: bool = True
     visuals_case_indices: tuple[int, int, int] = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
     visuals_slices: Tuple[int, int, int] = (5, 10, 15, 20, 25, 30)
 
     # ---- Split data -----
-    train_ids_path: str = "../training_data_ids/training_level_2_ids/train_ids_level2_training.txt"
-    val_ids_path: str = "../training_data_ids/training_level_2_ids/val_ids_level2_training.txt"
-    test_ids_path: str = "../training_data_ids/training_level_2_ids/test_ids_level2_training.txt"
-    cache_dir: str = "/mnt/data/flaviu/multiclass_segmentation_runs/cache/level2"
+    train_ids_path: str = "../../training_data_ids/training_level_2_ids/train_ids_level2_training.txt" #!!!!!
+    val_ids_path: str = "../../training_data_ids/training_level_2_ids/val_ids_level2_training.txt" #!!!!
+    test_ids_path: str = "../../training_data_ids/training_level_2_ids/test_ids_level2_training.txt" #!!!!!
+    cache_dir: str = "/mnt/data/flaviu/multiclass_segmentation_runs/cache/level2" #!!!!!
     shuffle: bool = True
 
     # ---- Validation mode ----
@@ -112,7 +112,7 @@ class ConfigMulticlass:
     use_scheduler: bool = True
     scheduler_type: str = "cosine"
 
-    min_lr: float = 1e-6  # final LR at the end of training
+    min_lr: float = 5e-6  # final LR at the end of training
 
     def to_dict(self):
         return asdict(self)

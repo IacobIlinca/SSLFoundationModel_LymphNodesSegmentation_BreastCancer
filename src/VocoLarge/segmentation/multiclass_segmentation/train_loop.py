@@ -11,8 +11,8 @@ from src.VocoLarge.segmentation.data.loaders_binary import build_all_datasets_an
 from src.VocoLarge.segmentation.multiclass_segmentation.config_multiclass import ConfigMulticlass
 from src.VocoLarge.segmentation.training.engine_multiclass import train_one_epoch, evaluate
 from src.VocoLarge.segmentation.training.history import History
-from src.VocoLarge.segmentation.training.losses_metrics import build_loss_multiclass_with_components, build_loss_multiclass
-from src.VocoLarge.segmentation.training.plots import plot_loss_curves, plot_metric_curves, plot_train_loss_components, \
+from src.VocoLarge.segmentation.training.losses_metrics import build_loss_multiclass
+from src.VocoLarge.segmentation.training.plots import plot_loss_curves, plot_metric_curves, \
     plot_train_loss_components_multiclass, plot_multiclass_metric_components, plot_learning_rate
 
 
@@ -29,8 +29,8 @@ def run_training(model, cfg: ConfigMulticlass, visuals_cb=None):
     model.to(device)
 
     train_loader, val_loader, _ = build_all_datasets_and_loaders_multiclass(cfg)
-    train_loader = maybe_limit_loader(train_loader, 5)
-    val_loader = maybe_limit_loader(val_loader, 2)
+    #train_loader = maybe_limit_loader(train_loader, 30)
+    #val_loader = maybe_limit_loader(val_loader, 5)
 
     loss_fn = build_loss_multiclass(cfg)
 
@@ -126,7 +126,7 @@ def run_training(model, cfg: ConfigMulticlass, visuals_cb=None):
             epoch_bar.set_postfix(
                 train_loss=f"{tr_loss:.4f}",
                 val_dice=f"{val_dice:.4f}",
-                current_lr=f"{current_lr:.4f}",
+                current_lr=f"{current_lr:.10f}",
             )
         else:
             history.add_train(
@@ -136,7 +136,7 @@ def run_training(model, cfg: ConfigMulticlass, visuals_cb=None):
                 ce_loss=ce_loss,
                 lr=current_lr,
             )
-            epoch_bar.set_postfix(train_loss=f"{tr_loss:.4f}",current_lr=f"{current_lr:.4f}",)
+            epoch_bar.set_postfix(train_loss=f"{tr_loss:.4f}",current_lr=f"{current_lr:.10f}",)
             plot_loss_curves(history, os.path.join(cfg.save_dir, "plots", "loss_curves.png"))
             plot_train_loss_components_multiclass(history, os.path.join(cfg.save_dir, "plots", "loss_components.png"))
             plot_learning_rate(history, os.path.join(cfg.save_dir, "plots", "learning_rate.png"))
