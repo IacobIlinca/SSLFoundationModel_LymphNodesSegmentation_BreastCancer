@@ -53,8 +53,8 @@ class ConfigBinarySSL:
 
     # For loss function
     class_weight_for_loss: List[float] = field(default_factory=lambda: [2.0])
-    bce_weight = 3.0
-    dice_weight: float = 2.0
+    bce_weight = 1.0
+    dice_weight: float = 1.0
     surface_weight: float = 0.1
 
     # ---- Linear probing specifics ----
@@ -63,7 +63,7 @@ class ConfigBinarySSL:
     freeze_scope: str = "swin_plus_conv"
 
     # ---- Debug / convenience ----
-    save_dir: str = "/processing/flaviu/segmentation_after_ssl_domain_train/binary_segmentation/train_02_loss_play"
+    save_dir: str = "/processing/flaviu/segmentation_after_ssl_domain_train/binary_segmentation/train_03_load_voco_properly"
     save_visuals: bool = True
     visuals_case_indices: tuple[int, int, int] = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
     visuals_slices: Tuple[int, int, int] = (10, 20, 30, 40, 50, 60)

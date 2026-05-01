@@ -33,44 +33,17 @@ def load_voco_encoder_weights(model: nn.Module, cfg: Config) -> None:
     if not hasattr(model, "swinViT"):
         raise AttributeError("Expected SwinUNETR to have attribute 'swinViT'")
 
-    ckpt = torch.load(cfg.voco_ckpt_path, cfg.device)
+    ckpt = torch.load(cfg.voco_ckpt_path, map_location="cpu")
     sd = _unwrap_state_dict(ckpt)
-
-    # Common prefixes seen in VoCo/DP/DDP training
-    candidate_prefixes = [
-        "backbone.swinViT.",
-        "module.backbone.swinViT.",
-        "swinViT.",
-        "module.swinViT.",
-        "encoder",
-        "model.encoder",
-        "backbone.encoder",
-    ]
-
-    to_be_changed = []
-    for k, v in sd.items():
-        if k.startswith("backbone."):
-            to_be_changed.append((k, k.replace("backbone.", "")))
-
-    for k, new_k in to_be_changed:
-        sd[new_k] = sd[k]
-        sd.pop(k)
-
 
     target_sd = model.state_dict()
     filtered = {}
 
     for k, v in sd.items():
-        found = False
-        for pref in candidate_prefixes:
-            if k.startswith(pref):
-                found = True
-                if k in target_sd and target_sd[k].shape == v.shape:
-                    filtered[k] = v
-                break
-        if not found:
-            print(f"[WARN] Tensor not found to load {k}")
-
+        if "backbone" in k:
+            ks = k[len("backbone."):]
+            if ks in target_sd and target_sd[ks].shape == v.shape:
+                filtered[ks] = v
 
     load_res = model.load_state_dict(filtered, strict=False)
 
@@ -80,7 +53,6 @@ def load_voco_encoder_weights(model: nn.Module, cfg: Config) -> None:
 
     print("\n[VoCo->Swin] Encoder weight loading report")
     print(f"  ckpt: {cfg.voco_ckpt_path}")
-    print(f"  loaded tensors:         {len(sd.keys())}")
     print(f"  target encoder tensors: {total_target}")
     print(f"  matched tensors:        {matched} ({ratio*100:.1f}%)")
     print(f"  missing (first 20):     {load_res.missing_keys[:20]}")
