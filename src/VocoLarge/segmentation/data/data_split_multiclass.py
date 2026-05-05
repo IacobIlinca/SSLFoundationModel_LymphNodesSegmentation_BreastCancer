@@ -38,10 +38,10 @@ def save_ids(path: Path, ids: list[str]):
 # -------- CONFIG --------
 
 allowed_ids_file = Path(
-    "src/VocoLarge/segmentation/training_data_ids/training_level_2_ids/level_2_training.txt"
+    "src/VocoLarge/segmentation/training_data_ids/training_multiclass_without_imn_ids/multiclass_without_imn_training.txt"
 )
 
-suffix = "level2_training"
+suffix = "multiclass_without_imn_training"
 
 input_files = [
     Path("src/VocoLarge/segmentation/training_data_ids/train_ids.txt"),

@@ -4,7 +4,7 @@ import os
 import torch
 from torch import GradScaler
 from torch.optim import AdamW
-from torch.optim.lr_scheduler import CosineAnnealingLR
+from torch.optim.lr_scheduler import CosineAnnealingLR, ReduceLROnPlateau
 from tqdm.auto import tqdm
 
 from src.VocoLarge.segmentation.data.loaders_binary import build_all_datasets_and_loaders_multiclass, maybe_limit_loader
@@ -29,8 +29,8 @@ def run_training(model, cfg: ConfigMulticlass, visuals_cb=None):
     model.to(device)
 
     train_loader, val_loader, _ = build_all_datasets_and_loaders_multiclass(cfg)
-    #train_loader = maybe_limit_loader(train_loader, 30)
-    #val_loader = maybe_limit_loader(val_loader, 5)
+    # train_loader = maybe_limit_loader(train_loader, 5)
+    # val_loader = maybe_limit_loader(val_loader, 2)
 
     loss_fn = build_loss_multiclass(cfg)
 
@@ -47,6 +47,14 @@ def run_training(model, cfg: ConfigMulticlass, visuals_cb=None):
                 optim,
                 T_max=cfg.epochs,  # full cosine cycle over all epochs
                 eta_min=cfg.min_lr,
+            )
+        elif cfg.scheduler_type == "plateau":
+            scheduler = ReduceLROnPlateau(
+                optim,
+                mode="max",  # use "max" if stepping with validation Dice
+                factor=0.3,
+                patience=3,
+                min_lr=cfg.min_lr,
             )
         else:
             raise ValueError(f"Unknown scheduler_type: {cfg.scheduler_type}")
@@ -72,7 +80,8 @@ def run_training(model, cfg: ConfigMulticlass, visuals_cb=None):
         os.makedirs(cfg.save_dir, exist_ok=True)
 
         current_lr = optim.param_groups[0]["lr"]
-        if epoch == 1 or epoch % cfg.log_every == 0:
+        do_val = epoch == 1 or epoch % cfg.log_every == 0
+        if do_val:
             val_metrics = evaluate(
                 model=model,
                 loader=val_loader,
@@ -142,7 +151,12 @@ def run_training(model, cfg: ConfigMulticlass, visuals_cb=None):
             plot_learning_rate(history, os.path.join(cfg.save_dir, "plots", "learning_rate.png"))
 
         if scheduler is not None:
-            scheduler.step()
+            if cfg.scheduler_type == "cosine":
+                scheduler.step()
+
+            elif cfg.scheduler_type == "plateau":
+                # if do_val:
+                scheduler.step(tr_loss)
 
     plot_loss_curves(history, os.path.join(cfg.save_dir, "plots", "loss_curves.png"))
     plot_metric_curves(history, os.path.join(cfg.save_dir, "plots", "metric_curves.png"))

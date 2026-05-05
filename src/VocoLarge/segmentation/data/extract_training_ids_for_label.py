@@ -13,9 +13,13 @@ def parse_args():
     )
 
     parser.add_argument(
-        "--label",
+        "--labels",
+        nargs="+",
         required=True,
-        help="Label to extract, e.g. level2, level3, level4, interpectoral, imn",
+        help=(
+            "Labels to extract, e.g. level2 level3 level4 interpectoral imn. "
+            "A case is selected only if it has masks for all given labels."
+        ),
     )
 
     parser.add_argument(
@@ -27,7 +31,7 @@ def parse_args():
     parser.add_argument(
         "--output_name",
         default="",
-        help="Optional output filename. If empty, uses <label>_training.txt",
+        help="Optional output filename. If empty, uses <labels>_training.txt",
     )
 
     parser.add_argument(
@@ -56,14 +60,17 @@ def main():
     summary_csv = Path(args.summary_csv)
     out_dir = Path(args.out_dir)
 
-    label = args.label.strip().lower()
-    n_col = f"n_{label}_masks"
-    masks_col = f"{label}_masks"
+    labels = [label.strip().lower() for label in args.labels]
+
+    n_cols = [f"n_{label}_masks" for label in labels]
+    masks_cols = [f"{label}_masks" for label in labels]
+
+    label_name = "_and_".join(labels)
 
     if args.output_name:
         output_name = args.output_name
     else:
-        output_name = f"{label}_training.txt"
+        output_name = f"{label_name}_training.txt"
 
     output_path = out_dir / output_name
 
@@ -76,39 +83,58 @@ def main():
         if "case_id" not in reader.fieldnames:
             raise ValueError("CSV must contain a 'case_id' column.")
 
-        if n_col not in reader.fieldnames:
+        missing_cols = [col for col in n_cols if col not in reader.fieldnames]
+        if missing_cols:
             raise ValueError(
-                f"CSV does not contain column '{n_col}'. "
+                f"CSV is missing required columns: {missing_cols}. "
                 f"Available columns are: {reader.fieldnames}"
             )
 
         for row in reader:
             case_id = row["case_id"].strip()
 
-            try:
-                n_masks = int(row[n_col])
-            except ValueError:
-                n_masks = 0
+            label_counts = {}
 
-            if n_masks > 0:
+            for label, n_col in zip(labels, n_cols):
+                try:
+                    n_masks = int(row[n_col])
+                except ValueError:
+                    n_masks = 0
+
+                label_counts[label] = n_masks
+
+            has_all_labels = all(n_masks > 0 for n_masks in label_counts.values())
+
+            if has_all_labels:
                 selected_ids.append(case_id)
-                selected_rows_debug.append({
+
+                debug_row = {
                     "case_id": case_id,
-                    n_col: n_masks,
-                    masks_col: row.get(masks_col, ""),
-                })
+                }
+
+                for label, n_col, masks_col in zip(labels, n_cols, masks_cols):
+                    debug_row[n_col] = label_counts[label]
+                    debug_row[masks_col] = row.get(masks_col, "")
+
+                selected_rows_debug.append(debug_row)
 
     save_ids(output_path, selected_ids, args.comma_separated)
 
-    debug_csv = out_dir / f"{label}_training_selected_masks.csv"
+    debug_csv = out_dir / f"{label_name}_training_selected_masks.csv"
+
     with open(debug_csv, "w", newline="") as f:
-        fieldnames = ["case_id", n_col, masks_col]
+        fieldnames = ["case_id"]
+
+        for n_col, masks_col in zip(n_cols, masks_cols):
+            fieldnames.extend([n_col, masks_col])
+
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(selected_rows_debug)
 
     print("[DONE]")
-    print(f"Label: {label}")
+    print(f"Labels: {labels}")
+    print(f"Selection rule: case must have masks for ALL labels")
     print(f"Selected cases: {len(selected_ids)}")
     print(f"Saved IDs: {output_path}")
     print(f"Saved selected-mask debug CSV: {debug_csv}")
