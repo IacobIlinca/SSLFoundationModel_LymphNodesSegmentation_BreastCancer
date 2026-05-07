@@ -21,36 +21,36 @@ class ConfigMulticlass:
     multiclass_masks_csv_path: str = "../masks/binary_mask_selection_audit/required_multiclass_nodes_summary2.csv" #!!!!!
     multiclass_label = [
         #"level1",
-        # "level2",
-        # "level3",
-        #"level4",
-        "imn",
-        #"interpectoral",
+        "level2",
+        "level3",
+        "level4",
+        #"imn",
+        "interpectoral",
     ]
     class_to_index = {
         #"level1": 1,
-        # "level2": 1,
-        # "level3": 1,
-        #"level4": 4,
-        "imn": 1,
-        #"interpectoral": 6,
+        "level2": 1,
+        "level3": 2,
+        "level4": 3,
+        # "imn": 1,
+        "interpectoral": 4,
     }
     class_to_csv_column = {
         #"level1": "level1_masks",
-        # "level2": "level2_masks",
-        # "level3": "level3_masks",
-        #"level4": "level4_masks",
-        "imn": "imn_masks",
-        #"interpectoral": "interpectoral_masks",
+        "level2": "level2_masks",
+        "level3": "level3_masks",
+        "level4": "level4_masks",
+        #"imn": "imn_masks",
+        "interpectoral": "interpectoral_masks",
     }
-    class_crop_ratios = [0.0, 1.0] # background + 6 classes
+    class_crop_ratios = [0.0, 1.0, 1.0, 1.0, 1.0] # background + 6 classes
 
     # 1 class for background will be added when the model is computed
     # 1 output channel with sigmoid activation
-    num_classes: int = 1
+    num_classes: int = 4
 
     # ---- Patch training / inference ----
-    roi_size: Tuple[int, int, int] = (192, 192, 32)
+    roi_size: Tuple[int, int, int] = (192, 192, 64)
     num_samples_per_volume: int = 1
     batch_size: int = 4 #train
     val_batch_size: int = 4
@@ -74,7 +74,7 @@ class ConfigMulticlass:
     seed: int = 0
     device: str = "cuda"
     epochs: int = 100
-    lr: float = 1e-4 #!!!!!!
+    lr: float = 1e-3 #!!!!!!
     momentum: float = 0.9
     weight_decay: float = 1e-5
     amp: bool = True
@@ -82,26 +82,26 @@ class ConfigMulticlass:
     log_every: int = 5
 
     # For loss function
-    class_weight_for_loss = [1.0, 1.0]
+    class_weight_for_loss = [1.0, 1.0, 1.0, 1.0, 1.0]
     ce_weight: float = 1.0
     dice_weight: float = 1.0
 
     # ---- Linear probing specifics ----
-    voco_ckpt_path: str = "/processing/flaviu/pretrained/SwinUnet_from_VoCo_B.pt" #!!!!!!
+    voco_ckpt_path: str = "/processing/flaviu/pretrained/SwinUnet_ssl_domain_and_binary_and_multiclass.pt" #!!!!!!
     feature_size: int = 48
     freeze_scope: str = "swin_plus_conv" #!!!!!!
 
     # ---- Debug / convenience ----
-    save_dir: str = "/processing/flaviu/multiclass_segmentation_runs/run_17_segment_only_imn_ssl_domain_without_binary"
+    save_dir: str = "/processing/flaviu/multiclass_segmentation_runs/run_24_viz_multiclass_after_train"
     save_visuals: bool = True
     visuals_case_indices: tuple[int, int, int] = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-    visuals_slices: Tuple[int, int, int] = (5, 10, 15, 20, 25, 30)
+    visuals_slices: Tuple[int, int, int] = (10, 20, 30, 40, 50, 60)
 
     # ---- Split data -----
-    train_ids_path: str = "../training_data_ids/training_imn_ids/train_ids_imn_training.txt"
-    val_ids_path: str = "../training_data_ids/training_imn_ids/val_ids_imn_training.txt"
-    test_ids_path: str = "../training_data_ids/training_imn_ids/test_ids_imn_training.txt"
-    cache_dir: str = "/mnt/data/ilinca/multiclass_segmentation_runs/cache/imn"
+    train_ids_path: str = "../training_data_ids/training_multiclass_without_imn_ids/train_ids_multiclass_without_imn_training.txt"
+    val_ids_path: str = "../training_data_ids/training_multiclass_without_imn_ids/val_ids_multiclass_without_imn_training.txt"
+    test_ids_path: str = "../training_data_ids/training_multiclass_without_imn_ids/test_ids_multiclass_without_imn_training.txt"
+    cache_dir: str = "/mnt/data/flaviu/multiclass_segmentation_runs/cache/multiclass_wo_imn_l1"
     shuffle: bool = True
 
     # ---- Validation mode ----
@@ -112,7 +112,7 @@ class ConfigMulticlass:
     use_scheduler: bool = True
     scheduler_type: str = "cosine"
 
-    min_lr: float = 5e-6  # final LR at the end of training
+    min_lr: float = 1e-7  # final LR at the end of training
 
     def to_dict(self):
         return asdict(self)

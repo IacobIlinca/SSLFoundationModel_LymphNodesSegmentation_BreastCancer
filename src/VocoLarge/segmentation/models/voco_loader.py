@@ -47,6 +47,7 @@ def load_voco_encoder_weights(model: nn.Module, cfg) -> None:
         "model.encoder",
         "decoder",
         "model.decoder",
+        "out"
     ]
 
     target_sd = model.state_dict()

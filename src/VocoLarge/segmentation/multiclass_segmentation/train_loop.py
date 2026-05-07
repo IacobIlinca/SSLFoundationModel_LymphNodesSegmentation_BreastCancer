@@ -29,8 +29,8 @@ def run_training(model, cfg: ConfigMulticlass, visuals_cb=None):
     model.to(device)
 
     train_loader, val_loader, _ = build_all_datasets_and_loaders_multiclass(cfg)
-    # train_loader = maybe_limit_loader(train_loader, 5)
-    # val_loader = maybe_limit_loader(val_loader, 2)
+    #train_loader = maybe_limit_loader(train_loader, 30)
+    #val_loader = maybe_limit_loader(val_loader, 5)
 
     loss_fn = build_loss_multiclass(cfg)
 
