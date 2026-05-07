@@ -327,8 +327,8 @@ def main():
             f"{decision} | present={present_classes} | missing={missing_classes}"
         )
 
-    summary_csv = out_dir / "required_multiclass_nodes_summary2.csv"
-    details_csv = out_dir / "required_multiclass_nodes_details2.csv"
+    summary_csv = out_dir / "required_multiclass_nodes_summary_workshop_test.csv"
+    details_csv = out_dir / "required_multiclass_nodes_details_workshop_test.csv"
 
     summary_fields = [
         "case_id",
