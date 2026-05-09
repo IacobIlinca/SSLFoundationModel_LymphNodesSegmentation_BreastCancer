@@ -2,6 +2,8 @@ import os
 
 import numpy as np
 import torch
+import nibabel as nib
+import re
 from monai.data import decollate_batch
 from monai.utils import set_determinism
 
@@ -17,12 +19,163 @@ from src.VocoLarge.segmentation.data.loaders_binary import build_all_datasets_an
 from src.VocoLarge.segmentation.multiclass_segmentation.config_multiclass import ConfigMulticlass
 from src.VocoLarge.segmentation.training.losses_metrics import build_loss_multiclass
 
+def _safe_name(x):
+    x = str(x)
+    return re.sub(r"[^a-zA-Z0-9_\-\.]", "_", x)
+
+
+def _get_affine_from_batch(batch, key, item_idx):
+    """
+    Tries to recover the current MONAI affine after Orientationd/Spacingd/Cropping.
+
+    Works with either:
+      - MetaTensor metadata: batch[key].meta["affine"]
+      - old-style metadata dict: batch[f"{key}_meta_dict"]["affine"]
+      - fallback: identity affine
+    """
+
+    # Case 1: MONAI MetaTensor
+    data = batch.get(key, None)
+    if hasattr(data, "meta") and data.meta is not None:
+        meta = data.meta
+        if "affine" in meta:
+            affine = meta["affine"]
+
+            if isinstance(affine, torch.Tensor):
+                # Often shape is (B, 4, 4)
+                if affine.ndim == 3:
+                    return affine[item_idx].detach().cpu().numpy()
+                return affine.detach().cpu().numpy()
+
+            affine = np.asarray(affine)
+            if affine.ndim == 3:
+                return affine[item_idx]
+            return affine
+
+    # Case 2: dictionary metadata
+    meta_key = f"{key}_meta_dict"
+    if meta_key in batch:
+        meta = batch[meta_key]
+
+        for affine_key in ["affine", "original_affine"]:
+            if affine_key in meta:
+                affine = meta[affine_key]
+
+                if isinstance(affine, torch.Tensor):
+                    if affine.ndim == 3:
+                        return affine[item_idx].detach().cpu().numpy()
+                    return affine.detach().cpu().numpy()
+
+                if isinstance(affine, (list, tuple)):
+                    affine = affine[item_idx]
+
+                affine = np.asarray(affine)
+                if affine.ndim == 3:
+                    return affine[item_idx]
+                return affine
+
+    return np.eye(4)
+
+
+def _save_nii(array, affine, out_path, dtype=np.uint8):
+    array = np.asarray(array).astype(dtype)
+    nii = nib.Nifti1Image(array, affine)
+    nii.set_data_dtype(dtype)
+    nib.save(nii, out_path)
+
+def make_nifti_prediction_callback(cfg: ConfigMulticlass):
+    """
+    Saves NIfTI files in the current transformed space.
+
+    Because your pipeline may include:
+      - Orientationd
+      - Spacingd
+      - SpatialPadd
+      - RandCropByLabelClassesd
+
+    these files correspond to the model input space, not necessarily the original CT space.
+
+    Saved per patch:
+      - image
+      - multiclass true label
+      - one true binary label per class
+      - one predicted binary mask per class/channel
+    """
+
+    def cb(dice, image, label, pred, case_ids, batch=None):
+        out_dir = os.path.join(cfg.save_dir, "nifti_predictions_test")
+        os.makedirs(out_dir, exist_ok=True)
+
+        # image: (B, 1, X, Y, Z)
+        # label: (B, 1, X, Y, Z)
+        # pred: list length B, each item usually (C, X, Y, Z)
+        batch_size = image.shape[0]
+
+        for item_idx in range(batch_size):
+            case_id = _safe_name(case_ids[item_idx])
+
+            affine = (
+                _get_affine_from_batch(batch, key="image", item_idx=item_idx)
+                if batch is not None
+                else np.eye(4)
+            )
+
+            # Save image as seen by the model.
+            # This is normalized/clipped according to your transforms.
+            img_np = image[item_idx, 0].detach().cpu().numpy().astype(np.float32)
+
+            # Save multiclass true label: 0 background, 1 level2, 2 level3, etc.
+            lab_np = label[item_idx, 0].detach().cpu().numpy().astype(np.uint8)
+
+            base_name = f"case_{case_id}_patch_{item_idx:03d}_dice_{dice:.6f}"
+
+            image_path = os.path.join(out_dir, f"{base_name}_image.nii.gz")
+            label_path = os.path.join(out_dir, f"{base_name}_label_multiclass.nii.gz")
+
+            _save_nii(img_np, affine, image_path, dtype=np.float32)
+            _save_nii(lab_np, affine, label_path, dtype=np.uint8)
+
+            pred_oh = pred[item_idx].detach().cpu().numpy().astype(np.uint8)
+            # pred_oh shape: (C, X, Y, Z)
+            # Usually:
+            #   channel 0 = background
+            #   channel 1 = level2
+            #   channel 2 = level3
+            #   channel 3 = level4
+            #   channel 4 = interpectoral
+
+            for class_name in cfg.multiclass_label:
+                channel_idx = cfg.class_to_index[class_name]
+
+                if channel_idx >= pred_oh.shape[0]:
+                    raise ValueError(
+                        f"Class '{class_name}' uses channel {channel_idx}, "
+                        f"but prediction has shape {pred_oh.shape}."
+                    )
+
+                pred_mask = pred_oh[channel_idx].astype(np.uint8)
+
+                # Binary true label for this class.
+                true_mask = (lab_np == channel_idx).astype(np.uint8)
+
+                pred_path = os.path.join(
+                    out_dir,
+                    f"{base_name}_pred_{class_name}_ch{channel_idx}.nii.gz",
+                )
+
+                true_path = os.path.join(
+                    out_dir,
+                    f"{base_name}_true_{class_name}_ch{channel_idx}.nii.gz",
+                )
+
+                _save_nii(pred_mask, affine, pred_path, dtype=np.uint8)
+                _save_nii(true_mask, affine, true_path, dtype=np.uint8)
+
+    return cb
+
 
 def make_visuals_callback(cfg: ConfigMulticlass):
     def cb(dice, image, label, pred, case_ids):
-        # Only visualize if Dice is lower than given
-        if dice >= 0.55:
-            return
 
         img_np = image[0, 0].detach().cpu().numpy()
         case_id = case_ids[0]
@@ -62,7 +215,7 @@ def run_visualize(model, cfg: ConfigMulticlass, visuals_cb=None):
     loss_running = 0.0
     steps = 0
 
-    pbar = tqdm(train_loader, desc="Val", leave=False)
+    pbar = tqdm(val_loader, desc="Val", leave=False)
 
     for bi, batch in enumerate(pbar):
         img = batch["image"].to(device)
@@ -111,7 +264,8 @@ def run_visualize(model, cfg: ConfigMulticlass, visuals_cb=None):
                 image=img,
                 label=lab,
                 pred=pred_list,
-                case_ids=case_ids
+                case_ids=case_ids,
+                batch=batch,
             )
 
         pbar.set_postfix(
@@ -123,6 +277,7 @@ def run_visualize(model, cfg: ConfigMulticlass, visuals_cb=None):
 
 def main():
     cfg = ConfigMulticlass()
+    cfg.val_batch_size = 1
 
     set_determinism(seed=cfg.seed)
 
@@ -131,7 +286,7 @@ def main():
     freeze_encoder(model, cfg)
     report_trainable_by_module(model)
 
-    visuals_cb = make_visuals_callback(cfg) if cfg.save_visuals else None
+    visuals_cb = make_nifti_prediction_callback(cfg) if cfg.save_visuals else None
 
     run_visualize(model, cfg, visuals_cb=visuals_cb)
 

@@ -16,9 +16,9 @@ class ConfigMulticlass:
     """
 
     # ---- Task / data ----
-    root_dir: str = "/mnt/data/ilinca/structured_cases_14_16/"
+    root_dir: str = "/mnt/data/ilinca/Workshop_data_0505206/workshop_all_data"
     val_fraction: float = 0.2
-    multiclass_masks_csv_path: str = "../masks/binary_mask_selection_audit/required_multiclass_nodes_summary2.csv" #!!!!!
+    multiclass_masks_csv_path: str = "../masks/workshop_data_all/required_multiclass_nodes_summary_workshop.csv" #!!!!!
     multiclass_label = [
         #"level1",
         "level2",
@@ -74,7 +74,7 @@ class ConfigMulticlass:
     seed: int = 0
     device: str = "cuda"
     epochs: int = 100
-    lr: float = 1e-3 #!!!!!!
+    lr: float = 1e-4 #!!!!!!
     momentum: float = 0.9
     weight_decay: float = 1e-5
     amp: bool = True
@@ -87,21 +87,21 @@ class ConfigMulticlass:
     dice_weight: float = 1.0
 
     # ---- Linear probing specifics ----
-    voco_ckpt_path: str = "/processing/flaviu/pretrained/SwinUnet_ssl_domain_and_binary_and_multiclass.pt" #!!!!!!
+    voco_ckpt_path: str = "/processing/flaviu/pretrained/SwinUnet_ssl_domain_and_binary_and_multiclass_and_workshop.pt" #!!!!!!
     feature_size: int = 48
     freeze_scope: str = "swin_plus_conv" #!!!!!!
 
     # ---- Debug / convenience ----
-    save_dir: str = "/processing/flaviu/multiclass_segmentation_runs/run_24_viz_multiclass_after_train"
+    save_dir: str = "/processing/flaviu/multiclass_segmentation_runs/workshop/run_06_viz_nifti"
     save_visuals: bool = True
     visuals_case_indices: tuple[int, int, int] = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
     visuals_slices: Tuple[int, int, int] = (10, 20, 30, 40, 50, 60)
 
     # ---- Split data -----
-    train_ids_path: str = "../training_data_ids/training_multiclass_without_imn_ids/train_ids_multiclass_without_imn_training.txt"
-    val_ids_path: str = "../training_data_ids/training_multiclass_without_imn_ids/val_ids_multiclass_without_imn_training.txt"
-    test_ids_path: str = "../training_data_ids/training_multiclass_without_imn_ids/test_ids_multiclass_without_imn_training.txt"
-    cache_dir: str = "/mnt/data/flaviu/multiclass_segmentation_runs/cache/multiclass_wo_imn_l1"
+    train_ids_path: str = "../training_data_ids/training_workshop_data_ids/train_ids_workshop.txt"
+    val_ids_path: str = "../training_data_ids/training_workshop_data_ids/val_ids_workshop.txt"
+    test_ids_path: str = "../training_data_ids/training_workshop_data_ids/val_ids_workshop.txt"
+    cache_dir: str = "/mnt/data/flaviu/multiclass_segmentation_runs/cache/workshop_multiclass_wo_l1_imn"
     shuffle: bool = True
 
     # ---- Validation mode ----
