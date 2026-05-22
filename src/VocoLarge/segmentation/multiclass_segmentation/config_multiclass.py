@@ -18,7 +18,7 @@ class ConfigMulticlass:
     # ---- Task / data ----
     root_dir: str = "/mnt/data/ilinca/Workshop_data_0505206/workshop_all_data"
     val_fraction: float = 0.2
-    multiclass_masks_csv_path: str = "../masks/workshop_data_all/required_multiclass_nodes_summary_workshop.csv" #!!!!!
+    multiclass_masks_csv_path: str = "/home/flaviu/Local/SSLFoundationModel_LymphNodesSegmentation_BreastCancer/src/VocoLarge/segmentation/masks/workshop_data_all/required_multiclass_nodes_summary_workshop.csv" #!!!!!
     multiclass_label = [
         #"level1",
         "level2",
@@ -50,16 +50,16 @@ class ConfigMulticlass:
     num_classes: int = 4
 
     # ---- Patch training / inference ----
-    roi_size: Tuple[int, int, int] = (192, 192, 64)
+    roi_size: Tuple[int, int, int] = (512, 512, 64)
     num_samples_per_volume: int = 1
     batch_size: int = 4 #train
-    val_batch_size: int = 4
+    val_batch_size: int = 2
     test_batch_size: int = 1
 
     # ---- Preprocessing ----
     axcodes: str = "RAS"
     do_resample: bool = False
-    target_spacing: Tuple[float, float, float] = (1.25, 1.25, 5.0)
+    target_spacing: Tuple[float, float, float] = (1.25, 1.25, 3.0)
     light_aug: bool = False
 
     # ---- Intensity normalization ----
@@ -87,20 +87,20 @@ class ConfigMulticlass:
     dice_weight: float = 1.0
 
     # ---- Linear probing specifics ----
-    voco_ckpt_path: str = "/processing/flaviu/pretrained/SwinUnet_ssl_domain_and_binary_and_multiclass_and_workshop.pt" #!!!!!!
+    voco_ckpt_path: str = "/processing/flaviu/pretrained/VoCo_B_SSL_head_domain_pretrained.pt" #!!!!!!
     feature_size: int = 48
     freeze_scope: str = "swin_plus_conv" #!!!!!!
 
     # ---- Debug / convenience ----
-    save_dir: str = "/processing/flaviu/multiclass_segmentation_runs/workshop/run_06_viz_nifti"
+    save_dir: str = "/processing/flaviu/multiclass_segmentation_runs/workshop/run_15_mixed_crops_from_ssl_domain"
     save_visuals: bool = True
     visuals_case_indices: tuple[int, int, int] = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
     visuals_slices: Tuple[int, int, int] = (10, 20, 30, 40, 50, 60)
 
     # ---- Split data -----
-    train_ids_path: str = "../training_data_ids/training_workshop_data_ids/train_ids_workshop.txt"
-    val_ids_path: str = "../training_data_ids/training_workshop_data_ids/val_ids_workshop.txt"
-    test_ids_path: str = "../training_data_ids/training_workshop_data_ids/val_ids_workshop.txt"
+    train_ids_path: str = "/home/flaviu/Local/SSLFoundationModel_LymphNodesSegmentation_BreastCancer/src/VocoLarge/segmentation/training_data_ids/training_workshop_data_ids/train_ids_workshop.txt"
+    val_ids_path: str = "/home/flaviu/Local/SSLFoundationModel_LymphNodesSegmentation_BreastCancer/src/VocoLarge/segmentation/training_data_ids/training_workshop_data_ids/val_ids_workshop.txt"
+    test_ids_path: str = "/home/flaviu/Local/SSLFoundationModel_LymphNodesSegmentation_BreastCancer/src/VocoLarge/segmentation/training_data_ids/training_workshop_data_ids/val_ids_workshop.txt"
     cache_dir: str = "/mnt/data/flaviu/multiclass_segmentation_runs/cache/workshop_multiclass_wo_l1_imn"
     shuffle: bool = True
 
