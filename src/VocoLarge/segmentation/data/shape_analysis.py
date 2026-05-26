@@ -3,8 +3,8 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 
-JSON_PATH = "../data_audit_results/audit_structured_14_16.json"
-OUT_DIR = "../data_audit_results/shape_summary_output"
+JSON_PATH = "../data_audit_results/audit_workshop_clinically_delineated.json"
+OUT_DIR = "../data_audit_results/shape_summary_output_workshop_clinically_delineated"
 
 
 def main():

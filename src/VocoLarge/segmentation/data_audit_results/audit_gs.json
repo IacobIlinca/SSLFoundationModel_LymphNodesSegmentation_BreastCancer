@@ -1,0 +1,806 @@
+{
+  "num_images": 21,
+  "orientation_counts": {
+    "LPS": 21
+  },
+  "side_counts": {
+    "left": 10,
+    "right": 11
+  },
+  "spacing_summary": {
+    "x": {
+      "min": 0.900390625,
+      "max": 1.269531011581421,
+      "mean": 1.0525483290354412,
+      "p50": 0.9765625
+    },
+    "y": {
+      "min": 0.900390625,
+      "max": 1.269531011581421,
+      "mean": 1.0525483290354412,
+      "p50": 0.9765625
+    },
+    "z": {
+      "min": 2.0,
+      "max": 3.0,
+      "mean": 2.4761904761904763,
+      "p50": 2.5
+    }
+  },
+  "mask_presence_summary_sorted": [
+    {
+      "mask_name": "staple_ctvn_l3.nii.gz",
+      "fraction": "21/21"
+    },
+    {
+      "mask_name": "staple_ctvn_l2.nii.gz",
+      "fraction": "21/21"
+    },
+    {
+      "mask_name": "staple_ctvn_l4.nii.gz",
+      "fraction": "21/21"
+    },
+    {
+      "mask_name": "staple_ctvn_interpect.nii.gz",
+      "fraction": "21/21"
+    },
+    {
+      "mask_name": "staple_ctvn_imn.nii.gz",
+      "fraction": "21/21"
+    },
+    {
+      "mask_name": "staple_ctvn_l1.nii.gz",
+      "fraction": "21/21"
+    },
+    {
+      "mask_name": "staple_ctvn_imn_ic4_merged.nii.gz",
+      "fraction": "21/21"
+    },
+    {
+      "mask_name": "staple_ctvp_breast.nii.gz",
+      "fraction": "11/21"
+    },
+    {
+      "mask_name": "staple_ctvp_chestwall.nii.gz",
+      "fraction": "11/21"
+    }
+  ],
+  "images": [
+    {
+      "path": "/mnt/data/ilinca/unified_gold_standard/pt15/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        156
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 3071.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -994.0,
+      "p99": 143.0,
+      "p99_5": 370.0,
+      "spacing_xyz": [
+        1.269531011581421,
+        1.269531011581421,
+        2.5
+      ],
+      "orientation": "LPS",
+      "folder_contents": [
+        "image.nii.gz",
+        "STAPLE_CTVn_IMN.nii.gz",
+        "STAPLE_CTVn_IMN_IC4_merged.nii.gz",
+        "STAPLE_CTVn_Interpect.nii.gz",
+        "STAPLE_CTVn_L1.nii.gz",
+        "STAPLE_CTVn_L2.nii.gz",
+        "STAPLE_CTVn_L3.nii.gz",
+        "STAPLE_CTVn_L4.nii.gz",
+        "STAPLE_CTVp_breast.nii.gz"
+      ],
+      "side": "left",
+      "side_source_mask": "STAPLE_CTVn_L2.nii.gz"
+    },
+    {
+      "path": "/mnt/data/ilinca/unified_gold_standard/pt6/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        136
+      ],
+      "dtype": "float32",
+      "min": -1024.0,
+      "max": 3071.0,
+      "p0_5": -1024.0,
+      "p1": -1024.0,
+      "p50": -978.0,
+      "p99": 212.0,
+      "p99_5": 367.0,
+      "spacing_xyz": [
+        0.943359375,
+        0.943359375,
+        2.5
+      ],
+      "orientation": "LPS",
+      "folder_contents": [
+        "image.nii.gz",
+        "STAPLE_CTVn_IMN.nii.gz",
+        "STAPLE_CTVn_IMN_IC4_merged.nii.gz",
+        "STAPLE_CTVn_Interpect.nii.gz",
+        "STAPLE_CTVn_L1.nii.gz",
+        "STAPLE_CTVn_L2.nii.gz",
+        "STAPLE_CTVn_L3.nii.gz",
+        "STAPLE_CTVn_L4.nii.gz",
+        "STAPLE_CTVp_chestwall.nii.gz"
+      ],
+      "side": "left",
+      "side_source_mask": "STAPLE_CTVn_L2.nii.gz"
+    },
+    {
+      "path": "/mnt/data/ilinca/unified_gold_standard/pt1/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        151
+      ],
+      "dtype": "float32",
+      "min": -1024.0,
+      "max": 3012.0,
+      "p0_5": -1024.0,
+      "p1": -1024.0,
+      "p50": -979.0,
+      "p99": 220.0,
+      "p99_5": 385.0,
+      "spacing_xyz": [
+        0.900390625,
+        0.900390625,
+        2.5
+      ],
+      "orientation": "LPS",
+      "folder_contents": [
+        "image.nii.gz",
+        "STAPLE_CTVn_IMN.nii.gz",
+        "STAPLE_CTVn_IMN_IC4_merged.nii.gz",
+        "STAPLE_CTVn_Interpect.nii.gz",
+        "STAPLE_CTVn_L1.nii.gz",
+        "STAPLE_CTVn_L2.nii.gz",
+        "STAPLE_CTVn_L3.nii.gz",
+        "STAPLE_CTVn_L4.nii.gz",
+        "STAPLE_CTVp_breast.nii.gz"
+      ],
+      "side": "right",
+      "side_source_mask": "STAPLE_CTVn_L2.nii.gz"
+    },
+    {
+      "path": "/mnt/data/ilinca/unified_gold_standard/pt12/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        198
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 3071.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -986.0,
+      "p99": 250.0,
+      "p99_5": 469.0,
+      "spacing_xyz": [
+        1.140625,
+        1.140625,
+        2.0
+      ],
+      "orientation": "LPS",
+      "folder_contents": [
+        "image.nii.gz",
+        "STAPLE_CTVn_IMN.nii.gz",
+        "STAPLE_CTVn_IMN_IC4_merged.nii.gz",
+        "STAPLE_CTVn_Interpect.nii.gz",
+        "STAPLE_CTVn_L1.nii.gz",
+        "STAPLE_CTVn_L2.nii.gz",
+        "STAPLE_CTVn_L3.nii.gz",
+        "STAPLE_CTVn_L4.nii.gz",
+        "STAPLE_CTVp_breast.nii.gz"
+      ],
+      "side": "right",
+      "side_source_mask": "STAPLE_CTVn_L2.nii.gz"
+    },
+    {
+      "path": "/mnt/data/ilinca/unified_gold_standard/pt18/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        188
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 3071.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -990.0,
+      "p99": 264.0,
+      "p99_5": 450.0,
+      "spacing_xyz": [
+        1.017578125,
+        1.017578125,
+        2.0
+      ],
+      "orientation": "LPS",
+      "folder_contents": [
+        "image.nii.gz",
+        "STAPLE_CTVn_IMN.nii.gz",
+        "STAPLE_CTVn_IMN_IC4_merged.nii.gz",
+        "STAPLE_CTVn_Interpect.nii.gz",
+        "STAPLE_CTVn_L1.nii.gz",
+        "STAPLE_CTVn_L2.nii.gz",
+        "STAPLE_CTVn_L3.nii.gz",
+        "STAPLE_CTVn_L4.nii.gz",
+        "STAPLE_CTVp_chestwall.nii.gz"
+      ],
+      "side": "right",
+      "side_source_mask": "STAPLE_CTVn_L2.nii.gz"
+    },
+    {
+      "path": "/mnt/data/ilinca/unified_gold_standard/pt20/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        144
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 3071.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -999.0,
+      "p99": 119.0,
+      "p99_5": 362.0,
+      "spacing_xyz": [
+        1.269531011581421,
+        1.269531011581421,
+        2.5
+      ],
+      "orientation": "LPS",
+      "folder_contents": [
+        "image.nii.gz",
+        "STAPLE_CTVn_IMN.nii.gz",
+        "STAPLE_CTVn_IMN_IC4_merged.nii.gz",
+        "STAPLE_CTVn_Interpect.nii.gz",
+        "STAPLE_CTVn_L1.nii.gz",
+        "STAPLE_CTVn_L2.nii.gz",
+        "STAPLE_CTVn_L3.nii.gz",
+        "STAPLE_CTVn_L4.nii.gz",
+        "STAPLE_CTVp_chestwall.nii.gz"
+      ],
+      "side": "left",
+      "side_source_mask": "STAPLE_CTVn_L2.nii.gz"
+    },
+    {
+      "path": "/mnt/data/ilinca/unified_gold_standard/pt5/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        170
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 3070.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -989.0,
+      "p99": 176.0,
+      "p99_5": 385.0,
+      "spacing_xyz": [
+        0.9765625,
+        0.9765625,
+        2.0
+      ],
+      "orientation": "LPS",
+      "folder_contents": [
+        "image.nii.gz",
+        "STAPLE_CTVn_IMN.nii.gz",
+        "STAPLE_CTVn_IMN_IC4_merged.nii.gz",
+        "STAPLE_CTVn_Interpect.nii.gz",
+        "STAPLE_CTVn_L1.nii.gz",
+        "STAPLE_CTVn_L2.nii.gz",
+        "STAPLE_CTVn_L3.nii.gz",
+        "STAPLE_CTVn_L4.nii.gz",
+        "STAPLE_CTVp_breast.nii.gz"
+      ],
+      "side": "left",
+      "side_source_mask": "STAPLE_CTVn_L2.nii.gz"
+    },
+    {
+      "path": "/mnt/data/ilinca/unified_gold_standard/pt16/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        210
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 2976.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -992.0,
+      "p99": 132.0,
+      "p99_5": 334.0,
+      "spacing_xyz": [
+        1.083984375,
+        1.083984375,
+        2.0
+      ],
+      "orientation": "LPS",
+      "folder_contents": [
+        "image.nii.gz",
+        "STAPLE_CTVn_IMN.nii.gz",
+        "STAPLE_CTVn_IMN_IC4_merged.nii.gz",
+        "STAPLE_CTVn_Interpect.nii.gz",
+        "STAPLE_CTVn_L1.nii.gz",
+        "STAPLE_CTVn_L2.nii.gz",
+        "STAPLE_CTVn_L3.nii.gz",
+        "STAPLE_CTVn_L4.nii.gz",
+        "STAPLE_CTVp_breast.nii.gz"
+      ],
+      "side": "right",
+      "side_source_mask": "STAPLE_CTVn_L2.nii.gz"
+    },
+    {
+      "path": "/mnt/data/ilinca/unified_gold_standard/pt11/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        151
+      ],
+      "dtype": "float32",
+      "min": -1024.0,
+      "max": 2891.0,
+      "p0_5": -1024.0,
+      "p1": -1024.0,
+      "p50": -989.0,
+      "p99": 279.0,
+      "p99_5": 414.0,
+      "spacing_xyz": [
+        0.91796875,
+        0.91796875,
+        2.5
+      ],
+      "orientation": "LPS",
+      "folder_contents": [
+        "image.nii.gz",
+        "STAPLE_CTVn_IMN.nii.gz",
+        "STAPLE_CTVn_IMN_IC4_merged.nii.gz",
+        "STAPLE_CTVn_Interpect.nii.gz",
+        "STAPLE_CTVn_L1.nii.gz",
+        "STAPLE_CTVn_L2.nii.gz",
+        "STAPLE_CTVn_L3.nii.gz",
+        "STAPLE_CTVn_L4.nii.gz",
+        "STAPLE_CTVp_breast.nii.gz"
+      ],
+      "side": "left",
+      "side_source_mask": "STAPLE_CTVn_L2.nii.gz"
+    },
+    {
+      "path": "/mnt/data/ilinca/unified_gold_standard/pt2/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        193
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 3071.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -987.0,
+      "p99": 235.0,
+      "p99_5": 415.0,
+      "spacing_xyz": [
+        1.103515625,
+        1.103515625,
+        2.0
+      ],
+      "orientation": "LPS",
+      "folder_contents": [
+        "image.nii.gz",
+        "STAPLE_CTVn_IMN.nii.gz",
+        "STAPLE_CTVn_IMN_IC4_merged.nii.gz",
+        "STAPLE_CTVn_Interpect.nii.gz",
+        "STAPLE_CTVn_L1.nii.gz",
+        "STAPLE_CTVn_L2.nii.gz",
+        "STAPLE_CTVn_L3.nii.gz",
+        "STAPLE_CTVn_L4.nii.gz",
+        "STAPLE_CTVp_breast.nii.gz"
+      ],
+      "side": "left",
+      "side_source_mask": "STAPLE_CTVn_L2.nii.gz"
+    },
+    {
+      "path": "/mnt/data/ilinca/unified_gold_standard/pt8/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        95
+      ],
+      "dtype": "float32",
+      "min": -1024.0,
+      "max": 5226.0,
+      "p0_5": -1024.0,
+      "p1": -1024.0,
+      "p50": -969.0,
+      "p99": 173.0,
+      "p99_5": 285.0,
+      "spacing_xyz": [
+        0.9765625,
+        0.9765625,
+        3.0
+      ],
+      "orientation": "LPS",
+      "folder_contents": [
+        "image.nii.gz",
+        "STAPLE_CTVn_IMN.nii.gz",
+        "STAPLE_CTVn_IMN_IC4_merged.nii.gz",
+        "STAPLE_CTVn_Interpect.nii.gz",
+        "STAPLE_CTVn_L1.nii.gz",
+        "STAPLE_CTVn_L2.nii.gz",
+        "STAPLE_CTVn_L3.nii.gz",
+        "STAPLE_CTVn_L4.nii.gz",
+        "STAPLE_CTVp_chestwall.nii.gz"
+      ],
+      "side": "left",
+      "side_source_mask": "STAPLE_CTVn_L2.nii.gz"
+    },
+    {
+      "path": "/mnt/data/ilinca/unified_gold_standard/pt13/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        169
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 3070.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -990.0,
+      "p99": 213.0,
+      "p99_5": 346.0,
+      "spacing_xyz": [
+        0.9765625,
+        0.9765625,
+        2.0
+      ],
+      "orientation": "LPS",
+      "folder_contents": [
+        "image.nii.gz",
+        "STAPLE_CTVn_IMN.nii.gz",
+        "STAPLE_CTVn_IMN_IC4_merged.nii.gz",
+        "STAPLE_CTVn_Interpect.nii.gz",
+        "STAPLE_CTVn_L1.nii.gz",
+        "STAPLE_CTVn_L2.nii.gz",
+        "STAPLE_CTVn_L3.nii.gz",
+        "STAPLE_CTVn_L4.nii.gz",
+        "STAPLE_CTVp_chestwall.nii.gz"
+      ],
+      "side": "right",
+      "side_source_mask": "STAPLE_CTVn_L2.nii.gz"
+    },
+    {
+      "path": "/mnt/data/ilinca/unified_gold_standard/pt21/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        114
+      ],
+      "dtype": "float32",
+      "min": -1024.0,
+      "max": 15857.0,
+      "p0_5": -1024.0,
+      "p1": -1024.0,
+      "p50": -987.0,
+      "p99": 187.0,
+      "p99_5": 344.0,
+      "spacing_xyz": [
+        0.9765625,
+        0.9765625,
+        3.0
+      ],
+      "orientation": "LPS",
+      "folder_contents": [
+        "image.nii.gz",
+        "STAPLE_CTVn_IMN.nii.gz",
+        "STAPLE_CTVn_IMN_IC4_merged.nii.gz",
+        "STAPLE_CTVn_Interpect.nii.gz",
+        "STAPLE_CTVn_L1.nii.gz",
+        "STAPLE_CTVn_L2.nii.gz",
+        "STAPLE_CTVn_L3.nii.gz",
+        "STAPLE_CTVn_L4.nii.gz",
+        "STAPLE_CTVp_breast.nii.gz"
+      ],
+      "side": "right",
+      "side_source_mask": "STAPLE_CTVn_L2.nii.gz"
+    },
+    {
+      "path": "/mnt/data/ilinca/unified_gold_standard/pt14/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        122
+      ],
+      "dtype": "float32",
+      "min": -1024.0,
+      "max": 14785.0,
+      "p0_5": -1024.0,
+      "p1": -1024.0,
+      "p50": -990.0,
+      "p99": 260.0,
+      "p99_5": 443.0,
+      "spacing_xyz": [
+        0.9765625,
+        0.9765625,
+        3.0
+      ],
+      "orientation": "LPS",
+      "folder_contents": [
+        "image.nii.gz",
+        "STAPLE_CTVn_IMN.nii.gz",
+        "STAPLE_CTVn_IMN_IC4_merged.nii.gz",
+        "STAPLE_CTVn_Interpect.nii.gz",
+        "STAPLE_CTVn_L1.nii.gz",
+        "STAPLE_CTVn_L2.nii.gz",
+        "STAPLE_CTVn_L3.nii.gz",
+        "STAPLE_CTVn_L4.nii.gz",
+        "STAPLE_CTVp_chestwall.nii.gz"
+      ],
+      "side": "right",
+      "side_source_mask": "STAPLE_CTVn_L2.nii.gz"
+    },
+    {
+      "path": "/mnt/data/ilinca/unified_gold_standard/pt7/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        127
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 3071.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -994.0,
+      "p99": 134.0,
+      "p99_5": 253.0,
+      "spacing_xyz": [
+        1.171875,
+        1.171875,
+        3.0
+      ],
+      "orientation": "LPS",
+      "folder_contents": [
+        "image.nii.gz",
+        "STAPLE_CTVn_IMN.nii.gz",
+        "STAPLE_CTVn_IMN_IC4_merged.nii.gz",
+        "STAPLE_CTVn_Interpect.nii.gz",
+        "STAPLE_CTVn_L1.nii.gz",
+        "STAPLE_CTVn_L2.nii.gz",
+        "STAPLE_CTVn_L3.nii.gz",
+        "STAPLE_CTVn_L4.nii.gz",
+        "STAPLE_CTVp_breast.nii.gz"
+      ],
+      "side": "right",
+      "side_source_mask": "STAPLE_CTVn_L2.nii.gz"
+    },
+    {
+      "path": "/mnt/data/ilinca/unified_gold_standard/pt10/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        208
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 2976.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -990.0,
+      "p99": 138.0,
+      "p99_5": 287.0,
+      "spacing_xyz": [
+        1.021484375,
+        1.021484375,
+        2.0
+      ],
+      "orientation": "LPS",
+      "folder_contents": [
+        "image.nii.gz",
+        "STAPLE_CTVn_IMN.nii.gz",
+        "STAPLE_CTVn_IMN_IC4_merged.nii.gz",
+        "STAPLE_CTVn_Interpect.nii.gz",
+        "STAPLE_CTVn_L1.nii.gz",
+        "STAPLE_CTVn_L2.nii.gz",
+        "STAPLE_CTVn_L3.nii.gz",
+        "STAPLE_CTVn_L4.nii.gz",
+        "STAPLE_CTVp_chestwall.nii.gz"
+      ],
+      "side": "right",
+      "side_source_mask": "STAPLE_CTVn_L2.nii.gz"
+    },
+    {
+      "path": "/mnt/data/ilinca/unified_gold_standard/pt9/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        211
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 3071.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -990.0,
+      "p99": 204.0,
+      "p99_5": 422.0,
+      "spacing_xyz": [
+        0.9765625,
+        0.9765625,
+        2.0
+      ],
+      "orientation": "LPS",
+      "folder_contents": [
+        "image.nii.gz",
+        "STAPLE_CTVn_IMN.nii.gz",
+        "STAPLE_CTVn_IMN_IC4_merged.nii.gz",
+        "STAPLE_CTVn_Interpect.nii.gz",
+        "STAPLE_CTVn_L1.nii.gz",
+        "STAPLE_CTVn_L2.nii.gz",
+        "STAPLE_CTVn_L3.nii.gz",
+        "STAPLE_CTVn_L4.nii.gz",
+        "STAPLE_CTVp_chestwall.nii.gz"
+      ],
+      "side": "left",
+      "side_source_mask": "STAPLE_CTVn_L2.nii.gz"
+    },
+    {
+      "path": "/mnt/data/ilinca/unified_gold_standard/pt3/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        138
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 3071.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -996.0,
+      "p99": 119.0,
+      "p99_5": 270.0,
+      "spacing_xyz": [
+        1.181640625,
+        1.181640625,
+        3.0
+      ],
+      "orientation": "LPS",
+      "folder_contents": [
+        "image.nii.gz",
+        "STAPLE_CTVn_IMN.nii.gz",
+        "STAPLE_CTVn_IMN_IC4_merged.nii.gz",
+        "STAPLE_CTVn_Interpect.nii.gz",
+        "STAPLE_CTVn_L1.nii.gz",
+        "STAPLE_CTVn_L2.nii.gz",
+        "STAPLE_CTVn_L3.nii.gz",
+        "STAPLE_CTVn_L4.nii.gz",
+        "STAPLE_CTVp_chestwall.nii.gz"
+      ],
+      "side": "left",
+      "side_source_mask": "STAPLE_CTVn_L2.nii.gz"
+    },
+    {
+      "path": "/mnt/data/ilinca/unified_gold_standard/pt22/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        120
+      ],
+      "dtype": "float32",
+      "min": -1024.0,
+      "max": 3071.0,
+      "p0_5": -1024.0,
+      "p1": -1024.0,
+      "p50": -982.0,
+      "p99": 186.0,
+      "p99_5": 325.0,
+      "spacing_xyz": [
+        0.9765625,
+        0.9765625,
+        3.0
+      ],
+      "orientation": "LPS",
+      "folder_contents": [
+        "image.nii.gz",
+        "STAPLE_CTVn_IMN.nii.gz",
+        "STAPLE_CTVn_IMN_IC4_merged.nii.gz",
+        "STAPLE_CTVn_Interpect.nii.gz",
+        "STAPLE_CTVn_L1.nii.gz",
+        "STAPLE_CTVn_L2.nii.gz",
+        "STAPLE_CTVn_L3.nii.gz",
+        "STAPLE_CTVn_L4.nii.gz",
+        "STAPLE_CTVp_breast.nii.gz"
+      ],
+      "side": "left",
+      "side_source_mask": "STAPLE_CTVn_L2.nii.gz"
+    },
+    {
+      "path": "/mnt/data/ilinca/unified_gold_standard/pt4/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        144
+      ],
+      "dtype": "float32",
+      "min": -1000.0,
+      "max": 3071.0,
+      "p0_5": -1000.0,
+      "p1": -1000.0,
+      "p50": -997.0,
+      "p99": 141.0,
+      "p99_5": 373.0,
+      "spacing_xyz": [
+        1.269531011581421,
+        1.269531011581421,
+        2.5
+      ],
+      "orientation": "LPS",
+      "folder_contents": [
+        "image.nii.gz",
+        "STAPLE_CTVn_IMN.nii.gz",
+        "STAPLE_CTVn_IMN_IC4_merged.nii.gz",
+        "STAPLE_CTVn_Interpect.nii.gz",
+        "STAPLE_CTVn_L1.nii.gz",
+        "STAPLE_CTVn_L2.nii.gz",
+        "STAPLE_CTVn_L3.nii.gz",
+        "STAPLE_CTVn_L4.nii.gz",
+        "STAPLE_CTVp_chestwall.nii.gz"
+      ],
+      "side": "right",
+      "side_source_mask": "STAPLE_CTVn_L2.nii.gz"
+    },
+    {
+      "path": "/mnt/data/ilinca/unified_gold_standard/pt17/image.nii.gz",
+      "shape": [
+        512,
+        512,
+        115
+      ],
+      "dtype": "float32",
+      "min": -1024.0,
+      "max": 3071.0,
+      "p0_5": -1024.0,
+      "p1": -1024.0,
+      "p50": -980.0,
+      "p99": 218.0,
+      "p99_5": 383.0,
+      "spacing_xyz": [
+        0.9765625,
+        0.9765625,
+        3.0
+      ],
+      "orientation": "LPS",
+      "folder_contents": [
+        "image.nii.gz",
+        "STAPLE_CTVn_IMN.nii.gz",
+        "STAPLE_CTVn_IMN_IC4_merged.nii.gz",
+        "STAPLE_CTVn_Interpect.nii.gz",
+        "STAPLE_CTVn_L1.nii.gz",
+        "STAPLE_CTVn_L2.nii.gz",
+        "STAPLE_CTVn_L3.nii.gz",
+        "STAPLE_CTVn_L4.nii.gz",
+        "STAPLE_CTVp_breast.nii.gz",
+        "STAPLE_CTVp_chestwall.nii.gz"
+      ],
+      "side": "right",
+      "side_source_mask": "STAPLE_CTVn_L2.nii.gz"
+    }
+  ]
+}

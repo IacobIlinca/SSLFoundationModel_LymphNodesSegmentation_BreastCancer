@@ -5,7 +5,7 @@ from typing import Dict, List, Optional
 
 
 # ======== EDIT THESE ========
-AUDIT_JSON = "src/VocoLarge/segmentation/data_audit_results/audit_workshop.json"
+AUDIT_JSON = "src/VocoLarge/segmentation/data_audit_results/audit_workshop_untouched.json"
 SYNONYMS_JSON = "/mnt/data/ilinca/rtnation_02_02/synonyms.json"
 GROUP_NAME = "ctvn_l2"   # configurable
 OUTPUT_JSON = "src/VocoLarge/segmentation/data_audit_results/patients_missing_group.json"

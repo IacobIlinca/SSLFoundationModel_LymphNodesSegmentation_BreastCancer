@@ -290,7 +290,7 @@ def audit_dataset(
             lower = fname.lower()
 
             # count only masks, and only nifti masks
-            if lower.startswith("mask") and (lower.endswith(".nii") or lower.endswith(".nii.gz")):
+            if lower.startswith("staple") and (lower.endswith(".nii") or lower.endswith(".nii.gz")):
                 seen_masks_this_case.add(lower)
 
         for mask_name in seen_masks_this_case:
